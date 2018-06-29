@@ -1,0 +1,14 @@
+{
+  "name": "@blasterjs/button",
+  "version": "0.0.1",
+  "description": "Button Component",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "author": "Alex Kaminsky",
+  "dependencies": {
+    "react": "^16.0.0",
+    "styled-components": "^2.2.1",
+    "polished": "^1.9.3",
+    "@blasterjs/core": "0.0.1"
+  }
+}

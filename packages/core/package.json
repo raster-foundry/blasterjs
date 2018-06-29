@@ -1,0 +1,11 @@
+{
+  "name": "@blasterjs/core",
+  "version": "0.0.1",
+  "description": "blasterjs core",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "author": "Alex Kaminsky",
+  "dependencies": {
+    "polished": "^1.9.3"
+  }
+}

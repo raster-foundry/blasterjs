@@ -1,15 +1,13 @@
 {
-  "name": "lerna-starter",
-  "version": "0.0.2",
-  "private": true,
-  "description": "Simple UI Development environment to develop, test and publish your React npm packages",
+  "name": "blasterjs",
+  "version": "0.0.1",
+  "description": "React UI library designed and built by Azavea",
   "main": "build/index.js",
   "scripts": {
-    "start": "yarn bootstrap && NODE_ENV=development start-storybook -p 9001",
+    "start": "yarn bootstrap && NODE_ENV=development styleguidist server",
     "test": "jest --coverage --verbose",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna exec --parallel -- babel src -d dist --ignore spec.js,story.js",
-    "export-static-storybook": "build-storybook -c .storybook -o .out",
+    "build": "lerna exec --parallel -- babel src -d dist --ignore spec.js",
     "publish": "lerna publish",
     "prepublish": "yarn build",
     "precommit": "yarn test",
@@ -19,26 +17,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kicktail/lerna-starter.git"
+    "url": "git+https://github.com/raster-foundry/blasterjs.git"
   },
   "author": "Gary Meehan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kicktail/lerna-starter/issues"
+    "url": "https://github.com/raster-foundry/blasterjs/issues"
   },
-  "homepage": "https://github.com/kicktail/lerna-starter/#readme",
+  "homepage": "https://github.com/raster-foundry/blasterjs",
   "devDependencies": {
-    "@storybook/addon-actions": "^3.3.15",
-    "@storybook/addon-links": "^3.3.15",
-    "@storybook/react": "^3.3.15",
     "all-contributors-cli": "^4.11.0",
     "babel-cli": "^6.26.0",
     "babel-jest": "^22.4.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "flow-bin": "^0.75.0",
     "glob-loader": "^0.3.0",
     "jest": "^22.4.2",
     "lerna": "^2.9.0",
@@ -46,8 +43,11 @@
     "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-styleguidist": "^7.0.19",
     "react-test-renderer": "^16.2.0",
-    "styled-components": "^3.2.1"
+    "styled-components": "^3.2.1",
+    "webpack": "^4.14.0",
+    "webpack-blocks": "^1.0.0"
   },
   "lint-staged": {
     "*.{js,json,css}": [
@@ -63,5 +63,6 @@
     "testPathIgnorePatterns": [
       "<rootDir>node_modules/"
     ]
-  }
+  },
+  "dependencies": {}
 }
