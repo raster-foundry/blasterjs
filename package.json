@@ -7,7 +7,7 @@
     "start": "yarn bootstrap && NODE_ENV=development styleguidist server",
     "test": "jest --coverage --verbose",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna exec --parallel -- babel src -d dist --ignore spec.js",
+    "build": "lerna exec --parallel -- babel ./components -d dist --ignore spec.js",
     "publish": "lerna publish",
     "prepublish": "yarn build",
     "precommit": "yarn test",
