@@ -1,13 +1,10 @@
 {
-  "name": "@blasterjs/button",
+  "name": "@blasterjs/chart",
   "version": "0.0.1",
-  "description": "Button Component",
+  "description": "Charting components",
   "main": "dist/index.js",
   "module": "src/index.js",
-  "author": "Alex Kaminsky",
   "dependencies": {
-    "react": "^16.0.0",
-    "styled-components": "^2.2.1",
     "polished": "^1.9.3",
     "@blasterjs/core": "0.0.1"
   }

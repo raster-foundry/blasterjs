@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import Button from './../button/styles/defaultButton';
+import Button from '../button';
 import { consolidateStreamedStyles } from 'styled-components';
 
 const ButtonGroup = styled.div`

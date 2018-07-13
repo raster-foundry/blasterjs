@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { lighten, darken, rgba } from 'polished';
-import { Colors, Intent } from '@blasterjs/core';
+import { Colors, Intent } from '../../../defaultTheme';
 
 /** @component */
 export default styled.button`
@@ -29,7 +29,7 @@ export default styled.button`
   &:hover, &.hover,
   &:active, &.active {
     color: #fff;
-    background-color: ${rgba('black', .8)};
+    background-color: ${rgba('black', 0.1)};
     z-index: 1;
   }
 

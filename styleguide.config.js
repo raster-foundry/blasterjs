@@ -5,11 +5,25 @@ module.exports = {
     sections: [
         {
           name: 'Introduction',
-          content: 'docs/introduction.md'
+          content: 'docs/introduction.md',
+          sections: [
+              {
+                  name: 'Colors',
+                  content: 'docs/colors.md'
+              }
+          ]
         },
         {
-            name: 'Buttons',
-            components: 'packages/button/components/**/index.js',
+            name: 'Core',
+            components: 'packages/core/components/**/index.js',
+            usageMode: 'expand',
+            exampleMode: 'expand'
+        },
+        {
+            name: 'Chart',
+            components: 'packages/chart/components/**/index.js',
+            usageMode: 'expand',
+            exampleMode: 'expand'
         }
     ],
     getExampleFilename(componentPath) {
