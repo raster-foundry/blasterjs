@@ -1,13 +1,17 @@
 # Blaster
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
+## Usage
+blasterjs isn't ready for showtime yet
 
-## Getting Started
+## Development
+
+### Getting Started
 1. Clone the project: `git clone git@github.com:raster-foundry/blasterjs.git`
 3. Setup project: `yarn install`
 4. Run `yarn start`
 
-## Scripts
+### Scripts
 A look at the scripts that are available:
 
 - To [bootstrap](https://github.com/lerna/lerna#bootstrap) the packages and start the development environment run:
@@ -30,5 +34,12 @@ yarn test
 yarn publish
 ```
 
-
 This project is powered by Lerna so all [Lerna commands](https://lernajs.io/) are available.
+
+### Project Structure
+
+#### Package Structure
+
+#### Component Structure
+
+
