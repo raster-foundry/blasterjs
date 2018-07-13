@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "start": "yarn build && yarn bootstrap && NODE_ENV=development styleguidist server",
-    "test": "jest --coverage --verbose",
+    "test": "jest --coverage --verbose --passWithNoTests",
     "bootstrap": "lerna bootstrap",
     "build": "rm -rf dist && lerna exec --parallel -- babel . -d dist --ignore node_modules,dist",
     "publish": "lerna publish",
