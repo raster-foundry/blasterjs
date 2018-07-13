@@ -40,6 +40,23 @@ This project is powered by Lerna so all [Lerna commands](https://lernajs.io/) ar
 
 #### Package Structure
 
+```
+package
+├── index.js
+├── components
+│   ├── firstComponent
+│   │   ├── index.js
+│   │   └── README.md
+│   └── secondComponent
+│       ├── index.js
+│       └── README.md
+└── package.json
+```
+
 #### Component Structure
 
-
+```
+firstComponent
+├── index.js
+└── README.md
+```
