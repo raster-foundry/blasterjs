@@ -2,7 +2,7 @@
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ## Usage
-blasterjs isn't ready for showtime yet
+Blaster isn't ready for showtime yet.
 
 ## Development
 
@@ -12,44 +12,27 @@ blasterjs isn't ready for showtime yet
 4. Run `yarn start`
 
 ### Scripts
-A look at the scripts that are available:
+| Command | Description |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **`yarn start`**  | This is the most commonly used command when developing locally. <br/>  It runs `yarn build`, `lerna bootstrap`, and then starts the styleguidist server. |
+| `yarn bootstrap`  | An alias for `lerna bootstrap`. <br/> Symlinks the various packages together to enable a smooth monorepo development workflow. |
+| `yarn test`  | Run tests for all components |
+| `yarn build` | Uses lerna to run all packages through babel. |
+| `yarn publish` | Create a new release interactively with Lerna |
 
-- To [bootstrap](https://github.com/lerna/lerna#bootstrap) the packages and start the development environment run:
-```
-yarn start
-```
 
-- To easily install all the dependencies in your individual packages at once run:
-```
-yarn bootstrap
-```
+All Lerna [Lerna commands](https://lernajs.io/) are also available.
 
-- Run all your packages tests and generate coverage report:
-```
-yarn test
-```
+### Package Structure
 
-- Create a new release of the packages that have been updated. Prompts for a new version and updates all the packages on git and npm:
-```
-yarn publish
-```
-
-This project is powered by Lerna so all [Lerna commands](https://lernajs.io/) are available.
-
-### Project Structure
-
-#### Package Structure
+All npm publishable packages are located in the `packages` directory.
 
 ```
 package
 ├── index.js
 ├── components
 │   ├── firstComponent
-│   │   ├── index.js
-│   │   └── README.md
 │   └── secondComponent
-│       ├── index.js
-│       └── README.md
 └── package.json
 ```
 
