@@ -43,3 +43,12 @@ firstComponent
 ├── index.js
 └── README.md
 ```
+
+## Publishing
+
+Blaster uses Lerna in the default locked versioning mode.
+This means that whenever one package is updated to a new version, all packages are also bumped to have matching version numbers.
+
+1) Ensure all changes have been committed. Publishing will not work if your local version is not up to date with `master`.
+1) **`npm addUser --scope @blasterjs`** - this ensures you are logged into npm and have sufficient privileges to publish Blaster
+1) **`yarn run publish`** - this runs `lerna publish --exact`, which is an interactive process. All dependencies are pinned to the versions currently installed. Select the appropriate version bump according to semantic versioning.
