@@ -1,5 +1,5 @@
 {
-  "name": "blasterjs",
+  "name": "@blasterjs/dev",
   "version": "0.0.1",
   "description": "React UI library designed and built by Azavea",
   "main": "build/index.js",
@@ -8,8 +8,8 @@
     "test": "jest --coverage --verbose --passWithNoTests",
     "bootstrap": "lerna bootstrap",
     "build": "rm -rf dist && lerna exec --parallel -- babel . -d dist --ignore node_modules,dist",
-    "publish": "lerna publish",
-    "prepublish": "yarn build",
+    "publish": "lerna publish -- ",
+    "prepublish": "git checkout master && git pull --rebase origin master && yarn run build && lerna updated",
     "precommit": "yarn test",
     "postinstall": "yarn bootstrap",
     "contributor": "all-contributors add",
