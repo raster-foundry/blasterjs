@@ -1,11 +1,11 @@
 {
   "name": "@blasterjs/chart",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Charting components",
   "main": "dist/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@blasterjs/core": "^0.0.2",
+    "@blasterjs/core": "0.0.3",
     "polished": "^1.9.3"
   },
   "publishConfig": {

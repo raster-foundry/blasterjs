@@ -1,6 +1,6 @@
 {
   "name": "@blasterjs/core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "blasterjs core",
   "main": "dist/index.js",
   "module": "src/index.js",
