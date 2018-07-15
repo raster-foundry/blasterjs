@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "module": "src/index.js",
   "peerDependencies": {
-    "@blasterjs/core": "0.0.3",
-    "styled-components": "^3.3.3"
+    "styled-components": "3.x"
   },
   "dependencies": {
+    "@blasterjs/core": "0.0.4",
     "polished": "^1.9.3"
   },
   "publishConfig": {

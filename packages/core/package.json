@@ -6,8 +6,10 @@
   "module": "src/index.js",
   "author": "Alex Kaminsky",
   "peerDependencies": {
-    "polished": "^1.9.3",
     "styled-components": "^3.3.3"
+  },
+  "dependencies": {
+    "polished": "^1.9.3"
   },
   "publishConfig": {
     "access": "public"
