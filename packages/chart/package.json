@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "module": "src/index.js",
   "peerDependencies": {
-    "@blasterjs/core": "0.0.3",
+    "@blasterjs/core": "0.0.4",
     "styled-components": "^3.3.3"
   },
   "dependencies": {
