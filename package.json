@@ -65,12 +65,5 @@
       "<rootDir>node_modules/"
     ]
   },
-  "changelog": {
-    "labels": {
-      "enhancement :sparkles:": "New Feature",
-      "bug :beetle:": "Bug Fix",
-      "cleanup :shower:": "Cleanup"
-    }
-  },
   "dependencies": {}
 }
