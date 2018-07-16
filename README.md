@@ -1,8 +1,17 @@
 # Blaster
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Greenkeeper badge](https://badges.greenkeeper.io/raster-foundry/blasterjs.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/raster-foundry/blasterjs.svg?branch=master)](https://travis-ci.org/raster-foundry/blasterjs)
 
 ## Usage
-Blaster isn't ready for showtime yet.
+
+Blaster is split into multiple packages, allowing you to pick and choose the components you need. 
+
+[![npm](https://img.shields.io/npm/v/@blasterjs/core.svg?label=@blasterjs/core)](https://www.npmjs.com/package/@blasterjs/core) &ndash; Base components and styles. All other Blaster packages depend on this.
+
+[![npm](https://img.shields.io/npm/v/@blasterjs/chart.svg?label=@blasterjs/chart)](https://www.npmjs.com/package/@blasterjs/chart) &ndash; Experimental chart package.
+
+### Dependencies
+
+You will need to have installed `styled-components` in the application you want to use Blaster in.
 
 ## Development
 
