@@ -1,4 +1,5 @@
 const { createConfig, babel, postcss } = require('webpack-blocks');
+const path = require('path');
 
 module.exports = {
     webpackConfig: createConfig([babel(), postcss()]),
@@ -43,5 +44,8 @@ module.exports = {
         '**/*.spec.js',
         '**/node_modules/**/*.js'
     ],
-    pagePerSection: true
+    pagePerSection: true,
+    styleguideComponents: {
+        Wrapper: path.join(__dirname, 'docs/DocsThemeWrapper')
+    }
 };

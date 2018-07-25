@@ -1,11 +1,9 @@
 /* @flow */
-
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { lighten, darken, rgba } from 'polished';
-import { Colors, Intent } from '../../defaultTheme';
 
-/** @component */
-export default styled.button`
+const Button = styled.button`
   font-size: 14px;
   position: relative;
   cursor: pointer;
@@ -17,15 +15,14 @@ export default styled.button`
   line-height: 1;
   text-align: center;
   text-decoration: none;
-  border-radius: ${Colors.borderRadiusBase};
+  border-radius: ${props => props.theme.radius.base };
   user-select: none;
   background: #fff;
-  border: 1px solid ${Colors.shadeLight};
-  color: ${Colors.shadeLight};
+  border: 1px solid ${props => props.theme.colors.base };
+  color: ${props => props.theme.colors.shadeLight };
   will-change: opacity, border;
-
-  background: ${Colors.shadeNormal};
-  border-color: ${darken(0.05, Colors.shadeNormal)};
+  background: ${props => props.theme.colors.shadeNormal };
+  border-color: ${props => props.theme.colors.shadeNormal && darken(.05, props.theme.colors.shadeNormal)};
   color: #fff;
 
   &:hover, &.hover,
@@ -41,7 +38,7 @@ export default styled.button`
 
   &:focus, &.focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba($brand-primary, .3);
+    box-shadow: 0 0 0 3px rgba(${props => props.theme.colors.brandPrimary }, .3);
     z-index: 1;
   }
 
@@ -54,23 +51,33 @@ export default styled.button`
     cursor: not-allowed;
   }
 
-  ${props => props.intent === Intent.PRIMARY && css`
-    background: ${Colors.brandPrimary};
-    border-color: ${darken(0.1, Colors.brandPrimary)};
+  ${props => props.primary && css`
+    background: ${props => props.theme.colors.brandPrimary };
+    border-color: ${darken(0.1, props.theme.colors.brandPrimary)}
+    ;
     color: #fff;
+    
     ${props.ghost && css`
       background-color: transparent;
-      color: ${Colors.brandPrimary};
+      color: ${props => props.theme.colors.brandPrimary};
     `}
   `}
 
-  ${props => props.intent === Intent.SECONDARY && css`
-    background: ${Colors.brandSecondary};
-    border-color: ${darken(0.1, Colors.brandSecondary)};
+  ${props => props.secondary && css`
+    background: ${props => props.theme.colors.brandSecondary};
+    border-color: ${darken(0.1, props.theme.colors.brandSecondary)}
+    ;
     color: #fff;
+    
     ${props.ghost && css`
       background-color: transparent;
-      color: ${Colors.brandPrimary};
+      color: ${props => props.theme.colors.brandSecondary};
     `}
   `}
 `;
+
+
+Button.link = Button.withComponent('a');
+
+/** @component */
+export default Button;
