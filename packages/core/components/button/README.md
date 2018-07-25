@@ -7,17 +7,19 @@ React component example:
 ### Here is a button with different things
 
 ```jsx
-const { Intent } = require('../../../core');
 <div>
-    <Button intent={Intent.PRIMARY}>Primary Button</Button>
+    <Button primary>Primary Button</Button>
 
-    <Button intent={Intent.PRIMARY} ghost>Primary Button</Button>
+    <Button.link secondary>Primary Button</Button.link>
 </div>
 ```
 
 ```jsx
-const { Intent } = require('../../../core');
-<Button intent={Intent.SECONDARY}>Secondary Button</Button>
+<div>
+    <Button primary ghost>Primary Button</Button>
+
+    <Button.link secondary ghost>Primary Button</Button.link>
+</div>
 ```
 
 Or disable an editor by passing a `noeditor` modifier:

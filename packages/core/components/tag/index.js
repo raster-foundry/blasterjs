@@ -6,6 +6,7 @@ const Tag = styled.span`
     border-radius: 4px;
     padding: 2px 10px;
     display: inline-block;
+    color: ${props => props.theme.colors.white}
 `
 
 /** @component */

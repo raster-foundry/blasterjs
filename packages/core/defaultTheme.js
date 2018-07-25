@@ -1,4 +1,4 @@
-export const Colors = {
+const colors = {
   brandPrimary: '#738FFC',
   brandSecondary: '#2FC1D0',
   brandTertiary: '#53B1E0',
@@ -28,15 +28,34 @@ export const Colors = {
   green: '#81C784',
   yellow: '#FFCA28',
   red: '#f03333',
-
-  borderRadiusBase: '3px'
 };
 
-export const Intent = Object.freeze({
-  NONE: "none",
-  PRIMARY: "primary",
-  SECONDARY: "secondary",
-  TERTIARY: "tertiary",
-  WARNING: "warning",
-  DANGER: "danger"
-});
+const fonts = {
+  sans: 'san-serif',
+  serif: 'serif'
+};
+
+const typeSystem = {
+  xs: '1rem',
+  sm: '1.2rem',
+  base: '1.4rem',
+  med: '1.6rem',
+  lg: '2rem',
+  xl: '2.4rem',
+  xxl: '3.6rem',
+  xxxl: '4.8rem',
+  xxxxl: '7.2rem'
+};
+
+const radius = {
+  small: '3px',
+  base: '5px',
+  large: '10px'
+};
+
+export const theme = {
+  colors,
+  fonts,
+  radius,
+  typeSystem
+};

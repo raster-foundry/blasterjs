@@ -65,5 +65,7 @@
       "<rootDir>node_modules/"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "prop-types": "^15.6.2"
+  }
 }
