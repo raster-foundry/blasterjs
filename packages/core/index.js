@@ -5,6 +5,8 @@ export { default as PlainProgressBar } from "./components/plainProgressBar";
 export { default as ProgressBar } from "./components/progressBar";
 export { default as Tag } from "./components/tag";
 
-/* Non-component public enums and methods */
-export { Colors, Intent } from "./defaultTheme";
+/* Theme related constants and methods */
+export * from "./defaultTheme";
+
+/* Non-component common constants and methods */
 export * from "./common/alignment";
