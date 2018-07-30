@@ -5,10 +5,8 @@
   "main": "dist/index.js",
   "module": "src/index.js",
   "author": "Alex Kaminsky",
-  "peerDependencies": {
-    "styled-components": "^3.3.3"
-  },
   "dependencies": {
+    "styled-components": "^3.3.3",
     "polished": "^1.9.3"
   },
   "publishConfig": {
