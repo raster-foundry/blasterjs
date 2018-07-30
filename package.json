@@ -10,17 +10,12 @@
     "build": "rm -rf dist && lerna exec --parallel -- babel . -d dist --ignore node_modules,dist",
     "publish": "yarn run prepare-release && lerna publish",
     "prepare-release": "git checkout master && git pull --rebase origin master && yarn run build && lerna updated",
-    "precommit": "yarn test",
-    "postinstall": "yarn bootstrap",
-    "contributor": "all-contributors add",
-    "generate": "all-contributors generate"
+    "postinstall": "yarn bootstrap"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raster-foundry/blasterjs.git"
   },
-  "author": "Gary Meehan",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/raster-foundry/blasterjs/issues"
   },
@@ -46,7 +41,6 @@
     "react-dom": "^16.2.0",
     "react-styleguidist": "^7.1.0",
     "react-test-renderer": "^16.2.0",
-    "styled-components": "^3.2.1",
     "webpack": "^4.16.0",
     "webpack-blocks": "^1.0.0"
   },
@@ -66,6 +60,8 @@
     ]
   },
   "dependencies": {
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "polished": "^1.9.3",
+    "styled-components": "^3.2.1"
   }
 }
