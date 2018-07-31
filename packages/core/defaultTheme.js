@@ -3,17 +3,6 @@ const colors = {
   secondary: "#2FC1D0",
   tertiary: "#53B1E0",
 
-  textBase: "#435399",
-  shadeLight: "#959CAC", // slightly lighter then $text-base
-  shadeNormal: "#465076", // deep purple
-  shadeDark: "#353C58", // deepdeep purple
-
-  slate: "#435399",
-
-  thing: {
-    cool: "#333333"
-  },
-
   grayBase1: "#6A7085",
   grayBase2: "#858b9d",
   grayBase3: "#9ca1b0",
@@ -26,15 +15,22 @@ const colors = {
   grayDark2: "#33344D",
   grayDark3: "#4D4E66",
 
-  // grays:
+  white: "#FFFFFF",
+  black: "#1B1C31", // also gray1
+
+  // Still reviewing the following colors
   grayLight: "#999DA8", //#4d4f6d
   grayLighter: "#C8CCDB", //#8c8dad
   grayLightest: "#e0e5f5",
   grayDark: "#343549", //#343549
   grayDarker: "#1b1c31",
 
-  white: "#FFFFFF",
-  black: "#1B1C31", // also gray1
+  textBase: "#435399",
+  shadeLight: "#959CAC", // slightly lighter then $text-base
+  shadeNormal: "#465076", // deep purple
+  shadeDark: "#353C58", // deepdeep purple
+
+  slate: "#435399",
 
   // Action Colors:
   orange: "#E69348",
