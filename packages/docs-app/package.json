@@ -1,7 +1,7 @@
 {
-  "name": "@blasterjs/chart",
+  "name": "@blasterjs/docs-app",
   "version": "0.0.5",
-  "description": "Charting components",
+  "description": "Components to be used within the documentation app",
   "main": "dist/index.js",
   "module": "src/index.js",
   "peerDependencies": {

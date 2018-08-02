@@ -8,17 +8,25 @@ React component example:
 
 ```jsx
 <div>
-    <Button primary>Primary Button</Button>
-
-    <Button.link secondary>Primary Button</Button.link>
+    <Button focus>focus Button</Button>
+    <Button appearance="primary">Primary Button</Button>
+    <Button appearance="secondary">Secondary Button</Button>
 </div>
 ```
 
 ```jsx
 <div>
-    <Button primary ghost>Primary Button</Button>
+    <Button ghost>Default Button</Button>
+    <Button ghost appearance="primary">Primary Button</Button>
+    <Button ghost appearance="secondary">Secondary Button</Button>
+</div>
+```
 
-    <Button.link secondary ghost>Primary Button</Button.link>
+```jsx
+<div>
+    <Button disabled>Primary Button</Button>
+    <Button appearance="primary" disabled>Primary Button</Button>
+    <Button appearance="secondary" disabled>Secondary Button</Button>
 </div>
 ```
 
