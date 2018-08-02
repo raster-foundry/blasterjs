@@ -3,13 +3,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { theme } from "../../packages/core/defaultTheme";
+import { theme } from "@blasterjs/core";
 
 function getKeyByValue(object, value) {
   return Object.keys(object).find(key => object[key] === value);
 }
 
-/** @component */
 const ColorSwatch = styled.div.attrs({
   children: props => getKeyByValue(theme.colors, props.color)
 })`
@@ -24,7 +23,14 @@ const ColorSwatch = styled.div.attrs({
   color: ${props => (props.invert ? "#fff" : "#000")};
 `;
 
-/** @component */
-export default function component(props) {
-  return <div>Test</div>;
-}
+ColorSwatch.propTypes = {
+  color: PropTypes.string,
+  invert: PropTypes.bool
+};
+
+ColorSwatch.defaultProps = {
+  color: "#000000",
+  invert: false
+};
+
+export default ColorSwatch;

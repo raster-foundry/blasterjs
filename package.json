@@ -10,7 +10,8 @@
     "build": "rm -rf dist && lerna exec --parallel -- babel . -d dist --ignore node_modules,dist",
     "publish": "yarn run prepare-release && lerna publish",
     "prepare-release": "git checkout master && git pull --rebase origin master && yarn run build && lerna updated",
-    "postinstall": "yarn bootstrap"
+    "postinstall": "yarn bootstrap",
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +"
   },
   "repository": {
     "type": "git",

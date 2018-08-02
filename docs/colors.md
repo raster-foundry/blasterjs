@@ -1,9 +1,9 @@
 ### Gray scale
 
-```jsx noeditor
-const ColorSwatchGroup = require("./components/ColorSwatchGroup").default;
-const ColorSwatch = require("./components/ColorSwatch").default;
-const { theme } = require("../packages/core/defaultTheme");
+```js noeditor
+const ColorSwatchGroup = require("../packages/docs-app").ColorSwatchGroup;
+const ColorSwatch = require("../packages/docs-app").ColorSwatch;
+const theme = require("../packages/core").theme;
 
 <div style={{ display: "flex" }}>
   <ColorSwatchGroup border={theme.colors.lightGray3}>
@@ -16,9 +16,9 @@ const { theme } = require("../packages/core/defaultTheme");
 ```
 
 ```jsx noeditor
-const ColorSwatchGroup = require("./components/ColorSwatchGroup").default;
-const ColorSwatch = require("./components/ColorSwatch").default;
-const { theme } = require("../packages/core/defaultTheme");
+const ColorSwatchGroup = require("../packages/docs-app").ColorSwatchGroup;
+const ColorSwatch = require("../packages/docs-app").ColorSwatch;
+const theme = require("../packages/core").theme;
 
 <div style={{ display: "flex" }}>
   <ColorSwatchGroup border={theme.colors.grayDark1}>
@@ -44,9 +44,9 @@ const { theme } = require("../packages/core/defaultTheme");
 ### Core Colors
 
 ```jsx noeditor
-const ColorSwatchGroup = require("./components/ColorSwatchGroup").default;
-const ColorSwatch = require("./components/ColorSwatch").default;
-const { theme } = require("../packages/core/defaultTheme");
+const ColorSwatchGroup = require("../packages/docs-app").ColorSwatchGroup;
+const ColorSwatch = require("../packages/docs-app").ColorSwatch;
+const theme = require("../packages/core").theme;
 
 <div style={{ display: "flex" }}>
   <ColorSwatchGroup border={theme.colors.primary}>
@@ -66,9 +66,9 @@ const { theme } = require("../packages/core/defaultTheme");
 ### Extended Colors
 
 ```jsx noeditor
-const ColorSwatchGroup = require("./components/ColorSwatchGroup").default;
-const ColorSwatch = require("./components/ColorSwatch").default;
-const { theme } = require("../packages/core/defaultTheme");
+const ColorSwatchGroup = require("../packages/docs-app").ColorSwatchGroup;
+const ColorSwatch = require("../packages/docs-app").ColorSwatch;
+const theme = require("../packages/core").theme;
 
 <div style={{ display: "flex" }}>
   <ColorSwatchGroup border={theme.colors.primary}>
