@@ -3,7 +3,7 @@
 
 ## Usage
 
-Blaster is split into multiple packages, allowing you to pick and choose the components you need. 
+Blaster is split into multiple packages, allowing you to pick and choose the components you need.
 
 [![npm](https://img.shields.io/npm/v/@blasterjs/core.svg?label=@blasterjs/core)](https://www.npmjs.com/package/@blasterjs/core) &ndash; Base components and styles. All other Blaster packages depend on this.
 
@@ -59,5 +59,6 @@ Blaster uses Lerna in the default locked versioning mode.
 This means that whenever one package is updated to a new version, all packages are also bumped to have matching version numbers.
 
 1) Ensure all changes have been committed. Publishing will not work if your local version is not up to date with `master`.
+1) ** `yarn run prepare-release` ** - this builds the appropriate packages based on the lerna.json config
 1) **`npm addUser --scope @blasterjs`** - this ensures you are logged into npm and have sufficient privileges to publish Blaster
 1) **`yarn run publish`** - this runs `lerna publish --exact`, which is an interactive process. All dependencies are pinned to the versions currently installed. Select the appropriate version bump according to semantic versioning.
