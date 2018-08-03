@@ -40,8 +40,9 @@ const colors = {
 };
 
 const fonts = {
-  sans: "san-serif",
-  serif: "serif"
+  sans: "'Libre Franklin', sans-serif",
+  serif: "serif",
+  code: "'Source Code Pro', monospace"
 };
 
 const typeSystem = {
