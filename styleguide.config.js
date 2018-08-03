@@ -47,5 +47,20 @@ module.exports = {
   pagePerSection: true,
   styleguideComponents: {
     Wrapper: path.join(__dirname, "docs/DocsThemeWrapper")
+  },
+  template: {
+    head: {
+      links: [
+        {
+          rel: "stylesheet",
+          href:
+            "https://fonts.googleapis.com/css?family=Libre+Franklin:400,500,600,700|Source+Code+Pro:400,600"
+        },
+        {
+          rel: "stylesheet",
+          href: "./packages/core/reset.css"
+        }
+      ]
+    }
   }
 };
