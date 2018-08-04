@@ -7,7 +7,7 @@
     "start": "yarn build && yarn bootstrap && NODE_ENV=development styleguidist server",
     "test": "jest --coverage --verbose --passWithNoTests",
     "bootstrap": "lerna bootstrap",
-    "build": "rm -rf dist && lerna exec --parallel -- babel . -d dist --ignore node_modules,dist",
+    "build": "rm -rf dist && lerna exec --parallel -- babel . -d dist --ignore node_modules,dist && cp ./packages/core/reset.css ./packages/core/dist/reset.css",
     "publish": "yarn run prepare-release && lerna publish",
     "prepare-release": "git checkout master && git pull --rebase origin master && yarn run build && lerna updated",
     "postinstall": "yarn bootstrap",
