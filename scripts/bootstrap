@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./node_modules/lerna/bin/lerna.js bootstrap

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+./scripts/build && \
+./scripts/bootstrap && \
+NODE_ENV=development ./node_modules/react-styleguidist/bin/styleguidist.js server
