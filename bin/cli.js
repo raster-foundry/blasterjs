@@ -3,9 +3,9 @@
 /**
  * TODO:
  * - [x] add code to generate component index.js file
- * - [] add commands to handle only regenerating index files
+ * - [x] add commands to handle only regenerating index files
  * - [] add handling of constant types
- * - [] add generation of constant index.js file
+ * - [x] add generation of constant index.js file
  * - [x] look at DRYing things out
  * - [] pull and rebase on master
  * - [] test fresh install for other devs
@@ -31,32 +31,41 @@ const copyFileSync = require("fs-copy-file-sync");
 const replaceInFile = require("replace-in-file");
 const upperfirst = require("lodash.upperfirst");
 
-const OBJECT_TYPES = ["component", "constant"];
-
 const templatesPath = "./templates";
 
 const dirs = p =>
   readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());
+
+const files = p => readdirSync(p).filter(f => statSync(join(p, f)).isFile());
 
 const packagePath = package => `./packages/${package}`;
 
 const componentPath = (package, name) =>
   `${packagePath(package)}/components/${name}`;
 
+const constantPath = (package, name) =>
+  `${packagePath(package)}/common/${name}`;
+
 const listPackages = () => dirs("packages");
 
 const listComponentsInPackage = package =>
   dirs(`${packagePath(package)}/components`);
+
+const listConstantsInPackage = package =>
+  files(`${packagePath(package)}/common`).map(f => f.replace(/\.[^/.]+$/, ""));
 
 const packageExists = package => listPackages().includes(package);
 
 const componentExists = (package, component) =>
   listComponentsInPackage(package).includes(component);
 
+const constantExists = (package, constant) =>
+  listConstantsInPackage(package).includes(constant);
+
 const hydrateTemplatedFile = (filePath, name) => {
   replaceInFile.sync({
     files: filePath,
-    from: /\$COMPONENT/g,
+    from: /\$REPLACE/g,
     to: upperfirst(name)
   });
 };
@@ -80,21 +89,25 @@ const generateComponentIndex = package => {
 };
 
 const generateConstantIndex = package => {
-  const indexFile = `${packagePath(package)}/index.constants.js`;
+  const indexFile = `${packagePath(package)}/index.common.js`;
   if (existsSync(indexFile)) {
     unlinkSync(indexFile);
   }
   const fd = openSync(indexFile, "a");
-  listConstantsInPackage(package).forEach(constantName => {
-    const exportString = `export { default as ${upperfirst(
-      componentName
-    )} } from "./common/${componentName}";\n`;
-    appendFileSync(fd, exportString);
-  });
+  if (existsSync(`${packagePath(package)}/common`)) {
+    listConstantsInPackage(package).forEach(constant => {
+      const exportString = `export { default as ${upperfirst(
+        constant
+      )} } from "./common/${constant}";\n`;
+      appendFileSync(fd, exportString);
+    });
+    logSuccess(
+      `Generated constant index for package ${highlightSuccess(package)}`
+    );
+  } else {
+    logInfo(`No constants found for package ${highlightInfo(package)}`);
+  }
   closeSync(fd);
-  logSuccess(
-    `Generated component index for package ${highlightSuccess(package)}`
-  );
 };
 
 const generateComponentFiles = (package, name) => {
@@ -104,11 +117,18 @@ const generateComponentFiles = (package, name) => {
     `${componentPath(package, name)}/README.md`
   );
   copyFileSync(
-    `${templatesPath}/index.js`,
+    `${templatesPath}/index.component.js`,
     `${componentPath(package, name)}/index.js`
   );
   hydrateTemplatedFile(`${componentPath(package, name)}/index.js`, name);
   generateComponentIndex(package);
+};
+
+const generateConstantFiles = (package, name) => {
+  const targetPath = `${constantPath(package, name)}.js`;
+  copyFileSync(`${templatesPath}/index.constant.js`, targetPath);
+  hydrateTemplatedFile(targetPath, name);
+  generateConstantIndex(package);
 };
 
 const logInfo = message => console.log(`${chalk.bold.blue("i")} ${message}`);
@@ -153,6 +173,28 @@ const createComponent = (package, name) => {
   return;
 };
 
+const createConstant = (package, name) => {
+  logInfo(`Creating constant ${highlightInfo(`${package}/${name}`)}`);
+  if (packageExists(package)) {
+    if (!constantExists(package, name)) {
+      generateConstantFiles(package, name);
+      logSuccess(
+        `Constant ${highlightSuccess(`${package}/${name}`)} was created.`
+      );
+      return;
+    } else {
+      logError(
+        `The constant ${highlightError(`${package}/${name}`)} already exists.`
+      );
+    }
+  } else {
+    logError(`The package ${highlightError(package)} does not exist.`);
+    logError("Create the package first or choose an existing package.");
+  }
+  logExit();
+  return;
+};
+
 const destroyComponent = (package, name) => {
   if (packageExists(package)) {
     if (componentExists(package, name)) {
@@ -167,9 +209,7 @@ const destroyComponent = (package, name) => {
         if (confirmed) {
           rimraf.sync(componentPath(package, name));
           logSuccess(
-            `Component ${highlightSuccess(
-              componentPath(package, name)
-            )} was deleted.`
+            `Component ${highlightSuccess(`${package}/${name}`)} was deleted.`
           );
           generateComponentIndex(package);
           return;
@@ -190,28 +230,90 @@ const destroyComponent = (package, name) => {
   return;
 };
 
+const destroyConstant = (package, name) => {
+  if (packageExists(package)) {
+    if (constantExists(package, name)) {
+      var prompt = inquirer.createPromptModule();
+      prompt({
+        name: "confirmed",
+        message: `Are you sure you would like to delete the ${highlightWarning(
+          `${package}/${name}`
+        )} constant?`,
+        type: "confirm"
+      }).then(({ confirmed }) => {
+        if (confirmed) {
+          rimraf.sync(`${constantPath(package, name)}.js`);
+          logSuccess(
+            `Constant ${highlightSuccess(`${package}/${name}`)} was deleted.`
+          );
+          generateConstantIndex(package);
+          return;
+        } else {
+          logExit();
+        }
+      });
+      return;
+    } else {
+      logWarning(
+        `The constant ${highlightWarning(`${package}/${name}`)} does not exist`
+      );
+    }
+  } else {
+    logWarning(`The package ${highlightWarning(package)} does not exist`);
+  }
+  logExit();
+  return;
+};
+
 program.version("0.1.0");
 
 program
-  .command("generate <targetPackage> <objectName>")
+  .command("generate <objectType> <targetPackage> <objectName>")
   .alias("g")
-  .action(function(targetPackage, objectName) {
-    createComponent(targetPackage, objectName);
+  .action(function(objectType, targetPackage, objectName) {
+    switch (objectType) {
+      case "component":
+        createComponent(targetPackage, objectName);
+        return;
+      case "constant":
+        createConstant(targetPackage, objectName);
+        return;
+      default:
+        logError(
+          `${highlightError(objectType)} is not a supported object type`
+        );
+        return;
+    }
   });
 
 program
-  .command("destroy <targetPackage> <objectName>")
+  .command("destroy <objectType> <targetPackage> <objectName>")
   .alias("d")
-  .action(function(targetPackage, objectName) {
-    destroyComponent(targetPackage, objectName);
+  .action(function(objectType, targetPackage, objectName) {
+    switch (objectType) {
+      case "component":
+        destroyComponent(targetPackage, objectName);
+        return;
+      case "constant":
+        destroyConstant(targetPackage, objectName);
+        return;
+      default:
+        logError(
+          `${highlightError(objectType)} is not a supported object type`
+        );
+        return;
+    }
   });
 
 program
   .command("index")
   .alias("i")
   .action(function() {
-    logInfo("Generating component index files for all packages...");
-    listPackages().forEach(p => generateComponentIndex(p));
+    logInfo("Generating index files for all packages...");
+    listPackages().forEach(p => {
+      generateComponentIndex(p);
+      generateConstantIndex(p);
+    });
   });
 
 program.parse(process.argv);

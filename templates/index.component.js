@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const $COMPONENT = styled.div``;
+const $REPLACE = styled.div``;
 
 /** @component */
-export default $COMPONENT;
+export default $REPLACE;
