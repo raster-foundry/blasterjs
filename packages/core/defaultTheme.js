@@ -69,10 +69,15 @@ const buttonsStyles = {
   DEFAULT: "default"
 };
 
+const entities = {
+  breadcrumb: "▸"
+};
+
 export const theme = {
   colors,
   fonts,
   radius,
   typeSystem,
-  buttonsStyles
+  buttonsStyles,
+  entities
 };

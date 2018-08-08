@@ -5,6 +5,7 @@ export { default as Heading } from "./components/heading";
 export { default as PlainProgressBar } from "./components/plainProgressBar";
 export { default as ProgressBar } from "./components/progressBar";
 export { default as Tag } from "./components/tag";
+export { default as Breadcrumbs } from "./components/breadcrumbs";
 
 /* Theme related constants and methods */
 export * from "./defaultTheme";
