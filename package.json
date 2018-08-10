@@ -33,7 +33,7 @@
     "glob-loader": "^0.3.0",
     "inquirer": "^6.0.0",
     "jest": "^23.4.1",
-    "lerna": "^2.11.0",
+    "lerna": "^3.0.0",
     "lerna-changelog": "^0.8.0",
     "lint-staged": "^7.0.0",
     "lodash.upperfirst": "^4.3.1",

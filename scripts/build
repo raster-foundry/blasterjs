@@ -1,5 +1,5 @@
 #!/bin/bash
 
 rm -rf dist && \
-./node_modules/lerna/bin/lerna.js exec --parallel -- babel . -d dist --ignore node_modules,dist && \
+lerna exec --parallel -- babel . -d dist --ignore node_modules,dist && \
 cp ./packages/core/reset.css ./packages/core/dist/reset.css
