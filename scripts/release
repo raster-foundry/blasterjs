@@ -3,5 +3,5 @@
 git checkout master && \
 git pull --rebase origin master && \
 ./scripts/build && \
-./node_modules/lerna/bin/lerna.js updated && \
-./node_modules/lerna/bin/lerna.js publish
+lerna updated && \
+lerna publish
