@@ -26,7 +26,7 @@
     "babel-preset-react": "^6.24.1",
     "chalk": "^2.4.1",
     "commander": "^2.17.0",
-    "enzyme": "^3.4.4",
+    "enzyme": "^3.5.0",
     "enzyme-adapter-react-16.2": "^1.0.0",
     "flow-bin": "^0.79.0",
     "fs-copy-file-sync": "^1.1.1",
