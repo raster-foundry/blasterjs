@@ -1,8 +1,17 @@
 {
-  "presets": ["env", "react", "flow"],
+  "presets": ["@babel/preset-env", "@babel/preset-react", "@babel/preset-flow"],
   "env": {
     "test": {
-      "plugins": ["transform-es2015-modules-commonjs"]
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
     }
-  }
+  },
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "displayName": true,
+        "fileName": false
+      }
+    ]
+  ]
 }
