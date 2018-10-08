@@ -1,12 +1,14 @@
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled, {css} from 'styled-components';
+import {consolidateStreamedStyles} from 'styled-components';
+
 import Button from '../button';
-import { consolidateStreamedStyles } from 'styled-components';
 
 const ButtonGroup = styled.div`
     display: flex;
     ${Button} {
         flex: 1;
-        margin-right: 1em;
+        margin-right: 2em;
         &:last-of-type {
             margin: 0;
         }
