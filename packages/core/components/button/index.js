@@ -1,8 +1,8 @@
 /* @flow */
-import {darken, lighten, rgba, shade} from 'polished';
-import PropTypes from 'prop-types';
-import React from 'react';
-import styled, {css} from 'styled-components';
+import { darken, lighten, rgba, shade } from "polished";
+import PropTypes from "prop-types";
+import React from "react";
+import styled, { css } from "styled-components";
 
 const baseStyles = css`
   position: relative;
@@ -28,7 +28,9 @@ function buttonStates(bgColor, textColor, ghostTextColor) {
   color: ${textColor};
   border-color: ${darken(0.1, bgColor)};
 
-  ${props => !props.disabled && css`
+  ${props =>
+    !props.disabled &&
+    css`
       &:hover,
       &:active {
         background-color: ${darken(0.05, bgColor)};
@@ -50,14 +52,18 @@ function buttonStates(bgColor, textColor, ghostTextColor) {
       }
     `}
 
-  ${props => props.disabled && css`
+  ${props =>
+    props.disabled &&
+    css`
       cursor: not-allowed;
       background-color: ${rgba(bgColor, 0.7)};
       border: 1px solid ${rgba(bgColor, 0.7)};
       color: ${rgba(textColor, 0.8)};
     `}
 
-  ${props => props.ghost && css`
+  ${props =>
+    props.ghost &&
+    css`
       background-color: transparent;
       border: 1px solid ${darken(0.15, bgColor)};
       color: ${ghostTextColor};
@@ -68,54 +74,52 @@ function buttonStates(bgColor, textColor, ghostTextColor) {
 /*
  * Component: <Button>
  */
-const StyledButton = styled.button`
+const Button = styled.button`
   ${baseStyles};
 
   /*
    * Default button styling. Does not require use of appearance propType
    * propType: appearance="default"
    */
-  ${
-    props => !props.appearance &&
-        css`
-      ${
-            props => buttonStates(
-                props.theme.colors.grayLightest, props.theme.colors.shadeNormal,
-                props.theme.colors.grayLight)};
+  ${props =>
+    !props.appearance &&
+    css`
+      ${props =>
+        buttonStates(
+          props.theme.colors.grayLightest,
+          props.theme.colors.shadeNormal,
+          props.theme.colors.grayLight
+        )};
     `}
 
-  ${
-    props => props.appearance === props.theme.buttonsStyles.DEFAULT &&
-        css`
-      ${
-                 props => buttonStates(
-                     props.theme.colors.grayLightest,
-                     props.theme.colors.shadeNormal)};
+  ${props =>
+    props.appearance === props.theme.buttonsStyles.DEFAULT &&
+    css`
+      ${props =>
+        buttonStates(
+          props.theme.colors.grayLightest,
+          props.theme.colors.shadeNormal
+        )};
     `}
 
   /*
    * propType: appearance="primary"
    */
-  ${props => props.appearance === props.theme.buttonsStyles.PRIMARY && css`
-      ${buttonStates(props.theme.colors.primary, '#fff')};
+  ${props =>
+    props.appearance === props.theme.buttonsStyles.PRIMARY &&
+    css`
+      ${buttonStates(props.theme.colors.primary, "#fff")};
     `}
 
   /*
    * propType: appearance="secondary"
    */
-  ${props => props.appearance === props.theme.buttonsStyles.SECONDARY && css`
-      ${buttonStates(props.theme.colors.secondary, '#fff')};
+  ${props =>
+    props.appearance === props.theme.buttonsStyles.SECONDARY &&
+    css`
+      ${buttonStates(props.theme.colors.secondary, "#fff")};
     `}
 `;
 
-/*
- * Component: <Button.link>
- */
-StyledButton.link = StyledButton.withComponent('a');
-
-export default StyledButton;
-
-export const Button = props => < StyledButton {
-  ...props
-}
-/>;
+/** @component */
+export default Button;
