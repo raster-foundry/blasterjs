@@ -69,6 +69,10 @@ const buttonsStyles = {
   DEFAULT: "default"
 };
 
+const linkStyles = {
+  color: "#738FFC"
+};
+
 const entities = {
   breadcrumb: "▸"
 };
@@ -79,5 +83,6 @@ export const theme = {
   radius,
   typeSystem,
   buttonsStyles,
+  linkStyles,
   entities
 };

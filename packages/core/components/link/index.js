@@ -8,13 +8,13 @@ import styled, { css } from "styled-components";
 const Link = styled.a`
   text-decoration: none;
   font-weight: 600;
-  color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.linkStyles.color};
   font-size: ${props => props.theme.typeSystem.base};
   font-family: ${props => props.theme.fonts.sans};
 
   &:hover {
     text-decoration: underline;
-    color: ${props => darken(0.2, props.theme.colors.primary)};
+    color: ${props => darken(0.2, props.theme.linkStyles.color)};
   }
 `;
 
