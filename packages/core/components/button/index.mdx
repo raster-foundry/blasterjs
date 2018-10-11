@@ -1,0 +1,32 @@
+---
+name: Button
+menu: Components
+route: /components/button
+---
+
+import { Playground, PropsTable } from 'docz'
+import Button from '../button'
+
+# Button
+
+## Basic usage
+
+<Playground>
+  <Button focus>focus Button</Button>
+  <Button appearance="primary">Primary Button</Button>
+  <Button appearance="secondary">Secondary Button</Button>
+</Playground>
+
+## Ghost Buttons
+<Playground>
+  <Button ghost>Default Button</Button>
+  <Button ghost appearance="primary">Primary Button</Button>
+  <Button ghost appearance="secondary">Secondary Button</Button>
+</Playground>
+
+## Disabled Buttons
+<Playground>
+  <Button disabled>Primary Button</Button>
+  <Button appearance="primary" disabled>Primary Button</Button>
+  <Button appearance="secondary" disabled>Secondary Button</Button>
+</Playground>

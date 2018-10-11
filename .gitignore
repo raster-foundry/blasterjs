@@ -29,6 +29,9 @@ node_modules
 #dist folder
 dist
 
+#docz dist folder
+.docz
+
 # IDEA/Webstorm project files
 .idea
 *.iml

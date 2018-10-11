@@ -1,7 +1,8 @@
 /* @flow */
+import { darken, lighten, rgba, shade } from "polished";
 import PropTypes from "prop-types";
+import React from "react";
 import styled, { css } from "styled-components";
-import { lighten, darken, rgba, shade } from "polished";
 
 const baseStyles = css`
   position: relative;
@@ -70,7 +71,7 @@ function buttonStates(bgColor, textColor, ghostTextColor) {
 `;
 }
 
-/* 
+/*
  * Component: <Button>
  */
 const Button = styled.button`
@@ -110,7 +111,7 @@ const Button = styled.button`
       ${buttonStates(props.theme.colors.primary, "#fff")};
     `}
 
-  /* 
+  /*
    * propType: appearance="secondary"
    */
   ${props =>
@@ -119,11 +120,6 @@ const Button = styled.button`
       ${buttonStates(props.theme.colors.secondary, "#fff")};
     `}
 `;
-
-/* 
- * Component: <Button.link>
- */
-Button.link = Button.withComponent("a");
 
 /** @component */
 export default Button;
