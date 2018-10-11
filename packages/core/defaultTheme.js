@@ -48,8 +48,8 @@ const fonts = {
 const typeSystem = {
   xs: "1rem",
   sm: "1.2rem",
-  base: "1.4rem",
-  med: "1.6rem",
+  base: "1.5rem",
+  med: "1.8rem",
   lg: "2rem",
   xl: "2.4rem",
   xxl: "3.6rem",
@@ -69,6 +69,10 @@ const buttonsStyles = {
   DEFAULT: "default"
 };
 
+const linkStyles = {
+  color: "#738FFC"
+};
+
 const entities = {
   breadcrumb: "▸"
 };
@@ -79,5 +83,6 @@ export const theme = {
   radius,
   typeSystem,
   buttonsStyles,
+  linkStyles,
   entities
 };
