@@ -26,7 +26,9 @@ Link.propTypes = {
   /**
    * Enforcing best practices by defining a default href
    */
-  href: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  disabled: PropTypes.bool
 };
 
 /** @component */

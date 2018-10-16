@@ -49,12 +49,11 @@ const typeSystem = {
   xs: "1rem",
   sm: "1.2rem",
   base: "1.5rem",
-  med: "1.8rem",
-  lg: "2rem",
-  xl: "2.4rem",
-  xxl: "3.6rem",
-  xxxl: "4.8rem",
-  xxxxl: "7.2rem"
+  lg: "1.8rem",
+  xl: "2.2rem",
+  xxl: "2.6rem",
+  xxxl: "2.9rem",
+  xxxxl: "3.4rem"
 };
 
 const radius = {

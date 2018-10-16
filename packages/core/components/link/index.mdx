@@ -10,6 +10,14 @@ import Link from './'
 # Link
 
 <Playground>
-  <Link href="#" className="cool">This is a link</Link>
-  <Link href="#" className="cool" primary>This is a link</Link>
+  <Link href="#" target="_blank" disabled>This is a link</Link>
 </Playground>
+
+### PropTypes
+Accepts standard html `<a>` attributes
+
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| href | bool | true | defaults to `#` |
+| active | bool | false | *not implemented yet* |
+| disabled | bool | false | *not implemented yet* |

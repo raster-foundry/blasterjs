@@ -1,0 +1,41 @@
+---
+name: Brand
+menu: Components
+route: /components/brand
+---
+
+import { Playground, PropsTable } from 'docz'
+import Brand from './'
+
+# Brand
+
+### Brand title
+<Playground>
+  <Brand 
+    color="textBase"
+    title="Raster Foundry" 
+    href="#"
+  />
+</Playground>
+
+### Brand image
+<Playground>
+  <Brand 
+    title="Logo" 
+    href="#"
+    width="50px"
+    p="10px"
+    m="10px"
+    imagesrc="https://docs.rasterfoundry.com/assets/images/raster-foundry-logo.png" 
+  />
+</Playground>
+
+### PropTypes
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| href |  string | true | |
+| title |  string | true | |
+| imagesrc |  string | false | |
+| color |  string | false | |
+| width |  string | false | |
+| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |

@@ -5,14 +5,13 @@ route: /components/button
 ---
 
 import { Playground, PropsTable } from 'docz'
-import Button from '../button'
+import Button from './'
 
 # Button
 
 ## Basic usage
-
 <Playground>
-  <Button focus>focus Button</Button>
+  <Button>Button</Button>
   <Button appearance="primary">Primary Button</Button>
   <Button appearance="secondary">Secondary Button</Button>
 </Playground>
@@ -30,3 +29,20 @@ import Button from '../button'
   <Button appearance="primary" disabled>Primary Button</Button>
   <Button appearance="secondary" disabled>Secondary Button</Button>
 </Playground>
+
+
+## Full width button
+<Playground>
+  <Button block>Block button</Button>
+</Playground>
+
+### PropTypes
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| appearance | string | false | uses `theme.buttonsStyles` |
+| block | bool | false |
+| disabled | bool | false |
+| ghost | bool | false |
+| iconBefore | node | false | *not implemented yet* |
+| iconAfter | node | false | *not implemented yet* |
+| isLoading | bool | false | |

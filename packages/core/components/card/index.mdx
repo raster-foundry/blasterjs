@@ -1,0 +1,25 @@
+---
+name: Card
+menu: Components
+route: /components/card
+---
+
+import { Playground, PropsTable } from 'docz'
+import Card from './'
+import Header from '../header';
+import Link from '../link';
+
+# Card
+
+<Playground>
+  <Card density="comfortable">
+    <Header.h2>Hello world</Header.h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id magni repellendus illum quasi, officiis assumenda facere inventore accusamus maiores soluta, qui quibusdam et, dolorum tempora ab a unde porro eligendi!</p>
+    <Link href="#">Continue</Link>
+  </Card>
+</Playground>
+
+### PropTypes
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| density | enum | false | ["comfortable", "compact"] |
