@@ -45,7 +45,7 @@
     "prettier": "^1.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-styleguidist": "^7.1.0",
+    "react-styleguidist": "^8.0.0",
     "react-test-renderer": "^16.2.0",
     "replace-in-file": "^3.4.0",
     "rimraf": "^2.6.2",
