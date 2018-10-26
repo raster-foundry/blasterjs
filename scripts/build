@@ -2,4 +2,5 @@
 
 rm -rf dist && \
 lerna exec --parallel -- babel . -d dist --ignore node_modules,dist --config-file=../../.babelrc.js && \
-cp ./packages/core/reset.css ./packages/core/dist/reset.css
+mkdir -p ./.docz/public && \
+cp ./packages/core/reset.css ./.docz/public/reset.css

@@ -1,0 +1,46 @@
+---
+name: Image
+menu: Components
+route: /components/image
+---
+
+import { Playground, PropsTable } from 'docz'
+import Image from './'
+
+# Image
+
+## Basic usage
+<Playground>
+  <Image 
+    src="https://via.placeholder.com/150x150"
+    alt="A placeholder image" 
+  />
+</Playground>
+
+## Rounded image
+<Playground>
+  <Image 
+    src="https://via.placeholder.com/150x150"
+    alt="A placeholder image" 
+    rounded
+  />
+</Playground>
+
+
+## Circle image
+<Playground>
+  <Image 
+    src="https://via.placeholder.com/150x150"
+    alt="A placeholder image" 
+    circle
+  />
+</Playground>
+
+### PropTypes
+Accepts standard html `<img>` attributes
+
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| rounded | bool | false | Adds a border-radius |
+| circle | bool | false | Adds 100% border-radius |
+| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |

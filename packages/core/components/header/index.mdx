@@ -1,0 +1,29 @@
+---
+name: Header
+menu: Components
+route: /components/header
+---
+
+import { Playground, PropsTable } from 'docz'
+import Header from './'
+
+# Header
+
+<Playground>
+  <Header children="Content defined with a prop" />
+  <Header.h1>This is a Header.h1</Header.h1>
+  <Header.h2>This is a Header.h2</Header.h2>
+  <Header.h3>This is a Header.h3</Header.h3>
+  <Header.h4>This is a Header.h4</Header.h4>
+  <Header.h5>This is a Header.h5</Header.h5>
+  <Header.h6>This is a Header.h6</Header.h6>
+  <Header alignment="center">This is a centered Header</Header>
+</Playground>
+
+### PropTypes
+
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| alignment | enum | false | ["left", "center", "right"] |
+| color | string | false | |
+| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |

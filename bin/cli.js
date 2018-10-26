@@ -113,14 +113,15 @@ const generateConstantIndex = package => {
 const generateComponentFiles = (package, name) => {
   mkdirSync(componentPath(package, name));
   copyFileSync(
-    `${templatesPath}/README.md`,
-    `${componentPath(package, name)}/README.md`
+    `${templatesPath}/index.mdx`,
+    `${componentPath(package, name)}/index.mdx`
   );
   copyFileSync(
     `${templatesPath}/index.component.js`,
     `${componentPath(package, name)}/index.js`
   );
   hydrateTemplatedFile(`${componentPath(package, name)}/index.js`, name);
+  hydrateTemplatedFile(`${componentPath(package, name)}/index.mdx`, name);
   generateComponentIndex(package);
 };
 

@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { theme } from "../packages/core/defaultTheme";
 
-export default class Wrapper extends Component {
-  render() {
+const Wrapper = ({ children }) => (
+  <ThemeProvider theme={{ ...theme }}>{children}</ThemeProvider>
+);
 
-    return (
-      <ThemeProvider theme={theme}>
-        {this.props.children}
-      </ThemeProvider>
-    );
-  }
-}
+export default Wrapper;
