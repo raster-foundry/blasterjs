@@ -12,7 +12,9 @@ Blaster is split into multiple packages, allowing you to pick and choose the com
 
 ### Dependencies
 
-You will need to have installed `styled-components` in the application you want to use Blaster in.
+You will need to have installed `styled-components` as well as `styled-system` in the application you want to use Blaster in.
+
+`npm install --save styled-component styled-system`
 
 ## Development
 
