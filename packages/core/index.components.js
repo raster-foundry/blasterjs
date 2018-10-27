@@ -1,4 +1,4 @@
-export { default as Image } from "./components/Image";
+export { default as Image } from "./components/image";
 export { default as Brand } from "./components/brand";
 export { default as Breadcrumbs } from "./components/breadcrumbs";
 export { default as Button } from "./components/button";
