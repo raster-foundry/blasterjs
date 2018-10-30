@@ -33,7 +33,7 @@
     "docz": "^0.12.5",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16.2": "^1.0.0",
-    "flow-bin": "^0.84.0",
+    "flow-bin": "^0.85.0",
     "fs-copy-file-sync": "^1.1.1",
     "glob-loader": "^0.3.0",
     "inquirer": "^6.0.0",
