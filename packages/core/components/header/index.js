@@ -29,27 +29,27 @@ Header.defaultProps = {
   color: "textBase"
 };
 
-Header.h1 = Header.withComponent("h1").extend`
+Header.h1 = styled(Header.withComponent("h1"))`
   font-size: ${props => props.theme.typeSystem.xxxxl};
 `;
 
-Header.h2 = Header.withComponent("h2").extend`
+Header.h2 = styled(Header.withComponent("h2"))`
   font-size: ${props => props.theme.typeSystem.xxxl};
 `;
 
-Header.h3 = Header.withComponent("h3").extend`
+Header.h3 = styled(Header.withComponent("h3"))`
   font-size: ${props => props.theme.typeSystem.xxl};
 `;
 
-Header.h4 = Header.withComponent("h4").extend`
+Header.h4 = styled(Header.withComponent("h4"))`
   font-size: ${props => props.theme.typeSystem.xl};
 `;
 
-Header.h5 = Header.withComponent("h5").extend`
+Header.h5 = styled(Header.withComponent("h5"))`
   font-size: ${props => props.theme.typeSystem.lg};
 `;
 
-Header.h6 = Header.withComponent("h6").extend`
+Header.h6 = styled(Header.withComponent("h6"))`
   font-size: ${props => props.theme.typeSystem.base};
 `;
 

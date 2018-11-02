@@ -23,7 +23,7 @@ const StyledBreadcrumbs = styled.div`
   }
 `;
 
-const BreadcrumbItem = Link.extend`
+const BreadcrumbItem = styled(Link)`
   border: 0;
   color: ${props => props.theme.colors.grayBase3};
   font-size: ${props => props.theme.typeSystem.base};

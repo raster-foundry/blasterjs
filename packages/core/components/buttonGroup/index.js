@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../button";
+import { Button } from "../button";
 
 const StyledButtonGroup = styled.div`
   display: inline-flex;
