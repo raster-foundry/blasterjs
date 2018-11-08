@@ -1,10 +1,11 @@
-export { default as Image } from "./components/image";
 export { default as Brand } from "./components/brand";
 export { default as Breadcrumbs } from "./components/breadcrumbs";
 export { default as Button } from "./components/button";
 export { default as ButtonGroup } from "./components/buttonGroup";
 export { default as Card } from "./components/card";
+export { default as Divider } from "./components/divider";
 export { default as Header } from "./components/header";
+export { default as Image } from "./components/image";
 export { default as Link } from "./components/link";
 export { default as Navbar } from "./components/navbar";
 export { default as NavbarSection } from "./components/navbarSection";
