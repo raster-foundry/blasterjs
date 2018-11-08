@@ -1,0 +1,53 @@
+---
+name: Divider
+menu: Components
+route: /components/divider
+---
+
+import { Playground, PropsTable } from 'docz'
+import Divider from './'
+import { Direction } from "../../common/direction";
+
+# Divider
+
+## Vertical Divider with horizontal margin
+
+<Playground>
+    Something on the left
+    <Divider direction={Direction.VERTICAL} mx={"0.8rem"} />
+    Something on the right
+</Playground>
+
+## Vertical Divider with margin, width, height, color
+
+<Playground>
+    Something on the left
+    <Divider direction={Direction.VERTICAL} width={"4px"} height={"4rem"} mx={"2.4rem"} color={"primary"} />
+    Something on the right
+</Playground>
+
+
+## Horizontal Divider with vertical margin
+
+<Playground>
+    Something on the top
+    <Divider direction={Direction.HORIZONTAL} my={"1.6rem"} />
+    Something on the bottom
+</Playground>
+
+## Horizontal Divider with margin, width, height, color
+
+<Playground>
+    Something on the top
+    <Divider direction={Direction.HORIZONTAL} width={"60%"} height={"4px"} ml={0} my={"4rem"} color={"secondary"} />
+    Something on the bottom
+</Playground>
+
+## PropTypes
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| direction | enum | true  | see `common/direction` |
+| color | string | false | Theme color or valid css color value  |
+| width | string | false |  |
+| height | string | false | |
+| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
