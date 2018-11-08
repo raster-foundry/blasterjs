@@ -43,6 +43,16 @@ Removes a component or constant in the specified package. Includes confirmation.
 **`blaster {i,index}`**
 Regenerates all three index files for each package as necesssary.
 
+### Default Props
+
+When declaring a component's default props for margin or padding, avoid using the
+symmetric `x` and `y` shortcuts supplied by `styled-system` (`mx`, `my`, `px`, `py`).
+If you declare defaults for those shortcuts, a developer using your component will
+be unable to override them with `styled-system`'s asymmetric shortcuts
+(`ml`, `mr`, `mt`, `mb`, `pl`, `pr`, `pt`, `pb`). Better to declare defaults
+using the asymmetric shortcuts, which a developer can override using either
+asymmetric or symmetric shortcuts.
+
 ### Scripts
 
 | Command                                        | Description                                                                                                                                             |
