@@ -43,15 +43,52 @@ Removes a component or constant in the specified package. Includes confirmation.
 **`blaster {i,index}`**
 Regenerates all three index files for each package as necesssary.
 
+### Styled System
+
+Use [styled-system](https://jxnblk.com/styled-system/) in conjunction with
+[styled-components](https://www.styled-components.com/) for styling and theming.
+
+As a rule of thumb, include styled-system functions _first_ within styled-component
+template literals, unless you have reason not to. Eg, this order is preferred:
+
+```
+const StyledComponent = styled.div`
+  ${space}
+  ${color}
+  display: inline-block;
+  vertical-align: middle;
+`;
+```
+
 ### Default Props
 
-When declaring a component's default props for margin or padding, avoid using the
-symmetric `x` and `y` shortcuts supplied by `styled-system` (`mx`, `my`, `px`, `py`).
+As a rule of thumb, use `defaultProps` for setting default props, eg:
+
+```
+Component.defaultProps = {
+  width: "100%"
+};
+```
+
+However, there may be times when logic necessitates that a default be configured
+within a styled-component template literal instead, eg:
+
+```
+const StyledComponent = styled.div`
+  width: ${props => props.width || "100%"};
+`;
+```
+
+#### Styled System shortcuts in defaultProps
+
+When declaring a component's `defaultProps` for margin or padding, avoid using the
+_symmetric_ `x` and `y` shortcuts supplied by `styled-system` (`mx`, `my`, `px`, `py`).
 If you declare defaults for those shortcuts, a developer using your component will
-be unable to override them with `styled-system`'s asymmetric shortcuts
+be unable to override them with `styled-system`'s _asymmetric_ shortcuts
 (`ml`, `mr`, `mt`, `mb`, `pl`, `pr`, `pt`, `pb`). Better to declare defaults
 using the asymmetric shortcuts, which a developer can override using either
 asymmetric or symmetric shortcuts.
+
 
 ### Scripts
 
