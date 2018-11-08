@@ -4,12 +4,10 @@ import styled from "styled-components";
 import { color, space, themeGet } from "styled-system";
 import { Direction } from "../../common/direction";
 
-const grayLight1 = "#C3CADF";
-
 const HDivider = styled.hr`
   ${space}
   ${color}
-  background-color: ${props => themeGet(`colors.${props.color}`, grayLight1)};
+  background-color: ${props => themeGet(`colors.${props.color}`, themeGet('colors.grayLight1'))};
   border: 0;
   width: ${props => props.width || "100%"};
   height: ${props => props.height || "1px"};
@@ -20,7 +18,7 @@ const VDivider = styled.span`
   ${color}
   display: inline-block;
   vertical-align: middle;
-  background-color: ${props => themeGet(`colors.${props.color}`, grayLight1)};
+  background-color: ${props => themeGet(`colors.${props.color}`, themeGet('colors.grayLight1'))};
   width: ${props => props.width || "2px"};
   height: ${props => props.height || "100%"};
 
