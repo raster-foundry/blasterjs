@@ -6,8 +6,54 @@ route: /components/grouper
 
 import { Playground, PropsTable } from 'docz'
 import Grouper from './'
+import Button from '../button'
 
 # Grouper
 
+## Basic usage
+
 <Playground>
+  <Grouper>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
 </Playground>
+
+## Radius
+
+<Playground>
+  <Grouper borderRadius="large">
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+</Playground>
+
+## Form
+
+<Playground>
+  <Grouper borderRadius="base">
+    <input type="text" />
+    <Button>Go</Button>
+  </Grouper>
+</Playground>
+
+## Gutter
+
+<Playground>
+  <Grouper gutter="1.6rem">
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+</Playground>
+
+
+### PropTypes
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| borderRadius | string | false | use `theme.radii`. applies to outer corners of first & last children. ignored if `gutter` provided. |
+| gutter | string | false | gap between children |
+| alignItems | string | false | default is "stretch" |
+| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
