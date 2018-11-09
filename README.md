@@ -24,15 +24,17 @@ You will need to have installed `styled-components` as well as `styled-system` i
 ## Getting started with development
 
 1.  Clone the project: `git clone git@github.com:raster-foundry/blasterjs.git`
-2.  Setup project: `yarn install`
-3.  Run `yarn start`
+2.  Setup project: `npm install`
+3.  Link the development CLI: `npm link`
+3.  Run `npm run docz`
 
 ## Best development practices
 
-### Styled System
+Blaster uses [styled-components](https://www.styled-components.com/) in conjunction with [styled-system](https://jxnblk.com/styled-system/) for styling and theming.
 
-Use [styled-system](https://jxnblk.com/styled-system/) in conjunction with
-[styled-components](https://www.styled-components.com/) for styling and theming.
+1) 
+
+### Styled System rule ordering
 
 As a rule of thumb, include styled-system functions _first_ within styled-component
 template literals, unless you have reason not to. Eg, this order is preferred:
@@ -46,7 +48,7 @@ const StyledComponent = styled.div`
 `;
 ```
 
-### Default Props
+### Default Props usage
 
 As a rule of thumb, use `defaultProps` for setting default props, eg:
 
@@ -99,10 +101,10 @@ Regenerates all three index files for each package as necesssary.
 
 | Command                                        | Description                                                                                                                                             |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`yarn start`** or<br/> **`./scripts/start`** | This is the most commonly used command when developing locally. <br/> It runs `yarn build`, `lerna bootstrap`, and then starts the styleguidist server. |
-| `yarn bootstrap`                               | An alias for `lerna bootstrap`. <br/> Symlinks the various packages together to enable a smooth monorepo development workflow.                          |
-| `yarn test`                                    | Run tests for all components                                                                                                                            |
-| `yarn build` or <br/> `./scripts/build`        | Uses lerna to run all packages through babel.                                                                                                           |
+| **`npm run start`** or<br/> **`./scripts/start`** | This is the most commonly used command when developing locally. <br/> It runs `npm run build`, `lerna bootstrap`, and then starts the styleguidist server. |
+| `npm run bootstrap`                               | An alias for `lerna bootstrap`. <br/> Symlinks the various packages together to enable a smooth monorepo development workflow.                          |
+| `npm run test`                                    | Run tests for all components                                                                                                                            |
+| `npm run build` or <br/> `./scripts/build`        | Uses lerna to run all packages through babel.                                                                                                           |
 | `./scripts/release`                            | Create a new release interactively with Lerna                                                                                                           |
 | `./scripts/clean`                              | Remove all existing `node_modules` directories                                                                                                          |
 
