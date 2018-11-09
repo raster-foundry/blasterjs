@@ -2,8 +2,13 @@
 
 [![Build Status](https://travis-ci.org/raster-foundry/blasterjs.svg?branch=master)](https://travis-ci.org/raster-foundry/blasterjs)
 
-## Usage
+1) [Usage](#usage)
+2) [Getting started with Development](#getting-started-with-development)
+3) [Best development practices](#best-development-practices)
+4) [Using the development CLI](#using-the-development-cli)
+5) [Other scripts](#other-scripts)
 
+## Usage
 Blaster is split into multiple packages, allowing you to pick and choose the components you need.
 
 [![npm](https://img.shields.io/npm/v/@blasterjs/core.svg?label=@blasterjs/core)](https://www.npmjs.com/package/@blasterjs/core) &ndash; Base components and styles. All other Blaster packages depend on this.
@@ -16,32 +21,13 @@ You will need to have installed `styled-components` as well as `styled-system` i
 
 `npm install --save styled-component styled-system`
 
-## Development
-
-### Getting Started
+## Getting started with development
 
 1.  Clone the project: `git clone git@github.com:raster-foundry/blasterjs.git`
 2.  Setup project: `yarn install`
 3.  Run `yarn start`
 
-### Using the CLI
-
-Blasterjs has a built-in CLI.
-It's the preferred method of managing components and constants.
-In order to use the CLI, after cloning the repo, you will need to run `npm link`.
-
-#### CLI Commands
-
-**`blaster {g,generate} {component, constant} <packageName> <newThingName>`**
-ex: `blaster g component core tooltip`, `blaster generate constant core direction`
-Generates a component or constant in the specified package.
-
-**`blaster {d,destroy} {component, constant} <packageName> <thingToDestroyName>`**
-ex: `blaster d component core tooltip`, `blaster destroy constant core direction`
-Removes a component or constant in the specified package. Includes confirmation.
-
-**`blaster {i,index}`**
-Regenerates all three index files for each package as necesssary.
+## Best development practices
 
 ### Styled System
 
@@ -79,7 +65,7 @@ const StyledComponent = styled.div`
 `;
 ```
 
-#### Styled System shortcuts in defaultProps
+### Styled System shortcuts in defaultProps
 
 When declaring a component's `defaultProps` for margin or padding, avoid using the
 _symmetric_ `x` and `y` shortcuts supplied by `styled-system` (`mx`, `my`, `px`, `py`).
@@ -90,7 +76,26 @@ using the asymmetric shortcuts, which a developer can override using either
 asymmetric or symmetric shortcuts.
 
 
-### Scripts
+## Using the development CLI
+
+Blasterjs has a built-in CLI.
+It's the preferred method of managing components and constants.
+In order to use the CLI, after cloning the repo, you will need to run `npm link`.
+
+### CLI Commands
+
+**`blaster {g,generate} {component, constant} <packageName> <newThingName>`**
+ex: `blaster g component core tooltip`, `blaster generate constant core direction`
+Generates a component or constant in the specified package.
+
+**`blaster {d,destroy} {component, constant} <packageName> <thingToDestroyName>`**
+ex: `blaster d component core tooltip`, `blaster destroy constant core direction`
+Removes a component or constant in the specified package. Includes confirmation.
+
+**`blaster {i,index}`**
+Regenerates all three index files for each package as necesssary.
+
+## Other scripts
 
 | Command                                        | Description                                                                                                                                             |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -121,10 +126,10 @@ package
 ```
 firstComponent
 ├── index.js
-└── README.md
+└── index.mdx
 ```
 
-## Publishing
+## Publishing New Versions
 
 Blaster uses Lerna in the default locked versioning mode.
 This means that whenever one package is updated to a new version, all packages are also bumped to have matching version numbers.
