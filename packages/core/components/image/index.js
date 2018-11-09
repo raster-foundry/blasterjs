@@ -13,7 +13,7 @@ const Image = styled.img`
   ${props =>
     props.rounded &&
     css`
-      border-radius: ${props => props.theme.radius.base};
+      border-radius: ${props => props.theme.radii.base};
     `};
 
   ${props =>
