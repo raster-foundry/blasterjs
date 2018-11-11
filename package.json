@@ -49,6 +49,7 @@
     "react-test-renderer": "^16.6.0",
     "replace-in-file": "^3.4.0",
     "rimraf": "^2.6.2",
+    "svgson-cli": "^1.1.0",
     "webpack": "^4.16.0",
     "webpack-blocks": "^1.0.0"
   },
