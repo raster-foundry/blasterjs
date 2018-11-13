@@ -1,3 +1,17 @@
+const space = [
+  0,
+  "0.8rem",
+  "1.6rem",
+  "2.4rem",
+  "3.2rem",
+  "4rem",
+  "4.8rem",
+  "5.6rem",
+  "6.4rem",
+  "7.2rem",
+  "8rem"
+];
+
 const colors = {
   primary: "#738FFC",
   secondary: "#2FC1D0",
@@ -55,6 +69,17 @@ const typeSystem = {
   xxxl: "2.9rem",
   xxxxl: "3.4rem"
 };
+
+const fontSizes = [
+  "1rem",
+  "1.2rem",
+  "1.5rem",
+  "1.8rem",
+  "2.2rem",
+  "2.6rem",
+  "2.9rem",
+  "3.4rem"
+];
 
 const radii = {
   small: "3px",

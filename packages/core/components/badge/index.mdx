@@ -1,0 +1,79 @@
+---
+name: Badge / Pill / Swatch
+menu: Components
+route: /components/badge-pill-swatch
+---
+
+import { Playground, PropsTable } from 'docz'
+import Badge from './'
+import Pill from '../pill'
+import Swatch from '../swatch'
+
+# Badge / Pill / Swatch
+
+## Badge
+
+### Basic badge
+
+<Playground>
+    <Badge>Hello</Badge>
+    <Badge>World</Badge>
+</Playground>
+
+### Badge with colors, fontSize, borderRadius
+
+<Playground>
+    <Badge color="white" bg="secondary" fontSize={3} borderRadius="base">Hello</Badge>
+    <Badge color="white" bg="tertiary" fontSize={3} borderRadius="base">World</Badge>
+</Playground>
+
+
+## Pill
+
+### Basic pill
+
+<Playground>
+    <Pill value={42} />
+</Playground>
+
+### Pill with colors
+
+<Playground>
+    <Pill value={127} bg="red" color="white" />
+</Playground>
+
+
+## Swatch
+
+### Basic swatch
+
+<Playground>
+    <Swatch color="yellow" />
+</Playground>
+
+### Swatch with fontSize to control size
+
+<Playground>
+    <Swatch color="orange" fontSize={4} />
+</Playground>
+
+
+## PropTypes
+
+### Badge, Pill, Swatch
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| ${space} | number or string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
+| ${color} | string | false | see [styled-system COLOR](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#color) |
+| fontSize | number or string | false | see [styled-system FONTSIZE](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#fontsize) |
+| borderRadius | number or string | false | see [styled-system BORDERRADIUS](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#borders) |
+
+### Pill
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| value | number | true |  |
+
+### Swatch
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| color | string | true | Should be a key in theme `colors` |
