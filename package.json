@@ -7,7 +7,8 @@
     "start": "./scripts/start",
     "test": "jest --coverage --verbose --passWithNoTests",
     "build": "./scripts/build",
-    "docz": "docz dev"
+    "docz": "docz dev",
+    "build-docz": "docz build"
   },
   "repository": {
     "type": "git",
