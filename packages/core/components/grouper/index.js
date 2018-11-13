@@ -4,11 +4,15 @@ import styled from "styled-components";
 import { space, themeGet } from "styled-system";
 
 const StyledGrouper = styled.div`
-  ${space}
+  ${space};
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: ${props => props.alignItems};
+
+  > *:focus {
+    z-index: 1;
+  }
 
   > * + * {
     margin-left: ${props => props.gutter};
@@ -20,6 +24,10 @@ const CompactGrouper = styled(StyledGrouper).attrs({
 })`
   > * {
     border-radius: 0 !important;
+  }
+
+  > * + * {
+    border-left: none;
   }
 
   > :first-child {
@@ -34,26 +42,22 @@ const CompactGrouper = styled(StyledGrouper).attrs({
 `;
 
 const Grouper = props => {
-  return props.gutter === 0 ? (
-    <CompactGrouper {...props}>
-      {props.children}
-    </CompactGrouper>
+  return props.gutter == 0 ? (
+    <CompactGrouper {...props}>{props.children}</CompactGrouper>
   ) : (
-    <StyledGrouper {...props}>
-      {props.children}
-    </StyledGrouper>
+    <StyledGrouper {...props}>{props.children}</StyledGrouper>
   );
 };
 
 Grouper.propTypes = {
   ...space.PropTypes,
-  borderRadius: PropTypes.string,
-  gutter: PropTypes.string,
+  borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   alignItems: PropTypes.string
 };
 
 Grouper.defaultProps = {
-  borderRadius: 0,
+  borderRadius: "base",
   gutter: 0,
   alignItems: "stretch"
 };
