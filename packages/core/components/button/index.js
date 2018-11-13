@@ -11,7 +11,7 @@ const baseStyles = css`
   outline: 0;
   border: 1px solid;
   padding: 1rem 2rem;
-  border-radius: ${props => props.theme.radius.base};
+  border-radius: ${props => props.theme.radii.base};
   font-weight: 600;
   line-height: 1.1;
   text-align: center;
@@ -89,7 +89,7 @@ function buttonStates(bgColor, textColor, ghostTextColor) {
       border: 1px solid ${darken(0.15, bgColor)};
       color: ${ghostTextColor};
     `}
-  
+
   ${props =>
     props.block &&
     css`

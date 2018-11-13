@@ -56,7 +56,7 @@ const typeSystem = {
   xxxxl: "3.4rem"
 };
 
-const radius = {
+const radii = {
   small: "3px",
   base: "5px",
   large: "10px"
@@ -79,7 +79,7 @@ const entities = {
 export const theme = {
   colors,
   fonts,
-  radius,
+  radii,
   typeSystem,
   buttonsStyles,
   linkStyles,
