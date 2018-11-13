@@ -15,4 +15,3 @@ export { default as Pill } from "./components/pill";
 export { default as PlainProgressBar } from "./components/plainProgressBar";
 export { default as ProgressBar } from "./components/progressBar";
 export { default as Swatch } from "./components/swatch";
-export { default as Tag } from "./components/tag";
