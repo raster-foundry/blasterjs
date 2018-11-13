@@ -10,7 +10,7 @@
 # This is the directory that you are publishing from (relative to root of your repo)
   publish = "./.docz/dist"
 # This will be your default build command
-  command = "yarn run build-docz"
+  command = "yarn install && yarn run build-docz"
   environment = { CI = "1" }
 
 [[headers]]
