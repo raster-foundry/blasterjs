@@ -1,0 +1,28 @@
+[Settings]
+  ID = "raster-foundry-blaster"
+
+# Settings in the [build] context are global and are applied to all contexts unless otherwise overridden by more specific contexts.
+
+[build]
+# This is the directory to change to before starting a build.
+  base    = "."
+  # NOTE: This is where we will look for package.json/.nvmrc/etc, not root.
+# This is the directory that you are publishing from (relative to root of your repo)
+  publish = "./.docz/dist"
+# This will be your default build command
+  command = "yarn install && yarn run build-docz"
+  environment = { CI = "1" }
+
+[[headers]]
+  for = "/*"
+[headers.values]
+  Content-Security-Policy = "default-src https: blob: data: 'unsafe-inline' 'unsafe-eval'"
+  X-Frame-Options = "DENY"
+  X-XSS-Protection = "1; mode=block"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "origin-when-cross-origin"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
