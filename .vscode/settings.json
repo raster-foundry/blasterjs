@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "prettier.disableLanguages": ["mdx"],
+  "javascript.validate.enable": false,
+  "javascript.format.enable": false
+}

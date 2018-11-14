@@ -4,11 +4,11 @@ export default {
   title: "BlasterJS",
   ignore: "./templates/index.mdx",
   repository: "https://github.com/raster-foundry/blasterjs",
-  ordering: "ascending",
   propsParser: false,
-  debug: true,
+  debug: false,
   description:
     "React Styled-components UI library designed and built by Azavea",
-  indexHtml: "docz/index.html",
-  wrapper: "docz/wrapper.js"
+  indexHtml: "docs/index.html",
+  wrapper: "docs/wrapper.js",
+  menu: ["Home", "Getting Started", "Components"]
 };

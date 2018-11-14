@@ -2,4 +2,4 @@
 
 ./scripts/build && \
 lerna bootstrap && \
-yarn docz
+npm run docz
