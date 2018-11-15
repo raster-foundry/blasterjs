@@ -56,7 +56,7 @@ const typeSystem = {
   xxxxl: "3.4rem"
 };
 
-const radius = {
+const radii = {
   small: "3px",
   base: "5px",
   large: "10px"
@@ -81,7 +81,7 @@ const icons = {"addNode":{"title":"add-node","viewBox":"0 0 24 24","path":"M2.4 
 export const theme = {
   colors,
   fonts,
-  radius,
+  radii,
   typeSystem,
   buttonsStyles,
   linkStyles,
