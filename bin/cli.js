@@ -21,8 +21,10 @@ const {
   appendFileSync,
   openSync,
   closeSync,
-  existsSync
+  existsSync,
+  readFile
 } = require("fs");
+const util = require("util");
 const { join } = require("path");
 const rimraf = require("rimraf");
 const chalk = require("chalk");
@@ -30,8 +32,84 @@ const inquirer = require("inquirer");
 const copyFileSync = require("fs-copy-file-sync");
 const replaceInFile = require("replace-in-file");
 const upperfirst = require("lodash.upperfirst");
+const camelCase = require("camelcase");
+const svgson = require('svgson-next')
+const svgo = new (require("svgo"))({
+  plugins: [
+    {
+      cleanupAttrs: true,
+    }, {
+      removeDoctype: true,
+    },{
+      removeXMLProcInst: true,
+    },{
+      removeComments: true,
+    },{
+      removeMetadata: true,
+    },{
+      removeTitle: true,
+    },{
+      removeDesc: true,
+    },{
+      removeUselessDefs: true,
+    },{
+      removeEditorsNSData: true,
+    },{
+      removeEmptyAttrs: true,
+    },{
+      removeHiddenElems: true,
+    },{
+      removeEmptyText: true,
+    },{
+      removeEmptyContainers: true,
+    },{
+      removeViewBox: false,
+    },{
+      cleanupEnableBackground: true,
+    },{
+      convertStyleToAttrs: true,
+    },{
+      convertColors: true,
+    },{
+      convertPathData: true,
+    },{
+      convertTransform: true,
+    },{
+      removeUnknownsAndDefaults: true,
+    },{
+      removeNonInheritableGroupAttrs: true,
+    },{
+      removeUselessStrokeAndFill: true,
+    },{
+      removeUnusedNS: true,
+    },{
+      cleanupIDs: true,
+    },{
+      cleanupNumericValues: true,
+    },{
+      moveElemsAttrsToGroup: true,
+    },{
+      moveGroupAttrsToElems: true,
+    },{
+      collapseGroups: true,
+    },{
+      removeRasterImages: false,
+    },{
+      mergePaths: true,
+    },{
+      convertShapeToPath: true,
+    },{
+      sortAttrs: true,
+    },{
+      removeDimensions: true,
+    },{
+      removeAttrs: {attrs: '(stroke|fill)'},
+    }
+  ]
+});
 
 const templatesPath = "./templates";
+const themesPath = "./themes";
 
 const dirs = p =>
   readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());
@@ -109,6 +187,64 @@ const generateConstantIndex = package => {
   }
   closeSync(fd);
 };
+
+const optimizeSvgFile = async (svgPath) => {
+  try {
+    const svgData = await util.promisify(readFile)(svgPath);
+    const optimizedObject = await svgo.optimize(svgData);
+    return optimizedObject.data;
+  } catch (e) {
+    throw e;
+  }
+};
+
+const generateIconIndex = async () => {
+  try {
+    const themeFile = "./packages/core/defaultTheme.js";
+    const svgs = files("./icons").filter(f => f.includes(".svg"));
+    // Generate camelcased names
+    const svgArrays = await Promise.all(
+      svgs.map(async f => {
+        const optimizedSvgEl = await optimizeSvgFile(`./icons/${f}`);
+        const svgJson = await svgson.parse(optimizedSvgEl);
+        const viewBox = svgJson.attributes.viewBox;
+        const path = svgJson.children.find(c => c.name === "path").attributes.d;
+        const title = f.replace(/\.[^/.]+$/, "");
+        return [
+          camelCase(title),
+          title,
+          viewBox,
+          path
+        ];
+      })
+    );
+
+    const svgConfig = await svgArrays.reduce((acc, arrs) => ({
+      ...acc,
+      [arrs[0]]: {
+        title: arrs[1],
+        viewBox: arrs[2],
+        path: arrs[3]
+      }
+    }), {});
+
+    if (existsSync(themeFile)) {
+      unlinkSync(themeFile);
+    }
+    copyFileSync(
+      `${themesPath}/defaultTheme.js`,
+      themeFile
+    );
+    replaceInFile.sync({
+      files: themeFile,
+      from: /\$REPLACE/g,
+      to: JSON.stringify(svgConfig)
+    });
+    logSuccess("Theme files generated");
+  } catch(e) {
+    throw e;
+  }
+}
 
 const generateComponentFiles = (package, name) => {
   mkdirSync(componentPath(package, name));
@@ -315,6 +451,14 @@ program
       generateComponentIndex(p);
       generateConstantIndex(p);
     });
+  });
+
+program
+  .command("build-themes")
+  .alias("bt")
+  .action(function() {
+    logInfo("Generating theme files...");
+    generateIconIndex();
   });
 
 program.parse(process.argv);

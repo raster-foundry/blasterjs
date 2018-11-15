@@ -1,0 +1,25 @@
+---
+name: Icon
+menu: Components
+route: /components/icon
+---
+
+import { Playground, PropsTable } from "docz";
+import { ThemeProvider } from "styled-components";
+import Icon from "./";
+
+# Icons
+
+<Playground>
+  <Icon name="addNode" />
+  <Icon name="addNode" color="primary" size="40px" m="10px" />
+</Playground>
+
+### PropTypes
+
+| Prop  | Type   | Required | Description                                                                                      |
+| :---- | :----- | :------- | :----------------------------------------------------------------------------------------------- |
+| name  | string | true     | see `theme.icons`                                                                                |
+| space | string | false    | see [styled-system SPACE](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#space) |
+| size  | string | false    | see [styled-system SIZE](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#layout) |
+| color | string | false    | see [styled-system COLOR](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#color) |

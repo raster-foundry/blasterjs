@@ -5,6 +5,7 @@ export { default as Card } from "./components/card";
 export { default as Divider } from "./components/divider";
 export { default as Grouper } from "./components/grouper";
 export { default as Header } from "./components/header";
+export { default as Icon } from "./components/icon";
 export { default as Image } from "./components/image";
 export { default as Link } from "./components/link";
 export { default as Navbar } from "./components/navbar";

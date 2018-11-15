@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rm -rf ./_icons && \
+mkdir ./_icons && \
+
+./node_modules/.bin/svgo \
+-f ./icons \
+-o ./_icons \
+--config=.svgo.yml \
+--multipass && \
+
+./node_modules/.bin/svgson \
+./_icons \
+-o ./_icons/_icons \
+--pretty \
+--camelcase

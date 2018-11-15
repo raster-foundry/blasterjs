@@ -29,6 +29,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.0",
     "babel-plugin-styled-components": "^1.8.0",
+    "camelcase": "^5.0.0",
     "chalk": "^2.4.1",
     "commander": "^2.17.0",
     "docz": "^0.12.5",
@@ -50,6 +51,9 @@
     "react-test-renderer": "^16.6.0",
     "replace-in-file": "^3.4.0",
     "rimraf": "^2.6.2",
+    "svgo": "^1.1.1",
+    "svgson-cli": "^1.1.0",
+    "svgson-next": "^4.3.0",
     "webpack": "^4.16.0",
     "webpack-blocks": "^1.0.0"
   },
