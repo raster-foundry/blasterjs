@@ -201,7 +201,7 @@ const optimizeSvgFile = async (svgPath) => {
 const generateIconIndex = async () => {
   try {
     const themeFile = "./packages/core/defaultTheme.js";
-    const svgs = files("./icons");
+    const svgs = files("./icons").filter(f => f.includes(".svg"));
     // Generate camelcased names
     const svgArrays = await Promise.all(
       svgs.map(async f => {
