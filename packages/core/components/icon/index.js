@@ -25,8 +25,7 @@ StyledIcon.propTypes = {
 
 StyledIcon.defaultProps = {
   size: ["1em", "1em"],
-  mx: "2px",
-  mt: "-2px"
+  m: ["-2px 2px 0 2px"]
 };
 
 const Icon = withTheme(props => {
