@@ -11,7 +11,7 @@ Brief description of what this PR does.
 Are there any of the following in this PR?
 
 
-- [ ] Changes to the prop names of existing components
+- [ ] Changes to the prop names or types of existing components
 - [ ] Changes in intended behavior of existing component props
 - [ ] Changes in the theme file's structure
 - [ ] A required version bump to a non-dev dependency of the project
