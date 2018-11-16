@@ -7,8 +7,6 @@ Brief description of what this PR does.
 - [ ] Relevant documentation pages have been created or updated
 - [ ] Description of PR is in an appropriate section of the changelog and grouped with similar changes if possible
 
-### Breaking Changes
-
 Are there any of the following in this PR?
 
 - [ ] Changes to the prop names of existing components
@@ -16,7 +14,8 @@ Are there any of the following in this PR?
 - [ ] Changes in the theme file's structure
 - [ ] A required version bump to a non-dev dependency of the project
 
-If any of the above are true, provide information or guidance around needed changes for consumers of this library.
+
+- [ ] One of the above is checked and information or guidance around needed changes for consumers of this library has been added to the changelog under `Upgrade Instructions`.
 
 ### Demo
 
