@@ -29,10 +29,8 @@ Badge.propTypes = {
 };
 
 Badge.defaultProps = {
-  mx: 1,
-  my: "auto",
-  px: "0.4em",
-  py: "0.24em",
+  m: ["auto", 1],
+  p: ["0.24em", "0.4em"],
   color: "textBase",
   bg: "grayLightest",
   fontSize: 1,

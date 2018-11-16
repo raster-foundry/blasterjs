@@ -15,8 +15,7 @@ Pill.propTypes = {
 
 Pill.defaultProps = {
   ...Badge.defaultProps,
-  px: 2,
-  py: 1
+  p: [1, 2]
 };
 
 export default Pill;
