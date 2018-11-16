@@ -7,6 +7,20 @@ Brief description of what this PR does.
 - [ ] Relevant documentation pages have been created or updated
 - [ ] Description of PR is in an appropriate section of the changelog and grouped with similar changes if possible
 
+
+Are there any of the following in this PR?
+
+
+- [ ] Changes to the prop names or types of existing components
+- [ ] Changes in intended behavior of existing component props
+- [ ] Changes in the theme file's structure
+- [ ] A required version bump to a non-dev dependency of the project
+
+
+If one of the above is checked...
+
+- [ ] information or guidance around needed changes for consumers of this library has been added to the changelog under `Upgrade Instructions`
+
 ### Demo
 
 Optional. Screenshots, `curl` examples, etc.
@@ -20,7 +34,6 @@ Optional. Ancillary topics, caveats, alternative strategies that didn't work out
 
  * How to test this PR
  * Prefer bulleted description
- * Start after checking out this branch
  * Include any setup required, such as bundling scripts, restarting services, etc.
  * Include test case, and expected output
 
