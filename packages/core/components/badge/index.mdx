@@ -8,6 +8,7 @@ import { Playground, PropsTable } from 'docz'
 import Badge from './'
 import Pill from '../pill'
 import Swatch from '../swatch'
+import { Shape } from "../../common/shape";
 
 # Badge / Pill / Swatch
 
@@ -51,11 +52,14 @@ import Swatch from '../swatch'
     <Swatch color="yellow" />
 </Playground>
 
-### Swatch with fontSize to control size
+### Swatch with different shapes, and fontSize to control size
 
 <Playground>
     <Swatch color="orange" fontSize={4} />
+    <Swatch color="orange" fontSize={4} shape={Shape.CIRCLE} />
+    <Swatch color="orange" fontSize={4} shape={Shape.SQUARE} />
 </Playground>
+
 
 
 ## PropTypes
@@ -77,3 +81,4 @@ import Swatch from '../swatch'
 | Prop | Type | Required | Description |
 |:-----|:-----|:---------|:------------|
 | color | string | true | Should be a key in theme `colors` |
+| shape | enum | false | see `common/shape` |
