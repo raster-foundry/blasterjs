@@ -49,15 +49,15 @@ import { Shape } from "../../common/shape";
 ### Basic swatch
 
 <Playground>
-    <Swatch color="yellow" />
+    <Swatch color="orange" />
 </Playground>
 
-### Swatch with different shapes, and fontSize to control size
+### Swatch with different shapes and sizes
 
 <Playground>
-    <Swatch color="orange" fontSize={4} />
-    <Swatch color="orange" fontSize={4} shape={Shape.CIRCLE} />
-    <Swatch color="orange" fontSize={4} shape={Shape.SQUARE} />
+    <Swatch color="red" size="2em" />
+    <Swatch color="yellow" size="3em" shape={Shape.CIRCLE} />
+    <Swatch color="green" size="4em" shape={Shape.SQUARE} />
 </Playground>
 
 
@@ -80,5 +80,7 @@ import { Shape } from "../../common/shape";
 ### Swatch
 | Prop | Type | Required | Description |
 |:-----|:-----|:---------|:------------|
-| color | string | true | Should be a key in theme `colors` |
-| shape | enum | false | see `common/shape` |
+| color | string | true | Should be a key in theme colors |
+| shape | enum | false | see common/shape |
+| borderRadius | number or string | false | overrides shape |
+| size | string | false | default 1em |

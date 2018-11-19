@@ -102,10 +102,12 @@ const entities = {
 };
 
 export const theme = {
+  space,
   colors,
   fonts,
   radii,
   typeSystem,
+  fontSizes,
   buttonsStyles,
   linkStyles,
   entities
