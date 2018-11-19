@@ -45,11 +45,4 @@ Divider.propTypes = {
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
-Divider.defaultProps = {
-  ml: "auto",
-  mr: "auto",
-  mt: "auto",
-  mb: "auto"
-};
-
 export default Divider;
