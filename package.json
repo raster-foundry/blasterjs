@@ -4,11 +4,13 @@
   "description": "React UI library designed and built by Azavea",
   "main": "build/index.js",
   "scripts": {
-    "start": "./scripts/start",
-    "test": "jest --coverage --verbose --passWithNoTests",
     "build": "./scripts/build",
+    "build-docz": "docz build",
+    "clean": "./scripts/clean",
     "docz": "docz dev",
-    "build-docz": "docz build"
+    "release": "./scripts/release",
+    "start": "./scripts/start",
+    "test": "jest --coverage --verbose --passWithNoTests"
   },
   "repository": {
     "type": "git",
@@ -47,7 +49,6 @@
     "prettier": "^1.11.1",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-styleguidist": "^8.0.0",
     "react-test-renderer": "^16.6.0",
     "replace-in-file": "^3.4.0",
     "rimraf": "^2.6.2",

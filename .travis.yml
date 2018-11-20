@@ -1,2 +1,2 @@
 language: node_js
-script: yarn build && yarn test
+script: npm run build && npm run test
