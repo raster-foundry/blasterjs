@@ -1,3 +1,4 @@
+export { default as Badge } from "./components/badge";
 export { default as Brand } from "./components/brand";
 export { default as Breadcrumbs } from "./components/breadcrumbs";
 export { default as Button } from "./components/button";
@@ -10,6 +11,7 @@ export { default as Image } from "./components/image";
 export { default as Link } from "./components/link";
 export { default as Navbar } from "./components/navbar";
 export { default as NavbarSection } from "./components/navbarSection";
+export { default as Pill } from "./components/pill";
 export { default as PlainProgressBar } from "./components/plainProgressBar";
 export { default as ProgressBar } from "./components/progressBar";
-export { default as Tag } from "./components/tag";
+export { default as Swatch } from "./components/swatch";
