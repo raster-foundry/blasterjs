@@ -6,32 +6,74 @@ route: /components/button
 
 import { Playground, PropsTable } from 'docz'
 import Button from './'
+import { Intent } from "../../common/intent";
+import { Appearance } from "../../common/appearance";
 
 # Button
 
 ## Basic usage
 <Playground>
   <Button>Button</Button>
-  <Button appearance="primary">Primary Button</Button>
-  <Button appearance="secondary">Secondary Button</Button>
 </Playground>
 
-## Ghost Buttons
+## Appearance
 <Playground>
-  <Button ghost>Default Button</Button>
-  <Button ghost appearance="primary">Primary Button</Button>
-  <Button ghost appearance="secondary">Secondary Button</Button>
+  <Button appearance={Appearance.MINIMAL}>Minimal Button</Button>
+  <Button appearance={Appearance.DEFAULT}>Default Button</Button>
+  <Button appearance={Appearance.PROMINENT}>Prominent Button</Button>
 </Playground>
 
-## Disabled Buttons
+## Intent
 <Playground>
-  <Button disabled>Primary Button</Button>
-  <Button appearance="primary" disabled>Primary Button</Button>
-  <Button appearance="secondary" disabled>Secondary Button</Button>
+  <Button intent={Intent.NONE} appearance={Appearance.MINIMAL}>None</Button>
+  <Button intent={Intent.SUCCESS} appearance={Appearance.MINIMAL}>Success</Button>
+  <Button intent={Intent.WARNING} appearance={Appearance.MINIMAL}>Warning</Button>
+  <Button intent={Intent.DANGER} appearance={Appearance.MINIMAL}>Danger</Button>
+  <br /><br />
+  <Button intent={Intent.NONE} appearance={Appearance.DEFAULT}>None</Button>
+  <Button intent={Intent.SUCCESS} appearance={Appearance.DEFAULT}>Success</Button>
+  <Button intent={Intent.WARNING} appearance={Appearance.DEFAULT}>Warning</Button>
+  <Button intent={Intent.DANGER} appearance={Appearance.DEFAULT}>Danger</Button>
+  <br /><br />
+  <Button intent={Intent.NONE} appearance={Appearance.PROMINENT}>None</Button>
+  <Button intent={Intent.SUCCESS} appearance={Appearance.PROMINENT}>Success</Button>
+  <Button intent={Intent.WARNING} appearance={Appearance.PROMINENT}>Warning</Button>
+  <Button intent={Intent.DANGER} appearance={Appearance.PROMINENT}>Danger</Button>
 </Playground>
 
+## Icons
+<Playground>
+  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.NONE}>Before</Button>
+  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.SUCCESS}>Before</Button>
+  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.WARNING}>Before</Button>
+  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.DANGER}>Before</Button>
+  <br /><br />
+  <Button iconAfter="eye" intent={Intent.NONE}>After</Button>
+  <Button iconAfter="eye" intent={Intent.SUCCESS}>After</Button>
+  <Button iconAfter="eye" intent={Intent.WARNING}>After</Button>
+  <Button iconAfter="eye" intent={Intent.DANGER}>After</Button>
+  <br /><br />
+  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.NONE}>Both</Button>
+  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.SUCCESS}>Both</Button>
+  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.WARNING}>Both</Button>
+  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.DANGER}>Both</Button>
+</Playground>
 
-## Full width button
+## Disabled
+<Playground>
+  <Button disabled appearance={Appearance.MINIMAL}>Minimal</Button>
+  <Button disabled appearance={Appearance.DEFAULT}>Default</Button>
+  <Button disabled appearance={Appearance.PROMINENT}>Prominent</Button>
+</Playground>
+
+## Loading
+<Playground>
+  <Button isLoading appearance={Appearance.MINIMAL}>Minimal</Button>
+  <Button isLoading appearance={Appearance.DEFAULT}>Default</Button>
+  <Button isLoading appearance={Appearance.PROMINENT}>Prominent</Button>
+</Playground>
+
+## Block
 <Playground>
   <Button block>Block button</Button>
 </Playground>
@@ -39,10 +81,10 @@ import Button from './'
 ### PropTypes
 | Prop | Type | Required | Description |
 |:-----|:-----|:---------|:------------|
-| appearance | string | false | uses `theme.buttonsStyles` |
-| block | bool | false |
-| disabled | bool | false |
-| ghost | bool | false |
-| iconBefore | node | false | *not implemented yet* |
-| iconAfter | node | false | *not implemented yet* |
+| intent | enum | false | see `common/intent` |
+| appearance | enum | false | see `common/appearance` |
+| block | bool | false | |
+| disabled | bool | false | |
+| iconBefore | string | false | |
+| iconAfter | string | false | |
 | isLoading | bool | false | |

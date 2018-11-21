@@ -1,62 +1,125 @@
-/* @flow */
 import React from "react";
 import PropTypes from "prop-types";
 import { darken, rgba } from "polished";
-import styled, { css, withTheme } from "styled-components";
+import styled, { css } from "styled-components";
+import { space, borderRadius, themeGet } from "styled-system";
+import Icon from "../icon";
+import { Intent } from "../../common/intent";
+import { Appearance } from "../../common/appearance";
 
-const baseStyles = css`
+const ButtonIcon = styled(Icon)`
+  flex: none;
+`;
+
+const ButtonChildren = styled.span`
+  ${props => props.isLoading && css`
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+  `};
+
+  ${props => !props.iconBefore && css`
+    margin-left: ${themeGet('space.1', '0.8rem')};
+  `};
+
+  ${props => !props.iconAfter && css`
+    margin-right: ${themeGet('space.1', '0.8rem')};
+  `};
+`;
+
+const ButtonLoading = styled.span`
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  bottom: 1px;
+  color: currentColor;
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: ${themeGet('fontSizes.1', 'inherit')};
+`;
+
+const StyledButton = styled.button`
   position: relative;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-contents: space-between;
+  align-items: center;
   outline: 0;
-  border: 1px solid;
-  padding: 1rem 2rem;
-  border-radius: ${props => props.theme.radii.base};
-  font-weight: 600;
+  border: 0;
+  padding: ${themeGet('space.1', '0.8rem')}};
+  border-radius: ${themeGet('radii.base', '5px')};
   line-height: 1.1;
   text-align: center;
   text-decoration: none;
   user-select: none;
-  will-change: box-shadow, background-color, color, border-color;
-  transition: 0.1s ease-in-out box-shadow, 0.1s ease-in-out background,
-    0.1s ease-in-out color, 0.1s ease-in-out border-color;
+  will-change: box-shadow, background-color;
+  transition: 0.1s ease-in-out box-shadow, 0.1s ease-in-out background-color;
 
-  ${props =>
-    props.isLoading &&
-    css`
-      .loader {
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        right: 1px;
-        bottom: 1px;
-        color: currentColor;
-        background-color: inherit;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+  ${space}
+  ${borderRadius}
 
-      .button-child {
-        opacity: 0;
-      }
-    `};
+  ${props => buttonStates(props)}
 `;
 
-function buttonStates(bgColor, textColor, ghostTextColor) {
-  return css`
-  background: ${bgColor};
-  color: ${textColor};
-  border-color: ${darken(0.1, bgColor)};
+function buttonStates(props) {
+  const { intent, appearance } = props;
 
-  ${props =>
-    !props.disabled &&
-    css`
+  let color;
+  switch (intent) {
+    case Intent.DANGER:
+      color = 'red';
+      break;
+    case Intent.WARNING:
+      color = 'yellow';
+      break;
+    case Intent.SUCCESS:
+      color = 'green';
+      break;
+    case Intent.NONE:
+    default:
+      color = 'primary';
+      break;
+  }
+
+  let fg, bg, bgHover, fgDisabled, bgDisabled;
+
+  switch (appearance) {
+    case Appearance.PROMINENT:
+      fg = themeGet('colors.white', '#fff')(props);
+      bg = themeGet(`colors.${color}`)(props);
+      bgHover = darken(0.1, bg);
+      fgDisabled = rgba(fg, 0.6);
+      bgDisabled = rgba(bg, 0.5);
+      break;
+    case Appearance.MINIMAL:
+      fg = themeGet(`colors.${color}`)(props);
+      bg = 'transparent';
+      bgHover = themeGet('colors.grayLightest', '#e0e5f5')(props);
+      fgDisabled = rgba(fg, 0.6);
+      bgDisabled = 'transparent';
+      break;
+    case Appearance.DEFAULT:
+    default:
+      fg = themeGet(`colors.${color}`)(props);
+      bg = themeGet('colors.grayLightest', '#e0e5f5')(props);
+      bgHover = darken(0.05, bg);
+      fgDisabled = rgba(fg, 0.6);
+      bgDisabled = rgba(bg, 0.5);
+      break;
+  }
+
+  return css`
+    background-color: ${bg};
+    color: ${fg};
+
+    ${props => !props.disabled && css`
       &:hover,
       &:active {
-        background-color: ${darken(0.05, bgColor)};
-        border-color: ${darken(0.1, bgColor)};
-        color: ${textColor};
+        background-color: ${bgHover};
       }
 
       &:active {
@@ -65,7 +128,7 @@ function buttonStates(bgColor, textColor, ghostTextColor) {
 
       &:focus {
         outline: none;
-        box-shadow: 0 0 0 4px ${rgba(props.theme.colors.primary, 0.2)};
+        box-shadow: 0 0 0 4px ${rgba(themeGet('colors.primary')(props), 0.3)};
       }
 
       &:focus:active {
@@ -73,104 +136,59 @@ function buttonStates(bgColor, textColor, ghostTextColor) {
       }
     `}
 
-  ${props =>
-    props.disabled &&
-    css`
+    ${props => props.disabled && css`
       cursor: not-allowed;
-      background-color: ${rgba(bgColor, 0.7)};
-      border: 1px solid ${rgba(bgColor, 0.7)};
-      color: ${rgba(textColor, 0.8)};
+      background-color: ${bgDisabled};
+      color: ${fgDisabled};
     `}
 
-  ${props =>
-    props.ghost &&
-    css`
-      background-color: transparent;
-      border: 1px solid ${darken(0.15, bgColor)};
-      color: ${ghostTextColor};
-    `}
-
-  ${props =>
-    props.block &&
-    css`
+    ${props => props.block && css`
       display: block;
       width: 100%;
     `}
-`;
+  `;
 }
 
-/*
- * Component: <Button>
- */
-const StyledButton = styled.button`
-  ${baseStyles};
-
-  /*
-   * Default button styling. Does not require use of appearance propType
-   * propType: appearance="default"
-   */
-  ${props =>
-    !props.appearance &&
-    css`
-      ${props =>
-        buttonStates(
-          props.theme.colors.grayLightest,
-          props.theme.colors.shadeNormal,
-          props.theme.colors.grayLight
-        )};
-    `}
-
-  ${props =>
-    props.appearance === props.theme.buttonsStyles.DEFAULT &&
-    css`
-      ${buttonStates(
-        props.theme.colors.grayLightest,
-        props.theme.colors.shadeNormal
-      )};
-    `}
-
-  /*
-   * propType: appearance="primary"
-   */
-  ${props =>
-    props.appearance === props.theme.buttonsStyles.PRIMARY &&
-    css`
-      ${buttonStates(props.theme.colors.primary, "#fff")};
-    `}
-
-  /*
-   * propType: appearance="secondary"
-   */
-  ${props =>
-    props.appearance === props.theme.buttonsStyles.SECONDARY &&
-    css`
-      ${buttonStates(props.theme.colors.secondary, "#fff")};
-    `}
-`;
-
 const Button = props => {
+  const {
+    iconBefore,
+    iconAfter,
+    isLoading,
+    children,
+    ...otherProps
+  } = props;
+
   return (
-    <StyledButton {...props}>
-      <>
-        {props.iconBefore ? props.iconBefore : null}
-        {props.children ? (
-          <span className="button-child">{props.children}</span>
-        ) : null}
-        {props.iconAfter ? props.iconBefore : null}
-        {props.isLoading ? <span className="loader">Loading...</span> : null}
-      </>
+    <StyledButton {...otherProps}>
+      <ButtonChildren {...props}>
+        {iconBefore && <ButtonIcon name={iconBefore} mr={1} />}
+        {children}
+        {iconAfter && <ButtonIcon name={iconAfter} ml={1} />}
+      </ButtonChildren>
+      {isLoading && <ButtonLoading>Loading…</ButtonLoading>}
     </StyledButton>
   );
 };
 
 Button.propTypes = {
-  appearance: PropTypes.oneOf(["default", "primary", "secondary"]),
+  ...space.PropTypes,
+  intent: PropTypes.oneOf(Object.values(Intent)),
+  appearance: PropTypes.oneOf(Object.values(Appearance)),
   block: PropTypes.bool,
   disabled: PropTypes.bool,
-  ghost: PropTypes.bool,
-  iconBefore: PropTypes.node,
-  iconAfter: PropTypes.node,
+  iconBefore: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  iconAfter: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   isLoading: PropTypes.bool
 };
 
-export default withTheme(Button);
+Button.defaultProps = {
+  intent: Intent.NONE,
+  appearance: Appearance.DEFAULT,
+  block: false,
+  disabled: false,
+  iconBefore: undefined,
+  iconAfter: undefined,
+  isLoading: false
+};
+
+export default Button;
