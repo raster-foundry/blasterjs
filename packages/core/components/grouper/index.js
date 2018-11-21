@@ -19,9 +19,7 @@ const StyledGrouper = styled.div`
   }
 `;
 
-const CompactGrouper = styled(StyledGrouper).attrs({
-  radius: props => themeGet(`radii.${props.borderRadius}`, props.borderRadius)
-})`
+const CompactGrouper = styled(StyledGrouper)`
   > * {
     border-radius: 0 !important;
   }
@@ -31,13 +29,13 @@ const CompactGrouper = styled(StyledGrouper).attrs({
   }
 
   > :first-child {
-    border-top-left-radius: ${props => props.radius} !important;
-    border-bottom-left-radius: ${props => props.radius} !important;
+    border-top-left-radius: ${props => themeGet(`radii.${props.borderRadius}`, props.borderRadius)} !important;
+    border-bottom-left-radius: ${props => themeGet(`radii.${props.borderRadius}`, props.borderRadius)} !important;
   }
 
   > :last-child {
-    border-top-right-radius: ${props => props.radius} !important;
-    border-bottom-right-radius: ${props => props.radius} !important;
+    border-top-right-radius: ${props => themeGet(`radii.${props.borderRadius}`, props.borderRadius)} !important;
+    border-bottom-right-radius: ${props => themeGet(`radii.${props.borderRadius}`, props.borderRadius)} !important;
   }
 `;
 
