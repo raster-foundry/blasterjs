@@ -1,0 +1,3 @@
+mkdir -p ./.docz/public && \
+cp ./packages/core/reset.css ./.docz/public/reset.css && \
+docz build

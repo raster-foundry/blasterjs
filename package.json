@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "./scripts/build",
-    "build-docz": "docz build",
+    "build-docz": "./scripts/build-docz",
     "clean": "./scripts/clean",
     "docz": "docz dev",
     "release": "./scripts/release",
