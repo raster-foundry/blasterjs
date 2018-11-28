@@ -48,9 +48,13 @@ const colors = {
 
   // Action Colors:
   orange: "#E69348",
-  yellow: "#FFCA28",
+  yellow: "#b18500",
   red: "#f03333",
-  green: "#81C784"
+  green: "#4e9251",
+
+  yellowTint: "#fdf5e0",
+  redTint: "#f5dbdb",
+  greenTint: "#e1ece2"
 };
 
 const fonts = {

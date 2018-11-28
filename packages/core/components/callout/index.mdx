@@ -1,0 +1,80 @@
+---
+name: Callout
+menu: Components
+route: /components/callout
+---
+
+import { Playground, PropsTable } from 'docz'
+import Callout from './'
+import { Intent } from '../../common/intent'
+
+
+# Callout
+
+## Basic usage
+
+<Playground>
+    <Callout>
+        This is a basic callout. No title, icon, or other props.
+    </Callout>
+    <br />
+    <Callout title="With title">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+    </Callout>
+    <br />
+    <Callout icon="calendar">
+        With icon!
+    </Callout>
+    <br />
+    <Callout icon="calendar" title="With icon and title">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+    </Callout>
+</Playground>
+
+## Intent
+
+<Playground>
+    <Callout intent={Intent.SUCCESS}>
+        With intent. Note default icon for this intent (SUCCESS).
+    </Callout>
+    <br />
+    <Callout title="With intent and title" intent={Intent.WARNING}>
+        Note default icon for this intent (WARNING).
+    </Callout>
+    <br />
+    <Callout icon={false} intent={Intent.WARNING}>
+        With intent but icon=false. Lorem ipsum dolor sit amet, consectetur adipisicing
+        tempor incididunt ut labore et dolore magna aliqua.
+    </Callout>
+    <br />
+    <Callout icon="code" intent={Intent.DANGER}>
+        With intent (DANGER) and custom icon, overriding intent's default icon.
+    </Callout>
+</Playground>
+
+
+## Icon Size
+
+<Playground>
+    <Callout
+        title="I am a banana"
+        intent={Intent.DANGER}
+        icon="crosshair"
+        iconSize="8rem"
+    >
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+    </Callout>
+</Playground>
+
+## PropTypes
+
+| Prop | Type | Required | Description |
+|:-----|:-----|:---------|:------------|
+| intent | enum | false | see `common/intent` |
+| icon | string or bool | false | name of icon. overrides intent's default icon. |
+| iconSize | string | false |  |
+| title | string | false |  |
+| ${space} | number or string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
