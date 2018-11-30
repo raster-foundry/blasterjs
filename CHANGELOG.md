@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 - `Divider` component added to the core package [#94](https://github.com/raster-foundry/blasterjs/pull/94)
 - `Icon` component added to the core package [#103](https://github.com/raster-foundry/blasterjs/pull/103)
+- `Box` component added to the core package [#112](https://github.com/raster-foundry/blasterjs/pull/112)
 
 ### Changed
 - Changed theme file `radius` to `radii` (breaking change for custom themes)
