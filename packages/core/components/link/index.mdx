@@ -10,14 +10,18 @@ import Link from './'
 # Link
 
 <Playground>
-  <Link href="#" target="_blank" disabled>This is a link</Link>
+  <Link href="#" target="_blank">This is a link</Link>
 </Playground>
 
 ### PropTypes
 Accepts standard html `<a>` attributes
 
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| href | bool | true | defaults to `#` |
-| active | bool | false | *not implemented yet* |
-| disabled | bool | false | *not implemented yet* |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| href | bool | yes | `#` | |
+| active | bool | no | | *not implemented yet* |
+| disabled | bool | no | | *not implemented yet* |
+| color | string | no | link | |
+| colorHover | string | no | linkHover | *expand into a `colors` object with colors for all states?* |
+| fontSize | number or string | no | | see [styled-system FONTSIZE](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#fontsize) |

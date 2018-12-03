@@ -32,6 +32,9 @@ const colors = {
   white: "#FFFFFF",
   black: "#1B1C31", // also gray1
 
+  link: "#738FFC",
+  linkHover: "#0F3EFA",
+
   // Still reviewing the following colors
   grayLight: "#999DA8", //#4d4f6d
   grayLighter: "#C8CCDB", //#8c8dad
@@ -97,10 +100,6 @@ const buttonsStyles = {
   DEFAULT: "default"
 };
 
-const linkStyles = {
-  color: "#738FFC"
-};
-
 const entities = {
   breadcrumb: "▸"
 };
@@ -115,7 +114,6 @@ export const theme = {
   typeSystem,
   fontSizes,
   buttonsStyles,
-  linkStyles,
   entities,
   icons
 };
