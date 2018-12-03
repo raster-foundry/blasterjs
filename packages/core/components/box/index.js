@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import * as styledSystem from "styled-system"
+import * as styledSystem from "styled-system";
 
 const StyledBox = styled.div`
   ${styledSystem.display}
