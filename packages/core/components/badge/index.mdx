@@ -64,23 +64,29 @@ import { Shape } from "../../common/shape";
 
 ## PropTypes
 
-### Badge, Pill, Swatch
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| ${space} | number or string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
-| ${color} | string | false | see [styled-system COLOR](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#color) |
-| fontSize | number or string | false | see [styled-system FONTSIZE](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#fontsize) |
-| borderRadius | number or string | false | see [styled-system BORDERRADIUS](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#borders) |
+### Badge
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| ${space} | number or string | no | | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
+| color | string | no | textBase | see [styled-system COLOR](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#color) |
+| bg | string | no | grayLightest | see [styled-system COLOR](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#color) |
+| fontSize | number or string | no | 1 | see [styled-system FONTSIZE](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#fontsize) |
+| borderRadius | number or string | no | small | see [styled-system BORDERRADIUS](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#borders) |
 
 ### Pill
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| value | number | true |  |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Badge props | | | | |
+| value | number | yes | | |
 
 ### Swatch
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| color | string | true | Should be a key in theme colors |
-| shape | enum | false | see common/shape |
-| borderRadius | number or string | false | overrides shape |
-| size | string | false | default 1em |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Badge props | | | | |
+| color | string | yes | | should be a key in theme colors |
+| shape | enum | no | ROUNDED | see common/shape |
+| borderRadius | number or string | no | | overrides shape |
+| size | string | no | 1em | defines width & height |
+| width | string | no | 1em | |
+| height | string | no | 1em | |

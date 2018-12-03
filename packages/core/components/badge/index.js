@@ -1,23 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { space, color, fontSize, borderRadius, themeGet } from "styled-system";
+import { color, fontSize, borderRadius } from "styled-system";
+import Box from "../box";
 
-const StyledBadge = styled.span`
-  & + & {
-    margin-left: ${themeGet('space.1', '0.8rem')};
-  }
+const StyledBadge = styled(Box)`
   display: inline-block;
-  padding: 0.24em 0.4em;
-  borderRadius: ${themeGet('radii.small', '3px')};
-  background-color: ${themeGet('colors.grayLightest', '#e0e5f5')};
-  color: ${themeGet('colors.textBase', '#435399')};
-  font-size: ${themeGet('fontSizes.1', '1.2rem')};
   line-height: 1;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  ${space}
   ${color}
   ${fontSize}
   ${borderRadius}
@@ -30,10 +22,22 @@ const Badge = props => {
 };
 
 Badge.propTypes = {
-  ...space.PropTypes,
-  ...color.PropTypes,
-  ...fontSize.PropTypes,
-  ...borderRadius.PropTypes
+  ...Box.propTypes,
+  ...color.propTypes,
+  ...fontSize.propTypes,
+  ...borderRadius.propTypes
+};
+
+Badge.defaultProps = {
+  mr: 1,
+  pt: "0.24em",
+  pb: "0.24em",
+  pl: "0.4em",
+  pr: "0.4em",
+  borderRadius: "small",
+  bg: "grayLightest",
+  color: "textBase",
+  fontSize: 1
 };
 
 export default Badge;
