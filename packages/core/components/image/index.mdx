@@ -6,41 +6,45 @@ route: /components/image
 
 import { Playground, PropsTable } from 'docz'
 import Image from './'
+import { Shape } from "../../common/shape";
 
 # Image
 
 ## Basic usage
 <Playground>
-  <Image 
+  <Image
     src="https://via.placeholder.com/150x150"
-    alt="A placeholder image" 
+    alt="A placeholder image"
   />
 </Playground>
 
 ## Rounded image
 <Playground>
-  <Image 
+  <Image
     src="https://via.placeholder.com/150x150"
-    alt="A placeholder image" 
-    rounded
+    alt="A placeholder image"
+    shape={Shape.ROUNDED}
   />
 </Playground>
 
 
 ## Circle image
 <Playground>
-  <Image 
+  <Image
     src="https://via.placeholder.com/150x150"
-    alt="A placeholder image" 
-    circle
+    alt="A placeholder image"
+    shape={Shape.CIRCLE}
   />
 </Playground>
 
 ### PropTypes
 Accepts standard html `<img>` attributes
 
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| rounded | bool | false | Adds a border-radius |
-| circle | bool | false | Adds 100% border-radius |
-| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| ${space} | number or string | no |  | see [styled-system](https://jxnblk.com/styled-system/) |
+| src | url | yes | | |
+| width | string | no | auto | |
+| height | string | no | auto | |
+| shape | enum | no | SQUARE | see common/shape |
+| borderRadius | number or string | no | | overrides shape |
