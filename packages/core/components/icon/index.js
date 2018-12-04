@@ -11,22 +11,11 @@ import { color, size, space } from "styled-system";
   - https://github.com/Angelmmiguel/svgi
 */
 const StyledIcon = styled.svg`
-  ${color};
-  ${size};
-  ${space};
+  ${color}
+  ${size}
+  ${space}
   vertical-align: middle;
 `;
-
-StyledIcon.propTypes = {
-  ...color.PropTypes,
-  ...size.PropTypes,
-  name: PropTypes.string.isRequired
-};
-
-StyledIcon.defaultProps = {
-  size: ["1em", "1em"],
-  m: ["-2px 2px 0 2px"]
-};
 
 const Icon = withTheme(props => {
   const icon = props.theme.icons[props.name];
@@ -43,5 +32,20 @@ const Icon = withTheme(props => {
     </StyledIcon>
   );
 });
+
+Icon.propTypes = {
+  ...space.proptTypes,
+  ...color.propTypes,
+  ...size.propTypes,
+  name: PropTypes.string.isRequired
+};
+
+Icon.defaultProps = {
+  size: "1em",
+  mt: "-2px",
+  mb: 0,
+  ml: "2px",
+  mr: "2px"
+};
 
 export default Icon;

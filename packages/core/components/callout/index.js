@@ -22,10 +22,9 @@ const StyledCallout = styled(Box)`
 const CalloutIcon = styled(Icon)`
   flex: none;
   margin: 0 ${themeGet('space.2', '1.6rem')};
-  font-size: ${props => props.size || themeGet('fontSizes.4', '2.2rem')};
 `;
 
-const CalloutTitle = styled(Header.h4)`
+const CalloutTitle = styled(Header).attrs({ as: "h4" })`
   margin-bottom: ${themeGet('space.1', '0.8rem')};
   line-height: 1;
 `;
@@ -77,13 +76,12 @@ const getIntentColors = intent => {
   return colors;
 }
 
-const Callout = props => {
-  const { icon, iconSize, intent, title, children, ...otherProps } = props;
+const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
   const iconName = getIconName(icon, intent);
   const { color, bg } = getIntentColors(intent);
 
   return (
-    <StyledCallout {...otherProps} bg={bg} icon={!!iconName}>
+    <StyledCallout {...props} bg={bg} icon={!!iconName}>
       {iconName && <CalloutIcon name={iconName} color={color} size={iconSize} />}
       <Box flex="auto">
         {title && <CalloutTitle color={color}>{title}</CalloutTitle>}
@@ -104,7 +102,7 @@ Callout.propTypes = {
 Callout.defaultProps = {
   intent: Intent.NONE,
   icon: undefined,
-  iconSize: undefined,
+  iconSize: "2.2rem",
   title: undefined,
   pt: 3,
   pb: 3,
