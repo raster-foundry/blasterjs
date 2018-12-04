@@ -71,10 +71,11 @@ import { Intent } from '../../common/intent'
 
 ## PropTypes
 
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| intent | enum | false | see `common/intent` |
-| icon | string or bool | false | name of icon. overrides intent's default icon. |
-| iconSize | string | false |  |
-| title | string | false |  |
-| ${space} | number or string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| ${space} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| intent | enum | no | `NONE` | see `common/intent` |
+| icon | string or bool | no | | name of icon. overrides intent's default icon. |
+| iconSize | string | no | | |
+| title | string | no | | |
