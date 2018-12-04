@@ -1,81 +1,109 @@
-/* @flow */
-
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { fontSize, themeGet } from "styled-system";
+import Box from "../box";
 import Link from "../link";
+import Icon from "../icon";
 
-const StyledBreadcrumbs = styled.div`
+const StyledBreadcrumbs = styled(Box)`
+  ${fontSize}
   display: flex;
   flex-flow: row wrap;
   max-width: 100%;
-  padding: 1rem;
-  font-family: ${props => props.theme.fonts.sans};
-  font-size: ${props => props.theme.typeSystem.xs};
+  line-height: 1.5;
 
   > * + * {
-    margin-left: 0.8rem;
+    margin-left: ${props => themeGet('space.1', '0.8rem')};
   }
 
-  > :last-child {
-    color: ${props =>
-      props.highlightCurrent ? props.theme.colors.grayDark1 : null};
-  }
+  ${props => props.highlightCurrent && css`
+    > :last-child {
+      color: ${props => themeGet(`colors.${props.colorHighlight}`, props.colorHighlight)};
+    }
+  `}
 `;
 
 const BreadcrumbItem = styled(Link)`
-  border: 0;
-  color: ${props => props.theme.colors.grayBase3};
-  font-size: ${props => props.theme.typeSystem.base};
-  text-decoration: none;
+  color: ${props => themeGet(`colors.${props.color}`, props.color)};
 
   &:hover {
-    color: ${props => props.theme.colors.primary};
-    text-decoration: underline;
+    color: ${props => themeGet(`colors.${props.colorHover}`, props.colorHover)};
   }
 `;
 
 const Separator = styled.span`
-  color: ${props => props.theme.colors.grayLight2};
-
-  ::before {
-    content: "${props => props.theme.entities.breadcrumb}";
-  }
+  color: ${props => themeGet(`colors.${props.color}`, props.color)};
 `;
 
-const Breadcrumbs = props => {
+const Breadcrumbs = ({
+  path,
+  highlightCurrent,
+  color,
+  colorHover,
+  colorSeparator,
+  colorHighlight,
+  separator,
+  separatorIcon,
+  ...props
+}) => {
+
+  const sep = (
+    <Separator color={colorSeparator}>
+      {separator || <Icon name={separatorIcon} color={colorSeparator} />}
+    </Separator>
+  );
+
   return (
-    <StyledBreadcrumbs highlightCurrent={props.highlightCurrent}>
-      {props.path.map(({ name, url }, idx) => (
-        <React.Fragment key={url}>
-          {idx > 0 && <Separator />}
-          <BreadcrumbItem href={url}>{name}</BreadcrumbItem>
-        </React.Fragment>
+    <StyledBreadcrumbs
+      highlightCurrent={highlightCurrent}
+      colorHighlight={colorHighlight}
+      {...props}
+    >
+      {path.map(({ name, url }, idx) => (
+        <Fragment key={url}>
+          {idx > 0 && sep}
+          <BreadcrumbItem
+            href={url}
+            color={color}
+            colorHover={colorHover}
+          >
+            {name}
+          </BreadcrumbItem>
+        </Fragment>
       ))}
     </StyledBreadcrumbs>
   );
 };
 
-Breadcrumbs.defaultProps = {
-  path: [],
-  highlightCurrent: false
-};
-
 Breadcrumbs.propTypes = {
-  /**
-   * Array of objects describing the breadcrumb path.
-   */
+  ...Box.propTypes,
+  ...fontSize.propTypes,
+  highlightCurrent: PropTypes.bool,
+  color: PropTypes.string,
+  colorHover: PropTypes.string,
+  colorSeparator: PropTypes.string,
+  colorHighlight: PropTypes.string,
+  separator: PropTypes.string,
+  separatorIcon: PropTypes.string,
   path: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired
     })
-  ).isRequired,
-  /**
-   * Highlight last breadcrumb item, to represent current screen.
-   */
-  highlightCurrent: PropTypes.bool
+  ).isRequired
 };
 
-/** @component */
+Breadcrumbs.defaultProps = {
+  path: [],
+  highlightCurrent: false,
+  p: 1,
+  fontSize: 2,
+  color: "grayBase3",
+  colorHover: "primary",
+  colorSeparator: "grayLight1",
+  colorHighlight: "grayDark1",
+  separatorIcon: "caretRight"
+};
+
 export default Breadcrumbs;

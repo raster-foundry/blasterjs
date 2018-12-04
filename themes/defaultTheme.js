@@ -71,10 +71,6 @@ const buttonsStyles = {
   DEFAULT: "default"
 };
 
-const entities = {
-  breadcrumb: "▸"
-};
-
 const icons = $REPLACE;
 
 export const theme = {
@@ -83,6 +79,5 @@ export const theme = {
   radius,
   typeSystem,
   buttonsStyles,
-  entities,
   icons
 };

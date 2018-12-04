@@ -7,27 +7,41 @@ route: /components/breadcrumbs
 import { Playground, PropsTable } from 'docz'
 import Breadcrumbs from './'
 
-### Breadcrumbs
-The `Breadcrumbs` component is used to display a clickable path through the app
-hierarchy to the current screen.
+# Breadcrumbs
 
-Currently the `path` gets passed in as an array of `{name, url}` objects representing
-the nodes of the path. Use the `highlightCurrent` prop to highlight the last node.
+Displays a clickable path through the app hierarchy to the current screen.
 
-Future versions should:
-- Integrate with React Router.
-- Accommodate images as optional node names (eg, app logo).
-
+Future versions should integrate with React Router.
 
 <Playground>
-  <Breadcrumbs 
+  <Breadcrumbs
     highlightCurrent
-    path={[{
-      name: "Home",
-      url: "/"
-    },
-    {
-      name: "Places",
-      url: "/places/"
-    }]}></Breadcrumbs>
+    path={[
+      {
+        name: "Home",
+        url: "/"
+      },
+      {
+        name: "Places",
+        url: "/places/"
+      },
+      {
+        name: "Nearby",
+        url: "/places/nearby/"
+      }
+    ]}/>
 </Playground>
+
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| path | array | yes | | `{name, url}` objects representing path nodes |
+| fontSize | string or number | no | `2` | |
+| highlightCurrent | bool | no | false | highlight last node in path |
+| color | string | no | `grayBase3` | |
+| colorHover | string | no | `primary` | |
+| colorSeparator | string | no | `grayLight1` | |
+| colorHighlight | string | no | `grayDark1` | |
+| separatorIcon | string | no | `caretRight` | name of known `Icon` |
+| separator | string | no | | overrides `separatorIcon` |
