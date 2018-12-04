@@ -40,11 +40,7 @@ const CompactGrouper = styled(StyledGrouper)`
 `;
 
 const Grouper = props => {
-  return props.gutter == 0 ? (
-    <CompactGrouper {...props}>{props.children}</CompactGrouper>
-  ) : (
-    <StyledGrouper {...props}>{props.children}</StyledGrouper>
-  );
+  return props.gutter === 0 ? <CompactGrouper {...props} /> : <StyledGrouper {...props} />;
 };
 
 Grouper.propTypes = {

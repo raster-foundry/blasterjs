@@ -44,10 +44,10 @@ import { Direction } from "../../common/direction";
 </Playground>
 
 ## PropTypes
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| direction | enum | true  | see `common/direction` |
-| color | string | false | Theme color or valid css color value  |
-| width | string | false |  |
-| height | string | false | |
-| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| direction | enum | yes | | see `common/direction` |
+| color | string | no | | Theme color or valid css color value  |
+| width | string | no | | `2px` when vertical |
+| height | string | no | | `1px` when horizontal |
+| ${space} | string | no | | see [styled-system](https://jxnblk.com/styled-system/#margin--padding) |
