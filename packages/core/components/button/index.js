@@ -50,8 +50,6 @@ const StyledButton = styled.button`
   align-items: center;
   outline: 0;
   border: 0;
-  padding: ${themeGet('space.1', '0.8rem')}};
-  border-radius: ${themeGet('radii.base', '5px')};
   line-height: 1.1;
   text-align: center;
   text-decoration: none;
@@ -171,7 +169,8 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  ...space.PropTypes,
+  ...space.propTypes,
+  ...borderRadius.propTypes,
   intent: PropTypes.oneOf(Object.values(Intent)),
   appearance: PropTypes.oneOf(Object.values(Appearance)),
   block: PropTypes.bool,
@@ -182,6 +181,11 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  pt: 1,
+  pb: 1,
+  pl: 1,
+  pr: 1,
+  borderRadius: "base",
   intent: Intent.NONE,
   appearance: Appearance.DEFAULT,
   block: false,
