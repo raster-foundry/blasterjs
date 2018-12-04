@@ -1,55 +1,43 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { color, width, space } from "styled-system";
+import { width } from "styled-system";
 import Image from "../image";
 import Link from "../link";
 
-const BrandWrapper = styled.a`
+const StyledBrand = styled(Link)`
+  display: inline-block;
   text-decoration: none;
   font-weight: 600;
-  display: inline-block;
-  padding: 1.5rem;
   vertical-align: middle;
-  ${color};
-  ${space};
 `;
 
-const BrandImage = styled.img`
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 100%;
-  height: auto;
-  ${width};
-`;
-
-const BrandTitle = styled.span`
-  color: inherit;
-`;
-
-const Brand = props => {
+const Brand = ({href, title, imagesrc, width, children, ...props}) => {
   return (
-    <BrandWrapper {...props} href={props.href}>
-      {props.imagesrc ? (
-        <BrandImage {...props} src={props.imagesrc} alt={props.title} />
+    <StyledBrand href={href} title={title} {...props}>
+      {imagesrc ? (
+        <Image src={imagesrc} alt={title} width={width} />
       ) : (
-        <BrandTitle children={props.title} />
+        <span>{title}</span>
       )}
-    </BrandWrapper>
+    </StyledBrand>
   );
 };
 
 Brand.propTypes = {
-  ...color.PropTypes,
-  ...width.PropTypes,
-  ...space.PropTypes,
+  ...Link.propTypes,
+  ...width.propTypes,
   imagesrc: PropTypes.string,
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 };
 
 Brand.defaultProps = {
-  color: "textBase"
+  color: "textBase",
+  pt: 2,
+  pb: 2,
+  pl: 2,
+  pr: 2
 };
 
 export default Brand;
