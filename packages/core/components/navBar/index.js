@@ -4,23 +4,23 @@ import styled from "styled-components";
 import { color, borders, boxShadow } from "styled-system";
 import Box from "../box";
 
-const StyledNavbar = styled(Box)`
+const StyledNavBar = styled(Box)`
   display: flex;
   ${color}
   ${borders}
   ${boxShadow}
 `;
 
-const Navbar = props => <StyledNavbar {...props} />;
+const NavBar = props => <StyledNavBar {...props} />;
 
-Navbar.propTypes = {
+NavBar.propTypes = {
   ...Box.propTypes,
   ...borders.propTypes,
   ...color.propTypes,
   ...boxShadow.propTypes
 };
 
-Navbar.defaultProps = {
+NavBar.defaultProps = {
   flexDirection: "row",
   flexWrap: "nowrap",
   justifyContent: "space-between",
@@ -32,4 +32,4 @@ Navbar.defaultProps = {
   pr: 2
 };
 
-export default Navbar;
+export default NavBar;

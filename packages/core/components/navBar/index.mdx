@@ -1,46 +1,46 @@
 ---
-name: Navbar
+name: NavBar
 menu: Components
-route: /components/navbar
+route: /components/navBar
 ---
 
 import { Playground, PropsTable } from 'docz';
-import Navbar from './';
-import NavbarSection from '../navbarSection';
+import NavBar from './';
+import NavBarSection from '../navBarSection';
 import Link from '../link';
 import Brand from '../brand';
 
-# Navbar
+# NavBar
 
 <Playground>
-  <Navbar color="grayLight3">
-    <NavbarSection>
+  <NavBar color="grayLight3">
+    <NavBarSection>
       <Brand
         imagesrc="https://docs.rasterfoundry.com/assets/images/raster-foundry-logo.png"
         title="Raster Foundry"
         href="#"
         width="4rem"
       />
-    </NavbarSection>
-    <NavbarSection justifyContent="center">
+    </NavBarSection>
+    <NavBarSection justifyContent="center">
       <Link>Home</Link>
       <Link>Projects</Link>
       <Link>Docs</Link>
-    </NavbarSection>
-    <NavbarSection>
+    </NavBarSection>
+    <NavBarSection>
       <Link>Sign out</Link>
-    </NavbarSection>
-  </Navbar>
-  <Navbar py={1} bg="grayLight3" borderBottom="1px solid" borderColor="grayLight3" justifyContent="center">
-    <NavbarSection justifyContent="center">
+    </NavBarSection>
+  </NavBar>
+  <NavBar py={1} bg="grayLight3" borderBottom="1px solid" borderColor="grayLight3" justifyContent="center">
+    <NavBarSection justifyContent="center">
       <Link>Layers</Link>
       <Link>Images</Link>
       <Link>Analysis</Link>
-    </NavbarSection>
-  </Navbar>
+    </NavBarSection>
+  </NavBar>
 </Playground>
 
-### Navbar PropTypes
+### NavBar PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
@@ -50,7 +50,7 @@ import Brand from '../brand';
 | ${borders} | string | no | | see [styled-system](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#borders) |
 | boxShadow | string | no | | uses styled-system but documentation is poor. accepts typical css box-shadows |
 
-### NavbarSection PropTypes
+### NavBarSection PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|

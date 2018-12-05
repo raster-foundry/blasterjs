@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { themeGet } from "styled-system";
 import Box from "../box";
 
-const StyledNavbarSection = styled(Box)`
+const StyledNavBarSection = styled(Box)`
   display: flex;
 
   > * + * {
@@ -12,14 +12,14 @@ const StyledNavbarSection = styled(Box)`
   }
 `;
 
-const NavbarSection = props => <StyledNavbarSection {...props} />;
+const NavBarSection = props => <StyledNavBarSection {...props} />;
 
-NavbarSection.propTypes = {
+NavBarSection.propTypes = {
   ...Box.propTypes,
   gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-NavbarSection.defaultProps = {
+NavBarSection.defaultProps = {
   flexDirection: "row",
   flexWrap: "nowrap",
   justifyContent: "space-between",
@@ -27,4 +27,4 @@ NavbarSection.defaultProps = {
   gutter: 3
 };
 
-export default NavbarSection;
+export default NavBarSection;
