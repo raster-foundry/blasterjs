@@ -16,3 +16,4 @@ export { default as NavBarSection } from "./components/navBarSection";
 export { default as Pill } from "./components/pill";
 export { default as ProgressBar } from "./components/progressBar";
 export { default as Swatch } from "./components/swatch";
+export { default as Text } from "./components/text";
