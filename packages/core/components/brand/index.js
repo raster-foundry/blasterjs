@@ -33,11 +33,7 @@ Brand.propTypes = {
 };
 
 Brand.defaultProps = {
-  color: "textBase",
-  pt: 2,
-  pb: 2,
-  pl: 2,
-  pr: 2
+  color: "textBase"
 };
 
 export default Brand;

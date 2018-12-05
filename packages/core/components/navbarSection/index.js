@@ -1,42 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { space, flex } from "styled-system";
-import { Alignment } from "../../common/alignment";
+import styled from "styled-components";
+import { themeGet } from "styled-system";
+import Box from "../box";
 
-const StyledNavbarSection = styled.div`
+const StyledNavbarSection = styled(Box)`
   display: flex;
-  align-items: center;
-  flex: 1;
-  padding-left: 1rem;
-  padding-right: 1rem;
 
-  ${props =>
-    props.alignment === Alignment.LEFT &&
-    css`
-      justify-content: flex-start;
-    `};
-  ${props =>
-    props.alignment === Alignment.RIGHT &&
-    css`
-      justify-content: flex-end;
-    `};
-  ${props =>
-    props.alignment === Alignment.CENTER &&
-    css`
-      justify-content: center;
-    `};
-  ${space};
-  ${flex};
+  > * + * {
+      margin-left: ${props => themeGet(`space.${props.gutter}`, props.gutter)};
+  }
 `;
 
-const NavbarSection = props => {
-  return (
-    <StyledNavbarSection {...props}>
-      <>{props.children}</>
-    </StyledNavbarSection>
-  );
+const NavbarSection = props => <StyledNavbarSection {...props} />;
+
+NavbarSection.propTypes = {
+  ...Box.propTypes,
+  gutter: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
-/** @component */
+NavbarSection.defaultProps = {
+  flexDirection: "row",
+  flexWrap: "nowrap",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gutter: 3
+};
+
 export default NavbarSection;

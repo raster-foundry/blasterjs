@@ -1,42 +1,35 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { withTheme } from "styled-components";
-import { darken, invert } from "polished";
-import { color, borders, boxShadow, lineHeight } from "styled-system";
-import Link from "../link";
+import styled from "styled-components";
+import { color, borders, boxShadow } from "styled-system";
+import Box from "../box";
 
-const StyledNavbar = styled.div`
+const StyledNavbar = styled(Box)`
   display: flex;
-  align-content: center;
-  ${color};
-  ${borders};
-  ${boxShadow};
-  ${lineHeight};
-
-  ${Link} {
-    padding: 1rem;
-    text-decoration: none;
-    color: inherit;
-  }
+  ${color}
+  ${borders}
+  ${boxShadow}
 `;
 
-const Navbar = props => {
-  return (
-    <StyledNavbar {...props}>
-      <>{props.children}</>
-    </StyledNavbar>
-  );
-};
+const Navbar = props => <StyledNavbar {...props} />;
 
 Navbar.propTypes = {
-  ...borders.PropTypes,
-  ...color.PropTypes,
-  ...boxShadow.PropTypes
+  ...Box.propTypes,
+  ...borders.propTypes,
+  ...color.propTypes,
+  ...boxShadow.propTypes
 };
 
 Navbar.defaultProps = {
-  bg: "shadeNormal"
+  flexDirection: "row",
+  flexWrap: "nowrap",
+  justifyContent: "space-between",
+  alignItems: "center",
+  bg: "shadeNormal",
+  pt: 2,
+  pb: 2,
+  pl: 2,
+  pr: 2
 };
 
-/** @component */
-export default withTheme(Navbar);
+export default Navbar;
