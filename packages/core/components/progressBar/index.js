@@ -1,23 +1,38 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { lighten, darken, rgba } from 'polished';
-import PlainProgressBar from '../plainProgressBar';
+import React from "react";
+import styled from "styled-components";
+import { color, borderRadius, themeGet } from "styled-system";
+import Box from "../box";
 
-const Label = styled.div`
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    margin-bottom: 0.5em;
-    font-size: 12px;
-    color: ${props => props.theme.colors.grayDark};
+const ProgressBar = styled(Box)`
+  ${color}
+  ${borderRadius}
+  position: relative;
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: ${props => themeGet(`colors.${props.color}`, props.color)};
+    width: ${props => (props.value / props.max) * 100}%;
+    border-radius: inherit;
+  }
 `;
 
-const ProgressBar = props => {
-    return (
-        <div>
-            <Label>{props.value}/{props.max}</Label>
-            <PlainProgressBar value={props.value} max={props.max}></PlainProgressBar>
-        </div>
-    );
-}
+ProgressBar.propTypes = {
+  ...Box.propTypes,
+  ...color.propTypes,
+  ...borderRadius.propTypes
+};
 
-/** @component */
+ProgressBar.defaultProps = {
+  width: "100%",
+  height: "0.8rem",
+  value: 0,
+  max: 0,
+  borderRadius: 999,
+  bg: "grayLightest",
+  color: "primary"
+};
+
 export default ProgressBar;

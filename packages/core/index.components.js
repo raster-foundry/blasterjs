@@ -14,6 +14,5 @@ export { default as Link } from "./components/link";
 export { default as Navbar } from "./components/navbar";
 export { default as NavbarSection } from "./components/navbarSection";
 export { default as Pill } from "./components/pill";
-export { default as PlainProgressBar } from "./components/plainProgressBar";
 export { default as ProgressBar } from "./components/progressBar";
 export { default as Swatch } from "./components/swatch";
