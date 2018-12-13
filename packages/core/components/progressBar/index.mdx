@@ -1,0 +1,30 @@
+---
+name: ProgressBar
+menu: Components
+route: /components/progressBar
+---
+
+import { Playground, PropsTable } from "docz";
+import { ThemeProvider } from "styled-components";
+import ProgressBar from "./";
+
+# ProgressBar
+
+Displays a fractional amount of progress towards some end.
+
+<Playground>
+  <ProgressBar value={25} max={100} />
+</Playground>
+
+### ProgressBar PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| value | number | no | `0` | current progress value |
+| max | number | no | `1` | max progress value |
+| color | string | no | `primary`  | fill color |
+| bg | string | no | `grayLightest` | track color |
+| borderRadius | string or number | no | `999` | |
+| width | string | no | `100%` | |
+| height | string | no | `0.8rem` | |

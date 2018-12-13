@@ -1,19 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { space, themeGet } from "styled-system";
+import { themeGet } from "styled-system";
+import Box from "../box";
 import Icon from "../icon";
 import Header from "../header";
 import { Intent } from "../../common/intent";
 
-const StyledCallout = styled.div`
+const StyledCallout = styled(Box)`
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-contents: flex-start;
-  padding: ${themeGet('space.3', '2.4rem')};
   background-color: ${props => themeGet(`colors.${props.bg}`)};
-  ${space}
 
   ${props => props.icon && css`
     padding-left: 0;
@@ -23,14 +22,9 @@ const StyledCallout = styled.div`
 const CalloutIcon = styled(Icon)`
   flex: none;
   margin: 0 ${themeGet('space.2', '1.6rem')};
-  font-size: ${props => props.size || themeGet('fontSizes.4', '2.2rem')};
 `;
 
-const CalloutContent = styled.div`
-  flex: auto;
-`;
-
-const CalloutTitle = styled(Header.h4)`
+const CalloutTitle = styled(Header).attrs({ as: "h4" })`
   margin-bottom: ${themeGet('space.1', '0.8rem')};
   line-height: 1;
 `;
@@ -82,24 +76,23 @@ const getIntentColors = intent => {
   return colors;
 }
 
-const Callout = props => {
-  const { icon, iconSize, intent, title, children, ...otherProps } = props;
+const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
   const iconName = getIconName(icon, intent);
   const { color, bg } = getIntentColors(intent);
 
   return (
-    <StyledCallout {...otherProps} bg={bg} icon={!!iconName}>
+    <StyledCallout {...props} bg={bg} icon={!!iconName}>
       {iconName && <CalloutIcon name={iconName} color={color} size={iconSize} />}
-      <CalloutContent>
+      <Box flex="auto">
         {title && <CalloutTitle color={color}>{title}</CalloutTitle>}
         {children}
-      </CalloutContent>
+      </Box>
     </StyledCallout>
   );
 };
 
 Callout.propTypes = {
-  ...space.PropTypes,
+  ...Box.PropTypes,
   intent: PropTypes.oneOf(Object.values(Intent)),
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   iconSize: PropTypes.string,
@@ -109,8 +102,12 @@ Callout.propTypes = {
 Callout.defaultProps = {
   intent: Intent.NONE,
   icon: undefined,
-  iconSize: undefined,
-  title: undefined
+  iconSize: "2.2rem",
+  title: undefined,
+  pt: 3,
+  pb: 3,
+  pl: 3,
+  pr: 3
 };
 
 export default Callout;

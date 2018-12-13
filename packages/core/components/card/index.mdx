@@ -6,20 +6,27 @@ route: /components/card
 
 import { Playground, PropsTable } from 'docz'
 import Card from './'
+import { Density } from "../../common/density";
 import Header from '../header';
 import Link from '../link';
 
 # Card
 
 <Playground>
-  <Card density="comfortable">
-    <Header.h2>Hello world</Header.h2>
+  <Card density={Density.COMFORTABLE}>
+    <Header as="h2">Hello world</Header>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id magni repellendus illum quasi, officiis assumenda facere inventore accusamus maiores soluta, qui quibusdam et, dolorum tempora ab a unde porro eligendi!</p>
     <Link href="#">Continue</Link>
   </Card>
 </Playground>
 
 ### PropTypes
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| density | enum | false | ["comfortable", "compact"] |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| density | enum | no |  | see `common/density` |
+| bg | string | no | `white` | |
+| border | string | no | `2px solid` | |
+| borderColor | string | no | `grayLight3` | |
+| borderRadius | string | no | `large` | |
+| boxShadow | string | no | `0 5px 10px -4px rgba(67, 83, 153, 0.2)`| |

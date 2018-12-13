@@ -1,42 +1,51 @@
-/* @flow */
-
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { color, borders, borderColor, borderRadius, boxShadow, themeGet } from "styled-system";
 import { Density } from "../../common/density";
+import Box from "../box";
 
-const StyledCard = styled.div`
+const Card = styled(Box)`
+  ${color}
+  ${borders}
+  ${borderColor}
+  ${borderRadius}
+  ${boxShadow}
   position: relative;
-  background: ${props => props.theme.colors.white};
-  box-shadow: 0 5px 10px -4px rgba(67, 83, 153, 0.2);
-  border: 2px solid ${props => props.theme.colors.grayLight3};
-  border-radius: ${props => props.theme.radii.large};
-  padding: 0;
 
   ${props =>
     props.density === Density.COMFORTABLE &&
     css`
-      padding: 2.5rem;
+      padding: ${props => themeGet('space.3', '2.4rem')};;
     `};
 
   ${props =>
     props.density === Density.COMPACT &&
     css`
-      padding: 0.5rem;
+      padding:  ${props => themeGet('space.1', '0.8rem')};;
     `};
 `;
 
-StyledCard.propTypes = {
+Card.propTypes = {
+  ...Box.propTypes,
+  ...color.propTypes,
+  ...borders.propTypes,
+  ...borderColor.propTypes,
+  ...borderRadius.propTypes,
+  ...boxShadow.propTypes,
   density: PropTypes.oneOf(Object.values(Density))
 };
 
-const Card = props => {
-  return (
-    <StyledCard density={props.density}>
-      <>{props.children}</>
-    </StyledCard>
-  );
+Card.defaultProps = {
+  pt: 0,
+  pb: 0,
+  pl: 0,
+  pr: 0,
+  bg: "white",
+  border: "2px solid",
+  borderColor: "grayLight3",
+  borderRadius: "large",
+  boxShadow: "0 5px 10px -4px rgba(67, 83, 153, 0.2)"
 };
 
-/** @component  */
 export default Card;

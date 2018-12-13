@@ -11,31 +11,33 @@ import Brand from './'
 
 ### Brand title
 <Playground>
-  <Brand 
+  <Brand
     color="textBase"
-    title="Raster Foundry" 
+    title="Raster Foundry"
     href="#"
   />
 </Playground>
 
 ### Brand image
 <Playground>
-  <Brand 
-    title="Logo" 
+  <Brand
+    title="Raster Foundry"
     href="#"
     width="50px"
-    p="10px"
-    m="10px"
-    imagesrc="https://docs.rasterfoundry.com/assets/images/raster-foundry-logo.png" 
+    px={1}
+    py={1}
+    mx={4}
+    my={4}
+    imagesrc="https://docs.rasterfoundry.com/assets/images/raster-foundry-logo.png"
   />
 </Playground>
 
 ### PropTypes
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| href |  string | true | |
-| title |  string | true | |
-| imagesrc |  string | false | |
-| color |  string | false | |
-| width |  string | false | |
-| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Link props | | | | see [Link](/components/link) |
+| href |  string | yes | | |
+| title |  string | yes | | |
+| imagesrc |  string | no | | |
+| color |  string | no | `textBase` | |
+| width |  string | no | | applies to image only |

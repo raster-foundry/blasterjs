@@ -79,12 +79,14 @@ import { Appearance } from "../../common/appearance";
 </Playground>
 
 ### PropTypes
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| intent | enum | false | see `common/intent` |
-| appearance | enum | false | see `common/appearance` |
-| block | bool | false | |
-| disabled | bool | false | |
-| iconBefore | string | false | |
-| iconAfter | string | false | |
-| isLoading | bool | false | |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| ${space} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| borderRadius | number or string | no | `base` | |
+| intent | enum | no | `NONE` | see `common/intent` |
+| appearance | enum | no | `DEFAULT` | see `common/appearance` |
+| block | bool | no | | |
+| disabled | bool | no | | |
+| iconBefore | string | no | | |
+| iconAfter | string | no | | |
+| isLoading | bool | no | | |

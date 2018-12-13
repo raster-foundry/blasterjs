@@ -1,15 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { space, size, themeGet } from "styled-system";
+import { size } from "styled-system";
 import Badge from "../badge";
 import { Shape } from "../../common/shape";
 
 const StyledSwatch = styled(Badge)`
-  width: 1em;
-  height: 1em;
-  padding: ${themeGet('space.0', 0)};
-  ${space}
   ${size}
 `;
 
@@ -29,12 +25,12 @@ const getBorderRadius = (borderRadius, shape) => {
   }
 };
 
-const Swatch = ({borderRadius, shape, color, children, ...otherProps}) => {
+const Swatch = ({borderRadius, shape, color, children, ...props}) => {
   const radius = getBorderRadius(borderRadius, shape);
 
   return (
     <StyledSwatch
-      {...otherProps}
+      {...props}
       bg={color}
       title={color}
       borderRadius={radius}
@@ -46,15 +42,17 @@ Swatch.propTypes = {
   ...Badge.propTypes,
   ...size.propTypes,
   color: PropTypes.string.isRequired,
-  shape: PropTypes.oneOf(Object.values(Shape)),
-  borderRadius: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  shape: PropTypes.oneOf(Object.values(Shape))
 };
 
 Swatch.defaultProps = {
   ...Badge.defaultProps,
   ...size.defaultProps,
   shape: Shape.ROUNDED,
-  borderRadius: undefined
+  borderRadius: undefined,
+  padding: 0,
+  width: "1em",
+  height: "1em"
 };
 
 export default Swatch;

@@ -18,6 +18,9 @@ const colors = {
   white: "#FFFFFF",
   black: "#1B1C31", // also gray1
 
+  link: "#738FFC",
+  linkHover: "#0F3EFA",
+
   // Still reviewing the following colors
   grayLight: "#999DA8", //#4d4f6d
   grayLighter: "#C8CCDB", //#8c8dad
@@ -45,17 +48,6 @@ const fonts = {
   code: "'Source Code Pro', monospace"
 };
 
-const typeSystem = {
-  xs: "1rem",
-  sm: "1.2rem",
-  base: "1.5rem",
-  lg: "1.8rem",
-  xl: "2.2rem",
-  xxl: "2.6rem",
-  xxxl: "2.9rem",
-  xxxxl: "3.4rem"
-};
-
 const radius = {
   small: "3px",
   base: "5px",
@@ -68,23 +60,12 @@ const buttonsStyles = {
   DEFAULT: "default"
 };
 
-const linkStyles = {
-  color: "#738FFC"
-};
-
-const entities = {
-  breadcrumb: "▸"
-};
-
 const icons = $REPLACE;
 
 export const theme = {
   colors,
   fonts,
   radius,
-  typeSystem,
   buttonsStyles,
-  linkStyles,
-  entities,
   icons
 };

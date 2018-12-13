@@ -1,34 +1,38 @@
-/* @flow */
-
 import React from "react";
 import PropTypes from "prop-types";
-import { darken, rgba, shade } from "polished";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+import { display, space, color, fontSize, themeGet } from "styled-system";
 
-const Link = styled.a`
+const StyledLink = styled.a`
+  ${display}
+  ${space}
+  ${color}
   text-decoration: none;
   font-weight: 600;
-  color: ${props => props.theme.linkStyles.color};
-  font-size: ${props => props.theme.typeSystem.base};
-  font-family: ${props => props.theme.fonts.sans};
 
   &:hover {
     text-decoration: underline;
-    color: ${props => darken(0.2, props.theme.linkStyles.color)};
+    color: ${props => themeGet(`colors.${props.colorHover}`)};
   }
 `;
 
-Link.defaultProps = {
-  href: "#"
-};
+const Link = props => <StyledLink {...props} />;
 
 Link.propTypes = {
-  /**
-   * Enforcing best practices by defining a default href
-   */
+  ...display.propTypes,
+  ...space.propTypes,
+  ...color.propTypes,
+  ...fontSize.propTypes,
   href: PropTypes.string.isRequired,
   active: PropTypes.bool,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  colorHover: PropTypes.string
+};
+
+Link.defaultProps = {
+  href: "#",
+  color: "link",
+  colorHover: "linkHover"
 };
 
 /** @component */

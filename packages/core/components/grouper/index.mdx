@@ -51,9 +51,9 @@ import Button from '../button'
 
 
 ### PropTypes
-| Prop | Type | Required | Description |
-|:-----|:-----|:---------|:------------|
-| borderRadius | string | false | use `theme.radii`. applies to outer corners of first & last children. ignored if `gutter` provided. |
-| gutter | string | false | gap between children |
-| alignItems | string | false | default is "stretch" |
-| ${space} | string | false | see [styled-system SPACE](https://jxnblk.com/styled-system/#margin--padding) |
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| borderRadius | string | no | `base` | outer corners of first & last children. ignored iff `gutter`. |
+| gutter | string | no | `0` | gap between children |
+| alignItems | string | no | `stretch` | |
+| ${space} | string | no | | see [styled-system](https://jxnblk.com/styled-system/#margin--padding) |

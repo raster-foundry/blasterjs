@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { space, themeGet } from "styled-system";
 
 const StyledGrouper = styled.div`
-  ${space};
+  ${space}
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -15,7 +15,7 @@ const StyledGrouper = styled.div`
   }
 
   > * + * {
-    margin-left: ${props => props.gutter};
+    margin-left: ${props => themeGet(`space.${props.gutter}`, props.gutter)};
   }
 `;
 
@@ -40,11 +40,7 @@ const CompactGrouper = styled(StyledGrouper)`
 `;
 
 const Grouper = props => {
-  return props.gutter == 0 ? (
-    <CompactGrouper {...props}>{props.children}</CompactGrouper>
-  ) : (
-    <StyledGrouper {...props}>{props.children}</StyledGrouper>
-  );
+  return props.gutter === 0 ? <CompactGrouper {...props} /> : <StyledGrouper {...props} />;
 };
 
 Grouper.propTypes = {
