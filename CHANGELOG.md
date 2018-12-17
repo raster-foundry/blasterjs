@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - Changed theme file `radius` to `radii` (breaking change for custom themes)
 - Normalized usage of styled-system across every component
+- Renamed `Link` to `A`.
 
 ### Deprecated
 
