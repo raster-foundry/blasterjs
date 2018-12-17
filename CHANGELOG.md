@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `Icon` component added to the core package [#103](https://github.com/raster-foundry/blasterjs/pull/103)
 - `Box` component added to the core package [#112](https://github.com/raster-foundry/blasterjs/pull/112)
 - `Text` component added to the core package [#114](https://github.com/raster-foundry/blasterjs/pull/114)
+- 'GlobalStyle' component added to the core package
 
 ### Changed
 
@@ -22,6 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Deprecated
 
 ### Removed
+
+- Removed reset.css.
 
 ### Fixed
 

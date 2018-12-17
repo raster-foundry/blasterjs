@@ -12,18 +12,26 @@ Wrap the root of your application with the ThemeProvider component. This should 
 
 The ThemeProvider is a wrapper around styled-components' ThemeProvider.
 
+Include `<GlobalStyle/>` to reset CSS.
+
 ```jsx static
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "@blasterjs/core";
 // or
 // import { MyCustomTheme } from '../your-custom-theme'
-
-import "@blasterjs/core/dist/reset.css";
+import GlobalStyle from "@blaster/core/components/globalStyle";
 
 class App extends React.Component {
   render() {
-    return <ThemeProvider theme={theme}>...</ThemeProvider>;
+    return (
+        <ThemeProvider theme={theme}>
+            <>
+                <GlobalStyle />
+                {props.children}
+            </>
+        </ThemeProvider>
+    );
   }
 }
 ```

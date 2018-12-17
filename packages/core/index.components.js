@@ -1,3 +1,4 @@
+export { default as GlobalStyle } from "./components/globalStyle";
 export { default as A } from "./components/a";
 export { default as Badge } from "./components/badge";
 export { default as Box } from "./components/box";
