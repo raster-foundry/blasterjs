@@ -34,6 +34,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
+  as: "h1",
   color: "textBase",
   lineHeight: 2,
   mt: 0,
