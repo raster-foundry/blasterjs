@@ -2,12 +2,11 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { fontSize, themeGet } from "styled-system";
-import Box from "../box";
+import Text from "../text";
 import A from "../a";
 import Icon from "../icon";
 
-const StyledBreadcrumbs = styled(Box)`
-  ${fontSize}
+const StyledBreadcrumbs = styled(Text)`
   display: flex;
   flex-flow: row wrap;
   max-width: 100%;
@@ -77,8 +76,7 @@ const Breadcrumbs = ({
 };
 
 Breadcrumbs.propTypes = {
-  ...Box.propTypes,
-  ...fontSize.propTypes,
+  ...Text.propTypes,
   highlightCurrent: PropTypes.bool,
   color: PropTypes.string,
   colorHover: PropTypes.string,
