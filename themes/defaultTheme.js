@@ -1,3 +1,17 @@
+const space = [
+  0,
+  "0.8rem",
+  "1.6rem",
+  "2.4rem",
+  "3.2rem",
+  "4rem",
+  "4.8rem",
+  "5.6rem",
+  "6.4rem",
+  "7.2rem",
+  "8rem"
+];
+
 const colors = {
   primary: "#738FFC",
   secondary: "#2FC1D0",
@@ -37,18 +51,33 @@ const colors = {
 
   // Action Colors:
   orange: "#E69348",
-  yellow: "#FFCA28",
+  yellow: "#b18500",
   red: "#f03333",
-  green: "#81C784"
+  green: "#4e9251",
+
+  yellowTint: "#fdf5e0",
+  redTint: "#f5dbdb",
+  greenTint: "#e1ece2"
 };
 
 const fonts = {
-  sans: "'Libre Franklin', sans-serif",
-  serif: "serif",
+  body: "'Libre Franklin', sans-serif",
+  display: "'Libre Franklin', sans-serif",
   code: "'Source Code Pro', monospace"
 };
 
-const radius = {
+const fontSizes = [
+  "1rem",
+  "1.2rem",
+  "1.5rem",
+  "1.8rem",
+  "2.2rem",
+  "2.6rem",
+  "2.9rem",
+  "3.4rem"
+];
+
+const radii = {
   small: "3px",
   base: "5px",
   large: "10px"
@@ -63,9 +92,11 @@ const buttonsStyles = {
 const icons = $REPLACE;
 
 export const theme = {
+  space,
   colors,
   fonts,
-  radius,
+  radii,
+  fontSizes,
   buttonsStyles,
   icons
 };

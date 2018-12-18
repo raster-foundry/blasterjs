@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { fontSize, themeGet } from "styled-system";
 import Box from "../box";
-import Link from "../link";
+import A from "../a";
 import Icon from "../icon";
 
 const StyledBreadcrumbs = styled(Box)`
@@ -24,7 +24,7 @@ const StyledBreadcrumbs = styled(Box)`
   `}
 `;
 
-const BreadcrumbItem = styled(Link)`
+const BreadcrumbItem = styled(A)`
   color: ${props => themeGet(`colors.${props.color}`, props.color)};
 
   &:hover {

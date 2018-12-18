@@ -1,3 +1,5 @@
+export { default as GlobalStyle } from "./components/globalStyle";
+export { default as A } from "./components/a";
 export { default as Badge } from "./components/badge";
 export { default as Box } from "./components/box";
 export { default as Brand } from "./components/brand";
@@ -10,7 +12,6 @@ export { default as Grouper } from "./components/grouper";
 export { default as Header } from "./components/header";
 export { default as Icon } from "./components/icon";
 export { default as Image } from "./components/image";
-export { default as Link } from "./components/link";
 export { default as NavBar } from "./components/navBar";
 export { default as NavBarSection } from "./components/navBarSection";
 export { default as Pill } from "./components/pill";

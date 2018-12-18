@@ -7,7 +7,7 @@ route: /components/navBar
 import { Playground, PropsTable } from 'docz';
 import NavBar from './';
 import NavBarSection from '../navBarSection';
-import Link from '../link';
+import A from '../a';
 import Brand from '../brand';
 
 # NavBar
@@ -23,19 +23,19 @@ import Brand from '../brand';
       />
     </NavBarSection>
     <NavBarSection justifyContent="center">
-      <Link>Home</Link>
-      <Link>Projects</Link>
-      <Link>Docs</Link>
+      <A>Home</A>
+      <A>Projects</A>
+      <A>Docs</A>
     </NavBarSection>
     <NavBarSection>
-      <Link>Sign out</Link>
+      <A>Sign out</A>
     </NavBarSection>
   </NavBar>
   <NavBar py={1} bg="grayLight3" borderBottom="1px solid" borderColor="grayLight3" justifyContent="center">
     <NavBarSection justifyContent="center">
-      <Link>Layers</Link>
-      <Link>Images</Link>
-      <Link>Analysis</Link>
+      <A>Layers</A>
+      <A>Images</A>
+      <A>Analysis</A>
     </NavBarSection>
   </NavBar>
 </Playground>

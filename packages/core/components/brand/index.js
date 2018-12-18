@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { width } from "styled-system";
 import Image from "../image";
-import Link from "../link";
+import A from "../a";
 
-const StyledBrand = styled(Link)`
+const StyledBrand = styled(A)`
   display: inline-block;
   text-decoration: none;
   font-weight: 600;
@@ -25,7 +25,7 @@ const Brand = ({href, title, imagesrc, width, children, ...props}) => {
 };
 
 Brand.propTypes = {
-  ...Link.propTypes,
+  ...A.propTypes,
   ...width.propTypes,
   imagesrc: PropTypes.string,
   href: PropTypes.string.isRequired,

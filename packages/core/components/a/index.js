@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { display, space, color, fontSize, themeGet } from "styled-system";
 
-const StyledLink = styled.a`
+const StyledA = styled.a`
   ${display}
   ${space}
   ${color}
@@ -16,9 +16,9 @@ const StyledLink = styled.a`
   }
 `;
 
-const Link = props => <StyledLink {...props} />;
+const A = props => <StyledA {...props} />;
 
-Link.propTypes = {
+A.propTypes = {
   ...display.propTypes,
   ...space.propTypes,
   ...color.propTypes,
@@ -29,11 +29,10 @@ Link.propTypes = {
   colorHover: PropTypes.string
 };
 
-Link.defaultProps = {
+A.defaultProps = {
   href: "#",
   color: "link",
   colorHover: "linkHover"
 };
 
-/** @component */
-export default Link;
+export default A;
