@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { darken, rgba } from "polished";
 import styled, { css } from "styled-components";
-import { space, borderRadius, themeGet } from "styled-system";
+import { borderRadius, themeGet } from "styled-system";
+import Text from "../text";
 import Icon from "../icon";
 import { Intent } from "../../common/intent";
 import { Appearance } from "../../common/appearance";
@@ -41,7 +42,7 @@ const ButtonLoading = styled.span`
   font-size: ${themeGet('fontSizes.1', 'inherit')};
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled(Text)`
   position: relative;
   cursor: pointer;
   display: inline-flex;
@@ -56,8 +57,6 @@ const StyledButton = styled.button`
   user-select: none;
   will-change: box-shadow, background-color;
   transition: 0.1s ease-in-out box-shadow, 0.1s ease-in-out background-color;
-
-  ${space}
   ${borderRadius}
 
   ${props => buttonStates(props)}
@@ -147,18 +146,17 @@ function buttonStates(props) {
   `;
 }
 
-const Button = props => {
-  const {
-    iconBefore,
-    iconAfter,
-    isLoading,
-    children,
-    ...otherProps
-  } = props;
+const Button = ({
+  iconBefore,
+  iconAfter,
+  isLoading,
+  children,
+  ...props
+}) => {
 
   return (
-    <StyledButton {...otherProps}>
-      <ButtonChildren {...props}>
+    <StyledButton {...props}>
+      <ButtonChildren iconBefore={iconBefore} iconAfter={iconAfter} isLoading={isLoading}>
         {iconBefore && <ButtonIcon name={iconBefore} mr={1} />}
         {children}
         {iconAfter && <ButtonIcon name={iconAfter} ml={1} />}
@@ -169,7 +167,7 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  ...space.propTypes,
+  ...Text.propTypes,
   ...borderRadius.propTypes,
   intent: PropTypes.oneOf(Object.values(Intent)),
   appearance: PropTypes.oneOf(Object.values(Appearance)),
@@ -181,6 +179,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  tag: "button",
   pt: 1,
   pb: 1,
   pl: 1,
