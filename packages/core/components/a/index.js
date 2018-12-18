@@ -6,7 +6,6 @@ import Text from "../text";
 
 const StyledA = styled(Text)`
   text-decoration: none;
-  font-weight: 600;
 
   &:hover {
     text-decoration: underline;
@@ -28,7 +27,8 @@ A.defaultProps = {
   tag: "a",
   href: "#",
   color: "link",
-  colorHover: "linkHover"
+  colorHover: "linkHover",
+  fontWeight: 600
 };
 
 export default A;
