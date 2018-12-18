@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { withTheme } from "styled-components";
-import { color, size, space } from "styled-system";
+import { size } from "styled-system";
+import Text from "../text";
 
 /* helpful links
   SVG optimization
@@ -10,10 +11,8 @@ import { color, size, space } from "styled-system";
   - https://github.com/elrumordelaluz/svgson-next
   - https://github.com/Angelmmiguel/svgi
 */
-const StyledIcon = styled.svg`
-  ${color}
+const StyledIcon = styled(Text)`
   ${size}
-  ${space}
   vertical-align: middle;
 `;
 
@@ -34,13 +33,13 @@ const Icon = withTheme(props => {
 });
 
 Icon.propTypes = {
-  ...space.proptTypes,
-  ...color.propTypes,
+  ...Text.propTypes,
   ...size.propTypes,
   name: PropTypes.string.isRequired
 };
 
 Icon.defaultProps = {
+  tag: "svg",
   size: "1em",
   mt: "-2px",
   mb: 0,
