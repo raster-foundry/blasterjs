@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { space, color, lineHeight, textAlign, themeGet } from "styled-system";
+import { space, color, fontFamily, lineHeight, textAlign, themeGet } from "styled-system";
 
 const Header = styled.h1`
   ${space}
   ${color}
   ${lineHeight}
   ${textAlign}
+  ${fontFamily}
   font-weight: 700;
 
   ${props => {
@@ -30,12 +31,14 @@ Header.propTypes = {
   ...space.propTypes,
   ...color.propTypes,
   ...textAlign.propTypes,
+  ...fontFamily.propTypes,
   as: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
 };
 
 Header.defaultProps = {
   as: "h1",
   color: "textBase",
+  fontFamily: "display",
   lineHeight: 2,
   mt: 0,
   mb: 0,

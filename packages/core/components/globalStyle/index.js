@@ -1,5 +1,6 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
+import { themeGet } from "styled-system";
 
 const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -54,8 +55,9 @@ const GlobalStyle = createGlobalStyle`
       font-size: 62.5%;
     }
     body {
+      font-family: ${themeGet('fonts.body')};
       font-size: 15px;
-      font-size: 1.5rem;
+      font-size: ${themeGet('fontSizes.2')};
     }
 `;
 
