@@ -9,12 +9,13 @@ import Text from './'
 
 # Text
 
-Generic text element. Renders as `<p>`. Similar to `Box` but minus some layout
-functionality (flex & grid) and plus text functionality (color, fontFamily, fontSize,
-fontWeight, textAlign, lineHeight, letterSpacing).
+Generic text element. Renders as `<p>` by default. Extends `Box` with text
+functionality (color, fontFamily, fontSize, fontWeight, textAlign, lineHeight,
+letterSpacing).
 
 <Playground>
   <Text>Hey whatsup</Text>
+  <Text tag="span">Go figure, I'm a span</Text>
   <Text pl={4} color="primary" fontWeight="bold">Not much. You?</Text>
   <Text textAlign="right" fontSize={5} letterSpacing=".6em">Oh ya know. Same ol.</Text>
 </Playground>
@@ -23,23 +24,7 @@ fontWeight, textAlign, lineHeight, letterSpacing).
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| ${display} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${space} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${width} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${maxWidth} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${minWidth} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${height} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${maxHeight} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${minHeight} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${ratio} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${verticalAlign} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${overflow} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${position} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${zIndex} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${top} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${right} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${bottom} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${left} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| Box props | | | | see [Box](/components/box) |
 | ${fontFamily} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${fontSize} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${fontWeight} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |

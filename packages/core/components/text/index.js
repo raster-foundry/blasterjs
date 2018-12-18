@@ -2,25 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import * as styledSystem from "styled-system";
+import Box from "../box";
 
-const Text = styled.p`
-    ${styledSystem.display}
-    ${styledSystem.space}
-    ${styledSystem.width}
-    ${styledSystem.maxWidth}
-    ${styledSystem.minWidth}
-    ${styledSystem.height}
-    ${styledSystem.maxHeight}
-    ${styledSystem.minHeight}
-    ${styledSystem.ratio}
-    ${styledSystem.verticalAlign}
-    ${styledSystem.overflow}
-    ${styledSystem.position}
-    ${styledSystem.zIndex}
-    ${styledSystem.top}
-    ${styledSystem.right}
-    ${styledSystem.bottom}
-    ${styledSystem.left}
+const Text = styled(Box)`
     ${styledSystem.fontFamily}
     ${styledSystem.fontSize}
     ${styledSystem.fontWeight}
@@ -31,23 +15,7 @@ const Text = styled.p`
 `;
 
 Text.propTypes = {
-  ...styledSystem.display.propTypes,
-  ...styledSystem.space.propTypes,
-  ...styledSystem.width.propTypes,
-  ...styledSystem.maxWidth.propTypes,
-  ...styledSystem.minWidth.propTypes,
-  ...styledSystem.height.propTypes,
-  ...styledSystem.maxHeight.propTypes,
-  ...styledSystem.minHeight.propTypes,
-  ...styledSystem.ratio.propTypes,
-  ...styledSystem.verticalAlign.propTypes,
-  ...styledSystem.overflow.propTypes,
-  ...styledSystem.position.propTypes,
-  ...styledSystem.zIndex.propTypes,
-  ...styledSystem.top.propTypes,
-  ...styledSystem.right.propTypes,
-  ...styledSystem.bottom.propTypes,
-  ...styledSystem.left.propTypes,
+  ...Box.propTypes,
   ...styledSystem.fontFamily.propTypes,
   ...styledSystem.fontSize.propTypes,
   ...styledSystem.fontWeight.propTypes,
@@ -55,6 +23,10 @@ Text.propTypes = {
   ...styledSystem.lineHeight.propTypes,
   ...styledSystem.letterSpacing.propTypes,
   ...styledSystem.color.propTypes
+};
+
+Text.defaultProps = {
+  tag: 'p'
 };
 
 export default Text;
