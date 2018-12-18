@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import * as styledSystem from "styled-system";
 
@@ -45,9 +46,10 @@ const StyledBox = styled.div`
   ${styledSystem.left}
 `;
 
-const Box = props => <StyledBox {...props} />;
+const Box = ({tag, ...props}) => <StyledBox as={tag} {...props} />;
 
 Box.propTypes = {
+  tag: PropTypes.string,
   ...styledSystem.display.propTypes,
   ...styledSystem.space.propTypes,
   ...styledSystem.width.propTypes,
@@ -88,6 +90,10 @@ Box.propTypes = {
   ...styledSystem.right.propTypes,
   ...styledSystem.bottom.propTypes,
   ...styledSystem.left.propTypes
+};
+
+Box.defaultProps = {
+  tag: undefined
 };
 
 export default Box;
