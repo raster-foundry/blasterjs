@@ -11,12 +11,12 @@ import Header from './'
 
 <Playground>
   <Header children="Content defined with a prop" />
-  <Header as="h1">This is h1 (default)</Header>
-  <Header as="h2">This is h2</Header>
-  <Header as="h3">This is h3</Header>
-  <Header as="h4">This is h4</Header>
-  <Header as="h5">This is h5</Header>
-  <Header as="h6">This is h6</Header>
+  <Header tag="h1">This is h1 (default)</Header>
+  <Header tag="h2">This is h2</Header>
+  <Header tag="h3">This is h3</Header>
+  <Header tag="h4">This is h4</Header>
+  <Header tag="h5">This is h5</Header>
+  <Header tag="h6">This is h6</Header>
   <Header textAlign="center">This is a centered Header</Header>
 </Playground>
 
@@ -24,9 +24,7 @@ import Header from './'
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| as | string | no | `h1` | `[h1, h2, h3, h4, h5, h6]` |
+| Text props | | | | see [Text](/components/text) |
+| tag | string | no | `h1` | `[h1, h2, h3, h4, h5, h6]` |
 | color | string | no | `textBase` | |
 | lineHeight | number or string | no | `2` | |
-| textAlign | string | no | | |
-| fontFamily | string | no | `display` | should be a key in theme fonts |
-| ${space} | string | no | | see [styled-system](https://jxnblk.com/styled-system/#margin--padding) |

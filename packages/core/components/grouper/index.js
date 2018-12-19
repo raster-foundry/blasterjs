@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { space, themeGet } from "styled-system";
+import { themeGet } from "styled-system";
+import Box from "../box";
 
-const StyledGrouper = styled.div`
-  ${space}
+const StyledGrouper = styled(Box)`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -44,7 +44,7 @@ const Grouper = props => {
 };
 
 Grouper.propTypes = {
-  ...space.PropTypes,
+  ...Box.PropTypes,
   borderRadius: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   alignItems: PropTypes.string

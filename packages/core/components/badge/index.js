@@ -1,30 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { color, fontSize, borderRadius } from "styled-system";
-import Box from "../box";
+import { borderRadius } from "styled-system";
+import Text from "../text";
 
-const StyledBadge = styled(Box)`
+const StyledBadge = styled(Text)`
   display: inline-block;
   line-height: 1;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  ${color}
-  ${fontSize}
   ${borderRadius}
 `;
 
 const Badge = props => {
   return (
-    <StyledBadge {...props}>{props.children}</StyledBadge>
+    <StyledBadge {...props} />
   );
 };
 
 Badge.propTypes = {
-  ...Box.propTypes,
-  ...color.propTypes,
-  ...fontSize.propTypes,
+  ...Text.propTypes,
   ...borderRadius.propTypes
 };
 

@@ -10,44 +10,31 @@ import { Direction } from "../../common/direction";
 
 # Divider
 
-## Vertical Divider with horizontal margin
+## Vertical Divider
 
 <Playground>
     Something on the left
-    <Divider direction={Direction.VERTICAL} mx={"0.8rem"} />
+    <Divider direction={Direction.VERTICAL} mx={1} />
+    Something in the middle
+    <Divider direction={Direction.VERTICAL} width="4px" height="4rem" mx={3} color="primary" />
     Something on the right
 </Playground>
 
-## Vertical Divider with margin, width, height, color
-
-<Playground>
-    Something on the left
-    <Divider direction={Direction.VERTICAL} width={"4px"} height={"4rem"} mx={"2.4rem"} color={"primary"} />
-    Something on the right
-</Playground>
-
-
-## Horizontal Divider with vertical margin
+## Horizontal Divider
 
 <Playground>
     Something on the top
-    <Divider direction={Direction.HORIZONTAL} my={"1.6rem"} />
-    Something on the bottom
-</Playground>
-
-## Horizontal Divider with margin, width, height, color
-
-<Playground>
-    Something on the top
-    <Divider direction={Direction.HORIZONTAL} width={"60%"} height={"4px"} ml={0} my={"4rem"} color={"secondary"} />
+    <Divider direction={Direction.HORIZONTAL} my={2} />
+    Something in the middle
+    <Divider direction={Direction.HORIZONTAL} width="60%" height="4px" ml={0} my={5} color="secondary" />
     Something on the bottom
 </Playground>
 
 ## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
 | direction | enum | yes | | see `common/direction` |
 | color | string | no | | Theme color or valid css color value  |
 | width | string | no | | `2px` when vertical |
 | height | string | no | | `1px` when horizontal |
-| ${space} | string | no | | see [styled-system](https://jxnblk.com/styled-system/#margin--padding) |

@@ -1,14 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { space, color, fontFamily, lineHeight, textAlign, themeGet } from "styled-system";
+import { themeGet } from "styled-system";
+import Text from "../text";
 
-const Header = styled.h1`
-  ${space}
-  ${color}
-  ${lineHeight}
-  ${textAlign}
-  ${fontFamily}
+const Header = styled(Text)`
   font-weight: 700;
 
   ${props => {
@@ -19,7 +15,7 @@ const Header = styled.h1`
       h4: 4,
       h5: 3,
       h6: 2
-    }[props.as];
+    }[props.tag];
 
     return css`
       font-size: ${props => themeGet(`fontSizes.${size}`)};
@@ -28,15 +24,12 @@ const Header = styled.h1`
 `;
 
 Header.propTypes = {
-  ...space.propTypes,
-  ...color.propTypes,
-  ...textAlign.propTypes,
-  ...fontFamily.propTypes,
-  as: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+  ...Text.propTypes,
+  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
 };
 
 Header.defaultProps = {
-  as: "h1",
+  tag: "h1",
   color: "textBase",
   fontFamily: "display",
   lineHeight: 2,

@@ -24,7 +24,7 @@ const CalloutIcon = styled(Icon)`
   margin: 0 ${themeGet('space.2', '1.6rem')};
 `;
 
-const CalloutTitle = styled(Header).attrs({ as: "h4" })`
+const CalloutTitle = styled(Header).attrs({ tag: "h4" })`
   margin-bottom: ${themeGet('space.1', '0.8rem')};
   line-height: 1;
 `;

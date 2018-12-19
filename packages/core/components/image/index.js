@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { space, width, height, borderRadius } from "styled-system";
+import { width, height, borderRadius } from "styled-system";
 import { Shape } from "../../common/shape";
+import Box from "../box";
 
-const StyledImage = styled.img`
+const StyledImage = styled(Box)`
   display: inline-block;
   vertical-align: middle;
   max-width: 100%;
-  ${space}
   ${width}
   ${height}
   ${borderRadius}
@@ -36,7 +36,7 @@ const Image = ({borderRadius, shape, ...props}) => {
 };
 
 Image.propTypes = {
-  ...space.propTypes,
+  ...Box.propTypes,
   ...width.propTypes,
   ...height.propTypes,
   ...borderRadius.propTypes,
@@ -45,6 +45,7 @@ Image.propTypes = {
 };
 
 Image.defaultProps = {
+  tag: "img",
   width: "auto",
   height: "auto",
   shape: Shape.SQUARE,
