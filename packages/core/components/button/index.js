@@ -47,7 +47,7 @@ const StyledButton = styled(Text)`
   cursor: pointer;
   display: inline-flex;
   flex-flow: row nowrap;
-  justify-contents: space-between;
+  justify-content: center;
   align-items: center;
   outline: 0;
   border: 0;
