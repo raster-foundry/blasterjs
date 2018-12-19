@@ -1,19 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { space, themeGet } from "styled-system";
+import { themeGet } from "styled-system";
 import { Direction } from "../../common/direction";
+import Box from "../box";
 
-const HDivider = styled.hr`
-  ${space}
+const HDivider = styled(Box).attrs({
+  tag: 'hr'
+})`
   background-color: ${props => themeGet(`colors.${props.color}`, themeGet('colors.grayLight1'))};
   border: 0;
   width: ${props => props.width || "100%"};
   height: ${props => props.height || "1px"};
 `;
 
-const VDivider = styled.span`
-  ${space}
+const VDivider = styled(Box).attrs({
+  tag: 'span'
+})`
   display: inline-block;
   vertical-align: middle;
   background-color: ${props => themeGet(`colors.${props.color}`, themeGet('colors.grayLight1'))};
@@ -38,7 +41,7 @@ const Divider = props => {
 };
 
 Divider.propTypes = {
-  ...space.PropTypes,
+  ...Box.propTypes,
   direction: PropTypes.oneOf(Object.values(Direction)).isRequired,
   color: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
