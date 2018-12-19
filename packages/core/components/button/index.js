@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { darken, rgba } from "polished";
 import styled, { css } from "styled-components";
-import { borderRadius, themeGet } from "styled-system";
+import { borders, borderColor, borderRadius, themeGet } from "styled-system";
 import Text from "../text";
 import Icon from "../icon";
 import { Intent } from "../../common/intent";
@@ -50,13 +50,14 @@ const StyledButton = styled(Text)`
   justify-content: center;
   align-items: center;
   outline: 0;
-  border: 0;
   line-height: 1.1;
   text-align: center;
   text-decoration: none;
   user-select: none;
   will-change: box-shadow, background-color;
   transition: 0.1s ease-in-out box-shadow, 0.1s ease-in-out background-color;
+  ${borders}
+  ${borderColor}
   ${borderRadius}
 
   ${props => buttonStates(props)}
@@ -168,6 +169,8 @@ const Button = ({
 
 Button.propTypes = {
   ...Text.propTypes,
+  ...borders.propTypes,
+  ...borderColor.propTypes,
   ...borderRadius.propTypes,
   intent: PropTypes.oneOf(Object.values(Intent)),
   appearance: PropTypes.oneOf(Object.values(Appearance)),
@@ -184,6 +187,7 @@ Button.defaultProps = {
   pb: 1,
   pl: 1,
   pr: 1,
+  border: 0,
   borderRadius: "base",
   intent: Intent.NONE,
   appearance: Appearance.DEFAULT,
