@@ -8,6 +8,7 @@ export { default as Callout } from "./components/callout";
 export { default as Card } from "./components/card";
 export { default as Checkbox } from "./components/checkbox";
 export { default as Divider } from "./components/divider";
+export { default as Field } from "./components/field";
 export { default as GlobalStyle } from "./components/globalStyle";
 export { default as Grouper } from "./components/grouper";
 export { default as Header } from "./components/header";

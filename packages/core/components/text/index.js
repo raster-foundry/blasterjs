@@ -5,13 +5,13 @@ import * as styledSystem from "styled-system";
 import Box from "../box";
 
 const Text = styled(Box)`
-    ${styledSystem.fontFamily}
-    ${styledSystem.fontSize}
-    ${styledSystem.fontWeight}
-    ${styledSystem.textAlign}
-    ${styledSystem.lineHeight}
-    ${styledSystem.letterSpacing}
-    ${styledSystem.color}
+  ${styledSystem.fontFamily}
+  ${styledSystem.fontSize}
+  ${styledSystem.fontWeight}
+  ${styledSystem.textAlign}
+  ${styledSystem.lineHeight}
+  ${styledSystem.letterSpacing}
+  ${styledSystem.color}
 `;
 
 Text.propTypes = {

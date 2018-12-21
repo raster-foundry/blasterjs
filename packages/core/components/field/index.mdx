@@ -1,0 +1,76 @@
+---
+name: Field
+menu: Components
+route: /components/field
+---
+
+import { Playground, PropsTable } from 'docz'
+import Field from './'
+import TextInput from '../textInput'
+import Checkbox from '../checkbox'
+import { Direction } from "../../common/direction";
+
+# Field
+
+A `field` wraps a single form field child (`<input>, <select>, <textarea>`),
+a `name` prop, and optional `hint` and `alert` props into a `<label>` element
+and arranges them according to the `direction` and `reverse` props.
+
+Direction is vertical by default. Passing `direction={Direction.HORIZONTAL}`
+and `reverse` will position the `label` to the right of the `input`, which is
+the preferred layout for checkboxes and radios.
+
+## Vertical
+
+<Playground>
+    <Field
+        name="Name of your fourth grade teacher"
+        desc="If you don't remember, make something up"
+        alert="Please fill out this field"
+        required
+    >
+        <TextInput placeholder="Mrs. Eager" required />
+    </Field>
+</Playground>
+
+
+## Horizontal
+
+<Playground>
+    <Field
+        name="Name of your first grade teacher"
+        desc="Don't remember? Ask your fourth grade teacher."
+        alert="Please fill out this field"
+        direction={Direction.HORIZONTAL}
+        required
+    >
+        <TextInput placeholder="Mrs. Hall" required />
+    </Field>
+</Playground>
+
+
+## Horizontal reverse
+
+<Playground>
+    <Field
+        name="Label after the input"
+        desc="Use for checkboxes and radios"
+        direction={Direction.HORIZONTAL}
+        reverse
+    >
+        <Checkbox />
+    </Field>
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Label props | | | | see [Label](/components/label) |
+| name | string | yes | | |
+| required | bool | no | `false` | appends an asterisk to name |
+| direction | enum | no | `VERTICAL` | see `common/direction` |
+| reverse | bool | no | `false` | puts name after the input. ignored iff direction `VERTICAL` |
+| desc | string | no | | a description or hint |
+| alert | string | no | | bold red message, typically used to signal invalid input |
