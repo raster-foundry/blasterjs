@@ -7,54 +7,97 @@ route: /components/grouper
 import { Playground, PropsTable } from 'docz'
 import Grouper from './'
 import Button from '../button'
+import { Direction } from "../../common/direction";
+import { Density } from "../../common/density";
+
 
 # Grouper
 
-## Basic usage
+## Horizontal (default)
+
+`COMPACT` density (default) forces intermediate `borderRadius` to `0`,
+while `COMFORTABLE` density does not.
 
 <Playground>
-  <Grouper>
+  <Grouper mb={4}>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+
+  <Grouper density={Density.COMFORTABLE}>
     <Button>Hello</Button>
     <Button>Crazy</Button>
     <Button>World</Button>
   </Grouper>
 </Playground>
 
-## Radius overrides
+
+## Vertical
 
 <Playground>
-  <Grouper borderRadius="0">
+  <Grouper direction={Direction.VERTICAL} mb={6}>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+
+  <Grouper direction={Direction.VERTICAL} density={Density.COMFORTABLE}>
     <Button>Hello</Button>
     <Button>Crazy</Button>
     <Button>World</Button>
   </Grouper>
 </Playground>
+
+
+## Gutter
+
+<Playground>
+  <Grouper gutter={2} mb={8}>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+
+  <Grouper gutter={3} direction={Direction.VERTICAL} density={Density.COMFORTABLE}>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+</Playground>
+
+
+## Radius override
+
+`borderRadius` prop affects outer corners of first & last children only.
+Ignored if `COMFORTABLE`.
+
+<Playground>
+  <Grouper borderRadius="large">
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+</Playground>
+
 
 ## Form
 
 <Playground>
-  <Grouper borderRadius="base">
+  <Grouper gutter={0} borderRadius="large">
     <input type="text" />
     <Button>Go</Button>
   </Grouper>
 </Playground>
 
-## Gutter
-
-<Playground>
-  <Grouper gutter="1.6rem">
-    <Button>Hello</Button>
-    <Button>Crazy</Button>
-    <Button>World</Button>
-  </Grouper>
-</Playground>
 
 
 ### PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
 | Box props | | | | see [Box](/components/box) |
-| borderRadius | string | no | `base` | outer corners of first & last children. ignored iff `gutter`. |
-| gutter | string | no | `0` | gap between children |
-| alignItems | string | no | `stretch` | |
-| ${space} | string | no | | see [styled-system](https://jxnblk.com/styled-system/#margin--padding) |
+| flexDirection | string | no | `row` | |
+| direction | enum | no | | overrides `flexDirection`. see `common/direction` |
+| density | enum | no | Density.COMPACT | if COMPACT, interior borderRadii forced to 0. see `common/density` |
+| gutter | string or number | no | `2px` if `COMPACT`. `space.1` if `COMFORTABLE` | gap between children |
+| borderRadius | string | no | `base` | outer corners of first & last children. ignored if `COMPACT`. |
