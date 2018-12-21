@@ -1,0 +1,38 @@
+---
+name: TextInput
+menu: Components
+route: /component/textInput
+---
+
+import { Playground, PropsTable } from 'docz'
+import TextInput from './'
+
+# TextInput
+
+## Basic usage
+
+<Playground>
+    <TextInput placeholder="Your favorite movie" mb={4} />
+    <TextInput placeholder="Your favorite dinner" disabled width="45%" mr={8} />
+    <TextInput placeholder="Your favorite beverage" required width="45%" />
+</Playground>
+
+## Alternate types
+
+<Playground>
+    <TextInput type="password" placeholder="Password" mb={4} />
+    <TextInput type="search" placeholder="Search" mb={4} />
+    <TextInput type="email" placeholder="Email" mb={4} />
+    <TextInput type="number" placeholder="Number" mb={4} />
+    <TextInput type="url" placeholder="URL" mb={4} />
+    <TextInput type="tel" placeholder="Telephone" mb={4} />
+</Playground>
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Text props | | | | see [Text](/components/text) |
+| `<input>` attributes | | no | | `type, placeholder, disabled, required, spellCheck, …` |
+| ${borders} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${borderColor} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${borderRadius} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| isInvalid | bool | no | false |  |
