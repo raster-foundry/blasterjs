@@ -23,4 +23,4 @@ export { default as Radio } from "./components/radio";
 export { default as RadioField } from "./components/radioField";
 export { default as Swatch } from "./components/swatch";
 export { default as Text } from "./components/text";
-export { default as TextInput } from "./components/textInput";
+export { default as Input } from "./components/input";

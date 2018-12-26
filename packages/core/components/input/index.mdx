@@ -1,31 +1,34 @@
 ---
-name: TextInput
+name: Input
 menu: Components
-route: /component/textInput
+route: /component/input
 ---
 
 import { Playground, PropsTable } from 'docz'
-import TextInput from './'
+import Input from './'
 
-# TextInput
+# Input
+
+Use `Input` for text-like input fields (`text, password, search, email, number,
+url, tel`).
 
 ## Basic usage
 
 <Playground>
-    <TextInput placeholder="Your favorite movie" mb={4} />
-    <TextInput placeholder="Your favorite dinner" disabled width="45%" mr={8} />
-    <TextInput placeholder="Your favorite beverage" required width="45%" />
+    <Input placeholder="Your favorite movie" mb={4} />
+    <Input placeholder="Your favorite dinner" disabled width="45%" mr={8} />
+    <Input placeholder="Your favorite beverage" required width="45%" />
 </Playground>
 
 ## Alternate types
 
 <Playground>
-    <TextInput type="password" placeholder="Password" mb={4} />
-    <TextInput type="search" placeholder="Search" mb={4} />
-    <TextInput type="email" placeholder="Email" mb={4} />
-    <TextInput type="number" placeholder="Number" mb={4} />
-    <TextInput type="url" placeholder="URL" mb={4} />
-    <TextInput type="tel" placeholder="Telephone" mb={4} />
+    <Input type="password" placeholder="Password" mb={4} />
+    <Input type="search" placeholder="Search" mb={4} />
+    <Input type="email" placeholder="Email" mb={4} />
+    <Input type="number" placeholder="Number" mb={4} />
+    <Input type="url" placeholder="URL" mb={4} />
+    <Input type="tel" placeholder="Telephone" mb={4} />
 </Playground>
 
 | Prop | Type | Required | Default | Description |

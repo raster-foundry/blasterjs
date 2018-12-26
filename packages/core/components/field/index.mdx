@@ -6,7 +6,7 @@ route: /components/field
 
 import { Playground, PropsTable } from 'docz'
 import Field from './'
-import TextInput from '../textInput'
+import Input from '../input'
 import Checkbox from '../checkbox'
 import { Direction } from "../../common/direction";
 
@@ -29,7 +29,7 @@ the preferred layout for checkboxes and radios.
         alert="Please fill out this field"
         required
     >
-        <TextInput placeholder="Mrs. Eager" required />
+        <Input placeholder="Mrs. Eager" required />
     </Field>
 </Playground>
 
@@ -44,7 +44,7 @@ the preferred layout for checkboxes and radios.
         direction={Direction.HORIZONTAL}
         required
     >
-        <TextInput placeholder="Mrs. Hall" required />
+        <Input placeholder="Mrs. Hall" required />
     </Field>
 </Playground>
 
@@ -54,7 +54,16 @@ the preferred layout for checkboxes and radios.
 <Playground>
     <Field
         name="Label after the input"
-        desc="Use for checkboxes and radios"
+        direction={Direction.HORIZONTAL}
+        reverse
+        mb={4}
+    >
+        <Checkbox />
+    </Field>
+
+    <Field
+        name="Use for checkboxes and radios"
+        desc="Don't forget `reverse` and `direction={Direction.HORIZONTAL}`"
         direction={Direction.HORIZONTAL}
         reverse
     >
