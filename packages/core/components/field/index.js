@@ -18,8 +18,8 @@ const Name = styled(Text)`
   max-width: 100%;
   display: inline-block;
   color: ${themeGet('colors.textBase')};
-  font-size: ${themeGet('fontSizes.3')};
-  font-weight: 600;
+  font-size: ${props => props.fontSize || themeGet('fontSizes.3')};
+  font-weight: ${props => props.fontWeight || 600};
   line-height: 1.2;
   white-space: nowrap;
 `;
@@ -49,6 +49,8 @@ const Field = ({
   name,
   desc,
   alert,
+  fontSize,
+  fontWeight,
   children,
   ...props
 }) => {
@@ -58,7 +60,7 @@ const Field = ({
         <StyledField flexDirection="row" {...props}>
           {reverse && children}
           <Box ml={reverse ? 2 : 0} mr={reverse ? 0 : 2}>
-            <Name>
+            <Name fontSize={fontSize} fontWeight={fontWeight}>
               {name}
               {required && <Required title="This field is required.">*</Required>}
             </Name>
@@ -72,7 +74,7 @@ const Field = ({
     default:
       return (
         <StyledField flexDirection="column" {...props}>
-          <Name mb={2}>
+          <Name mb={2} fontSize={fontSize} fontWeight={fontWeight}>
             {name}
             {required && <Required title="This field is required.">*</Required>}
           </Name>
