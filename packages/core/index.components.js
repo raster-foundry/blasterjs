@@ -6,6 +6,7 @@ export { default as Breadcrumbs } from "./components/breadcrumbs";
 export { default as Button } from "./components/button";
 export { default as Callout } from "./components/callout";
 export { default as Card } from "./components/card";
+export { default as Checkbox } from "./components/checkbox";
 export { default as Divider } from "./components/divider";
 export { default as GlobalStyle } from "./components/globalStyle";
 export { default as Grouper } from "./components/grouper";
