@@ -6,6 +6,7 @@ route: /components/radioField
 
 import { Playground, PropsTable } from 'docz'
 import RadioField from './'
+import { Direction } from '../../common/direction'
 
 # RadioField
 
@@ -14,6 +15,33 @@ import RadioField from './'
         name="Snow cone flavor"
         inputName="flavor"
         desc="Whatchu want?"
+        mb={6}
+        options={[
+            {
+                label: 'I got orange',
+                value: 'orange'
+            },
+            {
+                label: 'I got grape',
+                value: 'grape'
+            },
+            {
+                label: 'I got blue',
+                value: 'blue'
+            },
+            {
+                label: 'I got nothing',
+                value: 'nothing',
+                disabled: true
+            }
+        ]}
+    />
+
+    <RadioField
+        name="Snow cone flavor"
+        inputName="flavor"
+        desc="Whatchu want?"
+        direction={Direction.HORIZONTAL}
         options={[
             {
                 label: 'I got orange',

@@ -10,6 +10,14 @@ import { Direction } from "../../common/direction";
 
 const StyledRadioField = styled(Box)``;
 
+const Options = styled(Box)`
+  display: flex;
+  flex-direction: ${props => props.direction === Direction.HORIZONTAL ? 'row' : 'column'};
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: ${props => props.direction === Direction.HORIZONTAL ? 'center' : 'flex-start'};
+`;
+
 const Name = styled(Text).attrs({
   tag: 'h6'
 })`
@@ -47,9 +55,11 @@ const RadioField = ({
   inputName,
   options,
   required,
+  direction,
   value,
   desc,
   alert,
+  onChange,
   ...props
 }) => {
   return (
@@ -59,28 +69,31 @@ const RadioField = ({
         {required && <Required title="This field is required.">*</Required>}
       </Name>
       {desc && <Desc mt={1}>{desc}</Desc>}
-      {options.map(item => (
-        <Field
-          key={item.value}
-          direction={Direction.HORIZONTAL}
-          reverse
-          name={item.label}
-          mb={2}
-          disabled={item.disabled}
-          fontWeight="normal"
-          fontSize={2}
-          lineHeight={1}
-        >
-          <Radio
-            name={inputName}
-            value={item.value}
-            checked={value && value === item.value}
+      <Options direction={direction}>
+        {options.map(item => (
+          <Field
+            key={item.value}
+            direction={Direction.HORIZONTAL}
+            reverse
+            name={item.label}
+            mb={direction === Direction.VERTICAL ? 2 : 0}
+            mr={direction === Direction.HORIZONTAL ? 3 : 0}
             disabled={item.disabled}
-            required={required}
-            {...props}
-          />
-        </Field>
-      ))}
+            fontWeight="normal"
+            fontSize={2}
+            lineHeight={1}
+          >
+            <Radio
+              name={inputName}
+              value={item.value}
+              checked={value && value === item.value}
+              disabled={item.disabled}
+              required={required}
+              onChange={() => onChange(item.value)}
+            />
+          </Field>
+        ))}
+      </Options>
       {alert && <Alert mt={2}>{alert}</Alert>}
     </StyledRadioField>
   );
@@ -98,9 +111,11 @@ RadioField.propTypes = {
     })
   ).isRequired,
   required: PropTypes.bool,
+  direction: PropTypes.oneOf(Object.values(Direction)),
   value: PropTypes.string,
   desc: PropTypes.string,
-  alert: PropTypes.string
+  alert: PropTypes.string,
+  onChange: PropTypes.func
 };
 
 RadioField.defaultProps = {
@@ -108,9 +123,11 @@ RadioField.defaultProps = {
   inputName: undefined,
   options: [],
   required: false,
+  direction: Direction.VERTICAL,
   value: undefined,
   desc: undefined,
-  alert: undefined
+  alert: undefined,
+  onChange: () => {}
 }
 
 export default RadioField;
