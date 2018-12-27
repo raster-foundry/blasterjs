@@ -109,7 +109,6 @@ const svgo = new (require("svgo"))({
 });
 
 const templatesPath = "./templates";
-const themesPath = "./themes";
 
 const dirs = p =>
   readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());

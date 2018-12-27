@@ -44,6 +44,9 @@ Removes a component or constant in the specified package. Includes confirmation.
 **`blaster {i,index}`**
 Regenerates all three index files for each package as necesssary.
 
+**`blaster update-icons`**
+Regenerates the index file icons.
+
 ### Styled System
 
 Use [styled-system](https://jxnblk.com/styled-system/) in conjunction with

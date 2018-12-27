@@ -1,4 +1,3 @@
-export { default as GlobalStyle } from "./components/globalStyle";
 export { default as A } from "./components/a";
 export { default as Badge } from "./components/badge";
 export { default as Box } from "./components/box";
@@ -8,6 +7,7 @@ export { default as Button } from "./components/button";
 export { default as Callout } from "./components/callout";
 export { default as Card } from "./components/card";
 export { default as Divider } from "./components/divider";
+export { default as GlobalStyle } from "./components/globalStyle";
 export { default as Grouper } from "./components/grouper";
 export { default as Header } from "./components/header";
 export { default as Icon } from "./components/icon";
