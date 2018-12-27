@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Input from "../input";
+import TextInput from "../textInput";
 
-const Textarea = styled(Input)``;
+const Textarea = styled(TextInput)``;
 
 Textarea.propTypes = {
-  ...Input.propTypes
+  ...TextInput.propTypes
 };
 
 Textarea.defaultProps = {

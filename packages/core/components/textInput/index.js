@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { borders, borderColor, borderRadius, themeGet } from "styled-system";
 import Text from "../text";
 
-const StyledInput = styled(Text)`
+const StyledTextInput = styled(Text)`
     ${borders}
     ${borderColor}
     ${borderRadius}
@@ -27,15 +27,15 @@ const StyledInput = styled(Text)`
     }
 `;
 
-const Input = ({isInvalid, type, ...props}) => {
-  return <StyledInput aria-invalid={isInvalid} type={type || undefined} {...props} />;
+const TextInput = ({isInvalid, type, ...props}) => {
+  return <StyledTextInput aria-invalid={isInvalid} type={type || undefined} {...props} />;
 };
 
-Input.propTypes = {
+TextInput.propTypes = {
     ...Text.propTypes
 }
 
-Input.defaultProps = {
+TextInput.defaultProps = {
     tag: "input",
     type: "text",
     required: false,
@@ -56,4 +56,4 @@ Input.defaultProps = {
     font: "inherit"
 }
 
-export default Input;
+export default TextInput;

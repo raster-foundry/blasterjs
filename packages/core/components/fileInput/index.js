@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import Input from "../input";
+import TextInput from "../textInput";
 
-const File = styled(Input)``;
+const FileInput = styled(TextInput)``;
 
-File.propTypes = {
-  ...Input.propTypes
+FileInput.propTypes = {
+  ...TextInput.propTypes
 };
 
-File.defaultProps = {
+FileInput.defaultProps = {
   type: "file",
   height: "auto",
   border: 0,
@@ -20,4 +20,4 @@ File.defaultProps = {
   pr: 0
 };
 
-export default File;
+export default FileInput;
