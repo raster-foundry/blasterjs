@@ -6,9 +6,10 @@ import Box from "../box";
 import Text from "../text";
 import Field from "../field";
 import Radio from "../radio";
+import Checkbox from "../checkbox";
 import { Direction } from "../../common/direction";
 
-const StyledRadioField = styled(Box)``;
+const StyledToggleField = styled(Box)``;
 
 const Options = styled(Box)`
   display: flex;
@@ -50,8 +51,9 @@ const Alert = styled(Text)`
   text-transform: uppercase;
 `;
 
-const RadioField = ({
+const ToggleField = ({
   name,
+  type,
   inputName,
   options,
   required,
@@ -62,8 +64,19 @@ const RadioField = ({
   onChange,
   ...props
 }) => {
+  let Toggle;
+  switch (type) {
+    case 'checkbox':
+      Toggle = Checkbox;
+      break;
+    case 'radio':
+    default:
+      Toggle = Radio;
+      break;
+  }
+
   return (
-    <StyledRadioField {...props}>
+    <StyledToggleField {...props}>
       <Name>
         {name}
         {required && <Required title="This field is required.">*</Required>}
@@ -83,30 +96,32 @@ const RadioField = ({
             fontSize={2}
             lineHeight={1}
           >
-            <Radio
-              name={inputName}
+            <Toggle
+              name={item.inputName || inputName}
               value={item.value}
               checked={value && value === item.value}
               disabled={item.disabled}
-              required={required}
+              required={required && type === 'radio'}
               onChange={() => onChange(item.value)}
             />
           </Field>
         ))}
       </Options>
       {alert && <Alert mt={2}>{alert}</Alert>}
-    </StyledRadioField>
+    </StyledToggleField>
   );
 }
 
-RadioField.propTypes = {
-  ...Box.proptTypes,
+ToggleField.propTypes = {
+  ...Box.propTypes,
   name: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['radio', 'checkbox']),
   inputName: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.node.isRequired,
+      label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
+      inputName: PropTypes.string,
       disabled: PropTypes.bool
     })
   ).isRequired,
@@ -118,8 +133,9 @@ RadioField.propTypes = {
   onChange: PropTypes.func
 };
 
-RadioField.defaultProps = {
+ToggleField.defaultProps = {
   name: undefined,
+  type: 'radio',
   inputName: undefined,
   options: [],
   required: false,
@@ -130,4 +146,4 @@ RadioField.defaultProps = {
   onChange: () => {}
 }
 
-export default RadioField;
+export default ToggleField;

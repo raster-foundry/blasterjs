@@ -22,7 +22,7 @@ export { default as NavBarSection } from "./components/navBarSection";
 export { default as Pill } from "./components/pill";
 export { default as ProgressBar } from "./components/progressBar";
 export { default as Radio } from "./components/radio";
-export { default as RadioField } from "./components/radioField";
+export { default as ToggleField } from "./components/toggleField";
 export { default as Swatch } from "./components/swatch";
 export { default as Text } from "./components/text";
 export { default as TextInput } from "./components/textInput";

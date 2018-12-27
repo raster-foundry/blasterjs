@@ -1,0 +1,87 @@
+---
+name: ToggleField
+menu: Components
+route: /components/toggleField
+---
+
+import { Playground, PropsTable } from 'docz'
+import ToggleField from './'
+import { Direction } from '../../common/direction'
+
+# ToggleField
+
+Group of radios or checkboxes.
+
+## Basic usage
+
+<Playground>
+    <ToggleField
+        name="Whatchu want?"
+        inputName="flavor"
+        desc="Pick a flavor"
+        mb={6}
+        options={[
+            {
+                label: 'I got orange',
+                value: 'orange'
+            },
+            {
+                label: 'I got grape',
+                value: 'grape'
+            },
+            {
+                label: 'I got blue',
+                value: 'blue'
+            },
+            {
+                label: 'I got nothing',
+                value: 'nothing',
+                disabled: true
+            }
+        ]}
+    />
+
+    <ToggleField
+        name="Whatchu like?"
+        type="checkbox"
+        inputName="flavor"
+        desc="Snow cone flavors"
+        direction={Direction.HORIZONTAL}
+        options={[
+            {
+                label: 'Orange',
+                value: 'orange'
+            },
+            {
+                label: 'Grape',
+                value: 'grape'
+            },
+            {
+                label: 'Blue',
+                value: 'blue'
+            },
+            {
+                label: 'Gold',
+                value: 'gold',
+                disabled: true
+            }
+        ]}
+    />
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| name | string | yes | | |
+| type | string | no | `radio` | "radio" or "checkbox" |
+| options | array | yes | | array of shapes: `{ label: string (required), value: string (required), inputName: string, disabled: bool }` |
+| inputName | string | no | | required iff `radio` |
+| required | bool | no | `false` | appends an asterisk to name |
+| direction | enum | no | `VERTICAL` | see `common/direction` |
+| value | string | no | | selected value iff `radio` |
+| desc | string | no | | a description or hint |
+| alert | string | no | | bold red message, typically used to signal invalid input |
+| onChange | function | no | | receives selected value onChange |
