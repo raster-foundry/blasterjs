@@ -17,7 +17,8 @@ Radio.propTypes = {
 
 Radio.defaultProps = {
   tag: "input",
-  type: "radio"
+  type: "radio",
+  onChange: () => {}
 };
 
 export default Radio;

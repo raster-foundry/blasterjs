@@ -17,7 +17,8 @@ Checkbox.propTypes = {
 
 Checkbox.defaultProps = {
   tag: "input",
-  type: "checkbox"
+  type: "checkbox",
+  onChange: () => {}
 };
 
 export default Checkbox;
