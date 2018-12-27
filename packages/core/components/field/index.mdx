@@ -8,6 +8,7 @@ import { Playground, PropsTable } from 'docz'
 import Field from './'
 import Input from '../input'
 import Checkbox from '../checkbox'
+import Textarea from '../textarea'
 import { Direction } from "../../common/direction";
 
 # Field
@@ -25,7 +26,7 @@ For a group of radio buttons, use [RadioField](/components/radioField) instead.
 ## Vertical
 
 <Playground>
-    <Field mb={6} name="Name of your third grade teacher">
+    <Field name="Name of your third grade teacher" mb={6}>
         <Input placeholder="Mrs. Kennedy" />
     </Field>
 
@@ -34,8 +35,13 @@ For a group of radio buttons, use [RadioField](/components/radioField) instead.
         desc="If you don't remember, make something up"
         alert="Please fill out this field"
         required
+        mb={6}
     >
         <Input placeholder="Mrs. Eager" required />
+    </Field>
+
+    <Field name="Describe your fifth grade experience">
+        <Textarea placeholder="Happy and fun!" />
     </Field>
 </Playground>
 
@@ -44,20 +50,20 @@ For a group of radio buttons, use [RadioField](/components/radioField) instead.
 
 <Playground>
     <Field
-        mb={6}
-        name="Grade school"
+        name="Name of school"
         direction={Direction.HORIZONTAL}
         nameWidth="24rem"
         required
+        mb={6}
     >
         <Input placeholder="Arkham Elementary" />
     </Field>
 
     <Field
-        mb={6}
         name="Name of your second grade teacher"
         direction={Direction.HORIZONTAL}
         nameWidth="24rem"
+        mb={6}
     >
         <Input placeholder="Mrs. Hall" />
     </Field>
@@ -69,8 +75,17 @@ For a group of radio buttons, use [RadioField](/components/radioField) instead.
         direction={Direction.HORIZONTAL}
         nameWidth="24rem"
         required
+        mb={6}
     >
         <Input placeholder="Mrs. Hall" required />
+    </Field>
+
+    <Field
+        name="Describe your sixth grade experience"
+        direction={Direction.HORIZONTAL}
+        nameWidth="24rem"
+    >
+        <Textarea placeholder="Groovy" />
     </Field>
 </Playground>
 

@@ -27,8 +27,8 @@ const StyledInput = styled(Text)`
     }
 `;
 
-const Input = ({isInvalid, ...props}) => {
-  return <StyledInput aria-invalid={isInvalid} {...props} />;
+const Input = ({isInvalid, type, ...props}) => {
+  return <StyledInput aria-invalid={isInvalid} type={type || undefined} {...props} />;
 };
 
 Input.propTypes = {
@@ -46,8 +46,8 @@ Input.defaultProps = {
     height: "4rem",
     pt: 1,
     pb: 1,
-    pl: 2,
-    pl: 2,
+    pl: 1,
+    pr: 1,
     bg: "white",
     borderRadius: "base",
     color: "textBase",
