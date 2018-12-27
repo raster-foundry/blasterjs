@@ -65,9 +65,10 @@ const RadioField = ({
           direction={Direction.HORIZONTAL}
           reverse
           name={item.label}
-          mb={1}
+          mb={2}
           fontWeight="normal"
           fontSize={2}
+          lineHeight={1}
         >
           <Radio
             name={name}

@@ -16,12 +16,10 @@ const StyledField = styled(Label)`
 
 const Name = styled(Text)`
   max-width: 100%;
-  display: inline-block;
   color: ${themeGet('colors.textBase')};
   font-size: ${props => props.fontSize || themeGet('fontSizes.3')};
   font-weight: ${props => props.fontWeight || 600};
   line-height: 1.2;
-  white-space: nowrap;
 `;
 
 const Required = styled.span`
@@ -38,7 +36,7 @@ const Alert = styled(Text)`
   color: ${themeGet('colors.red')};
   font-size: ${themeGet('fontSizes.1')};
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.2;
   text-transform: uppercase;
 `;
 
@@ -47,6 +45,7 @@ const Field = ({
   direction,
   reverse,
   name,
+  nameWidth,
   desc,
   alert,
   fontSize,
@@ -59,13 +58,20 @@ const Field = ({
       return (
         <StyledField flexDirection="row" {...props}>
           {reverse && children}
-          <Box ml={reverse ? 2 : 0} mr={reverse ? 0 : 2}>
-            <Name fontSize={fontSize} fontWeight={fontWeight}>
+          <Box width={nameWidth} ml={reverse ? 2 : 0} mr={reverse ? 0 : 2}>
+            <Name
+              minHeight={reverse ? 0 : "4rem"}
+              display="flex"
+              alignItems="center"
+              justifyContent="flex-start"
+              fontSize={fontSize}
+              fontWeight={fontWeight}
+            >
               {name}
               {required && <Required title="This field is required.">*</Required>}
             </Name>
             {desc && <Desc mt={1}>{desc}</Desc>}
-            {alert && <Alert mt={2}>{alert}</Alert>}
+            {alert && <Alert mt={1}>{alert}</Alert>}
           </Box>
           {!reverse && children}
         </StyledField>
@@ -74,7 +80,12 @@ const Field = ({
     default:
       return (
         <StyledField flexDirection="column" {...props}>
-          <Name mb={2} fontSize={fontSize} fontWeight={fontWeight}>
+          <Name
+            width={nameWidth}
+            mb={2}
+            fontSize={fontSize}
+            fontWeight={fontWeight}
+          >
             {name}
             {required && <Required title="This field is required.">*</Required>}
           </Name>
@@ -89,6 +100,7 @@ const Field = ({
 Field.propTypes = {
   ...Label.propTypes,
   name: PropTypes.string.isRequired,
+  nameWidth: PropTypes.string,
   required: PropTypes.bool,
   direction: PropTypes.oneOf(Object.values(Direction)),
   reverse: PropTypes.bool,
@@ -97,6 +109,7 @@ Field.propTypes = {
 }
 
 Field.defaultProps = {
+  nameWidth: undefined,
   required: false,
   direction: undefined,
   reverse: false,

@@ -53,8 +53,7 @@ Input.defaultProps = {
     color: "textBase",
     border: "1px solid",
     borderColor: "textBase",
-    font: "inherit",
-    fontWeight: 600
+    font: "inherit"
 }
 
 export default Input;
