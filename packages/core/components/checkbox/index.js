@@ -4,17 +4,20 @@ import styled from "styled-components";
 import {} from "styled-system";
 import Box from "../box";
 
-const Checkbox = styled(Box)``;
+const Checkbox = styled(Box)`
+  &[disabled] {
+    opacity: .7;
+    cursor: not-allowed;
+  }
+`;
 
 Checkbox.propTypes = {
-  ...Box.propTypes,
-  onChange: PropTypes.func
+  ...Box.propTypes
 };
 
 Checkbox.defaultProps = {
   tag: "input",
-  type: "checkbox",
-  onChange: () => {}
+  type: "checkbox"
 };
 
 export default Checkbox;

@@ -44,8 +44,8 @@ const Alert = styled(Text)`
 
 const RadioField = ({
   name,
+  inputName,
   options,
-  onChange,
   required,
   value,
   desc,
@@ -66,17 +66,18 @@ const RadioField = ({
           reverse
           name={item.label}
           mb={2}
+          disabled={item.disabled}
           fontWeight="normal"
           fontSize={2}
           lineHeight={1}
         >
           <Radio
-            name={name}
+            name={inputName}
             value={item.value}
             checked={value && value === item.value}
             disabled={item.disabled}
-            onChange={() => onChange(item.value)}
             required={required}
+            {...props}
           />
         </Field>
       ))}
@@ -88,6 +89,7 @@ const RadioField = ({
 RadioField.propTypes = {
   ...Box.proptTypes,
   name: PropTypes.string.isRequired,
+  inputName: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.node.isRequired,
@@ -95,7 +97,6 @@ RadioField.propTypes = {
       disabled: PropTypes.bool
     })
   ).isRequired,
-  onChange: PropTypes.func.isRequired,
   required: PropTypes.bool,
   value: PropTypes.string,
   desc: PropTypes.string,
@@ -104,8 +105,8 @@ RadioField.propTypes = {
 
 RadioField.defaultProps = {
   name: undefined,
+  inputName: undefined,
   options: [],
-  onChange: () => {},
   required: false,
   value: undefined,
   desc: undefined,

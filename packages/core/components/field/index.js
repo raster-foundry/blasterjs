@@ -16,7 +16,7 @@ const StyledField = styled(Label)`
 
 const Name = styled(Text)`
   max-width: 100%;
-  color: ${themeGet('colors.textBase')};
+  color: ${props => props.disabled ? themeGet('colors.grayLight1') : themeGet('colors.textBase')};
   font-size: ${props => props.fontSize || themeGet('fontSizes.3')};
   font-weight: ${props => props.fontWeight || 600};
   line-height: 1.2;
@@ -50,6 +50,7 @@ const Field = ({
   alert,
   fontSize,
   fontWeight,
+  disabled,
   children,
   ...props
 }) => {
@@ -64,6 +65,7 @@ const Field = ({
               display="flex"
               alignItems="center"
               justifyContent="flex-start"
+              disabled={disabled}
               fontSize={fontSize}
               fontWeight={fontWeight}
             >
@@ -83,6 +85,7 @@ const Field = ({
           <Name
             width={nameWidth}
             mb={2}
+            disabled={disabled}
             fontSize={fontSize}
             fontWeight={fontWeight}
           >
@@ -102,6 +105,7 @@ Field.propTypes = {
   name: PropTypes.string.isRequired,
   nameWidth: PropTypes.string,
   required: PropTypes.bool,
+  disabled: PropTypes.bool,
   direction: PropTypes.oneOf(Object.values(Direction)),
   reverse: PropTypes.bool,
   desc: PropTypes.string,
@@ -111,6 +115,7 @@ Field.propTypes = {
 Field.defaultProps = {
   nameWidth: undefined,
   required: false,
+  disabled: false,
   direction: undefined,
   reverse: false,
   desc: undefined,

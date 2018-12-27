@@ -12,6 +12,7 @@ import RadioField from './'
 <Playground>
     <RadioField
         name="Snow cone flavor"
+        inputName="flavor"
         desc="Whatchu want?"
         options={[
             {
@@ -25,6 +26,11 @@ import RadioField from './'
             {
                 label: 'I got blue',
                 value: 'blue'
+            },
+            {
+                label: 'I got nothing',
+                value: 'nothing',
+                disabled: true
             }
         ]}
     />
