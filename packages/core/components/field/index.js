@@ -12,6 +12,7 @@ const StyledField = styled(Label)`
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
+  cursor: ${props => props.disabled ? 'not-allowed' : 'initial'};
 `;
 
 const Name = styled(Text)`
@@ -57,7 +58,7 @@ const Field = ({
   switch (direction) {
     case Direction.HORIZONTAL:
       return (
-        <StyledField flexDirection="row" {...props}>
+        <StyledField flexDirection="row" disabled={disabled} {...props}>
           {reverse && children}
           <Box width={nameWidth} ml={reverse ? 2 : 0} mr={reverse ? 0 : 2}>
             <Name

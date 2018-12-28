@@ -57,13 +57,19 @@ const ToggleField = ({
   inputName,
   options,
   required,
+  invalid,
   direction,
-  value,
   desc,
   alert,
   onChange,
+  checkedIcon,
+  uncheckedIcon,
+  checkedColor,
+  uncheckedColor,
+  size,
   ...props
 }) => {
+
   let Toggle;
   switch (type) {
     case 'checkbox':
@@ -97,12 +103,19 @@ const ToggleField = ({
             lineHeight={1}
           >
             <Toggle
+              id={item.id}
               name={item.inputName || inputName}
               value={item.value}
-              checked={value && value === item.value}
+              checked={item.checked}
               disabled={item.disabled}
-              required={required && type === 'radio'}
-              onChange={() => onChange(item.value)}
+              required={required}
+              invalid={invalid}
+              checkedIcon={checkedIcon}
+              uncheckedIcon={uncheckedIcon}
+              checkedColor={checkedColor}
+              uncheckedColor={uncheckedColor}
+              size={size}
+              onChange={onChange}
             />
           </Field>
         ))}
@@ -115,35 +128,46 @@ const ToggleField = ({
 ToggleField.propTypes = {
   ...Box.propTypes,
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['radio', 'checkbox']),
+  type: PropTypes.oneOf(['radio', 'checkbox']).isRequired,
   inputName: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string,
       label: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
+      checked: PropTypes.bool,
       inputName: PropTypes.string,
       disabled: PropTypes.bool
     })
   ).isRequired,
   required: PropTypes.bool,
   direction: PropTypes.oneOf(Object.values(Direction)),
-  value: PropTypes.string,
   desc: PropTypes.string,
   alert: PropTypes.string,
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  checkedIcon: PropTypes.string,
+  uncheckedIcon: PropTypes.string,
+  checkedColor: PropTypes.string,
+  uncheckedColor: PropTypes.string,
+  size: PropTypes.string
 };
 
 ToggleField.defaultProps = {
   name: undefined,
-  type: 'radio',
+  type: undefined,
   inputName: undefined,
   options: [],
   required: false,
+  invalid: false,
   direction: Direction.VERTICAL,
-  value: undefined,
   desc: undefined,
   alert: undefined,
-  onChange: () => {}
+  onChange: () => {},
+  checkedIcon: 'check',
+  uncheckedIcon: 'cancel',
+  checkedColor: 'primary',
+  uncheckedColor: 'grayLight1',
+  size: '2rem'
 }
 
 export default ToggleField;

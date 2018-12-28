@@ -9,10 +9,27 @@ import Checkbox from './'
 
 # Checkbox
 
+A checkbox. The native element is functional but hidden. Icons are rendered
+in its place.
+
+Can be controlled or uncontrolled. For controlled, you must supply the
+`checked` prop, eg `<Checkbox checked />` or `<Checkbox checked={false} />`.
+For uncontrolled, you must omit the `checked` prop.
+
+## Uncontrolled
+
 <Playground>
-    <Checkbox mr={2} />
-    <Checkbox checked mr={2} />
-    <Checkbox disabled />
+    <Checkbox value="alpha" mr={2} />
+    <Checkbox value="beta" mr={2} />
+    <Checkbox disabled value="gamma" />
+</Playground>
+
+## Controlled
+
+<Playground>
+    <Checkbox checked value="alpha" mr={2} />
+    <Checkbox checked={false} value="beta" mr={2} />
+    <Checkbox checked disabled value="gamma" />
 </Playground>
 
 
@@ -20,4 +37,17 @@ import Checkbox from './'
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/components/box) |
+| Text props | | | | see [Text](/components/text) |
+| id | string | no | | passed to underlying element |
+| name | string | no | | passed to underlying element |
+| value | string | no | | passed to underlying element |
+| onChange | function | no | | |
+| disabled | bool | no | `false` | passed to underlying element |
+| checked | bool | no | | supply this when controlled |
+| required | bool | no | `false` | passed to underlying element |
+| invalid | bool | no | `false` | passed to underlying element |
+| checkedIcon | string | no | `check` | |
+| uncheckedIcon | string | no | `cancel` | |
+| checkedColor | string | no | `primary` | |
+| uncheckedColor | string | no | `grayLight1` | |
+| size | string | no | `2rem` | icon size |
