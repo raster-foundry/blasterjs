@@ -12,13 +12,15 @@ import { Direction } from '../../common/direction'
 
 Group of radios or checkboxes.
 
+'ToggleField' does not support indeterminate checkboxes.
+
 ## Radios
 
 <Playground>
     <ToggleField
         type="radio"
-        name="Whatchu want?"
         inputName="flavor"
+        name="Whatchu want?"
         desc="Pick a flavor"
         mb={6}
         options={[
@@ -49,6 +51,7 @@ Group of radios or checkboxes.
 <Playground>
     <ToggleField
         type="checkbox"
+        inputName="flavors"
         name="Whatchu like?"
         desc="Snow cone flavors"
         direction={Direction.HORIZONTAL}

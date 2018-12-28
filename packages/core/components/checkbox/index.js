@@ -31,9 +31,17 @@ const Input = styled.input`
   height: 100%;
   opacity: 0;
 
-  &:checked ~ .toggle--checked {
-    display: inline-block;
-  }
+  ${props => props.indeterminate && css`
+    &:checked ~ .toggle--indeterminate {
+      display: inline-block;
+    }
+  `}
+
+  ${props => !props.indeterminate && css`
+    &:checked ~ .toggle--checked {
+      display: inline-block;
+    }
+  `}
 
   &:not(:checked) ~ .toggle--unchecked {
     display: inline-block;
@@ -48,11 +56,14 @@ const Checkbox = ({
   disabled,
   required,
   checked,
+  indeterminate,
   invalid,
   checkedIcon,
   uncheckedIcon,
+  indeterminateIcon,
   checkedColor,
   uncheckedColor,
+  indeterminateColor,
   size,
   ...props
 }) => {
@@ -69,7 +80,8 @@ const Checkbox = ({
         value={value}
         onChange={(e) => onChange(e, e.target.value)}
         disabled={disabled}
-        checked={checked}
+        checked={indeterminate || checked}
+        indeterminate={indeterminate}
         required={required}
         aria-invalid={invalid}
       />
@@ -85,6 +97,12 @@ const Checkbox = ({
         color={uncheckedColor}
         size={size}
       />
+      <StyledIcon
+        className="toggle--indeterminate"
+        name={indeterminateIcon}
+        color={indeterminateColor}
+        size={size}
+      />
     </StyledCheckbox>
   );
 };
@@ -97,12 +115,15 @@ Checkbox.propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   checked: PropTypes.bool,
+  indeterminate: PropTypes.bool,
   required: PropTypes.bool,
   invalid: PropTypes.bool,
   checkedIcon: PropTypes.string,
   uncheckedIcon: PropTypes.string,
+  indeterminateIcon: PropTypes.string,
   checkedColor: PropTypes.string,
   uncheckedColor: PropTypes.string,
+  indeterminateColor: PropTypes.string,
   size: PropTypes.string
 };
 
@@ -114,12 +135,15 @@ Checkbox.defaultProps = {
   onChange: () => {},
   disabled: false,
   checked: undefined,
+  indeterminate: false,
   required: false,
   invalid: false,
   checkedIcon: 'check',
   uncheckedIcon: 'cancel',
+  indeterminateIcon: 'minus',
   checkedColor: 'primary',
   uncheckedColor: 'grayLight1',
+  indeterminateColor: 'primary',
   size: '2rem'
 };
 
