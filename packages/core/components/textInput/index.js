@@ -27,8 +27,8 @@ const StyledTextInput = styled(Text)`
     }
 `;
 
-const TextInput = ({isInvalid, type, ...props}) => {
-  return <StyledTextInput aria-invalid={isInvalid} type={type || undefined} {...props} />;
+const TextInput = ({invalid, type, ...props}) => {
+  return <StyledTextInput aria-invalid={invalid} type={type || undefined} {...props} />;
 };
 
 TextInput.propTypes = {
@@ -40,7 +40,7 @@ TextInput.defaultProps = {
     type: "text",
     required: false,
     disabled: false,
-    isInvalid: false,
+    invalid: false,
     spellCheck: false,
     width: "100%",
     height: "4rem",
