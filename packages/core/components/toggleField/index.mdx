@@ -87,6 +87,8 @@ Group of radios or checkboxes.
 | name | string | yes | | |
 | type | string | yes | | `["radio", "checkbox"]` |
 | options | array | yes | | see below |
+| size | enum | no | `Size.LARGE` | affects name size. see [Size](/common/size) |
+| inputSize | enum | no | `Size.MEDIUM` | passed to inputs. see [Size](/common/size) |
 | inputName | string | no | | required iff `radio` |
 | required | bool | no | `false` | appends an asterisk to name |
 | invalid | bool | no | `false` | passed to toggle components |
@@ -98,7 +100,6 @@ Group of radios or checkboxes.
 | uncheckedIcon | string | no | | |
 | checkedColor | string | no | | |
 | uncheckedColor | string | no | | |
-| size | string | no | | icon size |
 
 
 ### `Options` array prop

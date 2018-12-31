@@ -4,10 +4,12 @@ import styled from "styled-components";
 import { themeGet } from "styled-system";
 import Box from "../box";
 import Text from "../text";
+import Label from "../label";
 import Field from "../field";
 import Radio from "../radio";
 import Checkbox from "../checkbox";
 import { Direction } from "../../common/direction";
+import { Size } from "../../common/size";
 
 const StyledToggleField = styled(Box)``;
 
@@ -19,14 +21,13 @@ const Options = styled(Box)`
   align-items: ${props => props.direction === Direction.HORIZONTAL ? 'center' : 'flex-start'};
 `;
 
-const Name = styled(Text).attrs({
+const Name = styled(Label).attrs({
   tag: 'h6'
 })`
   max-width: 100%;
   display: block;
   margin-bottom: ${themeGet('space.1')};
   color: ${themeGet('colors.textBase')};
-  font-size: ${themeGet('fontSizes.3')};
   font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
@@ -67,6 +68,7 @@ const ToggleField = ({
   checkedColor,
   uncheckedColor,
   size,
+  inputSize,
   ...props
 }) => {
 
@@ -83,7 +85,7 @@ const ToggleField = ({
 
   return (
     <StyledToggleField {...props}>
-      <Name>
+      <Name size={size}>
         {name}
         {required && <Required title="This field is required.">*</Required>}
       </Name>
@@ -99,7 +101,7 @@ const ToggleField = ({
             mr={direction === Direction.HORIZONTAL ? 3 : 0}
             disabled={item.disabled}
             fontWeight="normal"
-            fontSize={2}
+            size={inputSize}
             lineHeight={1}
           >
             <Toggle
@@ -114,7 +116,7 @@ const ToggleField = ({
               uncheckedIcon={uncheckedIcon}
               checkedColor={checkedColor}
               uncheckedColor={uncheckedColor}
-              size={size}
+              size={inputSize}
               onChange={onChange}
             />
           </Field>
@@ -142,6 +144,8 @@ ToggleField.propTypes = {
   ).isRequired,
   required: PropTypes.bool,
   direction: PropTypes.oneOf(Object.values(Direction)),
+  size: PropTypes.oneOf(Object.values(Size)),
+  inputSize: PropTypes.oneOf(Object.values(Size)),
   desc: PropTypes.string,
   alert: PropTypes.string,
   onChange: PropTypes.func,
@@ -160,14 +164,15 @@ ToggleField.defaultProps = {
   required: false,
   invalid: false,
   direction: Direction.VERTICAL,
+  size: Size.LARGE,
+  inputSize: Size.MEDIUM,
   desc: undefined,
   alert: undefined,
   onChange: () => {},
   checkedIcon: 'check',
   uncheckedIcon: 'cancel',
   checkedColor: 'primary',
-  uncheckedColor: 'grayLight1',
-  size: '2rem'
+  uncheckedColor: 'grayLight1'
 }
 
 export default ToggleField;

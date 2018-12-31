@@ -3,12 +3,11 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import Text from "../text";
 import Icon from "../icon";
+import { Size } from "../../common/size";
 
 const StyledCheckbox = styled(Text)`
   position: relative;
   display: inline-block;
-  width: 2.4rem;
-  height: 2.4rem;
 
   ${props => props.disabled && css`
     opacity: .5;
@@ -64,13 +63,22 @@ const Checkbox = ({
   checkedColor,
   uncheckedColor,
   indeterminateColor,
-  size,
+  size: _size,
   ...props
 }) => {
+
+  const size = {
+    [Size.TINY]: '1.2rem',
+    [Size.SMALL]: '1.6rem',
+    [Size.MEDIUM]: '2.4rem',
+    [Size.LARGE]: '3.2rem'
+  }[_size || Size.MEDIUM];
 
   return (
     <StyledCheckbox
       disabled={disabled}
+      width={size}
+      height={size}
       {...props}
     >
       <Input
@@ -124,7 +132,7 @@ Checkbox.propTypes = {
   checkedColor: PropTypes.string,
   uncheckedColor: PropTypes.string,
   indeterminateColor: PropTypes.string,
-  size: PropTypes.string
+  size: PropTypes.oneOf(Object.values(Size))
 };
 
 Checkbox.defaultProps = {
@@ -144,7 +152,7 @@ Checkbox.defaultProps = {
   checkedColor: 'primary',
   uncheckedColor: 'grayLight1',
   indeterminateColor: 'primary',
-  size: '2rem'
+  size: Size.MEDIUM
 };
 
 export default Checkbox;

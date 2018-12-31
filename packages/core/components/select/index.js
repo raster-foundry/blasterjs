@@ -8,10 +8,6 @@ import Icon from "../icon";
 
 const StyledSelect = styled(Box)`
   position: relative;
-
-  ${props => props.multiple && css`
-    min-height: 5em;
-  `}
 `;
 
 const SelectSelect = styled(TextInput).attrs({
@@ -63,14 +59,14 @@ const Select = ({
   ...props
 }) => {
   return (
-    <StyledSelect multiple={multiple} height={height} {...props}>
+    <StyledSelect {...props}>
       <SelectSelect
         multiple={multiple}
         required={required}
         disabled={disabled}
         invalid={invalid}
         spellCheck={spellCheck}
-        height="100%"
+        minHeight={multiple ? '5em' : undefined}
         p={p}
         px={px}
         py={py}
@@ -101,22 +97,7 @@ Select.propTypes = {
 Select.defaultProps = {
   display: "inline-block",
   multiple: undefined,
-  required: false,
-  disabled: false,
-  invalid: false,
-  spellCheck: false,
   width: "100%",
-  height: "4rem",
-  pt: 1,
-  pb: 1,
-  pl: 1,
-  pr: 1,
-  bg: "white",
-  borderRadius: "base",
-  color: "textBase",
-  border: "1px solid",
-  borderColor: "textBase",
-  font: "inherit",
   icon: "caretDown"
 };
 

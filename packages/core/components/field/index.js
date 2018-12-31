@@ -6,6 +6,7 @@ import Label from "../label";
 import Box from "../box";
 import Text from "../text";
 import { Direction } from "../../common/direction";
+import { Size } from "../../common/size";
 
 const StyledField = styled(Label)`
   display: flex;
@@ -15,10 +16,11 @@ const StyledField = styled(Label)`
   cursor: ${props => props.disabled ? 'not-allowed' : 'initial'};
 `;
 
-const Name = styled(Text)`
+const Name = styled(Label).attrs({
+  tag: 'h6'
+})`
   max-width: 100%;
   color: ${props => props.disabled ? themeGet('colors.grayLight1') : themeGet('colors.textBase')};
-  font-size: ${props => props.fontSize || themeGet('fontSizes.3')};
   font-weight: ${props => props.fontWeight || 600};
   line-height: 1.2;
 `;
@@ -44,6 +46,7 @@ const Alert = styled(Text)`
 const Field = ({
   required,
   direction,
+  size,
   reverse,
   name,
   nameWidth,
@@ -69,11 +72,18 @@ const Field = ({
               disabled={disabled}
               fontSize={fontSize}
               fontWeight={fontWeight}
+              size={size}
             >
               {name}
               {required && <Required title="This field is required.">*</Required>}
             </Name>
-            {desc && <Desc mt={1}>{desc}</Desc>}
+            {desc && (
+              <Desc
+                mt={size === Size.TINY || Size.SMALL ? 0 : 1}
+              >
+                {desc}
+              </Desc>
+            )}
             {alert && <Alert mt={1}>{alert}</Alert>}
           </Box>
           {!reverse && children}
@@ -85,15 +95,23 @@ const Field = ({
         <StyledField flexDirection="column" {...props}>
           <Name
             width={nameWidth}
-            mb={2}
+            mb={size === Size.TINY || Size.SMALL ? 1 : 2}
             disabled={disabled}
             fontSize={fontSize}
             fontWeight={fontWeight}
+            size={size}
           >
             {name}
             {required && <Required title="This field is required.">*</Required>}
           </Name>
-          {desc && <Desc mt={-1} mb={2}>{desc}</Desc>}
+          {desc && (
+            <Desc
+              mt={size === Size.TINY || Size.SMALL ? 0 : -1}
+              mb={size === Size.TINY || Size.SMALL ? 1 : 2}
+            >
+              {desc}
+            </Desc>
+          )}
           {children}
           {alert && <Alert mt={2}>{alert}</Alert>}
         </StyledField>
@@ -108,6 +126,7 @@ Field.propTypes = {
   required: PropTypes.bool,
   disabled: PropTypes.bool,
   direction: PropTypes.oneOf(Object.values(Direction)),
+  size: PropTypes.oneOf(Object.values(Size)),
   reverse: PropTypes.bool,
   desc: PropTypes.string,
   alert: PropTypes.string
@@ -118,6 +137,7 @@ Field.defaultProps = {
   required: false,
   disabled: false,
   direction: undefined,
+  size: Size.MEDIUM,
   reverse: false,
   desc: undefined,
   alert: undefined

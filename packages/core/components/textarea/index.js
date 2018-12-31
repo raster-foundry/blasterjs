@@ -12,7 +12,7 @@ Textarea.propTypes = {
 Textarea.defaultProps = {
   tag: "textarea",
   type: "",
-  height: "8rem",
+  height: "8em",
   lineHeight: "1.4"
 };
 

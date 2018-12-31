@@ -6,6 +6,7 @@ route: /components/textInput
 
 import { Playground, PropsTable } from 'docz'
 import TextInput from './'
+import { Size } from '../../common/size'
 
 # TextInput
 
@@ -31,6 +32,15 @@ url, tel`).
     <TextInput type="tel" placeholder="Telephone" mb={4} />
 </Playground>
 
+## Sizes
+
+<Playground>
+    <TextInput placeholder="Your favorite book" size={Size.SMALL} display="block" mb={4} />
+    <TextInput placeholder="Your favorite book" size={Size.MEDIUM} display="block" mb={4} />
+    <TextInput placeholder="Your favorite book" size={Size.LARGE} display="block" mb={4} />
+</Playground>
+
+
 ### PropTypes
 
 | Prop | Type | Required | Default | Description |
@@ -41,3 +51,4 @@ url, tel`).
 | ${borderColor} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${borderRadius} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | invalid | bool | no | false |  |
+| size | enum | no | `Size.MEDIUM` | see [Size](/common/size) |

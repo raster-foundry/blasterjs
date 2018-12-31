@@ -3,12 +3,11 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import Text from "../text";
 import Icon from "../icon";
+import { Size } from "../../common/size";
 
 const StyledRadio = styled(Text)`
   position: relative;
   display: inline-block;
-  width: 2.4rem;
-  height: 2.4rem;
 
   ${props => props.disabled && css`
     opacity: .5;
@@ -18,6 +17,7 @@ const StyledRadio = styled(Text)`
 
 const StyledIcon = styled(Icon)`
   display: none;
+  pointer-events: none;
 `;
 
 const Input = styled.input`
@@ -52,13 +52,22 @@ const Radio = ({
   uncheckedIcon,
   checkedColor,
   uncheckedColor,
-  size,
+  size: _size,
   ...props
 }) => {
+
+  const size = {
+    [Size.TINY]: '1.2rem',
+    [Size.SMALL]: '1.6rem',
+    [Size.MEDIUM]: '2.4rem',
+    [Size.LARGE]: '3.2rem'
+  }[_size || Size.MEDIUM];
 
   return (
     <StyledRadio
       disabled={disabled}
+      width={size}
+      height={size}
       {...props}
     >
       <Input
@@ -102,7 +111,7 @@ Radio.propTypes = {
   uncheckedIcon: PropTypes.string,
   checkedColor: PropTypes.string,
   uncheckedColor: PropTypes.string,
-  size: PropTypes.string
+  size: PropTypes.oneOf(Object.values(Size))
 };
 
 Radio.defaultProps = {
@@ -119,7 +128,7 @@ Radio.defaultProps = {
   uncheckedIcon: 'cancel',
   checkedColor: 'primary',
   uncheckedColor: 'grayLight1',
-  size: '2rem'
+  size: Size.MEDIUM
 };
 
 export default Radio;
