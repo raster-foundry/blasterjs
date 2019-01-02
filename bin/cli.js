@@ -113,7 +113,7 @@ const templatesPath = "./templates";
 const dirs = p =>
   readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());
 
-const files = p => readdirSync(p).filter(f => statSync(join(p, f)).isFile());
+const files = (p, ext="") => readdirSync(p).filter(f => statSync(join(p, f)).isFile() && (ext ? f.endsWith(`.${ext}`) : true));
 
 const packagePath = package => `./packages/${package}`;
 
@@ -129,7 +129,7 @@ const listComponentsInPackage = package =>
   dirs(`${packagePath(package)}/components`);
 
 const listConstantsInPackage = package =>
-  files(`${packagePath(package)}/common`).map(f => f.replace(/\.[^/.]+$/, ""));
+  files(`${packagePath(package)}/common`, "js").map(f => f.replace(/\.[^/.]+$/, ""));
 
 const packageExists = package => listPackages().includes(package);
 
@@ -200,7 +200,7 @@ const optimizeSvgFile = async (svgPath) => {
 const generateIconIndex = async () => {
   try {
     const indexFile = "./packages/core/index.icons.js";
-    const svgs = files("./icons").filter(f => f.includes(".svg"));
+    const svgs = files("./icons", "svg");
     // Generate camelcased names
     const svgArrays = await Promise.all(
       svgs.map(async f => {
