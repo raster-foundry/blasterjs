@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { themeGet } from "styled-system";
 import Text from "../text";
 import Icon from "../icon";
 import { Size } from "../../common/size";
@@ -8,6 +9,11 @@ import { Size } from "../../common/size";
 const StyledCheckbox = styled(Text)`
   position: relative;
   display: inline-block;
+
+  &:focus-within {
+    outline: 0;
+    box-shadow: 0 0 0 3px ${themeGet('colors.primary')}4C;
+  }
 
   ${props => props.disabled && css`
     opacity: .5;

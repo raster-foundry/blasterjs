@@ -21,9 +21,7 @@ const Options = styled(Box)`
   align-items: ${props => props.direction === Direction.HORIZONTAL ? 'center' : 'flex-start'};
 `;
 
-const Name = styled(Label).attrs({
-  tag: 'h6'
-})`
+const Name = styled(Label)`
   max-width: 100%;
   display: block;
   margin-bottom: ${themeGet('space.1')};
@@ -85,7 +83,7 @@ const ToggleField = ({
 
   return (
     <StyledToggleField {...props}>
-      <Name size={size}>
+      <Name tag="h6" size={size}>
         {name}
         {required && <Required title="This field is required.">*</Required>}
       </Name>

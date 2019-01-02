@@ -16,9 +16,7 @@ const StyledField = styled(Label)`
   cursor: ${props => props.disabled ? 'not-allowed' : 'initial'};
 `;
 
-const Name = styled(Label).attrs({
-  tag: 'h6'
-})`
+const Name = styled(Label)`
   max-width: 100%;
   color: ${props => props.disabled ? themeGet('colors.grayLight1') : themeGet('colors.textBase')};
   font-weight: ${props => props.fontWeight || 600};
@@ -65,6 +63,7 @@ const Field = ({
           {reverse && children}
           <Box width={nameWidth} ml={reverse ? 2 : 0} mr={reverse ? 0 : 2}>
             <Name
+              tag="h6"
               minHeight={reverse ? 0 : "4rem"}
               display="flex"
               alignItems="center"
@@ -94,6 +93,7 @@ const Field = ({
       return (
         <StyledField flexDirection="column" {...props}>
           <Name
+            tag="h6"
             width={nameWidth}
             mb={size === Size.TINY || Size.SMALL ? 1 : 2}
             disabled={disabled}
