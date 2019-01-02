@@ -69,6 +69,9 @@ const TextInput = ({invalid, type, ...props}) => {
 
 TextInput.propTypes = {
   ...Text.propTypes,
+  ...borders.propTypes,
+  ...borderRadius.propTypes,
+  ...borderColor.propTypes,
   type: PropTypes.string,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -81,10 +84,7 @@ TextInput.propTypes = {
   pl: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   pr: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   bg: PropTypes.string,
-  borderRadius: PropTypes.string,
   color: PropTypes.string,
-  border: PropTypes.string,
-  borderColor: PropTypes.string,
   font: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Size))
 }
