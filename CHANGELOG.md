@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `Box` component added to the core package [#112](https://github.com/raster-foundry/blasterjs/pull/112)
 - `Text` component added to the core package [#114](https://github.com/raster-foundry/blasterjs/pull/114)
 - 'GlobalStyle' component added to the core package [#115](https://github.com/raster-foundry/blasterjs/pull/115)
+- Added command `update-icons` to the CLI to regenerate the icon index file when new icons are added [#118](https://github.com/raster-foundry/blasterjs/pull/118)
 
 ### Changed
 

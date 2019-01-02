@@ -1,5 +1,5 @@
-export { default as README } from "./common/README";
 export { default as Alignment } from "./common/alignment";
+export { default as Appearance } from "./common/appearance";
 export { default as Density } from "./common/density";
 export { default as Direction } from "./common/direction";
 export { default as Intent } from "./common/intent";

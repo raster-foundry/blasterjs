@@ -109,7 +109,6 @@ const svgo = new (require("svgo"))({
 });
 
 const templatesPath = "./templates";
-const themesPath = "./themes";
 
 const dirs = p =>
   readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());
@@ -200,7 +199,7 @@ const optimizeSvgFile = async (svgPath) => {
 
 const generateIconIndex = async () => {
   try {
-    const themeFile = "./packages/core/defaultTheme.js";
+    const indexFile = "./packages/core/index.icons.js";
     const svgs = files("./icons").filter(f => f.includes(".svg"));
     // Generate camelcased names
     const svgArrays = await Promise.all(
@@ -228,19 +227,15 @@ const generateIconIndex = async () => {
       }
     }), {});
 
-    if (existsSync(themeFile)) {
-      unlinkSync(themeFile);
+    if (existsSync(indexFile)) {
+      unlinkSync(indexFile);
     }
-    copyFileSync(
-      `${themesPath}/defaultTheme.js`,
-      themeFile
-    );
-    replaceInFile.sync({
-      files: themeFile,
-      from: /\$REPLACE/g,
-      to: JSON.stringify(svgConfig)
-    });
-    logSuccess("Theme files generated");
+    const fd = openSync(indexFile, "a");
+    appendFileSync(fd, `
+      export default ${JSON.stringify(svgConfig)};
+    `);
+    closeSync(fd);
+    logSuccess("Icon index file generated");
   } catch(e) {
     throw e;
   }
@@ -454,7 +449,9 @@ program
   });
 
 program
-  .command("build-themes")
+  .command("update-icons")
+  .alias("ui")
+  .alias("build-themes")
   .alias("bt")
   .action(function() {
     logInfo("Generating theme files...");
