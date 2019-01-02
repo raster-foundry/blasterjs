@@ -169,10 +169,10 @@ ToggleField.defaultProps = {
   desc: undefined,
   alert: undefined,
   onChange: () => {},
-  checkedIcon: 'check',
-  uncheckedIcon: 'cancel',
-  checkedColor: 'primary',
-  uncheckedColor: 'grayLight1'
+  checkedIcon: undefined,
+  uncheckedIcon: undefined,
+  checkedColor: undefined,
+  uncheckedColor: undefined
 }
 
 export default ToggleField;
