@@ -6,11 +6,14 @@ route: /components/colorInput
 
 import { Playground, PropsTable } from 'docz'
 import ColorInput from './'
+import { Size } from '../../common/size'
 
 # ColorInput
 
 <Playground>
-    <ColorInput value="#663399" size={Size.MEDIUM} />
+    <ColorInput value="#663399" size={Size.SMALL} mr={6} />
+    <ColorInput value="#663399" size={Size.MEDIUM} mr={6} />
+    <ColorInput value="#663399" size={Size.LARGE} />
 </Playground>
 
 
