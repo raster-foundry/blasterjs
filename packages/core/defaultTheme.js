@@ -63,7 +63,7 @@ const colors = {
 };
 
 const fonts = {
-  body: "'Libre Franklin', sans-serif",
+  body: "'Open Sans', sans-serif",
   display: "'Libre Franklin', sans-serif",
   code: "'Source Code Pro', monospace"
 };

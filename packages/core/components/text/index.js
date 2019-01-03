@@ -26,7 +26,9 @@ Text.propTypes = {
 };
 
 Text.defaultProps = {
-  tag: 'p'
+  tag: 'p',
+  fontFamily: 'body',
+  fontSize: 2
 };
 
 export default Text;

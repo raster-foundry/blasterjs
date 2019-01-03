@@ -54,11 +54,6 @@ const GlobalStyle = createGlobalStyle`
     html {
       font-size: 62.5%;
     }
-    body {
-      font-family: ${themeGet('fonts.body')};
-      font-size: 15px;
-      font-size: ${themeGet('fontSizes.2')};
-    }
 `;
 
 export default GlobalStyle;
