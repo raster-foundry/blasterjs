@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import { themeGet } from "styled-system";
 
 const GlobalStyle = createGlobalStyle`
-    html, body, div, span, applet, object, iframe,
+    div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
@@ -28,8 +28,12 @@ const GlobalStyle = createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
     display: block;
     }
-    body {
-    line-height: 1;
+    body,
+    html {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
     }
     ol, ul {
     list-style: none;
@@ -53,11 +57,6 @@ const GlobalStyle = createGlobalStyle`
     }
     html {
       font-size: 62.5%;
-    }
-    body {
-      font-family: ${themeGet('fonts.body')};
-      font-size: 15px;
-      font-size: ${themeGet('fontSizes.2')};
     }
 `;
 
