@@ -158,7 +158,7 @@ Checkbox.defaultProps = {
   invalid: false,
   checkedIcon: 'checkboxChecked',
   uncheckedIcon: 'checkboxUnchecked',
-  indeterminateIcon: 'minus',
+  indeterminateIcon: 'checkboxIndeterminate',
   checkedColor: 'primary',
   uncheckedColor: 'grayLight1',
   indeterminateColor: 'primary',
