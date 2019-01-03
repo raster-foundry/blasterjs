@@ -30,7 +30,6 @@ const GlobalStyle = createGlobalStyle`
     }
     body,
     html {
-    line-height: 1;
     margin: 0;
     padding: 0;
     border: 0;
