@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 import { themeGet } from "styled-system";
 
 const GlobalStyle = createGlobalStyle`
-    html, body, div, span, applet, object, iframe,
+    div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
     del, dfn, em, img, ins, kbd, q, s, samp,
@@ -28,8 +28,13 @@ const GlobalStyle = createGlobalStyle`
     footer, header, hgroup, menu, nav, section {
     display: block;
     }
-    body {
+    body,
+    html {
     line-height: 1;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
     }
     ol, ul {
     list-style: none;
