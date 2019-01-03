@@ -14,8 +14,10 @@ in its place.
 
 Can be controlled or uncontrolled. For controlled, you must supply the
 `checked` prop, eg `<Checkbox checked />` or `<Checkbox checked={false} />`,
-or the `indeterminate` prop. For uncontrolled, you must omit the `checked` prop.
+or the `indeterminate` prop. And you must supply an `onChange` handler.
 
+For uncontrolled, you must omit the `checked` prop.  And optionally supply the
+`defaultChecked` prop.
 
 ## Uncontrolled
 

@@ -14,7 +14,10 @@ in its place.
 
 Can be controlled or uncontrolled. For controlled, you must supply the
 `checked` prop, eg `<Radio checked />` or `<Radio checked={false} />`.
-For uncontrolled, you must omit the `checked` prop.
+And you must supply an `onChange` handler.
+
+For uncontrolled, you must omit the `checked` prop.  And optionally supply the
+`defaultChecked` prop.
 
 
 ## Uncontrolled

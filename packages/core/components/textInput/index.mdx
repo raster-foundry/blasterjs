@@ -13,12 +13,19 @@ import { Size } from '../../common/size'
 Use `TextInput` for text-like input fields (`text, password, search, email, number,
 url, tel`).
 
+Can be controlled or uncontrolled. For controlled, you must supply the
+`value` and `onChange` props.
+
+For uncontrolled, you must omit the `value` prop. And optionally supply the
+`defaultValue` prop.
+
+
 ## Basic usage
 
 <Playground>
     <TextInput
         placeholder="Your favorite movie"
-        defaultValue="One Flew Over the Cuckoo's Nest" 
+        defaultValue="One Flew Over the Cuckoo's Nest"
         mb={4}
     />
     <TextInput placeholder="Your favorite dinner" disabled width="45%" mr={8} />
