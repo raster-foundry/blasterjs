@@ -16,7 +16,11 @@ url, tel`).
 ## Basic usage
 
 <Playground>
-    <TextInput placeholder="Your favorite movie" mb={4} />
+    <TextInput
+        placeholder="Your favorite movie"
+        defaultValue="One Flew Over the Cuckoo's Nest" 
+        mb={4}
+    />
     <TextInput placeholder="Your favorite dinner" disabled width="45%" mr={8} />
     <TextInput placeholder="Your favorite beverage" required width="45%" />
 </Playground>
@@ -47,6 +51,8 @@ url, tel`).
 |:-----|:-----|:---------|:--------|:------------|
 | Text props | | | | see [Text](/components/text) |
 | `<input>` attributes | | no | | `type, placeholder, disabled, required, spellCheck, …` |
+| defaultValue | string | no | | initial value when uncontrolled |
+| value | string | no | | value when controlled |
 | ${borders} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${borderColor} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${borderRadius} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |

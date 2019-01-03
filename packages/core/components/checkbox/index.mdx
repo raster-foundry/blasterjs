@@ -21,7 +21,7 @@ or the `indeterminate` prop. For uncontrolled, you must omit the `checked` prop.
 
 <Playground>
     <Checkbox value="alpha" mr={2} />
-    <Checkbox value="beta" mr={2} />
+    <Checkbox defaultChecked value="beta" mr={2} />
     <Checkbox disabled value="gamma" />
 </Playground>
 
@@ -52,6 +52,7 @@ or the `indeterminate` prop. For uncontrolled, you must omit the `checked` prop.
 | value | string | no | | passed to underlying element |
 | onChange | function | no | | |
 | disabled | bool | no | `false` | passed to underlying element |
+| defaultChecked | bool | no | | initial checked value when uncontrolled |
 | checked | bool | no | | supply this when controlled |
 | indeterminate | bool | no | `false` | indeterminate checkboxes must be controlled |
 | required | bool | no | `false` | passed to underlying element |

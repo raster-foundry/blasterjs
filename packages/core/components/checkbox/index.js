@@ -60,6 +60,7 @@ const Checkbox = ({
   onChange,
   disabled,
   required,
+  defaultChecked,
   checked,
   indeterminate,
   invalid,
@@ -94,6 +95,7 @@ const Checkbox = ({
         value={value}
         onChange={(e) => onChange(e, e.target.value)}
         disabled={disabled}
+        defaultChecked={defaultChecked}
         checked={indeterminate || checked}
         indeterminate={indeterminate}
         required={required}
@@ -128,6 +130,7 @@ Checkbox.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   indeterminate: PropTypes.bool,
   required: PropTypes.bool,
@@ -148,6 +151,7 @@ Checkbox.defaultProps = {
   value: undefined,
   onChange: () => {},
   disabled: false,
+  defaultChecked: undefined,
   checked: undefined,
   indeterminate: false,
   required: false,

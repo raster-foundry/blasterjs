@@ -52,6 +52,7 @@ const Radio = ({
   onChange,
   disabled,
   required,
+  defaultChecked,
   checked,
   invalid,
   checkedIcon,
@@ -83,6 +84,7 @@ const Radio = ({
         value={value}
         onChange={(e) => onChange(e, e.target.value)}
         disabled={disabled}
+        defaultChecked={defaultChecked}
         checked={checked}
         required={required}
         aria-invalid={invalid}
@@ -110,6 +112,7 @@ Radio.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
+  defaultChecked: PropTypes.bool,
   checked: PropTypes.bool,
   required: PropTypes.bool,
   invalid: PropTypes.bool,
@@ -127,6 +130,7 @@ Radio.defaultProps = {
   value: undefined,
   onChange: () => {},
   disabled: false,
+  defaultChecked: undefined,
   checked: undefined,
   required: false,
   invalid: false,

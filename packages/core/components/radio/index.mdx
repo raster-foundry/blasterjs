@@ -20,7 +20,7 @@ For uncontrolled, you must omit the `checked` prop.
 ## Uncontrolled
 
 <Playground>
-    <Radio name="foo" value="orange" mr={2} />
+    <Radio defaultChecked name="foo" value="orange" mr={2} />
     <Radio name="foo" value="grape" mr={2} />
     <Radio name="foo" value="blue" onChange={(e, value) => window.alert(value)} mr={2} />
     <Radio name="foo" value="gold" disabled />
@@ -52,6 +52,7 @@ For uncontrolled, you must omit the `checked` prop.
 | value | string | no | | passed to underlying element |
 | onChange | function | no | | |
 | disabled | bool | no | `false` | passed to underlying element |
+| defaultChecked | bool | no | | initial checked value when uncontrolled |
 | checked | bool | no | | supply this when controlled |
 | required | bool | no | `false` | passed to underlying element |
 | invalid | bool | no | `false` | passed to underlying element |
