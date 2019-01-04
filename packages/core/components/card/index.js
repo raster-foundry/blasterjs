@@ -45,7 +45,7 @@ Card.defaultProps = {
   border: "2px solid",
   borderColor: "grayLight3",
   borderRadius: "large",
-  boxShadow: "0 5px 10px -4px rgba(67, 83, 153, 0.2)"
+  boxShadow: 2
 };
 
 export default Card;
