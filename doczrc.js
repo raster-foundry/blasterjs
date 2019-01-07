@@ -10,7 +10,7 @@ export default {
     "React Styled-components UI library designed and built by Azavea",
   indexHtml: "docs/index.html",
   wrapper: "docs/wrapper.js",
-  menu: ["Home", "Getting Started", "Components"],
+  menu: ["Home", "Getting Started", "Components", "Overlays"],
   codeSandbox: false,
   themeConfig: {
     showPlaygroundEditor: true

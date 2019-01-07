@@ -1,6 +1,6 @@
 {
   "name": "@blasterjs/overlays",
-  "version": "0.0.1",
+  "version": "0.0.12",
   "description": "blasterjs overlays",
   "main": "dist/index.js",
   "module": "src/index.js",
