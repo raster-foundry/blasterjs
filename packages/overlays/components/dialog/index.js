@@ -89,6 +89,13 @@ const Dialog = ({
 
   const transitionCSS = `
     /******************
+     * Body
+     */
+    .body--modal-dialog-open {
+      overflow: hidden;
+    }
+
+    /******************
      * Overlay
      */
     .${overlayClassName.base} {
@@ -187,9 +194,9 @@ Dialog.defaultProps = {
   bodyOpenClassName: 'body--modal-dialog-open',
   opacity: 0.6,
   boxShadow: 5,
-  minWidth: '30rem',
+  minWidth: '24rem',
   maxWidth: '80%',
-  minHeight: '40rem',
+  minHeight: '16rem',
   maxHeight: '90%',
   pt: 3,
   pb: 3,
