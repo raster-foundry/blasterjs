@@ -91,7 +91,7 @@ const Dialog = ({
     /******************
      * Body
      */
-    .body--modal-dialog-open {
+    .${bodyOpenClassName} {
       overflow: hidden;
     }
 
