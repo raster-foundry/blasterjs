@@ -53,7 +53,7 @@ const Select = ({
   color,
   border,
   borderColor,
-  font,
+  fontFamily,
   icon,
   children,
   ...props
@@ -79,7 +79,7 @@ const Select = ({
         color={color}
         border={border}
         borderColor={borderColor}
-        font={font}
+        fontFamily={fontFamily}
         {...props}
       >
         {children}

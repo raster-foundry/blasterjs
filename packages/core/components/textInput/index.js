@@ -85,7 +85,6 @@ TextInput.propTypes = {
   pr: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   bg: PropTypes.string,
   color: PropTypes.string,
-  font: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Size))
 }
 
@@ -106,7 +105,7 @@ TextInput.defaultProps = {
   color: "textBase",
   border: "1px solid",
   borderColor: "textBase",
-  font: "inherit",
+  fontFamily: "inherit",
   size: Size.MEDIUM
 }
 
