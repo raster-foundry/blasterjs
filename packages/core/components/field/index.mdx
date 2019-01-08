@@ -52,12 +52,14 @@ For a group of radio buttons, use [ToggleField](/components/toggleField) instead
 <Playground>
     <Field
         name="Name of school"
+        alert="Hey I went there too"
+        alertIntent={Intent.SUCCESS}
         direction={Direction.HORIZONTAL}
         nameWidth="24rem"
         required
         mb={6}
     >
-        <TextInput placeholder="Arkham Elementary" />
+        <TextInput defaultValue="Arkham Elementary" />
     </Field>
 
     <Field
@@ -73,7 +75,6 @@ For a group of radio buttons, use [ToggleField](/components/toggleField) instead
         name="Name of your first grade teacher"
         desc="Don't remember? Ask your fourth grade teacher."
         alert="Please fill out this field"
-        alertIntent={Intent.WARNING}
         direction={Direction.HORIZONTAL}
         nameWidth="24rem"
         required
