@@ -7,6 +7,7 @@ import Box from "../box";
 import Text from "../text";
 import { Direction } from "../../common/direction";
 import { Size } from "../../common/size";
+import { Intent } from "../../common/intent";
 
 const StyledField = styled(Label)`
   display: flex;
@@ -34,11 +35,32 @@ const Desc = styled(Text)`
 `;
 
 const Alert = styled(Text)`
-  color: ${themeGet('colors.red')};
   font-size: ${themeGet('fontSizes.1')};
   font-weight: 600;
   line-height: 1.2;
   text-transform: uppercase;
+
+  ${props => {
+    let color;
+    switch (props.intent) {
+      case Intent.NONE:
+        color = "textBase";
+        break;
+      case Intent.SUCCESS:
+        color = "green";
+        break;
+      case Intent.WARNING:
+        color = "orange";
+        break;
+      case Intent.DANGER:
+      default:
+        color = "red";
+        break;
+    }
+    return css`
+      color: ${themeGet(`colors.${color}`)};
+    `;
+  }}
 `;
 
 const Field = ({
@@ -50,6 +72,7 @@ const Field = ({
   nameWidth,
   desc,
   alert,
+  alertIntent,
   fontSize,
   fontWeight,
   disabled,
@@ -83,7 +106,7 @@ const Field = ({
                 {desc}
               </Desc>
             )}
-            {alert && <Alert mt={1}>{alert}</Alert>}
+            {alert && <Alert intent={alertIntent} mt={1}>{alert}</Alert>}
           </Box>
           {!reverse && children}
         </StyledField>
@@ -113,7 +136,7 @@ const Field = ({
             </Desc>
           )}
           {children}
-          {alert && <Alert mt={2}>{alert}</Alert>}
+          {alert && <Alert intent={alertIntent} mt={2}>{alert}</Alert>}
         </StyledField>
       );
   }
@@ -129,7 +152,8 @@ Field.propTypes = {
   size: PropTypes.oneOf(Object.values(Size)),
   reverse: PropTypes.bool,
   desc: PropTypes.string,
-  alert: PropTypes.string
+  alert: PropTypes.string,
+  alertIntent: PropTypes.oneOf(Object.values(Intent))
 }
 
 Field.defaultProps = {
@@ -140,7 +164,8 @@ Field.defaultProps = {
   size: Size.MEDIUM,
   reverse: false,
   desc: undefined,
-  alert: undefined
+  alert: undefined,
+  alertIntent: Intent.DANGER
 };
 
 export default Field;

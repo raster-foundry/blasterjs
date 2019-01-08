@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import Box from "../box";
 import Text from "../text";
@@ -10,6 +10,7 @@ import Radio from "../radio";
 import Checkbox from "../checkbox";
 import { Direction } from "../../common/direction";
 import { Size } from "../../common/size";
+import { Intent } from "../../common/intent";
 
 const StyledToggleField = styled(Box)``;
 
@@ -43,11 +44,32 @@ const Desc = styled(Text)`
 `;
 
 const Alert = styled(Text)`
-  color: ${themeGet('colors.red')};
   font-size: ${themeGet('fontSizes.1')};
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
+
+  ${props => {
+    let color;
+    switch (props.intent) {
+      case Intent.NONE:
+        color = "textBase";
+        break;
+      case Intent.SUCCESS:
+        color = "green";
+        break;
+      case Intent.WARNING:
+        color = "orange";
+        break;
+      case Intent.DANGER:
+      default:
+        color = "red";
+        break;
+    }
+    return css`
+      color: ${themeGet(`colors.${color}`)};
+    `;
+  }}
 `;
 
 const ToggleField = ({
@@ -60,6 +82,7 @@ const ToggleField = ({
   direction,
   desc,
   alert,
+  alertIntent,
   onChange,
   checkedIcon,
   uncheckedIcon,
@@ -120,7 +143,7 @@ const ToggleField = ({
           </Field>
         ))}
       </Options>
-      {alert && <Alert mt={2}>{alert}</Alert>}
+      {alert && <Alert intent={alertIntent} mt={2}>{alert}</Alert>}
     </StyledToggleField>
   );
 }
@@ -146,6 +169,7 @@ ToggleField.propTypes = {
   inputSize: PropTypes.oneOf(Object.values(Size)),
   desc: PropTypes.string,
   alert: PropTypes.string,
+  alertIntent: PropTypes.oneOf(Object.values(Intent)),
   onChange: PropTypes.func,
   checkedIcon: PropTypes.string,
   uncheckedIcon: PropTypes.string,
@@ -166,6 +190,7 @@ ToggleField.defaultProps = {
   inputSize: Size.MEDIUM,
   desc: undefined,
   alert: undefined,
+  alertIntent: Intent.DANGER,
   onChange: () => {},
   checkedIcon: undefined,
   uncheckedIcon: undefined,

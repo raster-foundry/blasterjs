@@ -10,6 +10,7 @@ import TextInput from '../textInput'
 import Checkbox from '../checkbox'
 import Textarea from '../textarea'
 import { Direction } from "../../common/direction";
+import { Intent } from "../../common/intent";
 
 # Field
 
@@ -72,6 +73,7 @@ For a group of radio buttons, use [ToggleField](/components/toggleField) instead
         name="Name of your first grade teacher"
         desc="Don't remember? Ask your fourth grade teacher."
         alert="Please fill out this field"
+        alertIntent={Intent.WARNING}
         direction={Direction.HORIZONTAL}
         nameWidth="24rem"
         required
@@ -124,5 +126,6 @@ For a group of radio buttons, use [ToggleField](/components/toggleField) instead
 | direction | enum | no | `VERTICAL` | see [Direction](/common/direction) |
 | reverse | bool | no | `false` | puts name after the input. applies to direction `HORIZONTAL` only |
 | desc | string | no | | a description or hint |
-| alert | string | no | | bold red message, typically used to signal invalid input |
+| alert | string | no | | bold message, typically used to signal invalid input |
+| alertIntent | enum | no | `Intent.DANGER` | determines alert message color |
 | size | enum | no | `Size.MEDIUM` | must also pass this to children |
