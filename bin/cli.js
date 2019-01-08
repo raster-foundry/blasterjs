@@ -173,7 +173,7 @@ const generateConstantIndex = package => {
   const fd = openSync(indexFile, "a");
   if (existsSync(`${packagePath(package)}/common`)) {
     listConstantsInPackage(package).forEach(constant => {
-      const exportString = `export { default as ${upperfirst(
+      const exportString = `export { ${upperfirst(
         constant
       )} } from "./common/${constant}";\n`;
       appendFileSync(fd, exportString);

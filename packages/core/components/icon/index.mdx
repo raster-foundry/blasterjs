@@ -4,9 +4,9 @@ menu: Components
 route: /components/icon
 ---
 
-import { Playground, PropsTable } from "docz";
-import { ThemeProvider } from "styled-components";
-import Icon from "./";
+import { Playground, PropsTable } from 'docz';
+import Icon from './';
+import { IconGroup } from '../../../docs-app/';
 
 # Icons
 
@@ -20,5 +20,10 @@ import Icon from "./";
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
 | Text props | | | | see [Text](/components/text) |
-| name | string | yes | | see `theme.icons` |
-| size | string | no | | see [styled-system](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#layout) |
+| name | string | yes | | see below |
+| size | string | no | `1em` | see [styled-system](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#layout) |
+
+
+### Index of Icons
+
+<IconGroup />

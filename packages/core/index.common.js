@@ -1,8 +1,8 @@
-export { default as Alignment } from "./common/alignment";
-export { default as Appearance } from "./common/appearance";
-export { default as Density } from "./common/density";
-export { default as Direction } from "./common/direction";
-export { default as Intent } from "./common/intent";
-export { default as Position } from "./common/position";
-export { default as Shape } from "./common/shape";
-export { default as Size } from "./common/size";
+export { Alignment } from "./common/alignment";
+export { Appearance } from "./common/appearance";
+export { Density } from "./common/density";
+export { Direction } from "./common/direction";
+export { Intent } from "./common/intent";
+export { Position } from "./common/position";
+export { Shape } from "./common/shape";
+export { Size } from "./common/size";
