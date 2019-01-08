@@ -1,11 +1,7 @@
-/****************************************************************************
- * Convenience component for rendering a grid of icons on the Icon docz page.
- */
-
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { withTheme } from "styled-components";
-import Icon from ".";
+import { Icon } from "@blasterjs/core";
 
 const Grid = styled.div`
   box-sizing: border-box;
@@ -42,7 +38,7 @@ const IconName = styled.input`
   }
 `;
 
-const IconIndex = ({theme, ...props}) => {
+const IconGroup = ({theme, ...props}) => {
   const icons = Object.keys(theme.icons).map(k => (
     <GridItem key={k} onClick={e => e.currentTarget.getElementsByTagName('input')[0].select()}>
       <Icon name={k} size="4rem" />
@@ -57,4 +53,4 @@ const IconIndex = ({theme, ...props}) => {
   );
 };
 
-export default withTheme(IconIndex);
+export default withTheme(IconGroup);

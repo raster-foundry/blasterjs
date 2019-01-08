@@ -16,7 +16,7 @@ const StyledIcon = styled(Text)`
   vertical-align: middle;
 `;
 
-const Icon = withTheme(props => {
+const Icon = props => {
   const icon = props.theme.icons[props.name];
 
   return (
@@ -30,7 +30,7 @@ const Icon = withTheme(props => {
       <path d={icon.path} fill="currentColor" />
     </StyledIcon>
   );
-});
+};
 
 Icon.propTypes = {
   ...Text.propTypes,
@@ -47,4 +47,4 @@ Icon.defaultProps = {
   mr: "2px"
 };
 
-export default Icon;
+export default withTheme(Icon);
