@@ -1,0 +1,67 @@
+---
+name: TextInput
+menu: Components
+route: /components/textInput
+---
+
+import { Playground, PropsTable } from 'docz'
+import TextInput from './'
+import { Size } from '../../common/size'
+
+# TextInput
+
+Use `TextInput` for text-like input fields (`text, password, search, email, number,
+url, tel`).
+
+Can be controlled or uncontrolled. For controlled, you must supply the
+`value` and `onChange` props.
+
+For uncontrolled, you must omit the `value` prop. And optionally supply the
+`defaultValue` prop.
+
+
+## Basic usage
+
+<Playground>
+    <TextInput
+        placeholder="Your favorite movie"
+        defaultValue="One Flew Over the Cuckoo's Nest"
+        mb={4}
+    />
+    <TextInput placeholder="Your favorite dinner" disabled width="45%" mr={8} />
+    <TextInput placeholder="Your favorite beverage" required width="45%" />
+</Playground>
+
+## Alternate types
+
+<Playground>
+    <TextInput type="password" placeholder="Password" mb={4} />
+    <TextInput type="search" placeholder="Search" mb={4} />
+    <TextInput type="email" placeholder="Email" mb={4} />
+    <TextInput type="number" placeholder="Number" mb={4} />
+    <TextInput type="url" placeholder="URL" mb={4} />
+    <TextInput type="tel" placeholder="Telephone" mb={4} />
+</Playground>
+
+## Sizes
+
+<Playground>
+    <TextInput placeholder="Your favorite book" size={Size.SMALL} display="block" mb={4} />
+    <TextInput placeholder="Your favorite book" size={Size.MEDIUM} display="block" mb={4} />
+    <TextInput placeholder="Your favorite book" size={Size.LARGE} display="block" mb={4} />
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Text props | | | | see [Text](/components/text) |
+| `<input>` attributes | | no | | `type, placeholder, disabled, required, spellCheck, …` |
+| defaultValue | string | no | | initial value when uncontrolled |
+| value | string | no | | value when controlled |
+| ${borders} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${borderColor} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${borderRadius} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| invalid | bool | no | false |  |
+| size | enum | no | `Size.MEDIUM` | see [Size](/common/size) |

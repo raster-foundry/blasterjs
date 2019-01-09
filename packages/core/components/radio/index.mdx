@@ -1,0 +1,66 @@
+---
+name: Radio
+menu: Components
+route: /components/radio
+---
+
+import { Playground, PropsTable } from 'docz'
+import Radio from './'
+
+# Radio
+
+A radio button. The native element is functional but hidden. Icons are rendered
+in its place.
+
+Can be controlled or uncontrolled. For controlled, you must supply the
+`checked` prop, eg `<Radio checked />` or `<Radio checked={false} />`.
+And you must supply an `onChange` handler.
+
+For uncontrolled, you must omit the `checked` prop.  And optionally supply the
+`defaultChecked` prop.
+
+
+## Uncontrolled
+
+<Playground>
+    <Radio defaultChecked name="foo" value="orange" mr={2} />
+    <Radio name="foo" value="grape" mr={2} />
+    <Radio name="foo" value="blue" onChange={(e, value) => window.alert(value)} mr={2} />
+    <Radio name="foo" value="gold" disabled />
+</Playground>
+
+## Controlled
+
+<Playground>
+    <Radio
+        checked={true}
+        value="coffee"
+        name="bar"
+        mr={2}
+    />
+    <Radio
+        checked={false}
+        value="chocolate"
+        name="bar"
+    />
+</Playground>
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Text props | | | | see [Text](/components/text) |
+| id | string | no | | passed to underlying element |
+| name | string | no | | passed to underlying element |
+| value | string | no | | passed to underlying element |
+| onChange | function | no | | |
+| disabled | bool | no | `false` | passed to underlying element |
+| defaultChecked | bool | no | | initial checked value when uncontrolled |
+| checked | bool | no | | supply this when controlled |
+| required | bool | no | `false` | passed to underlying element |
+| invalid | bool | no | `false` | passed to underlying element |
+| checkedIcon | string | no | `check` | |
+| uncheckedIcon | string | no | `cancel` | |
+| checkedColor | string | no | `primary` | |
+| uncheckedColor | string | no | `grayLight1` | |
+| size | string | no | `2rem` | icon size |

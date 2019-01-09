@@ -1,0 +1,68 @@
+---
+name: Checkbox
+menu: Components
+route: /components/checkbox
+---
+
+import { Playground, PropsTable } from 'docz'
+import Checkbox from './'
+
+# Checkbox
+
+A checkbox. The native element is functional but hidden. Icons are rendered
+in its place.
+
+Can be controlled or uncontrolled. For controlled, you must supply the
+`checked` prop, eg `<Checkbox checked />` or `<Checkbox checked={false} />`,
+or the `indeterminate` prop. And you must supply an `onChange` handler.
+
+For uncontrolled, you must omit the `checked` prop.  And optionally supply the
+`defaultChecked` prop.
+
+## Uncontrolled
+
+<Playground>
+    <Checkbox value="alpha" mr={2} />
+    <Checkbox defaultChecked value="beta" mr={2} />
+    <Checkbox disabled value="gamma" />
+</Playground>
+
+
+## Controlled
+
+<Playground>
+    <Checkbox checked value="alpha" mr={2} />
+    <Checkbox checked={false} value="beta" mr={2} />
+    <Checkbox checked disabled value="gamma" />
+</Playground>
+
+
+## Indeterminate
+
+<Playground>
+    <Checkbox value="maybe" indeterminate />
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Text props | | | | see [Text](/components/text) |
+| id | string | no | | passed to underlying element |
+| name | string | no | | passed to underlying element |
+| value | string | no | | passed to underlying element |
+| onChange | function | no | | |
+| disabled | bool | no | `false` | passed to underlying element |
+| defaultChecked | bool | no | | initial checked value when uncontrolled |
+| checked | bool | no | | supply this when controlled |
+| indeterminate | bool | no | `false` | indeterminate checkboxes must be controlled |
+| required | bool | no | `false` | passed to underlying element |
+| invalid | bool | no | `false` | passed to underlying element |
+| checkedIcon | string | no | `check` | |
+| uncheckedIcon | string | no | `cancel` | |
+| indeterminateIcon | string | no | `minus` | |
+| checkedColor | string | no | `primary` | |
+| uncheckedColor | string | no | `grayLight1` | |
+| indeterminateColor | string | no | `primary` | |
+| size | string | no | `2rem` | icon size |

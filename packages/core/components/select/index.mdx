@@ -1,0 +1,42 @@
+---
+name: Select
+menu: Components
+route: /components/select
+---
+
+import { Playground, PropsTable } from 'docz'
+import Select from './'
+
+# Select
+
+A native select element. `appearance` is set to `none` and a custom arrow icon is
+rendered.
+
+Can be controlled or uncontrolled. For controlled, you must supply the
+`value` and `onChange` props.
+
+For uncontrolled, you must omit the `value` prop. And optionally supply the
+`defaultValue` prop.
+
+## Basic usage
+
+<Playground>
+    <Select>
+        <option>November 2018</option>
+        <option>December 2018</option>
+        <option>January 2019</option>
+        <option>February 2019</option>
+    </Select>
+</Playground>
+
+
+## Multiselect
+
+<Playground>
+    <Select multiple>
+        <option>November 2018</option>
+        <option>December 2018</option>
+        <option>January 2019</option>
+        <option>February 2019</option>
+    </Select>
+</Playground>

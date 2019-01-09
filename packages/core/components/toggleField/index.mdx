@@ -1,0 +1,116 @@
+---
+name: ToggleField
+menu: Components
+route: /components/toggleField
+---
+
+import { Playground, PropsTable } from 'docz'
+import ToggleField from './'
+import { Direction } from '../../common/direction'
+import { Intent } from "../../common/intent";
+
+# ToggleField
+
+Group of radios or checkboxes.
+
+'ToggleField' does not support indeterminate checkboxes.
+
+## Radios
+
+<Playground>
+    <ToggleField
+        type="radio"
+        inputName="flavor"
+        name="Whatchu want?"
+        desc="Pick a flavor"
+        mb={6}
+        options={[
+            {
+                label: 'I got orange',
+                value: 'orange'
+            },
+            {
+                label: 'I got grape',
+                value: 'grape'
+            },
+            {
+                label: 'I got blue',
+                value: 'blue'
+            },
+            {
+                label: 'I got nothing',
+                value: 'nothing',
+                disabled: true
+            }
+        ]}
+    />
+</Playground>
+
+
+## Checkboxes
+
+<Playground>
+    <ToggleField
+        type="checkbox"
+        inputName="flavors"
+        name="Whatchu like?"
+        desc="Snow cone flavors"
+        direction={Direction.HORIZONTAL}
+        onChange={(e) => window.alert(e.target.value)}
+        options={[
+            {
+                label: 'Orange',
+                value: 'orange'
+            },
+            {
+                label: 'Grape',
+                value: 'grape'
+            },
+            {
+                label: 'Blue',
+                value: 'blue'
+            },
+            {
+                label: 'Gold',
+                value: 'gold',
+                disabled: true
+            }
+        ]}
+    />
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| name | string | yes | | |
+| type | string | yes | | `["radio", "checkbox"]` |
+| options | array | yes | | see below |
+| size | enum | no | `Size.LARGE` | affects name size. see [Size](/common/size) |
+| inputSize | enum | no | `Size.MEDIUM` | passed to inputs. see [Size](/common/size) |
+| inputName | string | no | | required iff `radio` |
+| required | bool | no | `false` | appends an asterisk to name |
+| invalid | bool | no | `false` | passed to toggle components |
+| direction | enum | no | `VERTICAL` | see [Direction](/common/direction) |
+| desc | string | no | | a description or hint |
+| alert | string | no | | bold message, typically used to signal invalid input |
+| alertIntent | enum | no | `Intent.DANGER` | determines alert message color |
+| onChange | function | no | | receives selected value onChange |
+| checkedIcon | string | no | | |
+| uncheckedIcon | string | no | | |
+| checkedColor | string | no | | |
+| uncheckedColor | string | no | | |
+
+
+### `Options` array prop
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| id | string | no | | |
+| label | string | yes | | |
+| value | string | yes | | |
+| checked | bool | no | | iff controlled |
+| inputName | string | no | | |
+| disabled | bool | no | `false` | |

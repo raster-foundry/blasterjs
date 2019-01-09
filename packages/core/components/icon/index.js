@@ -26,7 +26,6 @@ const Icon = props => {
       viewBox={icon.viewBox}
       {...props}
     >
-      <title>{icon.title}</title>
       <path d={icon.path} fill="currentColor" />
     </StyledIcon>
   );

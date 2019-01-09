@@ -1,0 +1,24 @@
+---
+name: ColorInput
+menu: Components
+route: /components/colorInput
+---
+
+import { Playground, PropsTable } from 'docz'
+import ColorInput from './'
+import { Size } from '../../common/size'
+
+# ColorInput
+
+<Playground>
+    <ColorInput defaultValue="#663399" size={Size.SMALL} mr={6} />
+    <ColorInput defaultValue="#663399" size={Size.MEDIUM} mr={6} />
+    <ColorInput defaultValue="#663399" size={Size.LARGE} />
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| TextInput props | | | | see [TextInput](/components/textInput) |

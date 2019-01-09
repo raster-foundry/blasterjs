@@ -1,0 +1,132 @@
+---
+name: Field
+menu: Components
+route: /components/field
+---
+
+import { Playground, PropsTable } from 'docz'
+import Field from './'
+import TextInput from '../textInput'
+import Checkbox from '../checkbox'
+import Textarea from '../textarea'
+import { Direction } from "../../common/direction";
+import { Intent } from "../../common/intent";
+
+# Field
+
+A `Field` wraps a single form field (`<input>, <select>, <textarea>`),
+a `name` prop, and optional `hint` and `alert` props into a `<label>` element
+and arranges them according to the `direction` and `reverse` props.
+
+Direction is vertical by default. Passing `direction={Direction.HORIZONTAL}`
+and `reverse` will position the `label` to the right of the `input`, which is
+the preferred layout for a checkbox or radio button.
+
+For a group of radio buttons, use [ToggleField](/components/toggleField) instead.
+
+## Vertical
+
+<Playground>
+    <Field name="Name of your third grade teacher" mb={6}>
+        <TextInput placeholder="Mrs. Kennedy" />
+    </Field>
+
+    <Field
+        name="Name of your fourth grade teacher"
+        desc="If you don't remember, make something up"
+        alert="Please fill out this field"
+        required
+        mb={6}
+    >
+        <TextInput placeholder="Mrs. Eager" required />
+    </Field>
+
+    <Field name="Describe your fifth grade experience">
+        <Textarea placeholder="Happy and fun!" />
+    </Field>
+</Playground>
+
+
+## Horizontal
+
+<Playground>
+    <Field
+        name="Name of school"
+        alert="Hey I went there too"
+        alertIntent={Intent.SUCCESS}
+        direction={Direction.HORIZONTAL}
+        nameWidth="24rem"
+        required
+        mb={6}
+    >
+        <TextInput defaultValue="Arkham Elementary" />
+    </Field>
+
+    <Field
+        name="Name of your second grade teacher"
+        direction={Direction.HORIZONTAL}
+        nameWidth="24rem"
+        mb={6}
+    >
+        <TextInput placeholder="Mrs. Hall" />
+    </Field>
+
+    <Field
+        name="Name of your first grade teacher"
+        desc="Don't remember? Ask your fourth grade teacher."
+        alert="Please fill out this field"
+        direction={Direction.HORIZONTAL}
+        nameWidth="24rem"
+        required
+        mb={6}
+    >
+        <TextInput placeholder="Mrs. Hall" required />
+    </Field>
+
+    <Field
+        name="Describe your sixth grade experience"
+        direction={Direction.HORIZONTAL}
+        nameWidth="24rem"
+    >
+        <Textarea placeholder="Groovy" />
+    </Field>
+</Playground>
+
+
+## Horizontal reverse
+
+<Playground>
+    <Field
+        name="Label after the input"
+        direction={Direction.HORIZONTAL}
+        reverse
+        mb={4}
+    >
+        <Checkbox />
+    </Field>
+
+    <Field
+        name="Use for checkboxes and radios"
+        desc="Don't forget `reverse` and `direction={Direction.HORIZONTAL}`"
+        direction={Direction.HORIZONTAL}
+        reverse
+    >
+        <Checkbox />
+    </Field>
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Label props | | | | see [Label](/components/label) |
+| name | string | yes | | |
+| nameWidth | string | no | | applies to direction `HORIZONTAL` only |
+| required | bool | no | `false` | appends an asterisk to name |
+| direction | enum | no | `VERTICAL` | see [Direction](/common/direction) |
+| reverse | bool | no | `false` | puts name after the input. applies to direction `HORIZONTAL` only |
+| desc | string | no | | a description or hint |
+| alert | string | no | | bold message, typically used to signal invalid input |
+| alertIntent | enum | no | `Intent.DANGER` | determines alert message color |
+| size | enum | no | `Size.MEDIUM` | must also pass this to children |

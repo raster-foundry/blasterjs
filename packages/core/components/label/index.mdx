@@ -1,0 +1,46 @@
+---
+name: Label
+menu: Components
+route: /components/label
+---
+
+import { Playground, PropsTable } from 'docz'
+import Label from './'
+import { Size } from '../../common/size'
+
+# Label
+
+## Basic usage
+
+<Playground>
+    <Label>
+        What is the airspeed velocity of an unladen swallow?
+        <input type="text" />
+    </Label>
+</Playground>
+
+
+## Sizes
+
+<Playground>
+    <Label size={Size.SMALL} display="block" mb={4}>
+        What is the airspeed velocity of an unladen swallow?
+        <input type="text" />
+    </Label>
+    <Label size={Size.MEDIUM} display="block" mb={4}>
+        What is the airspeed velocity of an unladen swallow?
+        <input type="text" />
+    </Label>
+    <Label size={Size.LARGE} display="block" mb={4}>
+        What is the airspeed velocity of an unladen swallow?
+        <input type="text" />
+    </Label>
+</Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Text props | | | | see [Text](/components/text) |
+| size | enum | no | `Size.MEDIUM` | see [Size](/common/size) |
