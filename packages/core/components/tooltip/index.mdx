@@ -1,0 +1,24 @@
+---
+name: Tooltip
+menu: Components
+route: /components/tooltip
+---
+
+import { Playground, PropsTable } from 'docz'
+import Tooltip from './'
+import Button from '../button/'
+import Text from '../text'
+
+# Tooltip
+
+<Playground>
+    <Button mx={8} my={8}>
+        Hover on this button
+        <Tooltip>Ahoy there!</Tooltip>
+    </Button>
+
+    <Text mx={8} my={8} py={1} bg="grayLight3" textAlign="center">
+        Hover on this Text
+        <Tooltip>Ahoy there!</Tooltip>
+    </Text>
+</Playground>

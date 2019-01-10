@@ -29,3 +29,4 @@ export { default as Text } from "./components/text";
 export { default as TextInput } from "./components/textInput";
 export { default as Textarea } from "./components/textarea";
 export { default as ToggleField } from "./components/toggleField";
+export { default as Tooltip } from "./components/tooltip";
