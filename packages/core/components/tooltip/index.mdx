@@ -6,19 +6,47 @@ route: /components/tooltip
 
 import { Playground, PropsTable } from 'docz'
 import Tooltip from './'
+import Box from '../box/'
 import Button from '../button/'
 import Text from '../text'
+import Brand from '../brand'
+import Pill from '../pill'
+import Swatch from '../swatch'
 
 # Tooltip
 
 <Playground>
-    <Button mx={8} my={8}>
+    <Button mx={8} my={8} data-tooltip>
         Hover on this button
         <Tooltip>Ahoy there!</Tooltip>
     </Button>
 
-    <Text mx={8} my={8} py={1} bg="grayLight3" textAlign="center">
+    <Text mx={8} my={8} py={1} bg="grayLight3" textAlign="center" data-tooltip>
         Hover on this Text
         <Tooltip>Ahoy there!</Tooltip>
     </Text>
+
+    <Box my={8}>
+        <Brand
+            color="textBase"
+            title="Raster Foundry"
+            href="#"
+            data-tooltip
+        >
+            <Tooltip>It's pretty good!</Tooltip>
+        </Brand>
+    </Box>
+
+    <Box my={8}>
+        <Pill value={42} data-tooltip>
+            <Tooltip>Don't forget your towel</Tooltip>
+        </Pill>
+    </Box>
+
+    <Box my={8}>
+        <Swatch color="red" size="2em" data-tooltip>
+            <Tooltip>Red</Tooltip>
+        </Swatch>
+    </Box>
+
 </Playground>

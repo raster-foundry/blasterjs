@@ -2,10 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Badge from "../badge";
+import { extractComponentFromChildren } from "../../utils";
 
-const Pill = ({value, children, ...props}) => {
+const Pill = ({value, children: _children, ...props}) => {
+  const [children, tooltip] = extractComponentFromChildren(_children, 'Tooltip');
+
   return (
-    <Badge {...props}>{value}</Badge>
+    <Badge {...props}>
+      {value}
+      {tooltip}
+    </Badge>
   );
 };
 

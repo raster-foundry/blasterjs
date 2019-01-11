@@ -95,7 +95,10 @@ class Tooltip extends React.Component {
   }
 
   componentDidMount() {
-    this.tooltip = new TooltipJS(this.tooltipRef.current.parentNode, {
+    const reference = this.tooltipRef.current.closest('[data-tooltip]');
+    if (!reference) return;
+
+    this.tooltip = new TooltipJS(reference, {
       ...this.props.options,
       title: this.tooltipRef.current,
       placement: this.props.placement,
@@ -124,12 +127,12 @@ class Tooltip extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.show && !this.props.show) {
-      this.tooltip.hide();
+      this.tooltip && this.tooltip.hide();
     }
   }
 
   componentWillUnmount() {
-    this.tooltip.dispose();
+    this.tooltip && this.tooltip.dispose();
   }
 
   render() {

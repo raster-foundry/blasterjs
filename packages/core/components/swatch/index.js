@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { size } from "styled-system";
 import Badge from "../badge";
 import { Shape } from "../../common/shape";
+import { extractComponentFromChildren } from "../../utils";
 
 const StyledSwatch = styled(Badge)`
   ${size}
@@ -25,16 +26,18 @@ const getBorderRadius = (borderRadius, shape) => {
   }
 };
 
-const Swatch = ({borderRadius, shape, color, children, ...props}) => {
+const Swatch = ({borderRadius, shape, color, children: _children, ...props}) => {
   const radius = getBorderRadius(borderRadius, shape);
+  const [children, tooltip] = extractComponentFromChildren(_children, 'Tooltip');
 
   return (
     <StyledSwatch
       {...props}
       bg={color}
-      title={color}
       borderRadius={radius}
-    />
+    >
+      {tooltip}
+    </StyledSwatch>
   );
 };
 

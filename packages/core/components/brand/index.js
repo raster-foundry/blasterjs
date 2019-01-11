@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { width } from "styled-system";
 import Image from "../image";
 import A from "../a";
+import { extractComponentFromChildren } from "../../utils";
 
 const StyledBrand = styled(A)`
   display: inline-block;
@@ -12,14 +13,17 @@ const StyledBrand = styled(A)`
   vertical-align: middle;
 `;
 
-const Brand = ({href, title, imagesrc, width, children, ...props}) => {
+const Brand = ({href, title, imagesrc, width, children: _children, ...props}) => {
+  const [children, tooltip] = extractComponentFromChildren(_children, 'Tooltip');
+
   return (
-    <StyledBrand href={href} title={title} {...props}>
+    <StyledBrand href={href} {...props}>
       {imagesrc ? (
         <Image src={imagesrc} alt={title} width={width} />
       ) : (
         <span>{title}</span>
       )}
+      {tooltip}
     </StyledBrand>
   );
 };
