@@ -139,7 +139,6 @@ class Tooltip extends React.Component {
     const {
       show,
       hasArrow,
-      placement,
       trigger,
       delay,
       closeOnClickOutside,
@@ -157,7 +156,6 @@ class Tooltip extends React.Component {
       <TooltipContent
         hidden={hidden}
         ref={this.tooltipRef}
-        placement={placement}
         {...props}
       >
         {children}
