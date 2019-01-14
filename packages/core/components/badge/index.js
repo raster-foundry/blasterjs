@@ -25,6 +25,7 @@ Badge.propTypes = {
 };
 
 Badge.defaultProps = {
+  tag: "span",
   mr: 1,
   pt: "0.24em",
   pb: "0.24em",
