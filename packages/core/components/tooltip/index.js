@@ -108,7 +108,7 @@ class Tooltip extends React.Component {
       boundariesElement: this.props.boundariesElement,
       offset: `${this.props.xOffset}, ${this.props.yOffset}`,
       html: true,
-      template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>',
+      template: '<span class="tooltip" role="tooltip"><span class="tooltip-inner"></span></span>',
       popperOptions: {
         ...this.props.popperOptions,
         onCreate: () => {
@@ -126,8 +126,8 @@ class Tooltip extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.show && !this.props.show) {
-      this.tooltip && this.tooltip.hide();
+    if (this.tooltip && prevProps.show !== this.props.show) {
+      this.props.show ? this.tooltip.show() : this.tooltip.hide();
     }
   }
 
