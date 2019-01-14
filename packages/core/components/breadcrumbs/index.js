@@ -44,6 +44,7 @@ const Breadcrumbs = ({
   colorHighlight,
   separator,
   separatorIcon,
+  children,
   ...props
 }) => {
 
