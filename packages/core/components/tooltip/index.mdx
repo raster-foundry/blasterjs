@@ -7,46 +7,88 @@ route: /components/tooltip
 import { Playground, PropsTable } from 'docz'
 import Tooltip from './'
 import Box from '../box/'
-import Button from '../button/'
 import Text from '../text'
-import Brand from '../brand'
-import Pill from '../pill'
+import Button from '../button/'
 import Swatch from '../swatch'
 
 # Tooltip
 
-<Playground>
-    <Button mx={8} my={8} data-tooltip>
-        Hover on this button
-        <Tooltip>Ahoy there!</Tooltip>
-    </Button>
+Renders a tooltip near an element in response to hover, click, focus, or programmatic
+control.
 
-    <Text mx={8} my={8} py={1} bg="grayLight3" textAlign="center" data-tooltip>
-        Hover on this Text
+To use, (1) nest the Tooltip component inside the component that should trigger it,
+and (2) add `data-tooltip` to the trigger component. See examples below.
+
+Currently Tooltip accepts a string as its child.
+
+Components that represent singleton elements (eg, `<img>`, `<input>`) cannot use Tooltip.
+
+Future work: Accept components as children. Consider alternative backing libraries
+(currently Tooltip.js, from Popper.js).
+
+### Component authoring
+
+When *authoring* a component that does not render `props.children` and that might
+be used with a Tooltip, you must do something like the following. See
+[Brand](/components/brand), [Pill](/components/pill), [Swatch](/components/swatch)
+for examples.
+
+```
+import { extractComponentFromChildren } from "../../utils";
+...
+const Foo = ({children, ...props}) => {
+  const [ignoredChildren, tooltip] = extractComponentFromChildren(children, 'Tooltip');
+  return (
+    <StyledFoo {...props}>
+      {tooltip}
+    </StyledFoo>
+  );
+};
+```
+
+## Basic usage
+
+<Playground>
+    <Text my={8} py={1} bg="grayLight3" textAlign="center" data-tooltip>
+        Hover here
         <Tooltip>Ahoy there!</Tooltip>
     </Text>
 
     <Box my={8}>
-        <Brand
-            color="textBase"
-            title="Raster Foundry"
-            href="#"
-            data-tooltip
-        >
-            <Tooltip>It's pretty good!</Tooltip>
-        </Brand>
-    </Box>
-
-    <Box my={8}>
-        <Pill value={42} data-tooltip>
-            <Tooltip>Don't forget your towel</Tooltip>
-        </Pill>
+        <Button data-tooltip>
+            Click me
+            <Tooltip trigger="click" hasArrow placement="bottom">Ahoy there!</Tooltip>
+        </Button>
     </Box>
 
     <Box my={8}>
         <Swatch color="red" size="2em" data-tooltip>
-            <Tooltip>Red</Tooltip>
+            <Tooltip hasArrow placement="right">Red</Tooltip>
         </Swatch>
     </Box>
 
 </Playground>
+
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| ${space} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${color} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${borderRadius} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${boxShadow} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${fontFamily} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${fontSize} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${fontWeight} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${textAlign} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| show | bool | no | `undefined` | For programmatic control |
+| trigger | string | no | `hover focus` | Space-separated list of events that trigger tooltip. Can be 'hover', 'click', 'focus', 'manual'. 'manual' cannot be combined with others. |
+| hasArrow | bool | no | `false` | Render arrow |
+| placement | string | no | `top` | 'top', 'top-start', 'top-end', 'right', 'right-start', 'right, 'bottom', 'bottom-start', 'bottom', 'left', 'left-start', 'left-end' |
+| delay | number or `{show: number, hide: number}` | no | `0` | If number, applies to both show and hide |
+| closeOnClickOutside | bool | no | `false` | Iff `trigger === click` |
+| boundariesElement | string or Element | no | `scrollParent` | Can be 'scrollParent', 'window', 'viewport' or any DOM element. |
+| xOffset | number or string | no | `0` | |
+| yOffset | number or string | no | `0` | |
+| options | object | no | | Gets passed to underlying [Tooltip.js library](https://github.com/FezVrasta/popper.js/blob/master/docs/_includes/tooltip-documentation.md) |
