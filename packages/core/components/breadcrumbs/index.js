@@ -9,6 +9,7 @@ import Icon from "../icon";
 const StyledBreadcrumbs = styled(Text)`
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
   max-width: 100%;
   line-height: 1.5;
 
@@ -56,6 +57,7 @@ const Breadcrumbs = ({
 
   return (
     <StyledBreadcrumbs
+      tag="div"
       highlightCurrent={highlightCurrent}
       colorHighlight={colorHighlight}
       {...props}
