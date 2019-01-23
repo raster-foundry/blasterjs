@@ -7,9 +7,9 @@ route: /components/tooltip
 import { Playground, PropsTable } from 'docz'
 import Tooltip from './'
 import Box from '../box/'
-import Text from '../text'
+import Text from '../text/'
 import Button from '../button/'
-import Swatch from '../swatch'
+import Swatch from '../swatch/'
 
 # Tooltip
 
@@ -19,12 +19,11 @@ control.
 To use, (1) nest the Tooltip component inside the component that should trigger it,
 and (2) add `data-tooltip` to the trigger component. See examples below.
 
-Currently Tooltip accepts a string as its child.
+Tooltip accepts a string or arbitrary JSX as children.
 
 Components that represent singleton elements (eg, `<img>`, `<input>`) cannot use Tooltip.
 
-Future work: Accept components as children. Consider alternative backing libraries
-(currently Tooltip.js, from Popper.js).
+Future work: Consider alternative backing libraries (currently Tooltip.js, from Popper.js).
 
 ### Component authoring
 
@@ -57,13 +56,17 @@ const Foo = ({children, ...props}) => {
     <Box my={8}>
         <Button data-tooltip>
             Click me
-            <Tooltip trigger="click" hasArrow placement="bottom">Ahoy there!</Tooltip>
+            <Tooltip trigger="click" hasArrow placement="right" bg="secondary">
+                <Box p={2}>
+                    <Button bg="white" color="black">But don't click me</Button>
+                </Box>
+            </Tooltip>
         </Button>
     </Box>
 
     <Box my={8}>
         <Swatch color="red" size="2em" data-tooltip>
-            <Tooltip hasArrow placement="right">Red</Tooltip>
+            <Tooltip hasArrow placement="bottom">Red</Tooltip>
         </Swatch>
     </Box>
 

@@ -14,6 +14,7 @@ const TooltipContent = styled.span`
   ${fontWeight}
   ${textAlign}
   position: relative;
+  display: inline-block;
 
   .tooltip-arrow {
     width: 0;
