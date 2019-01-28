@@ -9,7 +9,7 @@ const StyledA = styled(Text)`
 
   &:hover {
     text-decoration: underline;
-    color: ${props => themeGet(`colors.${props.colorHover}`)};
+    color: ${props => themeGet(`colors.${props.colorHover}`, props.colorHover)};
   }
 `;
 
@@ -26,8 +26,8 @@ A.propTypes = {
 A.defaultProps = {
   tag: "a",
   href: "#",
-  color: "link",
-  colorHover: "linkHover",
+  color: "a.color",
+  colorHover: "a.colorHover",
   fontWeight: 600
 };
 

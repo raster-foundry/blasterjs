@@ -24,7 +24,7 @@ NavBarSection.defaultProps = {
   flexWrap: "nowrap",
   justifyContent: "space-between",
   alignItems: "center",
-  gutter: 3
+  gutter: "navBar.gutter"
 };
 
 export default NavBarSection;

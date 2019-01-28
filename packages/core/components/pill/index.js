@@ -22,7 +22,7 @@ Pill.propTypes = {
 
 Pill.defaultProps = {
   ...Badge.defaultProps,
-  borderRadius: 999
+  borderRadius: "pill.borderRadius"
 };
 
 export default Pill;

@@ -28,11 +28,11 @@ ColorInput.propTypes = {
 ColorInput.defaultProps = {
   type: "color",
   border: 0,
-  borderRadius: 0,
-  pt: 0,
-  pb: 0,
-  pl: 0,
-  pr: 0,
+  borderRadius: "colorInput.borderRadius",
+  pt: "colorInput.p",
+  pb: "colorInput.p",
+  pl: "colorInput.p",
+  pr: "colorInput.p",
   onChange: () => {}
 };
 

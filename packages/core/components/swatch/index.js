@@ -53,7 +53,10 @@ Swatch.defaultProps = {
   ...size.defaultProps,
   shape: Shape.ROUNDED,
   borderRadius: undefined,
-  padding: 0,
+  pt: "swatch.p",
+  pb: "swatch.p",
+  pl: "swatch.p",
+  pr: "swatch.p",
   width: "1em",
   height: "1em"
 };

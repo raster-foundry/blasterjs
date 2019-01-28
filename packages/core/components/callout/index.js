@@ -104,10 +104,10 @@ Callout.defaultProps = {
   icon: undefined,
   iconSize: "2.2rem",
   title: undefined,
-  pt: 3,
-  pb: 3,
-  pl: 3,
-  pr: 3
+  pt: "callout.p",
+  pb: "callout.p",
+  pl: "callout.p",
+  pr: "callout.p"
 };
 
 export default Callout;

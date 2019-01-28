@@ -30,9 +30,9 @@ ProgressBar.defaultProps = {
   height: "0.8rem",
   value: 0,
   max: 0,
-  borderRadius: 999,
-  bg: "grayLightest",
-  color: "primary"
+  borderRadius: "progressBar.borderRadius",
+  bg: "progressBar.bg",
+  color: "progressBar.color"
 };
 
 export default ProgressBar;

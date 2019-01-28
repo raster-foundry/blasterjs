@@ -8,7 +8,7 @@ import Box from "../box";
 const HDivider = styled(Box).attrs({
   tag: 'hr'
 })`
-  background-color: ${props => themeGet(`colors.${props.color}`, themeGet('colors.grayLight1'))};
+  background-color: ${props => themeGet(`colors.${props.color}`, props.color)};
   border: 0;
   width: ${props => props.width || "100%"};
   height: ${props => props.height || "1px"};
@@ -19,7 +19,7 @@ const VDivider = styled(Box).attrs({
 })`
   display: inline-block;
   vertical-align: middle;
-  background-color: ${props => themeGet(`colors.${props.color}`, themeGet('colors.grayLight1'))};
+  background-color: ${props => themeGet(`colors.${props.color}`, props.color)};
   width: ${props => props.width || "2px"};
   height: ${props => props.height || "100%"};
 
@@ -46,6 +46,10 @@ Divider.propTypes = {
   color: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+};
+
+Divider.defaultProps = {
+  color: "divider.color"
 };
 
 export default Divider;

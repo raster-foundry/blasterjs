@@ -30,13 +30,13 @@ Header.propTypes = {
 
 Header.defaultProps = {
   tag: "h1",
-  color: "textBase",
-  fontFamily: "display",
+  color: "header.color",
+  fontFamily: "header.fontFamily",
   lineHeight: 2,
-  mt: 0,
-  mb: 0,
-  ml: 0,
-  mr: 0
+  mt: "header.m",
+  mb: "header.m",
+  ml: "header.m",
+  mr: "header.m"
 };
 
 export default Header;
