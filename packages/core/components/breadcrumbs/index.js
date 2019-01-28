@@ -25,15 +25,13 @@ const StyledBreadcrumbs = styled(Text)`
 `;
 
 const BreadcrumbItem = styled(A)`
-  color: ${props => themeGet(`colors.${props.color}`, props.color)};
-
   &:hover {
     color: ${props => themeGet(`colors.${props.colorHover}`, props.colorHover)};
   }
 `;
 
 const Separator = styled.span`
-  color: ${props => themeGet(`colors.${props.color}`, props.color)};
+  color: ${props => themeGet(`colors.${props.colorSeparator}`, props.colorSeparator)};
 `;
 
 const Breadcrumbs = ({
@@ -46,6 +44,7 @@ const Breadcrumbs = ({
   separator,
   separatorIcon,
   children,
+  fontSize,
   ...props
 }) => {
 
@@ -60,6 +59,7 @@ const Breadcrumbs = ({
       tag="div"
       highlightCurrent={highlightCurrent}
       colorHighlight={colorHighlight}
+      fontSize={fontSize}
       {...props}
     >
       {path.map(({ name, url }, idx) => (
@@ -69,6 +69,7 @@ const Breadcrumbs = ({
             href={url}
             color={color}
             colorHover={colorHover}
+            fontSize={fontSize}
           >
             {name}
           </BreadcrumbItem>
@@ -98,12 +99,15 @@ Breadcrumbs.propTypes = {
 Breadcrumbs.defaultProps = {
   path: [],
   highlightCurrent: false,
-  p: 1,
-  fontSize: 2,
-  color: "grayBase3",
-  colorHover: "primary",
-  colorSeparator: "grayLight1",
-  colorHighlight: "grayDark1",
+  pt: "breadcrumbs.p",
+  pb: "breadcrumbs.p",
+  pl: "breadcrumbs.p",
+  pr: "breadcrumbs.p",
+  fontSize: "breadcrumbs.fontSize",
+  color: "breadcrumbs.color",
+  colorHover: "breadcrumbs.colorHover",
+  colorSeparator: "breadcrumbs.colorSeparator",
+  colorHighlight: "breadcrumbs.colorHighlight",
   separatorIcon: "caretRight"
 };
 

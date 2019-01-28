@@ -26,15 +26,15 @@ Badge.propTypes = {
 
 Badge.defaultProps = {
   tag: "span",
-  mr: 1,
-  pt: "0.24em",
-  pb: "0.24em",
-  pl: "0.4em",
-  pr: "0.4em",
-  borderRadius: "small",
-  bg: "grayLightest",
-  color: "textBase",
-  fontSize: 1
+  mr: "badge.mr",
+  pt: "badge.py",
+  pb: "badge.py",
+  pl: "badge.px",
+  pr: "badge.px",
+  borderRadius: "badge.borderRadius",
+  bg: "badge.bg",
+  color: "badge.color",
+  fontSize: "badge.fontSize"
 };
 
 export default Badge;

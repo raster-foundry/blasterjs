@@ -199,7 +199,7 @@ const optimizeSvgFile = async (svgPath) => {
 
 const generateIconIndex = async () => {
   try {
-    const indexFile = "./packages/core/index.icons.js";
+    const indexFile = "./packages/core/theme/icons.js";
     const svgs = files("./icons", "svg");
     // Generate camelcased names
     const svgArrays = await Promise.all(
