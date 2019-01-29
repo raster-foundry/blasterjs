@@ -42,7 +42,7 @@ ex: `blaster d component core tooltip`, `blaster destroy constant core direction
 Removes a component or constant in the specified package. Includes confirmation.
 
 **`blaster {i,index}`**
-Regenerates all three index files for each package as necesssary.
+Regenerates all three index files for each package as necessary.
 
 **`blaster update-icons`**
 Regenerates the index file icons.
@@ -82,6 +82,63 @@ const StyledComponent = styled.div`
   width: ${props => props.width || "100%"};
 `;
 ```
+
+#### Per-component themeing
+
+Each component can have its own theme settings in
+`packages/{PACKAGE}/theme/components/{COMPONENT}`.
+
+These should be organized into
+the same theme objects as `theme/base.js`, eg `space`, `colors`, `radii`, etc,
+though the properties of those objects can be arbitrary names, to be referenced
+in `defaultProps`.
+
+Values can be keys from corresponding objects in `theme/base.js`, or any valid
+value expected by the corresponding prop.
+
+For example:
+
+```js
+// packages/core/theme/components/breadcrumbs/index.js
+
+export const theme = {
+  space: {
+    p: 1,   // 1 is a valid key, since base.space is an array
+  },
+  colors: {
+    color: "grayBase3",           // each value gets resolved into a base.colors value
+    colorHover: "#98346B",        // or remains unchanged if the lookup fails
+    colorSeparator: "grayLight1",
+    colorHighlight: "grayDark1"   // properties can be arbitrarily named
+  },
+  fontSizes: {
+    fontSize: 2
+  }
+};
+```
+
+The theme settings should then be referenced in the component's `defaultProps`
+by namespacing the property name with the component name. For example:
+
+```js
+// packages/core/components/breadcrumbs/index.js
+
+Breadcrumbs.defaultProps = {
+  path: [],
+  highlightCurrent: false,
+  pt: "breadcrumbs.p",  // styled-system knows to look up `pt` in `theme.space`
+  pb: "breadcrumbs.p",
+  pl: "breadcrumbs.p",
+  pr: "breadcrumbs.p",
+  fontSize: "breadcrumbs.fontSize",
+  color: "breadcrumbs.color",
+  colorHover: "breadcrumbs.colorHover",         // non-styled-system props must be
+  colorSeparator: "breadcrumbs.colorSeparator", // resolved via themeGet() in the
+  colorHighlight: "breadcrumbs.colorHighlight", // corresponding styled-component definition
+  separatorIcon: "caretRight"
+};
+```
+
 
 #### Styled System shortcuts in defaultProps
 
