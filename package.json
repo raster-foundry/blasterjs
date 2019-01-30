@@ -34,7 +34,8 @@
     "camelcase": "^5.0.0",
     "chalk": "^2.4.1",
     "commander": "^2.17.0",
-    "docz": "^0.12.5",
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16.2": "^1.0.0",
     "flow-bin": "^0.85.0",
@@ -42,7 +43,7 @@
     "glob-loader": "^0.3.0",
     "inquirer": "^6.0.0",
     "jest": "^23.4.1",
-    "lerna": "^2.11.0",
+    "lerna": "^3.10.7",
     "lerna-changelog": "^0.8.0",
     "lint-staged": "^8.0.0",
     "lodash.upperfirst": "^4.3.1",
@@ -55,7 +56,7 @@
     "svgo": "^1.1.1",
     "svgson-cli": "^1.1.0",
     "svgson-next": "^4.3.0",
-    "webpack": "^4.16.0",
+    "webpack": "4.28.4",
     "webpack-blocks": "^1.0.0"
   },
   "lint-staged": {
@@ -76,7 +77,7 @@
   "dependencies": {
     "polished": "^2.0.1",
     "prop-types": "^15.6.2",
-    "styled-components": "^4.0.2",
+    "styled-components": "^4.1.2",
     "styled-system": "^3.1.11"
   },
   "bin": {
