@@ -120,6 +120,9 @@ const packagePath = package => `./packages/${package}`;
 const componentPath = (package, name) =>
   `${packagePath(package)}/components/${name}`;
 
+const componentThemePath = (package, name) =>
+  `${packagePath(package)}/theme/components/${name}`;
+
 const constantPath = (package, name) =>
   `${packagePath(package)}/common/${name}`;
 
@@ -162,6 +165,22 @@ const generateComponentIndex = package => {
   closeSync(fd);
   logSuccess(
     `Generated component index for package ${highlightSuccess(package)}`
+  );
+};
+
+const generateComponentThemeIndex = package => {
+  const indexFile = `${packagePath(package)}/theme/components/index.js`;
+  if (existsSync(indexFile)) {
+    unlinkSync(indexFile);
+  }
+  const fd = openSync(indexFile, "a");
+  listComponentsInPackage(package).forEach(componentName => {
+    const exportString = `export { theme as ${componentName} } from "./${componentName}";\n`;
+    appendFileSync(fd, exportString);
+  });
+  closeSync(fd);
+  logSuccess(
+    `Generated theme component index for package ${highlightSuccess(package)}`
   );
 };
 
@@ -251,9 +270,21 @@ const generateComponentFiles = (package, name) => {
     `${templatesPath}/index.component.js`,
     `${componentPath(package, name)}/index.js`
   );
+  if (package === "core") {
+    const themeIndexPath = componentThemePath("core", name);
+    const themeIndexFile = `${themeIndexPath}/index.js`;
+    mkdirSync(themeIndexPath);
+    if (existsSync(themeIndexFile)) {
+      unlinkSync(themeIndexFile);
+    }
+    const tf = openSync(themeIndexFile, "a");
+    appendFileSync(tf, `export const theme = {};`);
+    closeSync(tf);
+  }
   hydrateTemplatedFile(`${componentPath(package, name)}/index.js`, name);
   hydrateTemplatedFile(`${componentPath(package, name)}/index.mdx`, name);
   generateComponentIndex(package);
+  generateComponentThemeIndex("core");
 };
 
 const generateConstantFiles = (package, name) => {
@@ -340,10 +371,14 @@ const destroyComponent = (package, name) => {
       }).then(({ confirmed }) => {
         if (confirmed) {
           rimraf.sync(componentPath(package, name));
+          if (package === "core") {
+            rimraf.sync(componentThemePath("core", name));
+          }
           logSuccess(
             `Component ${highlightSuccess(`${package}/${name}`)} was deleted.`
           );
           generateComponentIndex(package);
+          generateComponentThemeIndex("core");
           return;
         } else {
           logExit();
@@ -446,6 +481,7 @@ program
       generateComponentIndex(p);
       generateConstantIndex(p);
     });
+    generateComponentThemeIndex("core");
   });
 
 program
