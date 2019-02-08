@@ -8,6 +8,7 @@ export { default as Callout } from "./components/callout";
 export { default as Card } from "./components/card";
 export { default as Checkbox } from "./components/checkbox";
 export { default as ColorInput } from "./components/colorInput";
+export { default as Dialog } from "./components/dialog";
 export { default as Divider } from "./components/divider";
 export { default as Field } from "./components/field";
 export { default as FileInput } from "./components/fileInput";

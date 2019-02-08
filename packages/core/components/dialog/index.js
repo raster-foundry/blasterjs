@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from 'styled-components'
 import {color, opacity, boxShadow, borders, borderColor, borderRadius, themeGet} from 'styled-system';
 import ReactModal from 'react-modal';
-import Box from '../../../core/components/box';
+import Box from '../box';
 
 let isAppElementSet = false;
 

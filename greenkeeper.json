@@ -4,8 +4,7 @@
       "packages": [
         "package.json",
         "packages/chart/package.json",
-        "packages/core/package.json",
-        "packages/overlays/package.json"
+        "packages/core/package.json"
       ]
     }
   }
