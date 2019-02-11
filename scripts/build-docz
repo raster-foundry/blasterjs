@@ -1,3 +1,4 @@
 lerna bootstrap && \
 mkdir -p ./.docz/public && \
+lerna bootstrap && \
 docz build
