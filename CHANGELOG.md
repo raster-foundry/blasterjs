@@ -14,8 +14,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `Text` component added to the core package [#114](https://github.com/raster-foundry/blasterjs/pull/114)
 - 'GlobalStyle' component added to the core package [#115](https://github.com/raster-foundry/blasterjs/pull/115)
 - Added command `update-icons` to the CLI to regenerate the icon index file when new icons are added [#118](https://github.com/raster-foundry/blasterjs/pull/118)
-- `Label`, `TextInput`, `Textarea`, `Select`, `Checkbox`, `Radio`, `FileInput`, `ColorInput`, `Field`, `ToggleField` added to the core package [#121](https://github.com/raster-foundry/blasterjs/pull/121)
+- `Label`, `TextInput`, `Textarea`, `Select`, `Checkbox`, `Radio`, `FileInput`, `ColorInput`, `Field`, `ToggleField` [#121](https://github.com/raster-foundry/blasterjs/pull/121)
+- `Dialog` component added to the core package [#123](https://github.com/raster-foundry/blasterjs/pull/123)
 - `Tooltip` component added to the core package [#128](https://github.com/raster-foundry/blasterjs/pull/128)
+- `Table` components added to the core package [#132](https://github.com/raster-foundry/blasterjs/pull/132)
 
 ### Changed
 
