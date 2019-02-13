@@ -16,7 +16,7 @@ const StyledIcon = styled(Text)`
   vertical-align: middle;
 `;
 
-const Icon = props => {
+const Icon = ({children, ...props}) => {
   const icon = props.theme.icons[props.name];
 
   return (

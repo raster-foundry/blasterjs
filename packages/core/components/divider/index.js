@@ -31,7 +31,7 @@ const VDivider = styled(Box).attrs({
   }
 `;
 
-const Divider = props => {
+const Divider = ({children, ...props}) => {
   return (
     <>
       {props.direction === Direction.HORIZONTAL && <HDivider {...props} />}
