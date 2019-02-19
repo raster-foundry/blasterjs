@@ -1,0 +1,106 @@
+---
+name: Table
+menu: Components
+route: /components/table
+---
+
+import { Playground, PropsTable } from 'docz'
+import Table from './'
+import { Density } from '../../common/density'
+
+# Table
+
+Renders an html `<table>`. Expects standard table children like `<thead>`,
+`<tbody>`, `<tr>`, `<th>`, `<td>`, etc. Agnostic to content and content
+styling (beyond setting `<th>` to bold).
+
+## Basic usage
+
+<Playground>
+    <Table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Population</th>
+                <th>Area</th>
+                <th>Density</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Philadelphia</td>
+                <td>1,580,863</td>
+                <td>142.71 sq mi</td>
+                <td>11,781.7 / sq mi</td>
+            </tr>
+            <tr>
+                <td>Pittsburgh</td>
+                <td>305,704</td>
+                <td>58.35 sq mi</td>
+                <td>5,460 / sq mi</td>
+            </tr>
+            <tr>
+                <td>Harrisburg</td>
+                <td>49,528</td>
+                <td>11.86 sq mi</td>
+                <td>6,015.25 / sq mi</td>
+            </tr>
+        </tbody>
+    </Table>
+</Playground>
+
+## Various props
+
+<Playground>
+    <Table density={Density.COMPACT} striped hoverable borderInside>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Population</th>
+                <th>Area</th>
+                <th>Density</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Philadelphia</td>
+                <td>1,580,863</td>
+                <td>142.71 sq mi</td>
+                <td>11,781.7 / sq mi</td>
+            </tr>
+            <tr>
+                <td>Pittsburgh</td>
+                <td>305,704</td>
+                <td>58.35 sq mi</td>
+                <td>5,460 / sq mi</td>
+            </tr>
+            <tr>
+                <td>Harrisburg</td>
+                <td>49,528</td>
+                <td>11.86 sq mi</td>
+                <td>6,015.25 / sq mi</td>
+            </tr>
+        </tbody>
+    </Table>
+</Playground>
+
+### PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| Box props | | | | see [Box](/components/box) |
+| ${borders} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| borderHeader | bool | no | `true` | render a border beneath the table header |
+| bordered | bool | no | `false` | equivalent to `borderOutside && borderInside`|
+| borderInside | bool | no | `false` | equivalent to `borderRows && borderColumns` |
+| borderRows | bool | no | `false` | render a border between each row |
+| borderColumns | bool | no | `false` | render a border between each column |
+| borderOutside | bool | no | `false` | render a border around the table |
+| borderColor | string | no | `grayLight1` | theme color or valid css color value  |
+| borderWidth | number | no | `1` | border width in px |
+| striped | bool | no | `false` | zebra stripes |
+| stripeColor | string | no | `grayLight1` | zebra stripe bg color. theme color or valid css color value |
+| hoverable | bool | no | `false` | highlight a row when hovered |
+| hoverColor | string | no | `primary` | hovered row bg color. theme color or valid css color value |
+| hoverCursor | string | no | `default` | css `cursor` value for hovered row |
+| density | enum | no | `COMFORTABLE` | see [Density](/common/density) |
