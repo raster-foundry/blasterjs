@@ -131,6 +131,9 @@ const listPackages = () => dirs("packages");
 const listComponentsInPackage = package =>
   dirs(`${packagePath(package)}/components`);
 
+const listThemedComponentsInPackage = package =>
+  dirs(`${packagePath(package)}/theme/components`);
+
 const listConstantsInPackage = package =>
   files(`${packagePath(package)}/common`, "js").map(f => f.replace(/\.[^/.]+$/, ""));
 
@@ -174,7 +177,7 @@ const generateComponentThemeIndex = package => {
     unlinkSync(indexFile);
   }
   const fd = openSync(indexFile, "a");
-  listComponentsInPackage(package).forEach(componentName => {
+  listThemedComponentsInPackage(package).forEach(componentName => {
     const exportString = `export { theme as ${componentName} } from "./${componentName}";\n`;
     appendFileSync(fd, exportString);
   });
