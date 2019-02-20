@@ -86,7 +86,7 @@ TextInput.propTypes = {
   bg: PropTypes.string,
   color: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Size))
-}
+};
 
 TextInput.defaultProps = {
   tag: "input",
@@ -107,6 +107,6 @@ TextInput.defaultProps = {
   borderColor: "textInput.borderColor",
   fontFamily: "textInput.fontFamily",
   size: Size.MEDIUM
-}
+};
 
 export default TextInput;
