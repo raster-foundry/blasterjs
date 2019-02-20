@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { theme } from "../packages/core/theme";
+import { theme } from "../packages/core";
 import GlobalStyle from "../packages/core/components/globalStyle"
 
 const Wrapper = ({ children }) => (
