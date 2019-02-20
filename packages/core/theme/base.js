@@ -1,5 +1,5 @@
 export const space = [
-  0,
+  "0",
   "0.8rem",
   "1.6rem",
   "2.4rem",
@@ -78,6 +78,8 @@ export const fontSizes = [
 ];
 
 export const radii = {
+  0: "0px",
+  none: "0px",
   small: "3px",
   base: "5px",
   large: "10px"
