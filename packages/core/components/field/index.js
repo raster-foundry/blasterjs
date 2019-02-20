@@ -86,7 +86,7 @@ const Field = ({
           {reverse && children}
           <Box width={nameWidth} ml={reverse ? 2 : 0} mr={reverse ? 0 : 2}>
             <Name
-              tag="h6"
+              tag="span"
               minHeight={reverse ? 0 : "4rem"}
               display="flex"
               alignItems="center"
@@ -116,7 +116,7 @@ const Field = ({
       return (
         <StyledField flexDirection="column" {...props}>
           <Name
-            tag="h6"
+            tag="span"
             width={nameWidth}
             mb={size === Size.TINY || Size.SMALL ? 1 : 2}
             disabled={disabled}
