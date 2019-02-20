@@ -25,8 +25,8 @@ const TooltipContent = styled.span`
     border-color: ${props => themeGet(`colors.${props.bg}`, props.bg)};
   }
 
-  ${props => props.placement && props.placement.startsWith('top') && css`
-    bottom: 5px;
+  .tooltip[x-placement^="top"] & {
+    bottom: 2px;
     margin-bottom: 5px;
 
     .tooltip-arrow {
@@ -39,10 +39,10 @@ const TooltipContent = styled.span`
       margin-top: 0;
       margin-bottom: 0;
     }
-  `}
+  }
 
-  ${props => props.placement && props.placement.startsWith('bottom') && css`
-    top: 5px;
+  .tooltip[x-placement^="bottom"] & {
+    top: 2px;
     margin-top: 5px;
 
     .tooltip-arrow {
@@ -55,9 +55,9 @@ const TooltipContent = styled.span`
       margin-top: 0;
       margin-bottom: 0;
     }
-  `}
+  }
 
-  ${props => props.placement && props.placement.startsWith('right') && css`
+  .tooltip[x-placement^="right"] & {
     margin-left: 5px;
 
     .tooltip-arrow {
@@ -70,9 +70,9 @@ const TooltipContent = styled.span`
       margin-left: 0;
       margin-right: 0;
     }
-  `}
+  }
 
-  ${props => props.placement && props.placement.startsWith('left') && css`
+  .tooltip[x-placement^="left"] & {
     margin-right: 5px;
 
     .tooltip-arrow {
@@ -85,7 +85,7 @@ const TooltipContent = styled.span`
       margin-left: 0;
       margin-right: 0;
     }
-  `}
+  }
 `;
 
 class Tooltip extends React.Component {
