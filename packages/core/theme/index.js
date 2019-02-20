@@ -2,7 +2,7 @@ import * as base from "./base";
 import * as components from "./components";
 import icons from "./icons";
 
-// Copy `base` and `icons` to `theme``
+// Copy `base` and `icons` to `theme`
 export const theme = {...base, icons};
 
 // Resolve references to base theme throughout component themes
