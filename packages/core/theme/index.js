@@ -19,7 +19,11 @@ for (var component in components) {
         for (var key in categoryDetails) {
             const value = categoryDetails[key];
             const resolvedValue = base[themeCategory][value];
-            categoryDetails[key] = resolvedValue || value;
+            if (resolvedValue !== undefined && resolvedValue !== null) {
+                categoryDetails[key] = resolvedValue;
+            } else {
+                categoryDetails[key] = value;
+            }
         }
 
         // Attach component theme category objects to base theme category objects
