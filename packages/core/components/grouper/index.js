@@ -94,7 +94,7 @@ Grouper.propTypes = {
 Grouper.defaultProps = {
   direction: undefined,
   density: Density.COMPACT,
-  borderRadius: "base",
+  borderRadius: "grouper.borderRadius",
   gutter: undefined,
   flexDirection: "row",
   justifyContent: "flex-start",

@@ -37,15 +37,15 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  pt: 0,
-  pb: 0,
-  pl: 0,
-  pr: 0,
-  bg: "white",
+  pt: "card.p",
+  pb: "card.p",
+  pl: "card.p",
+  pr: "card.p",
+  bg: "card.bg",
   border: "2px solid",
-  borderColor: "grayLight3",
-  borderRadius: "large",
-  boxShadow: 2
+  borderColor: "card.borderColor",
+  borderRadius: "card.borderRadius",
+  boxShadow: "card.boxShadow"
 };
 
 export default Card;

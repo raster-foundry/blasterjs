@@ -136,8 +136,8 @@ Radio.defaultProps = {
   invalid: false,
   checkedIcon: 'radioChecked',
   uncheckedIcon: 'radioUnchecked',
-  checkedColor: 'primary',
-  uncheckedColor: 'grayLight1',
+  checkedColor: 'radio.checkedColor',
+  uncheckedColor: 'radio.uncheckedColor',
   size: Size.MEDIUM
 };
 

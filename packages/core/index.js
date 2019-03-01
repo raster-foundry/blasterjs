@@ -5,4 +5,4 @@ export * from "./index.components";
 export * from "./index.common";
 
 /* Theme related constants and methods */
-export * from "./defaultTheme";
+export * from "./theme/index";

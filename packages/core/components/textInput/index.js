@@ -86,7 +86,7 @@ TextInput.propTypes = {
   bg: PropTypes.string,
   color: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Size))
-}
+};
 
 TextInput.defaultProps = {
   tag: "input",
@@ -96,17 +96,17 @@ TextInput.defaultProps = {
   invalid: false,
   spellCheck: false,
   width: "100%",
-  pt: 1,
-  pb: 1,
-  pl: 1,
-  pr: 1,
-  bg: "white",
+  pt: "textInput.p",
+  pb: "textInput.p",
+  pl: "textInput.p",
+  pr: "textInput.p",
+  bg: "textInput.bg",
   borderRadius: undefined,
-  color: "textBase",
+  color: "textInput.color",
   border: "1px solid",
-  borderColor: "textBase",
-  fontFamily: "inherit",
+  borderColor: "textInput.borderColor",
+  fontFamily: "textInput.fontFamily",
   size: Size.MEDIUM
-}
+};
 
 export default TextInput;

@@ -13,11 +13,11 @@ FileInput.defaultProps = {
   type: "file",
   height: "auto",
   border: 0,
-  borderRadius: 0,
-  pt: 0,
-  pb: 0,
-  pl: 0,
-  pr: 0
+  borderRadius: "fileInput.borderRadius",
+  pt: "fileInput.p",
+  pb: "fileInput.p",
+  pl: "fileInput.p",
+  pr: "fileInput.p"
 };
 
 export default FileInput;

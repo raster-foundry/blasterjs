@@ -27,11 +27,11 @@ NavBar.defaultProps = {
   flexWrap: "nowrap",
   justifyContent: "space-between",
   alignItems: "center",
-  bg: "shadeNormal",
-  pt: 1,
-  pb: 1,
-  pl: 1,
-  pr: 1
+  bg: "navBar.bg",
+  pt: "navBar.p",
+  pb: "navBar.p",
+  pl: "navBar.p",
+  pr: "navBar.p"
 };
 
 export default NavBar;

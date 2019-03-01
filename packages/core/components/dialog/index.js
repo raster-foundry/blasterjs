@@ -193,16 +193,16 @@ Dialog.defaultProps = {
   },
   bodyOpenClassName: 'body--modal-dialog-open',
   opacity: 0.6,
-  boxShadow: 5,
+  boxShadow: 'dialog.boxShadow',
   minWidth: '24rem',
   maxWidth: '80%',
   minHeight: '16rem',
   maxHeight: '90%',
-  pt: 3,
-  pb: 3,
-  pl: 3,
-  pr: 3,
-  bg: 'white'
+  pt: 'dialog.p',
+  pb: 'dialog.p',
+  pl: 'dialog.p',
+  pr: 'dialog.p',
+  bg: 'dialog.bg'
 };
 
 export default Dialog;

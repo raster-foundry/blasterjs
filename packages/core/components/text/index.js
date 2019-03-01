@@ -27,8 +27,8 @@ Text.propTypes = {
 
 Text.defaultProps = {
   tag: 'p',
-  fontFamily: 'body',
-  fontSize: 2,
+  fontFamily: 'text.fontFamily',
+  fontSize: 'text.fontSize',
   lineHeight: 1
 };
 

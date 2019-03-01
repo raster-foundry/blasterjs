@@ -40,10 +40,10 @@ Icon.propTypes = {
 Icon.defaultProps = {
   tag: "svg",
   size: "1em",
-  mt: "-2px",
-  mb: 0,
-  ml: "2px",
-  mr: "2px"
+  mt: "icon.mt",
+  mb: "icon.mb",
+  ml: "icon.mx",
+  mr: "icon.mx"
 };
 
 export default withTheme(Icon);

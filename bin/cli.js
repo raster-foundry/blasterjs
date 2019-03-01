@@ -120,6 +120,9 @@ const packagePath = package => `./packages/${package}`;
 const componentPath = (package, name) =>
   `${packagePath(package)}/components/${name}`;
 
+const componentThemePath = (package, name) =>
+  `${packagePath(package)}/theme/components/${name}`;
+
 const constantPath = (package, name) =>
   `${packagePath(package)}/common/${name}`;
 
@@ -127,6 +130,9 @@ const listPackages = () => dirs("packages");
 
 const listComponentsInPackage = package =>
   dirs(`${packagePath(package)}/components`);
+
+const listThemedComponentsInPackage = package =>
+  dirs(`${packagePath(package)}/theme/components`);
 
 const listConstantsInPackage = package =>
   files(`${packagePath(package)}/common`, "js").map(f => f.replace(/\.[^/.]+$/, ""));
@@ -165,6 +171,22 @@ const generateComponentIndex = package => {
   );
 };
 
+const generateComponentThemeIndex = package => {
+  const indexFile = `${packagePath(package)}/theme/components/index.js`;
+  if (existsSync(indexFile)) {
+    unlinkSync(indexFile);
+  }
+  const fd = openSync(indexFile, "a");
+  listThemedComponentsInPackage(package).forEach(componentName => {
+    const exportString = `export { theme as ${componentName} } from "./${componentName}";\n`;
+    appendFileSync(fd, exportString);
+  });
+  closeSync(fd);
+  logSuccess(
+    `Generated theme component index for package ${highlightSuccess(package)}`
+  );
+};
+
 const generateConstantIndex = package => {
   const indexFile = `${packagePath(package)}/index.common.js`;
   if (existsSync(indexFile)) {
@@ -199,7 +221,7 @@ const optimizeSvgFile = async (svgPath) => {
 
 const generateIconIndex = async () => {
   try {
-    const indexFile = "./packages/core/index.icons.js";
+    const indexFile = "./packages/core/theme/icons.js";
     const svgs = files("./icons", "svg");
     // Generate camelcased names
     const svgArrays = await Promise.all(
@@ -251,9 +273,21 @@ const generateComponentFiles = (package, name) => {
     `${templatesPath}/index.component.js`,
     `${componentPath(package, name)}/index.js`
   );
+  if (package === "core") {
+    const themeIndexPath = componentThemePath("core", name);
+    const themeIndexFile = `${themeIndexPath}/index.js`;
+    mkdirSync(themeIndexPath);
+    if (existsSync(themeIndexFile)) {
+      unlinkSync(themeIndexFile);
+    }
+    const tf = openSync(themeIndexFile, "a");
+    appendFileSync(tf, `export const theme = {};`);
+    closeSync(tf);
+  }
   hydrateTemplatedFile(`${componentPath(package, name)}/index.js`, name);
   hydrateTemplatedFile(`${componentPath(package, name)}/index.mdx`, name);
   generateComponentIndex(package);
+  generateComponentThemeIndex("core");
 };
 
 const generateConstantFiles = (package, name) => {
@@ -340,10 +374,14 @@ const destroyComponent = (package, name) => {
       }).then(({ confirmed }) => {
         if (confirmed) {
           rimraf.sync(componentPath(package, name));
+          if (package === "core") {
+            rimraf.sync(componentThemePath("core", name));
+          }
           logSuccess(
             `Component ${highlightSuccess(`${package}/${name}`)} was deleted.`
           );
           generateComponentIndex(package);
+          generateComponentThemeIndex("core");
           return;
         } else {
           logExit();
@@ -446,6 +484,7 @@ program
       generateComponentIndex(p);
       generateConstantIndex(p);
     });
+    generateComponentThemeIndex("core");
   });
 
 program

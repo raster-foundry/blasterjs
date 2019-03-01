@@ -183,12 +183,12 @@ Button.propTypes = {
 
 Button.defaultProps = {
   tag: "button",
-  pt: 1,
-  pb: 1,
-  pl: 1,
-  pr: 1,
+  pt: "button.p",
+  pb: "button.p",
+  pl: "button.p",
+  pr: "button.p",
   border: 0,
-  borderRadius: "base",
+  borderRadius: "button.borderRadius",
   intent: Intent.NONE,
   appearance: Appearance.DEFAULT,
   block: false,
