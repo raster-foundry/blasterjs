@@ -1,6 +1,6 @@
 {
   "name": "@blasterjs/docs-app",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Components to be used within the documentation app",
   "main": "dist/index.js",
   "module": "src/index.js",
@@ -8,7 +8,7 @@
     "styled-components": "^4.1.2"
   },
   "dependencies": {
-    "@blasterjs/core": "^0.0.12",
+    "@blasterjs/core": "^0.0.13",
     "polished": "^2.0.1"
   },
   "publishConfig": {
