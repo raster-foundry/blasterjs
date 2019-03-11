@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [0.0.14] - 2019-03-11
 ### Added
 - Added chan for changelog management
 
@@ -33,4 +35,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
 
-[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.14-alpha.1...HEAD
+[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.14...HEAD
+[0.0.14]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.14-alpha.1...v0.0.14
