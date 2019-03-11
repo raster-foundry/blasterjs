@@ -3,5 +3,5 @@
 git checkout master && \
 git pull --rebase origin master && \
 ./scripts/build && \
-lerna updated && \
+lerna version --force-publish && \
 lerna publish
