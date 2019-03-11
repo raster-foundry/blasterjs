@@ -1,5 +1,7 @@
 {
-  "packages": ["packages/*"],
+  "packages": [
+    "packages/*"
+  ],
   "command": {
     "version": {
       "message": "chore(release): publish %v"
@@ -8,5 +10,5 @@
       "allowBranch": "master"
     }
   },
-  "version": "0.0.13"
+  "version": "0.0.14-alpha.0"
 }
