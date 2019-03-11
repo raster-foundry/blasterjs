@@ -11,7 +11,7 @@
     "release": "./scripts/release",
     "start": "./scripts/start",
     "test": "jest --coverage --verbose --passWithNoTests",
-    "lerna:postversion": "chan release --group-changes $(node -p -e \"require('./lerna.json').version\") && git add CHANGELOG.md && git commit -m \"Update: changelog\""
+    "version": "chan release --group-changes $(node -p -e \"require('./lerna.json').version\") && git add CHANGELOG.md && git commit -m \"Update: changelog\""
   },
   "repository": {
     "type": "git",
