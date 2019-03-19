@@ -4,7 +4,7 @@ export const theme = {
   },
   colors: {
     bg: "white",
-    borderColor: "grayLight3"
+    borderColor: "gray300"
   },
   radii: {
     borderRadius: "large"

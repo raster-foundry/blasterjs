@@ -1,12 +1,12 @@
 export const theme = {
   space: {
-    p: 1,
+    p: 1
   },
   colors: {
-    color: "grayBase3",
+    color: "gray3",
     colorHover: "primary",
-    colorSeparator: "grayLight1",
-    colorHighlight: "grayDark1"
+    colorSeparator: "gray200",
+    colorHighlight: "gray800"
   },
   fontSizes: {
     fontSize: 2

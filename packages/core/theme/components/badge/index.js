@@ -8,7 +8,7 @@ export const theme = {
     borderRadius: "small"
   },
   colors: {
-    bg: "grayLightest",
+    bg: "gray100",
     color: "textBase"
   },
   fontSizes: {

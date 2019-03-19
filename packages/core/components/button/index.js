@@ -13,19 +13,25 @@ const ButtonIcon = styled(Icon)`
 `;
 
 const ButtonChildren = styled.span`
-  ${props => props.isLoading && css`
-    opacity: 0;
-    pointer-events: none;
-    user-select: none;
-  `};
+  ${props =>
+    props.isLoading &&
+    css`
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    `};
 
-  ${props => !props.iconBefore && css`
-    margin-left: ${themeGet('space.1', '0.8rem')};
-  `};
+  ${props =>
+    !props.iconBefore &&
+    css`
+      margin-left: ${themeGet("space.1", "0.8rem")};
+    `};
 
-  ${props => !props.iconAfter && css`
-    margin-right: ${themeGet('space.1', '0.8rem')};
-  `};
+  ${props =>
+    !props.iconAfter &&
+    css`
+      margin-right: ${themeGet("space.1", "0.8rem")};
+    `};
 `;
 
 const ButtonLoading = styled.span`
@@ -39,7 +45,7 @@ const ButtonLoading = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: ${themeGet('fontSizes.1', 'inherit')};
+  font-size: ${themeGet("fontSizes.1", "inherit")};
 `;
 
 const StyledButton = styled(Text)`
@@ -69,17 +75,17 @@ function buttonStates(props) {
   let color;
   switch (intent) {
     case Intent.DANGER:
-      color = 'red';
+      color = "red";
       break;
     case Intent.WARNING:
-      color = 'yellow';
+      color = "yellow";
       break;
     case Intent.SUCCESS:
-      color = 'green';
+      color = "green";
       break;
     case Intent.NONE:
     default:
-      color = 'primary';
+      color = "primary";
       break;
   }
 
@@ -87,7 +93,7 @@ function buttonStates(props) {
 
   switch (appearance) {
     case Appearance.PROMINENT:
-      fg = themeGet('colors.white', '#fff')(props);
+      fg = themeGet("colors.white", "#fff")(props);
       bg = themeGet(`colors.${color}`)(props);
       bgHover = darken(0.1, bg);
       fgDisabled = rgba(fg, 0.6);
@@ -95,15 +101,15 @@ function buttonStates(props) {
       break;
     case Appearance.MINIMAL:
       fg = themeGet(`colors.${color}`)(props);
-      bg = 'transparent';
-      bgHover = themeGet('colors.grayLightest', '#e0e5f5')(props);
+      bg = "transparent";
+      bgHover = themeGet("colors.gray100", "#e0e5f5")(props);
       fgDisabled = rgba(fg, 0.6);
-      bgDisabled = 'transparent';
+      bgDisabled = "transparent";
       break;
     case Appearance.DEFAULT:
     default:
       fg = themeGet(`colors.${color}`)(props);
-      bg = themeGet('colors.grayLightest', '#e0e5f5')(props);
+      bg = themeGet("colors.gray100", "#e0e5f5")(props);
       bgHover = darken(0.05, bg);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = rgba(bg, 0.5);
@@ -114,50 +120,53 @@ function buttonStates(props) {
     background-color: ${bg};
     color: ${fg};
 
-    ${props => !props.disabled && css`
-      &:hover,
-      &:active {
-        background-color: ${bgHover};
-      }
+    ${props =>
+      !props.disabled &&
+      css`
+        &:hover,
+        &:active {
+          background-color: ${bgHover};
+        }
 
-      &:active {
-        box-shadow: inset 0 5px 2px 0px ${rgba(0, 0, 0, 0.2)};
-      }
+        &:active {
+          box-shadow: inset 0 5px 2px 0px ${rgba(0, 0, 0, 0.2)};
+        }
 
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 0 4px ${rgba(themeGet('colors.primary')(props), 0.3)};
-      }
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 4px ${rgba(themeGet("colors.primary")(props), 0.3)};
+        }
 
-      &:focus:active {
-        box-shadow: inset 0 2px 2px 0px ${rgba(0, 0, 0, 0.2)};
-      }
-    `}
+        &:focus:active {
+          box-shadow: inset 0 2px 2px 0px ${rgba(0, 0, 0, 0.2)};
+        }
+      `}
 
-    ${props => props.disabled && css`
-      cursor: not-allowed;
-      background-color: ${bgDisabled};
-      color: ${fgDisabled};
-    `}
+    ${props =>
+      props.disabled &&
+      css`
+        cursor: not-allowed;
+        background-color: ${bgDisabled};
+        color: ${fgDisabled};
+      `}
 
-    ${props => props.block && css`
-      display: block;
-      width: 100%;
-    `}
+    ${props =>
+      props.block &&
+      css`
+        display: block;
+        width: 100%;
+      `}
   `;
 }
 
-const Button = ({
-  iconBefore,
-  iconAfter,
-  isLoading,
-  children,
-  ...props
-}) => {
-
+const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
   return (
     <StyledButton {...props}>
-      <ButtonChildren iconBefore={iconBefore} iconAfter={iconAfter} isLoading={isLoading}>
+      <ButtonChildren
+        iconBefore={iconBefore}
+        iconAfter={iconAfter}
+        isLoading={isLoading}
+      >
         {iconBefore && <ButtonIcon name={iconBefore} mr={1} />}
         {children}
         {iconAfter && <ButtonIcon name={iconAfter} ml={1} />}

@@ -1,8 +1,11 @@
+import { css } from "styled-components";
+
 export const theme = {
   fonts: {
     fontFamily: "body"
   },
   fontSizes: {
-    fontSize: 2
-  }
+    fontSize: "body"
+  },
+  styles: css``
 };

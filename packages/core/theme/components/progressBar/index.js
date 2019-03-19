@@ -1,6 +1,6 @@
 export const theme = {
   colors: {
-    bg: "grayLightest",
+    bg: "gray100",
     color: "primary"
   },
   radii: {

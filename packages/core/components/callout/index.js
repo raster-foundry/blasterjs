@@ -14,18 +14,20 @@ const StyledCallout = styled(Box)`
   justify-contents: flex-start;
   background-color: ${props => themeGet(`colors.${props.bg}`)};
 
-  ${props => props.icon && css`
-    padding-left: 0;
-  `};
+  ${props =>
+    props.icon &&
+    css`
+      padding-left: 0;
+    `};
 `;
 
 const CalloutIcon = styled(Icon)`
   flex: none;
-  margin: 0 ${themeGet('space.2', '1.6rem')};
+  margin: 0 ${themeGet("space.2", "1.6rem")};
 `;
 
 const CalloutTitle = styled(Header).attrs({ tag: "h4" })`
-  margin-bottom: ${themeGet('space.1', '0.8rem')};
+  margin-bottom: ${themeGet("space.1", "0.8rem")};
   line-height: 1;
 `;
 
@@ -48,7 +50,7 @@ const getIconName = (icon, intent) => {
     default:
       return undefined;
   }
-}
+};
 
 const getIntentColors = intent => {
   let colors = {};
@@ -69,12 +71,12 @@ const getIntentColors = intent => {
     case Intent.NONE:
     default:
       colors.color = "textBase";
-      colors.bg = "grayLightest";
+      colors.bg = "gray100";
       break;
   }
 
   return colors;
-}
+};
 
 const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
   const iconName = getIconName(icon, intent);
@@ -82,7 +84,9 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 
   return (
     <StyledCallout {...props} bg={bg} icon={!!iconName}>
-      {iconName && <CalloutIcon name={iconName} color={color} size={iconSize} />}
+      {iconName && (
+        <CalloutIcon name={iconName} color={color} size={iconSize} />
+      )}
       <Box flex="auto">
         {title && <CalloutTitle color={color}>{title}</CalloutTitle>}
         {children}

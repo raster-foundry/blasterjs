@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
-    borderColor: "grayLight1",
-    stripeColor: "grayLight1",
+    borderColor: "gray200",
+    stripeColor: "gray200",
     hoverColor: "primary"
   }
 };

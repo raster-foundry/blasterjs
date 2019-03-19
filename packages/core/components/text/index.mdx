@@ -1,7 +1,7 @@
 ---
 name: Text
-menu: Components
-route: /components/text
+menu: Typography
+route: /typography/text
 ---
 
 import { Playground, PropsTable } from 'docz'
@@ -9,18 +9,57 @@ import Text from './'
 
 # Text
 
-Generic text element. Renders as `<p>` by default. Extends `Box` with text
-functionality (color, fontFamily, fontSize, fontWeight, textAlign, lineHeight,
-letterSpacing).
+Generic text element which renders as `<span>` by default. 
+
+Transposes `Box` and exposes text prop functionality: `color`, `fontFamily`, `fontSize`, `fontWeight`, `textAlign`, `lineHeight`, `letterSpacing`.
+
+## Import
+`import { Text } from '@blasterjs/core'`
+
+## Basic Usage
+The `<Text>` component renders a `<span>` with basic styles by default.
 
 <Playground>
-  <Text>Hey whatsup</Text>
-  <Text tag="span">Go figure, I'm a span</Text>
-  <Text pl={4} color="primary" fontWeight="bold">Not much. You?</Text>
-  <Text textAlign="right" fontSize={5} letterSpacing=".6em">Oh ya know. Same ol.</Text>
+  <Text>Hello world</Text>
+  <br />
+  <Text tag="p">This is a paragraph</Text>
 </Playground>
 
-### PropTypes
+## Semantic text tag elements
+
+<Playground>
+  <Text tag="strong">Strong</Text>
+  <br />
+  <Text tag="b">Bold</Text>
+  <br />
+  <Text tag="i">Italic</Text>
+  <br />
+  <Text tag="u">Underline</Text>
+  <br />
+  <Text tag="abbr">I18N</Text>
+  <br />
+  <Text tag="del">Deleted</Text>
+  <br />
+  <Text tag="em">Emphasis</Text>
+  <br />
+  <Text tag="s">Strikethrough</Text>
+  <br />
+  <Text tag="code">Code</Text>
+  <br />
+  <Text tag="pre">Pre</Text>
+</Playground>
+
+## Prop styling
+
+<Playground>
+  <Text fontWeight="bold">I am bold</Text>
+  <br />
+  <Text color="primary">Primary color</Text>
+  <br />
+  <Text textAlign="center" fontSize="12px">Small and centered</Text>
+</Playground>
+
+## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
@@ -32,3 +71,24 @@ letterSpacing).
 | ${lineHeight} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${letterSpacing} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${color} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+
+
+## Theming
+
+### Schema
+```
+{
+  fonts: {
+    fontFamily
+  },
+  fontSizes: {
+    fontSize
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/text)
+- [Learn more about themeing](#)

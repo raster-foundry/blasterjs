@@ -45,7 +45,7 @@ const StyledBox = styled.div`
   ${styledSystem.left}
 `;
 
-const Box = ({tag, ...props}) => <StyledBox as={tag} {...props} />;
+const Box = ({ tag, ...props }) => <StyledBox as={tag} {...props} />;
 
 Box.propTypes = {
   tag: PropTypes.string,
