@@ -4,4 +4,4 @@ git checkout master && \
 git pull --rebase origin master && \
 ./scripts/build && \
 lerna version --force-publish && \
-lerna publish
+lerna publish from-package
