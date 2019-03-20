@@ -1,5 +1,6 @@
 {
   "name": "@blasterjs/docs-app",
+  "private": true,
   "version": "0.0.16",
   "description": "Components to be used within the documentation app",
   "main": "dist/index.js",
