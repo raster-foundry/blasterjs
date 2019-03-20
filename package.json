@@ -78,7 +78,7 @@
     "polished": "^2.0.1",
     "prop-types": "^15.6.2",
     "styled-components": "^4.1.2",
-    "styled-system": "^3.2.1"
+    "styled-system": "^4.0.5"
   },
   "bin": {
     "blaster": "./bin/cli.js"
