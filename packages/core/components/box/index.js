@@ -12,7 +12,6 @@ const StyledBox = styled.div`
   ${styledSystem.height}
   ${styledSystem.maxHeight}
   ${styledSystem.minHeight}
-  ${styledSystem.ratio}
   ${styledSystem.verticalAlign}
   ${styledSystem.alignItems}
   ${styledSystem.justifyContent}
@@ -58,7 +57,6 @@ Box.propTypes = {
   ...styledSystem.height.propTypes,
   ...styledSystem.maxHeight.propTypes,
   ...styledSystem.minHeight.propTypes,
-  ...styledSystem.ratio.propTypes,
   ...styledSystem.verticalAlign.propTypes,
   ...styledSystem.alignItems.propTypes,
   ...styledSystem.justifyContent.propTypes,
