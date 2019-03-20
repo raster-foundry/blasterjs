@@ -1,0 +1,25 @@
+{
+  "name": "stories",
+  "private": true,
+  "version": "0.0.16",
+  "author": "Alex Kaminsky <akaminsky@azavea.com>",
+  "license": "ISC",
+  "main": "lib/stories.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raster-foundry/blasterjs.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/raster-foundry/blasterjs/issues"
+  },
+  "dependencies": {
+    "@blasterjs/core": "^0.0.16",
+    "polished": "^2.0.1",
+    "prop-types": "^15.6.2",
+    "styled-components": "^4.1.2",
+    "styled-system": "^4.0.5"
+  }
+}

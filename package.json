@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "@blasterjs/dev",
   "version": "0.0.1",
   "description": "React UI library designed and built by Azavea",
@@ -11,7 +12,9 @@
     "release": "./scripts/release",
     "start": "./scripts/start",
     "test": "jest --coverage --verbose --passWithNoTests",
-    "version": "chan release --group-changes $(node -p -e \"require('./lerna.json').version\") && git add CHANGELOG.md && git commit -m \"Update: changelog\""
+    "version": "chan release --group-changes $(node -p -e \"require('./lerna.json').version\") && git add CHANGELOG.md && git commit -m \"Update: changelog\"",
+    "storybook": "lerna bootstrap --hoist && start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -57,7 +60,12 @@
     "svgson-cli": "^1.1.0",
     "svgson-next": "^4.3.0",
     "webpack": "4.28.4",
-    "webpack-blocks": "^1.0.0"
+    "webpack-blocks": "^1.0.0",
+    "@storybook/react": "^5.0.3",
+    "@storybook/addon-actions": "^5.0.3",
+    "@storybook/addon-links": "^5.0.3",
+    "@storybook/addons": "^5.0.3",
+    "babel-loader": "^8.0.5"
   },
   "lint-staged": {
     "*.{js,json,css}": [
