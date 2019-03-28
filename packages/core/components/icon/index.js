@@ -16,17 +16,16 @@ const StyledIcon = styled(Text)`
   vertical-align: middle;
 `;
 
-const Icon = ({children, ...props}) => {
+const Icon = ({ children, ...props }) => {
   const icon = props.theme.icons[props.name];
-
   return (
     <StyledIcon
       xmlns="http://www.w3.org/2000/svg"
       fill="currentColor"
-      viewBox={icon.viewBox}
+      viewBox={icon ? icon.viewBox : "0 0 24 24"}
       {...props}
     >
-      <path d={icon.path} fill="currentColor" />
+      <path d={icon ? icon.path : ""} fill="currentColor" />
     </StyledIcon>
   );
 };

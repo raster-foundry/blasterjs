@@ -58,6 +58,9 @@ const GlobalStyle = createGlobalStyle`
     html {
       font-size: 62.5%;
     }
+    body {
+      line-height: 1;
+    }
 `;
 
 export default GlobalStyle;

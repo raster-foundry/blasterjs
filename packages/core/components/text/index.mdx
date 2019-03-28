@@ -9,14 +9,13 @@ import Text from './'
 
 # Text
 
-Generic text element which renders as `<span>` by default. 
-
-Transposes `Box` and exposes text prop functionality: `color`, `fontFamily`, `fontSize`, `fontWeight`, `textAlign`, `lineHeight`, `letterSpacing`.
-
 ## Import
 `import { Text } from '@blasterjs/core'`
 
 ## Basic Usage
+
+Transposes [`Box`](/primitives/) and exposes text based prop functionality: `color`, `fontFamily`, `fontSize`, `fontWeight`, `textAlign`, `lineHeight`, `letterSpacing`.
+
 The `<Text>` component renders a `<span>` with basic styles by default.
 
 <Playground>
@@ -56,14 +55,14 @@ The `<Text>` component renders a `<span>` with basic styles by default.
   <br />
   <Text color="primary">Primary color</Text>
   <br />
-  <Text textAlign="center" fontSize="12px">Small and centered</Text>
+  <Text textAlign="center" fontSize="12px" tag="p">Small and centered</Text>
 </Playground>
 
 ## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/components/box) |
+| Box props | | | | see [Box](/primitives/) |
 | ${fontFamily} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${fontSize} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${fontWeight} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |

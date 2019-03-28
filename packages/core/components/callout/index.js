@@ -3,15 +3,16 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import Box from "../box";
+import Card from "../card";
 import Icon from "../icon";
 import Header from "../header";
 import { Intent } from "../../common/intent";
 
-const StyledCallout = styled(Box)`
+const StyledCallout = styled(Card)`
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
-  justify-contents: flex-start;
+  justify-content: flex-start;
   background-color: ${props => themeGet(`colors.${props.bg}`)};
 
   ${props =>
@@ -96,7 +97,7 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 };
 
 Callout.propTypes = {
-  ...Box.PropTypes,
+  ...Card.PropTypes,
   intent: PropTypes.oneOf(Object.values(Intent)),
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   iconSize: PropTypes.string,
@@ -105,9 +106,9 @@ Callout.propTypes = {
 
 Callout.defaultProps = {
   intent: Intent.NONE,
-  icon: undefined,
+  icon: null,
   iconSize: "2.2rem",
-  title: undefined,
+  title: null,
   pt: "callout.p",
   pb: "callout.p",
   pl: "callout.p",

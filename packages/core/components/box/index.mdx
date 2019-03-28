@@ -1,26 +1,43 @@
 ---
 name: Box
-menu: Components
-route: /components/box
+menu: Primitives
+route: /primitives
 ---
 
 import { Playground, PropsTable } from 'docz'
 import Box from './'
+import { Callout } from '../../index.components'
 
 # Box
 
 Generic container for handling layout.
 
+## Import
+`import { Box } from '@blasterjs/core'`
+
+## Basic Usage
+All components in Blaster are built on top of the `<Box>` primitive. Any component in Blaster can use `Box`'s props unless specifically overriden.
+
+The primitive component `<Box>` provides an abstraction on top of the `<div>` element to include reset styles and allows you to specify CSS attributes as props to adjust spacing, display, size, positioning and layout.
+
 <Playground>
-    <Box mt={4} px={10} width="10.5em" overflow="hidden">Myspoonistoobig</Box>
-    <Box p={6} display="flex" flexDirection="row" alignItems="center" justifyContent="space-between">
-        <span>I</span>
-        <span>am</span>
-        <span>a</span>
-        <span>banana</span>
+    <Box>This is a box</Box>
+</Playground>
+
+
+## Prop styling
+
+<Playground>
+    <Box display="flex" justifyContent="space-around">
+        <Box>flex 1</Box>
+        <Box>flex 2</Box>
     </Box>
 </Playground>
 
+
+<Callout icon="info">
+    If you would like to apply color and other stylistic decisions, it is recommended to create a new component extending Box.
+</Callout>
 
 
 ### PropTypes

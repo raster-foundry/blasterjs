@@ -8,7 +8,8 @@ import { Playground, PropsTable } from 'docz'
 import Badge from './'
 import Pill from '../pill'
 import Swatch from '../swatch'
-import { Shape } from "../../common/shape";
+import Grouper from '../grouper'
+import { Shape } from "../../common/shape"
 
 # Badge / Pill / Swatch
 
@@ -17,8 +18,10 @@ import { Shape } from "../../common/shape";
 ### Basic badge
 
 <Playground>
+    <Grouper direction="vertical" density="comfortable" width="100px">
     <Badge>Hello</Badge>
     <Badge>World</Badge>
+    </Grouper>
 </Playground>
 
 ### Badge with colors, fontSize, borderRadius
@@ -67,7 +70,7 @@ import { Shape } from "../../common/shape";
 ### Badge
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/components/text) |
+| Text props | | | | see [Text](/typography/text) |
 | borderRadius | number or string | no | `small` | see [styled-system BORDERRADIUS](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#borders) |
 
 ### Pill

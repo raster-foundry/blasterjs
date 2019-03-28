@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { borderRadius } from "styled-system";
+import { borderRadius, themeGet } from "styled-system";
 import Text from "../text";
 
 const StyledBadge = styled(Text)`
@@ -10,13 +10,14 @@ const StyledBadge = styled(Text)`
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  font-weight: 600;
   ${borderRadius}
+
+  ${themeGet("styles.badge")};
 `;
 
 const Badge = props => {
-  return (
-    <StyledBadge {...props} />
-  );
+  return <StyledBadge {...props} />;
 };
 
 Badge.propTypes = {
@@ -26,7 +27,6 @@ Badge.propTypes = {
 
 Badge.defaultProps = {
   tag: "span",
-  mr: "badge.mr",
   pt: "badge.py",
   pb: "badge.py",
   pl: "badge.px",

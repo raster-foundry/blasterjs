@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 export const theme = {
   space: {
     m: 0
@@ -7,5 +9,12 @@ export const theme = {
   },
   fonts: {
     fontFamily: "display"
-  }
+  },
+  fontWeights: {
+    fontWeight: "700"
+  },
+  lineHeights: {
+    lineHeight: "1.8"
+  },
+  styles: css``
 };

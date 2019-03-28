@@ -1,15 +1,21 @@
+import { css } from "styled-components";
+
 export const theme = {
   space: {
-    p: 0
+    padding: 0
   },
   colors: {
-    bg: "white",
-    borderColor: "gray300"
+    background: "white",
+    borderColor: "gray200"
   },
   radii: {
-    borderRadius: "large"
+    borderRadius: "base"
   },
   shadows: {
-    boxShadow: 2
-  }
+    boxShadow: 1
+  },
+  borders: {
+    border: "1px solid"
+  },
+  styles: css``
 };

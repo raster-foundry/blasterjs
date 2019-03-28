@@ -7,5 +7,8 @@ export const theme = {
   fontSizes: {
     fontSize: "body"
   },
+  lineHeights: {
+    lineHeight: "base"
+  },
   styles: css``
 };

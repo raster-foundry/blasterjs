@@ -62,7 +62,7 @@ Text.defaultProps = {
   tag: "span",
   fontFamily: "text.fontFamily",
   fontSize: "text.fontSize",
-  lineHeight: 1
+  lineHeight: "text.lineHeight",
 };
 
 export default Text;

@@ -1,17 +1,20 @@
+import { css } from "styled-components";
+
 export const theme = {
   space: {
     mr: 1,
-    py: "0.24em",
-    px: "0.4em"
+    py: "2px",
+    px: "5px"
   },
   radii: {
-    borderRadius: "small"
+    borderRadius: "base"
   },
   colors: {
-    bg: "gray100",
-    color: "textBase"
+    bg: "gray600",
+    color: "white"
   },
   fontSizes: {
     fontSize: 1
-  }
+  },
+  styles: css``
 };

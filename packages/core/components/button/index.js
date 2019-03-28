@@ -5,8 +5,7 @@ import styled, { css } from "styled-components";
 import { borders, borderColor, borderRadius, themeGet } from "styled-system";
 import Text from "../text";
 import Icon from "../icon";
-import { Intent } from "../../common/intent";
-import { Appearance } from "../../common/appearance";
+import { Appearance, Intent } from "../../index.common";
 
 const ButtonIcon = styled(Icon)`
   flex: none;
@@ -61,7 +60,7 @@ const StyledButton = styled(Text)`
   text-decoration: none;
   user-select: none;
   will-change: box-shadow, background-color;
-  transition: 0.1s ease-in-out box-shadow, 0.1s ease-in-out background-color;
+  transition: 0.1s ease-in-out, box-shadow, 0.1s ease-in-out background-color;
   ${borders}
   ${borderColor}
   ${borderRadius}
@@ -75,13 +74,13 @@ function buttonStates(props) {
   let color;
   switch (intent) {
     case Intent.DANGER:
-      color = "red";
+      color = "danger";
       break;
     case Intent.WARNING:
-      color = "yellow";
+      color = "warning";
       break;
     case Intent.SUCCESS:
-      color = "green";
+      color = "success";
       break;
     case Intent.NONE:
     default:

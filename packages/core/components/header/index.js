@@ -5,8 +5,6 @@ import { themeGet } from "styled-system";
 import Text from "../text";
 
 const Header = styled(Text)`
-  font-weight: 700;
-
   ${props => {
     const size = {
       h1: 7,
@@ -21,18 +19,21 @@ const Header = styled(Text)`
       font-size: ${props => themeGet(`fontSizes.${size}`)};
     `;
   }}
+
+  ${themeGet("styles.header")};
 `;
 
 Header.propTypes = {
   ...Text.propTypes,
-  tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+  tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"])
 };
 
 Header.defaultProps = {
   tag: "h1",
   color: "header.color",
   fontFamily: "header.fontFamily",
-  lineHeight: 2,
+  fontWeight: "header.fontWeight",
+  lineHeight: "header.lineHeight",
   mt: "header.m",
   mb: "header.m",
   ml: "header.m",
