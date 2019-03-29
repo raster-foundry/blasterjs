@@ -10,31 +10,81 @@ import { Direction } from "../../common/direction";
 
 # Divider
 
-## Vertical Divider
+## Import
+`import { Divider } from '@blasterjs/core'`
+
+## Basic Usage
+
+By default, the `Divider` component transposes [`Box`](/primitives/) with a default prop `tag=hr` which will render a horionzal rule.
 
 <Playground>
-    Something on the left
-    <Divider direction={Direction.VERTICAL} mx={1} />
-    Something in the middle
-    <Divider direction={Direction.VERTICAL} width="4px" height="4rem" mx={3} color="primary" />
-    Something on the right
+  <Divider />
 </Playground>
 
-## Horizontal Divider
+## Veritcal Divider
 
 <Playground>
-    Something on the top
-    <Divider direction={Direction.HORIZONTAL} my={2} />
-    Something in the middle
-    <Divider direction={Direction.HORIZONTAL} width="60%" height="4px" ml={0} my={5} color="secondary" />
-    Something on the bottom
+  <span>Left text</span>
+  <Divider 
+    direction="vertical"
+    mx="10px"
+  />
+  <span>Middle text</span>
+  <Divider 
+    direction="vertical" 
+    mx="10px"
+  />
+  <span>Right text</span>
 </Playground>
+
+## Prop styling
+
+<Playground>
+  <Divider
+    color="primary"
+    width="80%"
+    height="3px"
+    borderRadius="5px"
+  />
+</Playground>
+
 
 ## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
 | Box props | | | | see [Box](/components/box) |
-| direction | enum | yes | | see [Direction](/common/direction) |
+| direction | enum | yes | `horizontal` | see [Direction](/common/direction) |
 | color | string | no | | Theme color or valid css color value  |
-| width | string | no | | `2px` when vertical |
-| height | string | no | | `1px` when horizontal |
+| width | string | no | | Theme width or valid css width value |
+| height | string | no | | Theme height or valid css height value |
+
+## Theming
+
+### Schema
+```
+{
+  colors: {
+    horizontal,
+    vertical,
+  },
+  widths: {
+    horizontal,
+    vertical,
+  },
+  heights: {
+    horizontal,
+    vertical,
+  },
+  styles: {
+    horizontal: css`
+        ...
+    `,
+    vertical: css`
+        ...
+    `,
+  }
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/divider)
+- [Learn more about themeing](#)

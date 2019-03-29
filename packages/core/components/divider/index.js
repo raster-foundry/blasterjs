@@ -6,32 +6,59 @@ import { Direction } from "../../common/direction";
 import Box from "../box";
 
 const HDivider = styled(Box).attrs({
-  tag: 'hr'
+  tag: "hr"
 })`
-  background-color: ${props => themeGet(`colors.${props.color}`, props.color)};
   border: 0;
-  width: ${props => props.width || "100%"};
-  height: ${props => props.height || "1px"};
+
+  background-color: ${props =>
+    props.color
+      ? themeGet(`colors.${props.color}`, props.color)
+      : themeGet("colors.divider.horizontal")};
+
+  width: ${props =>
+    props.width
+      ? themeGet(`widths.${props.color}`, props.width)
+      : themeGet("widths.divider.horizontal")};
+
+  height: ${props =>
+    props.height
+      ? themeGet(`heights.${props.color}`, props.height)
+      : themeGet("heights.divider.horizontal")};
+
+  ${themeGet("styles.divider.horizontal")};
 `;
 
 const VDivider = styled(Box).attrs({
-  tag: 'span'
+  tag: "span"
 })`
   display: inline-block;
   vertical-align: middle;
-  background-color: ${props => themeGet(`colors.${props.color}`, props.color)};
-  width: ${props => props.width || "2px"};
-  height: ${props => props.height || "100%"};
+  background-color: ${props =>
+    props.color
+      ? themeGet(`colors.${props.color}`, props.color)
+      : themeGet("colors.divider.vertical")};
 
-  ::after {
-    content: '\00a0';
+  width: ${props =>
+    props.width
+      ? themeGet(`widths.${props.color}`, props.width)
+      : themeGet("widths.divider.vertical")};
+
+  height: ${props =>
+    props.height
+      ? themeGet(`heights.${props.color}`, props.height)
+      : themeGet("heights.divider.vertical")};
+
+  ${themeGet("styles.divider.horizontal")};
+
+  &:after {
+    content: "\00a0";
     visibility: hidden;
     pointer-events: none;
     user-select: none;
   }
 `;
 
-const Divider = ({children, ...props}) => {
+const Divider = ({ children, ...props }) => {
   return (
     <>
       {props.direction === Direction.HORIZONTAL && <HDivider {...props} />}
@@ -49,7 +76,7 @@ Divider.propTypes = {
 };
 
 Divider.defaultProps = {
-  color: "divider.color"
+  direction: "horizontal"
 };
 
 export default Divider;

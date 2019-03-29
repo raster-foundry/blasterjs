@@ -5,13 +5,15 @@ import icons from "./icons";
 // Copy `base` and `icons` to `theme`
 export const theme = { ...base, icons };
 
+console.log(theme)
+
 // Resolve references to base theme throughout component themes
 // eg, `link.space.mx: 2` -> `link.space.mx: '1.6rem'`
 // eg, `link.colors.hoverColor: 'primary'` -> `link.colors.hoverColor: '#738FFC'`
 for (var component in components) {
   const componentTheme = components[component];
   for (var themeCategory in componentTheme) {
-    if (themeCategory === "icons") continue;
+    if (["icons", "__filemeta"].includes(themeCategory)) continue;
     // lest we want to resolve icon names with their SVG strings
 
     const categoryDetails = componentTheme[themeCategory];
