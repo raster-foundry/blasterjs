@@ -5,14 +5,12 @@ import { borderRadius, themeGet } from "styled-system";
 import Text from "../text";
 
 const StyledBadge = styled(Text)`
-  display: inline-block;
-  line-height: 1;
+  display: inline-flex;
   text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
   ${borderRadius}
-
   ${themeGet("styles.badge")};
 `;
 
@@ -27,14 +25,16 @@ Badge.propTypes = {
 
 Badge.defaultProps = {
   tag: "span",
-  pt: "badge.py",
-  pb: "badge.py",
-  pl: "badge.px",
-  pr: "badge.px",
+  pt: "badge.pTop",
+  pb: "badge.pBottom",
+  pl: "badge.pLeft",
+  pr: "badge.pRight",
   borderRadius: "badge.borderRadius",
-  bg: "badge.bg",
+  lineHeight: "badge.lineHeight",
+  bg: "badge.background",
   color: "badge.color",
-  fontSize: "badge.fontSize"
+  fontSize: "badge.fontSize",
+  fontWeight: "badge.fontWeight"
 };
 
 export default Badge;

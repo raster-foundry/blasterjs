@@ -31,7 +31,7 @@ export const colors = {
 
   yellow: "#ECBC40",
   yellowTint: "#FFE9AF",
-  yellowShade: "#C19523",
+  yellowShade: "#C19523"
 };
 
 {
@@ -55,7 +55,7 @@ export const colors = {
 export const fonts = {
   body: "'Open Sans', sans-serif",
   display: "'Libre Franklin', sans-serif",
-  code: "'Source Code Pro', monospace",
+  code: "'Source Code Pro', monospace"
 };
 
 export const fontSizes = [
@@ -66,7 +66,7 @@ export const fontSizes = [
   "2.2rem",
   "2.6rem",
   "2.9rem",
-  "3.4rem",
+  "3.4rem"
 ];
 
 {
@@ -79,7 +79,7 @@ export const radii = {
   none: "0px",
   small: "3px",
   base: "4px",
-  large: "10px",
+  large: "10px"
 };
 
 export const shadows = [
@@ -90,7 +90,7 @@ export const shadows = [
   `0px 12px 20px -3px ${colors.gray900}20, 
     0px 2px 20px -9px ${colors.gray900}20`,
   `0 12px 17px 2px ${colors.gray900}20,
-    0 5px 22px 4px ${colors.gray900}20`,
+    0 5px 22px 4px ${colors.gray900}20`
 ];
 
 export const space = [
@@ -104,14 +104,14 @@ export const space = [
   "5.6rem",
   "6.4rem",
   "7.2rem",
-  "8rem",
+  "8rem"
 ];
 
 export const lineHeights = {
   inherit: "inherit",
   small: "1",
   base: "1.5",
-  large: "1.8",
+  large: "1.8"
 };
 
 export const fontWeights = {};

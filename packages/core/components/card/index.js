@@ -35,10 +35,10 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  pt: "card.padding",
-  pb: "card.padding",
-  pl: "card.padding",
-  pr: "card.padding",
+  pt: "card.pTop",
+  pb: "card.pBottom",
+  pl: "card.pLeft",
+  pr: "card.pRight",
   bg: "card.background",
   border: "card.border",
   borderColor: "card.borderColor",

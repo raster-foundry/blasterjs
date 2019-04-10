@@ -2,7 +2,10 @@ import { css } from "styled-components";
 
 export const theme = {
   space: {
-    padding: 0
+    pTop: 1,
+    pBottom: 1,
+    pLeft: 1,
+    pRight: 1
   },
   colors: {
     background: "white",

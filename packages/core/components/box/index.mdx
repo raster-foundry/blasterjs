@@ -44,7 +44,7 @@ The primitive component `<Box>` provides an abstraction on top of the `<div>` el
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
 | tag | string | no | `div` | html tag to be rendered |
-| ${display} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${display} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${space} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${width} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${maxWidth} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
@@ -52,16 +52,16 @@ The primitive component `<Box>` provides an abstraction on top of the `<div>` el
 | ${height} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${maxHeight} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${minHeight} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${verticalAlign} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${alignItems} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${justifyContent} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${flexWrap} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${flexDirection} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${verticalAlign} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${alignItems} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${justifyContent} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${flexWrap} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${flexDirection} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${flex} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${alignContent} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${justifyItems} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${justifySelf} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${alignSelf} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${alignContent} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${justifyItems} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${justifySelf} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${alignSelf} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${order} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${flexBasis} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${gridGap} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
@@ -70,16 +70,21 @@ The primitive component `<Box>` provides an abstraction on top of the `<div>` el
 | ${gridColumn} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${gridRow} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${gridArea} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${gridAutoFlow} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${gridAutoRows} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${gridAutoColumns} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${gridTemplateRows} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${gridTemplateColumns} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${gridTemplateAreas} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${overflow} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${position} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${zIndex} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${gridAutoFlow} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${gridAutoRows} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${gridAutoColumns} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${gridTemplateRows} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${gridTemplateColumns} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${gridTemplateAreas} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${overflow} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${position} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${zIndex} | number | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${top} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${right} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${bottom} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | ${left} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${color} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${background} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${borders} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${boxShadow} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| ${opacity} | number | no | | see [styled-system](https://jxnblk.com/styled-system/) |

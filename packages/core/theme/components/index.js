@@ -18,7 +18,6 @@ export { theme as icon } from "./icon";
 export { theme as image } from "./image";
 export { theme as label } from "./label";
 export { theme as navBar } from "./navBar";
-export { theme as pill } from "./pill";
 export { theme as progressBar } from "./progressBar";
 export { theme as radio } from "./radio";
 export { theme as select } from "./select";

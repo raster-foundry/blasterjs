@@ -43,6 +43,11 @@ const StyledBox = styled.div`
   ${styledSystem.right}
   ${styledSystem.bottom}
   ${styledSystem.left}
+  ${styledSystem.color}
+  ${styledSystem.background}
+  ${styledSystem.borders}
+  ${styledSystem.boxShadow}
+  ${styledSystem.opacity}
 `;
 
 const Box = ({ tag, ...props }) => <StyledBox as={tag} {...props} />;
@@ -87,7 +92,12 @@ Box.propTypes = {
   ...styledSystem.top.propTypes,
   ...styledSystem.right.propTypes,
   ...styledSystem.bottom.propTypes,
-  ...styledSystem.left.propTypes
+  ...styledSystem.left.propTypes,
+  ...styledSystem.color.propTypes,
+  ...styledSystem.background.propTypes,
+  ...styledSystem.borders.propTypes,
+  ...styledSystem.boxShadow.propTypes,
+  ...styledSystem.opacity.propTypes
 };
 
 Box.defaultProps = {

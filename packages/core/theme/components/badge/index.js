@@ -2,19 +2,28 @@ import { css } from "styled-components";
 
 export const theme = {
   space: {
-    mr: 1,
-    py: "2px",
-    px: "5px"
+    pTop: 1,
+    pBottom: 1,
+    pLeft: 1,
+    pRight: 1
   },
   radii: {
     borderRadius: "base"
   },
   colors: {
-    bg: "gray600",
+    background: "gray600",
     color: "white"
   },
   fontSizes: {
     fontSize: 1
   },
-  styles: css``
+  fontWeights: {
+    fontWeight: 600
+  },
+  lineHeights: {
+    lineHeight: "small"
+  },
+  styles: css`
+    text-transform: uppercase;
+  `
 };

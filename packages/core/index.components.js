@@ -20,7 +20,6 @@ export { default as Image } from "./components/image";
 export { default as Label } from "./components/label";
 export { default as NavBar } from "./components/navBar";
 export { default as NavBarSection } from "./components/navBarSection";
-export { default as Pill } from "./components/pill";
 export { default as ProgressBar } from "./components/progressBar";
 export { default as Radio } from "./components/radio";
 export { default as Select } from "./components/select";

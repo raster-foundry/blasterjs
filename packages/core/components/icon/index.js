@@ -38,6 +38,8 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   tag: "svg",
+  fontSize: "inherit",
+  lineHeight: "inherit",
   size: "1em",
   mt: "icon.mt",
   mb: "icon.mb",
