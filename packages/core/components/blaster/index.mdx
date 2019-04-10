@@ -1,0 +1,59 @@
+---
+name: Blaster
+menu: Components
+route: /components/blaster
+---
+
+# Blaster
+
+The `Blaster` component is wrapper for your entire application.
+It does a few things:
+- inserts the necessary global styles to make your application look its best
+- provides a default theme to all components rendered within
+- allows overriding and merging of theme styles
+
+## Using the default theme
+```
+  import React from "react";
+  import { Blaster, Card } from "@blasterjs/core";
+
+  export default () => (
+    <Blaster>
+      <Card bg="primary">
+        Hello
+      </Card>
+      <Card bg="secondary">
+        World
+      </Card>
+    </Blaster>
+  ) ;
+```
+
+## Overriding the default theme
+```
+  import React from "react";
+  import { Blaster, Badge } from "@blasterjs/core";
+
+  const newTheme = {
+    colors: {
+      primary: 'blue',
+      secondary: 'red'
+    }
+  };
+
+  export default () => (
+    <Blaster theme={ newTheme }>
+      <Card bg="primary">
+        Hello
+      </Card>
+      <Card bg="secondary">
+        World
+      </Card>
+    </Blaster>
+  ) ;
+```
+
+### PropTypes
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| theme | object | no | see default theme | The theme to use for components within this tag. The theme object provided will be merged with the default theme |
