@@ -14,28 +14,29 @@ const StyledField = styled(Label)`
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  cursor: ${props => props.disabled ? 'not-allowed' : 'initial'};
+  cursor: ${props => (props.disabled ? "not-allowed" : "initial")};
 `;
 
 const Name = styled(Label)`
   max-width: 100%;
-  color: ${props => props.disabled ? themeGet('colors.grayLight1') : themeGet('colors.textBase')};
+  color: ${props =>
+    props.disabled ? themeGet("colors.gray200") : themeGet("colors.textBase")};
   font-weight: ${props => props.fontWeight || 600};
   line-height: 1.2;
 `;
 
 const Required = styled.span`
-  margin-left: calc(${themeGet('space.1')} / 2);
+  margin-left: calc(${themeGet("space.1")} / 2);
 `;
 
 const Desc = styled(Text)`
-  color: ${themeGet('colors.slate')};
-  font-size: ${themeGet('fontSizes.1')};
+  color: ${themeGet("colors.slate")};
+  font-size: ${themeGet("fontSizes.1")};
   line-height: 1.2;
 `;
 
 const Alert = styled(Text)`
-  font-size: ${themeGet('fontSizes.1')};
+  font-size: ${themeGet("fontSizes.1")};
   font-weight: 600;
   line-height: 1.2;
   text-transform: uppercase;
@@ -97,16 +98,18 @@ const Field = ({
               size={size}
             >
               {name}
-              {required && <Required title="This field is required.">*</Required>}
+              {required && (
+                <Required title="This field is required.">*</Required>
+              )}
             </Name>
             {desc && (
-              <Desc
-                mt={size === Size.TINY || Size.SMALL ? 0 : 1}
-              >
-                {desc}
-              </Desc>
+              <Desc mt={size === Size.TINY || Size.SMALL ? 0 : 1}>{desc}</Desc>
             )}
-            {alert && <Alert intent={alertIntent} mt={1}>{alert}</Alert>}
+            {alert && (
+              <Alert intent={alertIntent} mt={1}>
+                {alert}
+              </Alert>
+            )}
           </Box>
           {!reverse && children}
         </StyledField>
@@ -136,7 +139,11 @@ const Field = ({
             </Desc>
           )}
           {children}
-          {alert && <Alert intent={alertIntent} mt={2}>{alert}</Alert>}
+          {alert && (
+            <Alert intent={alertIntent} mt={2}>
+              {alert}
+            </Alert>
+          )}
         </StyledField>
       );
   }
@@ -154,7 +161,7 @@ Field.propTypes = {
   desc: PropTypes.string,
   alert: PropTypes.string,
   alertIntent: PropTypes.oneOf(Object.values(Intent))
-}
+};
 
 Field.defaultProps = {
   nameWidth: undefined,

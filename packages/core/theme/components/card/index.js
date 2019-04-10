@@ -1,15 +1,24 @@
+import { css } from "styled-components";
+
 export const theme = {
   space: {
-    p: 0
+    pTop: 1,
+    pBottom: 1,
+    pLeft: 1,
+    pRight: 1
   },
   colors: {
-    bg: "white",
-    borderColor: "grayLight3"
+    background: "white",
+    borderColor: "gray200"
   },
   radii: {
-    borderRadius: "large"
+    borderRadius: "base"
   },
   shadows: {
-    boxShadow: 2
-  }
+    boxShadow: 1
+  },
+  borders: {
+    border: "1px solid"
+  },
+  styles: css``
 };

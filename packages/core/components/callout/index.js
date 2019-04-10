@@ -3,29 +3,32 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import Box from "../box";
+import Card from "../card";
 import Icon from "../icon";
 import Header from "../header";
 import { Intent } from "../../common/intent";
 
-const StyledCallout = styled(Box)`
+const StyledCallout = styled(Card)`
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
-  justify-contents: flex-start;
+  justify-content: flex-start;
   background-color: ${props => themeGet(`colors.${props.bg}`)};
 
-  ${props => props.icon && css`
-    padding-left: 0;
-  `};
+  ${props =>
+    props.icon &&
+    css`
+      padding-left: 0;
+    `};
 `;
 
 const CalloutIcon = styled(Icon)`
   flex: none;
-  margin: 0 ${themeGet('space.2', '1.6rem')};
+  margin: 0 ${themeGet("space.2", "1.6rem")};
 `;
 
 const CalloutTitle = styled(Header).attrs({ tag: "h4" })`
-  margin-bottom: ${themeGet('space.1', '0.8rem')};
+  margin-bottom: ${themeGet("space.1", "0.8rem")};
   line-height: 1;
 `;
 
@@ -48,7 +51,7 @@ const getIconName = (icon, intent) => {
     default:
       return undefined;
   }
-}
+};
 
 const getIntentColors = intent => {
   let colors = {};
@@ -69,12 +72,12 @@ const getIntentColors = intent => {
     case Intent.NONE:
     default:
       colors.color = "textBase";
-      colors.bg = "grayLightest";
+      colors.bg = "gray100";
       break;
   }
 
   return colors;
-}
+};
 
 const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
   const iconName = getIconName(icon, intent);
@@ -82,7 +85,9 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 
   return (
     <StyledCallout {...props} bg={bg} icon={!!iconName}>
-      {iconName && <CalloutIcon name={iconName} color={color} size={iconSize} />}
+      {iconName && (
+        <CalloutIcon name={iconName} color={color} size={iconSize} />
+      )}
       <Box flex="auto">
         {title && <CalloutTitle color={color}>{title}</CalloutTitle>}
         {children}
@@ -92,7 +97,7 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 };
 
 Callout.propTypes = {
-  ...Box.PropTypes,
+  ...Card.PropTypes,
   intent: PropTypes.oneOf(Object.values(Intent)),
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   iconSize: PropTypes.string,
@@ -101,9 +106,9 @@ Callout.propTypes = {
 
 Callout.defaultProps = {
   intent: Intent.NONE,
-  icon: undefined,
+  icon: null,
   iconSize: "2.2rem",
-  title: undefined,
+  title: null,
   pt: "callout.p",
   pb: "callout.p",
   pl: "callout.p",

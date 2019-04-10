@@ -1,64 +1,56 @@
-export const space = [
-  "0",
-  "0.8rem",
-  "1.6rem",
-  "2.4rem",
-  "3.2rem",
-  "4rem",
-  "4.8rem",
-  "5.6rem",
-  "6.4rem",
-  "7.2rem",
-  "8rem"
-];
-
 export const colors = {
   primary: "#738FFC",
-  secondary: "#2FC1D0",
-  tertiary: "#53B1E0",
+  primaryTint: "#E2E8FF",
+  primaryShade: "#5E73CC",
 
-  grayBase1: "#6A7085",
-  grayBase2: "#858b9d",
-  grayBase3: "#9ca1b0",
+  secondary: "#6372B4",
+  secondaryTint: "#A1AAD2",
+  secondaryShade: "#263263",
 
-  grayLight1: "#C3CADF",
-  grayLight2: "#E0E5F5",
-  grayLight3: "#F2F5FF",
-
-  grayDark1: "#1B1C31",
-  grayDark2: "#33344D",
-  grayDark3: "#4D4E66",
+  gray100: "#F2F5FF",
+  gray200: "#E0E5F5",
+  gray300: "#C3CADF",
+  gray400: "#B4B8CB",
+  gray500: "#959CB6",
+  gray600: "#6E779B",
+  gray700: "#464F77",
+  gray800: "#2A304D",
+  gray900: "#171B29",
 
   white: "#FFFFFF",
-  black: "#1B1C31", // also gray1
+  offWhite: "#F4F5F7",
+  black: "#000000",
 
-  link: "#738FFC",
-  linkHover: "#0F3EFA",
+  green: "#91C66A",
+  greenTint: "#C4E8A9",
+  greenShade: "#5B833E",
 
-  // Still reviewing the following colors
-  grayLight: "#999DA8", //#4d4f6d
-  grayLighter: "#C8CCDB", //#8c8dad
-  grayLightest: "#e0e5f5",
-  grayDark: "#343549", //#343549
-  grayDarker: "#1b1c31",
+  red: "#E0535F",
+  redTint: "#F8B2B8",
+  redShade: "#941D27",
 
-  textBase: "#435399",
-  shadeLight: "#959CAC", // slightly lighter then $text-base
-  shadeNormal: "#465076", // deep purple
-  shadeDark: "#353C58", // deepdeep purple
-
-  slate: "#435399",
-
-  // Action Colors:
-  orange: "#E69348",
-  yellow: "#b18500",
-  red: "#f03333",
-  green: "#4e9251",
-
-  yellowTint: "#fdf5e0",
-  redTint: "#f5dbdb",
-  greenTint: "#e1ece2"
+  yellow: "#ECBC40",
+  yellowTint: "#FFE9AF",
+  yellowShade: "#C19523"
 };
+
+{
+  colors.textBase = colors.gray800;
+  colors.link = colors.primary;
+  colors.linkHover = colors.primaryShade;
+
+  colors.success = colors.green;
+  colors.successTint = colors.greenTint;
+  colors.successShade = colors.greenShade;
+
+  colors.danger = colors.red;
+  colors.dangerTint = colors.redTint;
+  colors.dangerShade = colors.redShade;
+
+  colors.warning = colors.yellow;
+  colors.warningTint = colors.yellowTint;
+  colors.warningShade = colors.yellowShade;
+}
 
 export const fonts = {
   body: "'Open Sans', sans-serif",
@@ -77,25 +69,61 @@ export const fontSizes = [
   "3.4rem"
 ];
 
+{
+  fontSizes.body = fontSizes[2];
+  fontSizes.display = fontSizes[7];
+}
+
 export const radii = {
   0: "0px",
   none: "0px",
   small: "3px",
-  base: "5px",
+  base: "4px",
   large: "10px"
 };
 
 export const shadows = [
   "initial",
-  "0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2)",
-  "0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2)",
-  "0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2)",
-  "0 12px 17px 2px rgba(0, 0, 0, 0.14), 0 5px 22px 4px rgba(0, 0, 0, 0.12), 0 7px 8px -4px rgba(0, 0, 0, 0.2)",
-  "0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2)"
-]
+  `0px 2px 5px -2px ${colors.gray900}33`,
+  `0px 2px 5px 0px ${colors.gray900}33`,
+  `0px 2px 10px 1px ${colors.gray900}20`,
+  `0px 12px 20px -3px ${colors.gray900}20, 
+    0px 2px 20px -9px ${colors.gray900}20`,
+  `0 12px 17px 2px ${colors.gray900}20,
+    0 5px 22px 4px ${colors.gray900}20`
+];
 
-export const buttonsStyles = {
-  PRIMARY: "primary",
-  SECONDARY: "secondary",
-  DEFAULT: "default"
+export const space = [
+  "0",
+  "0.8rem",
+  "1.6rem",
+  "2.4rem",
+  "3.2rem",
+  "4rem",
+  "4.8rem",
+  "5.6rem",
+  "6.4rem",
+  "7.2rem",
+  "8rem"
+];
+
+export const lineHeights = {
+  inherit: "inherit",
+  small: "1",
+  base: "1.5",
+  large: "1.8"
 };
+
+export const fontWeights = {};
+export const letterSpacings = {};
+export const maxWidths = {};
+export const minWidths = {};
+export const widths = {};
+export const maxHeights = {};
+export const minHeights = {};
+export const heights = {};
+export const borders = {};
+export const borderWidths = {};
+export const borderStyles = {};
+export const zIndices = {};
+export const styles = {};

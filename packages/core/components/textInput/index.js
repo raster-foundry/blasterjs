@@ -20,7 +20,9 @@ const StyledTextInput = styled(Text)`
       [Size.LARGE]: 6
     }[props.size || Size.MEDIUM];
 
-    return css`height: ${themeGet(`space.${size}`)}`;
+    return css`
+      height: ${themeGet(`space.${size}`)};
+    `;
   }}
 
   ${props => {
@@ -31,7 +33,9 @@ const StyledTextInput = styled(Text)`
       [Size.LARGE]: 3
     }[props.size || Size.MEDIUM];
 
-    return css`font-size: ${themeGet(`fontSizes.${size}`)}`;
+    return css`
+      font-size: ${themeGet(`fontSizes.${size}`)};
+    `;
   }}
 
   ${props => {
@@ -42,29 +46,37 @@ const StyledTextInput = styled(Text)`
       [Size.LARGE]: "large"
     }[props.size || Size.MEDIUM];
 
-    return css`border-radius: ${themeGet(`radii.${size}`)}`;
+    return css`
+      border-radius: ${themeGet(`radii.${size}`)};
+    `;
   }}
   ${borderRadius}
 
   &:focus {
-    border-color: ${themeGet('colors.primary')};
+    border-color: ${themeGet("colors.primary")};
     outline: 0;
-    box-shadow: 0 0 0 3px ${themeGet('colors.primary')}4C;
+    box-shadow: 0 0 0 3px ${themeGet("colors.primary")}4C;
   }
 
   &[disabled] {
     cursor: not-allowed;
-    background-color: ${themeGet('colors.grayLight3')};
+    background-color: ${themeGet("colors.gray300")};
   }
 
   &[aria-invalid="true"],
   &:invalid {
-    border-color: ${themeGet('colors.red')};
+    border-color: ${themeGet("colors.red")};
   }
 `;
 
-const TextInput = ({invalid, type, ...props}) => {
-  return <StyledTextInput aria-invalid={invalid} type={type || undefined} {...props} />;
+const TextInput = ({ invalid, type, ...props }) => {
+  return (
+    <StyledTextInput
+      aria-invalid={invalid}
+      type={type || undefined}
+      {...props}
+    />
+  );
 };
 
 TextInput.propTypes = {

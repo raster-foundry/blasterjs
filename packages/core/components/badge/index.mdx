@@ -1,88 +1,45 @@
 ---
-name: Badge / Pill / Swatch
+name: Badge
 menu: Components
-route: /components/badge-pill-swatch
+route: /components/badge
 ---
 
 import { Playground, PropsTable } from 'docz'
 import Badge from './'
-import Pill from '../pill'
-import Swatch from '../swatch'
-import { Shape } from "../../common/shape";
+import Grouper from '../grouper'
+import Icon from '../icon'
+import { Shape } from "../../common/shape"
 
-# Badge / Pill / Swatch
+# Badge
 
-## Badge
+## Import
+`import { Badge } from '@blasterjs/core'`
 
-### Basic badge
+## Basic usage
 
 <Playground>
-    <Badge>Hello</Badge>
+    <Badge><Icon name="info"/>Hello</Badge>
     <Badge>World</Badge>
 </Playground>
 
-### Badge with colors, fontSize, borderRadius
+### Badge within a `<Grouper>`
 
 <Playground>
-    <Badge color="white" bg="secondary" fontSize={3} borderRadius="base">Hello</Badge>
-    <Badge color="white" bg="tertiary" fontSize={3} borderRadius="base">World</Badge>
+    <Grouper>
+        <Badge>Hello</Badge>
+        <Badge>World</Badge>
+    </Grouper>
+    <br />
+    <Grouper direction="vertical">
+        <Badge>Hello</Badge>
+        <Badge>World</Badge>
+    </Grouper>
 </Playground>
-
-
-## Pill
-
-### Basic pill
-
-<Playground>
-    <Pill value={42} />
-</Playground>
-
-### Pill with colors
-
-<Playground>
-    <Pill value={127} bg="red" color="white" />
-</Playground>
-
-
-## Swatch
-
-### Basic swatch
-
-<Playground>
-    <Swatch color="orange" />
-</Playground>
-
-### Swatch with different shapes and sizes
-
-<Playground>
-    <Swatch color="red" size="2em" />
-    <Swatch color="yellow" size="3em" shape={Shape.CIRCLE} />
-    <Swatch color="green" size="4em" shape={Shape.SQUARE} />
-</Playground>
-
-
 
 ## PropTypes
 
 ### Badge
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/components/text) |
+| Text props | | | | see [Text](/typography/text) |
 | borderRadius | number or string | no | `small` | see [styled-system BORDERRADIUS](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#borders) |
-
-### Pill
-| Prop | Type | Required | Default | Description |
-|:-----|:-----|:---------|:--------|:------------|
-| Badge props | | | | |
-| value | number | yes | | |
-
-### Swatch
-| Prop | Type | Required | Default | Description |
-|:-----|:-----|:---------|:--------|:------------|
-| Badge props | | | | |
-| color | string | yes | | should be a key in theme colors |
-| shape | enum | no | `ROUNDED` | see common/shape |
-| borderRadius | number or string | no | | overrides shape |
-| size | string | no | `1em` | defines width & height |
-| width | string | no | `1em` | |
-| height | string | no | `1em` | |

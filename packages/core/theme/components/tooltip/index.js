@@ -5,7 +5,7 @@ export const theme = {
   },
   colors: {
     color: "black",
-    bg: "grayLight1"
+    bg: "gray200"
   },
   radii: {
     borderRadius: "small"

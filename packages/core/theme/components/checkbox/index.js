@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     checkedColor: "primary",
-    uncheckedColor: "grayLight1",
+    uncheckedColor: "gray100",
     indeterminateColor: "primary"
   }
 };

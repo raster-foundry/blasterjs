@@ -1,22 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { borderRadius } from "styled-system";
+import { borderRadius, themeGet } from "styled-system";
 import Text from "../text";
 
 const StyledBadge = styled(Text)`
-  display: inline-block;
-  line-height: 1;
+  display: inline-flex;
   text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
   ${borderRadius}
+  ${themeGet("styles.badge")};
 `;
 
 const Badge = props => {
-  return (
-    <StyledBadge {...props} />
-  );
+  return <StyledBadge {...props} />;
 };
 
 Badge.propTypes = {
@@ -26,15 +25,16 @@ Badge.propTypes = {
 
 Badge.defaultProps = {
   tag: "span",
-  mr: "badge.mr",
-  pt: "badge.py",
-  pb: "badge.py",
-  pl: "badge.px",
-  pr: "badge.px",
+  pt: "badge.pTop",
+  pb: "badge.pBottom",
+  pl: "badge.pLeft",
+  pr: "badge.pRight",
   borderRadius: "badge.borderRadius",
-  bg: "badge.bg",
+  lineHeight: "badge.lineHeight",
+  bg: "badge.background",
   color: "badge.color",
-  fontSize: "badge.fontSize"
+  fontSize: "badge.fontSize",
+  fontWeight: "badge.fontWeight"
 };
 
 export default Badge;
