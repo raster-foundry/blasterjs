@@ -20,10 +20,10 @@ You will need to have installed `styled-components` as well as `styled-system` i
 
 ### Getting Started
 
-1.  Clone the project: `git clone git@github.com:raster-foundry/blasterjs.git`
-    2a. Change node versions: `nvm use` _recommend using nvm for switching node versions_
-    2b. Setup project: `npm install`
-2.  Run `npm run start`
+1. Clone the project: `git clone git@github.com:raster-foundry/blasterjs.git`
+1. Change node versions: `nvm use` _recommend using nvm for switching node versions_
+1. Setup project: `npm install`
+1. Run `npm run start`
 
 ### Using the CLI
 
