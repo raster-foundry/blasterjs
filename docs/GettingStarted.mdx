@@ -6,31 +6,44 @@ route: /getting-started
 
 # Getting started
 
-## Theme Provider
+The [`Blaster`](/components/blaster) component is an application wrapper that performs the necessary work of scaffolding global styles and providing a default theme.
 
-Wrap the root of your application with the ThemeProvider component. This should only be included once in your application.
-
-The ThemeProvider is a wrapper around styled-components' ThemeProvider.
-
-Include `<GlobalStyle/>` to reset CSS.
+## Basic Application Wrapper Setup
 
 ```jsx static
 import React from "react";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle, theme } from "@blasterjs/core";
-// or
-// import { MyCustomTheme } from '../your-custom-theme'
+import { Blaster } from "@blasterjs/core";
 
 class App extends React.Component {
   render() {
     return (
-        <ThemeProvider theme={theme}>
-            <>
-                <GlobalStyle />
-                {props.children}
-            </>
-        </ThemeProvider>
+        <Blaster>
+          <AppContentGoesHere />
+        </Blaster>
     );
   }
 }
 ```
+
+## Custom Theme Application Wrapper Setup
+
+The [`Blaster`](/components/blaster) component also handles custom theme injection.
+
+```jsx static
+import React from "react";
+import { Blaster } from "@blasterjs/core";
+
+import { MyCustomTheme } from '../your-custom-theme'
+
+class App extends React.Component {
+  render() {
+    return (
+        <Blaster theme={MyCustomTheme}>
+          <AppContentGoesHere />
+        </Blaster>
+    );
+  }
+}
+```
+
+See the documentation on the [`Blaster`](/components/blaster) component for more usage information.
