@@ -1,15 +1,3 @@
-import React, { Component } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import { theme } from "../packages/core/theme";
-import GlobalStyle from "../packages/core/components/globalStyle"
+import { Blaster } from "../packages/core";
 
-const Wrapper = ({ children }) => (
-  <ThemeProvider theme={{ ...theme }}>
-    <>
-      <GlobalStyle />
-      {children}
-    </>
-  </ThemeProvider>
-);
-
-export default Wrapper;
+export default Blaster;

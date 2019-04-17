@@ -1,5 +1,6 @@
 export { default as A } from "./components/a";
 export { default as Badge } from "./components/badge";
+export { default as Blaster } from "./components/blaster";
 export { default as Box } from "./components/box";
 export { default as Brand } from "./components/brand";
 export { default as Breadcrumbs } from "./components/breadcrumbs";
