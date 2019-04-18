@@ -1,7 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { space, color, borderRadius, boxShadow, fontFamily, fontSize, fontWeight, textAlign, themeGet } from "styled-system";
+import {
+  space,
+  color,
+  borderRadius,
+  boxShadow,
+  fontFamily,
+  fontSize,
+  fontWeight,
+  textAlign,
+  themeGet
+} from "styled-system";
 import TooltipJS from "tooltip.js";
 
 const TooltipContent = styled.span`
@@ -96,20 +106,21 @@ class Tooltip extends React.Component {
   }
 
   componentDidMount() {
-    const reference = this.tooltipRef.current.closest('[data-tooltip]');
+    const reference = this.tooltipRef.current.closest("[data-tooltip]");
     if (!reference) return;
 
     this.tooltip = new TooltipJS(reference, {
       ...this.props.options,
       title: this.tooltipRef.current,
       placement: this.props.placement,
-      trigger: this.props.show !== undefined ? 'manual' : this.props.trigger,
+      trigger: this.props.show !== undefined ? "manual" : this.props.trigger,
       delay: this.props.delay,
       closeOnClickOutside: this.props.closeOnClickOutside,
       boundariesElement: this.props.boundariesElement,
       offset: `${this.props.xOffset}, ${this.props.yOffset}`,
       html: true,
-      template: '<span class="tooltip" role="tooltip"><span class="tooltip-inner"></span></span>',
+      template:
+        '<span class="tooltip" role="tooltip"><span class="tooltip-inner"></span></span>',
       popperOptions: {
         ...this.props.popperOptions,
         onCreate: () => {
@@ -154,11 +165,7 @@ class Tooltip extends React.Component {
     const { hidden } = this.state;
 
     return (
-      <TooltipContent
-        hidden={hidden}
-        ref={this.tooltipRef}
-        {...props}
-      >
+      <TooltipContent hidden={hidden} ref={this.tooltipRef} {...props}>
         {children}
         <span hidden={!hasArrow} className="tooltip-arrow" />
       </TooltipContent>
@@ -178,43 +185,57 @@ Tooltip.propTypes = {
   show: PropTypes.bool,
   hasArrow: PropTypes.bool,
   placement: PropTypes.oneOf([
-    'top', 'top-start', 'top-end',
-    'right', 'right-start', 'right-end',
-    'bottom', 'bottom-start', 'bottom-end',
-    'left', 'left-start', 'left-end'
+    "top",
+    "top-start",
+    "top-end",
+    "right",
+    "right-start",
+    "right-end",
+    "bottom",
+    "bottom-start",
+    "bottom-end",
+    "left",
+    "left-start",
+    "left-end"
   ]),
   trigger: PropTypes.string,
-  delay: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
-    show: PropTypes.number.isRequired,
-    hide: PropTypes.number.isRequired
-  })]),
+  delay: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.shape({
+      show: PropTypes.number.isRequired,
+      hide: PropTypes.number.isRequired
+    })
+  ]),
   closeOnClickOutside: PropTypes.bool,
-  boundariesElement: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Element)]),
+  boundariesElement: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Element)
+  ]),
   xOffset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   yOffset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   options: PropTypes.object
 };
 
 Tooltip.defaultProps = {
-  pt: 'tooltip.py',
-  pb: 'tooltip.py',
-  pl: 'tooltip.px',
-  pr: 'tooltip.px',
-  color: 'tooltip.color',
-  bg: 'tooltip.bg',
-  borderRadius: 'tooltip.borderRadius',
-  boxShadow: 'tooltip.boxShadow',
-  fontFamily: 'inherit',
-  fontSize: 'tooltip.fontSize',
-  fontWeight: 'normal',
-  textAlign: 'center',
+  pt: "tooltip.py",
+  pb: "tooltip.py",
+  pl: "tooltip.px",
+  pr: "tooltip.px",
+  color: "tooltip.color",
+  bg: "tooltip.bg",
+  borderRadius: "tooltip.borderRadius",
+  boxShadow: "tooltip.boxShadow",
+  fontFamily: "inherit",
+  fontSize: "tooltip.fontSize",
+  fontWeight: "normal",
+  textAlign: "center",
   show: undefined,
   hasArrow: false,
-  placement: 'top',
-  trigger: 'hover focus',
+  placement: "top",
+  trigger: "hover focus",
   delay: 0,
   closeOnClickOutside: false,
-  boundariesElement: 'scrollParent',
+  boundariesElement: "scrollParent",
   xOffset: 0,
   yOffset: 0,
   options: undefined
