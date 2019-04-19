@@ -45,6 +45,5 @@ export const buildTheme = (components, base) => {
       theme[themeCategory][component] = categoryDetails;
     }
   }
-  console.log(theme);
   return theme;
 };
