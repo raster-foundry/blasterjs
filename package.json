@@ -43,7 +43,7 @@
     "glob-loader": "^0.3.0",
     "inquirer": "^6.0.0",
     "jest": "^23.4.1",
-    "lerna": "^3.10.7",
+    "lerna": "^3.13.3",
     "lerna-changelog": "^0.8.0",
     "lint-staged": "^8.0.0",
     "lodash.upperfirst": "^4.3.1",
@@ -56,8 +56,7 @@
     "svgo": "^1.1.1",
     "svgson-cli": "^1.1.0",
     "svgson-next": "^4.3.0",
-    "webpack": "4.28.4",
-    "webpack-blocks": "^1.0.0"
+    "webpack": "4.28.4"
   },
   "lint-staged": {
     "*.{js,json,css}": [
@@ -75,7 +74,7 @@
     ]
   },
   "dependencies": {
-    "polished": "^2.0.1",
+    "polished": "^3.2.0",
     "prop-types": "^15.6.2",
     "styled-components": "^4.2.0",
     "styled-system": "^4.0.5"
