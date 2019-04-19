@@ -4,6 +4,8 @@ import icons from "./icons";
 import { buildTheme } from "../utils";
 import merge from "lodash.merge";
 
-export const theme = { ...buildTheme(components, base), icons };
-
-console.log(theme);
+export const getTheme = (userDefined = {}) => {
+  const mergedBase = merge(base, userDefined);
+  const builtBase = buildTheme(components, mergedBase);
+  return merge({ ...builtBase, icons }, userDefined);
+};
