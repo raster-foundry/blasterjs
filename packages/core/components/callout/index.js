@@ -5,7 +5,7 @@ import { themeGet } from "styled-system";
 import Box from "../box";
 import Card from "../card";
 import Icon from "../icon";
-import Header from "../header";
+import Heading from "../heading";
 import { Intent } from "../../common/intent";
 
 const StyledCallout = styled(Card)`
@@ -27,7 +27,7 @@ const CalloutIcon = styled(Icon)`
   margin: 0 ${themeGet("space.2", "1.6rem")};
 `;
 
-const CalloutTitle = styled(Header).attrs({ tag: "h4" })`
+const CalloutTitle = styled(Heading).attrs({ tag: "h4" })`
   margin-bottom: ${themeGet("space.1", "0.8rem")};
   line-height: 1;
 `;

@@ -13,7 +13,7 @@ export { theme as divider } from "./divider";
 export { theme as field } from "./field";
 export { theme as fileInput } from "./fileInput";
 export { theme as grouper } from "./grouper";
-export { theme as header } from "./header";
+export { theme as heading } from "./heading";
 export { theme as icon } from "./icon";
 export { theme as image } from "./image";
 export { theme as label } from "./label";
