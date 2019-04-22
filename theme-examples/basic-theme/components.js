@@ -1,7 +1,7 @@
 import { css } from "styled-components";
 
 export default {
-  header: {
+  heading: {
     {
       colors: {
         color: "red"

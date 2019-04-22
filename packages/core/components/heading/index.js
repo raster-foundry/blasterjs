@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import Text from "../text";
 
-const Header = styled(Text)`
+const Heading = styled(Text)`
   ${props => {
     const size = {
       h1: 7,
@@ -20,24 +20,24 @@ const Header = styled(Text)`
     `;
   }}
 
-  ${themeGet("styles.header")};
+  ${themeGet("styles.heading")};
 `;
 
-Header.propTypes = {
+Heading.propTypes = {
   ...Text.propTypes,
   tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"])
 };
 
-Header.defaultProps = {
+Heading.defaultProps = {
   tag: "h1",
-  color: "header.color",
-  fontFamily: "header.fontFamily",
-  fontWeight: "header.fontWeight",
-  lineHeight: "header.lineHeight",
-  mt: "header.m",
-  mb: "header.m",
-  ml: "header.m",
-  mr: "header.m"
+  color: "heading.color",
+  fontFamily: "heading.fontFamily",
+  fontWeight: "heading.fontWeight",
+  lineHeight: "heading.lineHeight",
+  mt: "heading.m",
+  mb: "heading.m",
+  ml: "heading.m",
+  mr: "heading.m"
 };
 
-export default Header;
+export default Heading;

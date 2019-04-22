@@ -15,7 +15,7 @@ export { default as Field } from "./components/field";
 export { default as FileInput } from "./components/fileInput";
 export { default as GlobalStyle } from "./components/globalStyle";
 export { default as Grouper } from "./components/grouper";
-export { default as Header } from "./components/header";
+export { default as Heading } from "./components/heading";
 export { default as Icon } from "./components/icon";
 export { default as Image } from "./components/image";
 export { default as Label } from "./components/label";
