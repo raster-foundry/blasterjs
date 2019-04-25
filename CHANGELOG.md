@@ -6,18 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ### Changed
 - Renamed `Header` to `Heading`
+- Updated Heading to utilize Styled Props
+- Moved Blaster component docs to Primitives menu
 
-## [0.0.19] - 2019-04-19 [YANKED]
+### Added
+- new documentation for Blaster Theme and Styled Props
 
-## [0.0.18] - 2019-04-19 [YANKED]
+## [0.0.19] - 2019-04-19
+
+## [0.0.18] - 2019-04-19
 
 ## [0.0.17] - 2019-04-19
 ### Added
 - Added Blaster application wrapper component [#173](https://github.com/raster-foundry/blasterjs/pull/173)
 
-## [0.0.16] - 2019-03-20 [YANKED]
+## [0.0.16] - 2019-03-20
 
-## [0.0.15] - 2019-03-20 [YANKED]
+## [0.0.15] - 2019-03-20
 
 ## [0.0.14] - 2019-03-11
 ### Added
@@ -49,7 +54,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
 
-[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.19...HEAD
+[Unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.19...HEAD
 [0.0.19]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.18...v0.0.19
 [0.0.18]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.17...v0.0.18
 [0.0.17]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.16...v0.0.17
