@@ -12,6 +12,8 @@ export default {
   wrapper: "docs/wrapper.js",
   menu: [
     "Home",
+    "Style Props",
+    "Blaster Theme",
     "Getting Started",
     "Primitives",
     "Typography",

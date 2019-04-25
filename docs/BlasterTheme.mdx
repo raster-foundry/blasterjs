@@ -1,0 +1,28 @@
+---
+name: Blaster Theme
+route: /blaster-theme
+---
+import * as baseTheme from '../packages/core/theme/base';
+
+export let fileMetaFilter = function (key, value) {
+    if(key === '__filemeta') {
+        return;
+    }
+    return value;
+};
+
+# Style Props
+
+BlasterJS Components come with built-in access to the default Blaster theme, by wrapping your application with the `Blaster` component. The theme file contains predefined values for common variables such as color, fonts, spacing and more. The Blaster theme structure is based on Styled-System's [theme specification](https://styled-system.com/theme-specification/#key-reference).
+
+The Style Props on our components give direct access to the theme keys. For example, if you'd like to set the `border-radius` on a `<Box>` you can specify a value in the theme: `<Box borderRadius="small">`.
+
+With the help of Styled-System, this will automatically do a lookup to find the value of the key `radii.small` in the theme and applies the corresponding CSS.
+
+Our base theme is as follows:
+
+<pre>
+  {JSON.stringify(baseTheme, fileMetaFilter, '\t')}
+</pre>
+
+To understand how to customize the theme, see the [documentation]((/primitives/blaster)) on the `Blaster` component.
