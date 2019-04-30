@@ -12,9 +12,9 @@ export default {
   wrapper: "docs/wrapper.js",
   menu: [
     "Home",
+    "Getting Started",
     "Style Props",
     "Blaster Theme",
-    "Getting Started",
     "Primitives",
     "Typography",
     "Components",
