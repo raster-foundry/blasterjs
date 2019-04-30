@@ -87,10 +87,10 @@ export const shadows = [
   `0px 2px 5px -2px ${colors.gray900}33`,
   `0px 2px 5px 0px ${colors.gray900}33`,
   `0px 2px 10px 1px ${colors.gray900}20`,
-  `0px 12px 20px -3px ${colors.gray900}20, 
-    0px 2px 20px -9px ${colors.gray900}20`,
-  `0 12px 17px 2px ${colors.gray900}20,
-    0 5px 22px 4px ${colors.gray900}20`
+  `0px 12px 20px -3px ${colors.gray900}20, 0px 2px 20px -9px ${
+    colors.gray900
+  }20`,
+  `0 12px 17px 2px ${colors.gray900}20, 0 5px 22px 4px ${colors.gray900}20`
 ];
 
 export const space = [

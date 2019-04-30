@@ -3,7 +3,7 @@ export const theme = {
     p: 1
   },
   colors: {
-    color: "gray3",
+    color: "gray500",
     colorHover: "primary",
     colorSeparator: "gray200",
     colorHighlight: "gray800"

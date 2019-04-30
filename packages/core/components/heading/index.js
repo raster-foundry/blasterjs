@@ -2,9 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
-import Text from "../text";
+import { COMMON, TYPOGRAPHY, MISC, LAYOUT } from "../../constants";
 
-const Heading = styled(Text)`
+const Heading = styled.h1`
+  color: ${themeGet("colors.heading.color")};
+  font-family: ${themeGet("fonts.heading.fontFamily")};
+  font-weight: ${themeGet("fontWeights.heading.fontWeight")};
+  line-height: ${themeGet("lineHeights.heading.lineHeight")};
+  margin-top: ${themeGet("space.heading.m")};
+
   ${props => {
     const size = {
       h1: 7,
@@ -13,7 +19,7 @@ const Heading = styled(Text)`
       h4: 4,
       h5: 3,
       h6: 2
-    }[props.tag];
+    }[props.as];
 
     return css`
       font-size: ${props => themeGet(`fontSizes.${size}`)};
@@ -21,23 +27,22 @@ const Heading = styled(Text)`
   }}
 
   ${themeGet("styles.heading")};
+  ${COMMON}
+  ${LAYOUT}
+  ${MISC}
+  ${TYPOGRAPHY}
 `;
 
 Heading.propTypes = {
-  ...Text.propTypes,
-  tag: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"])
+  ...COMMON.propTypes,
+  ...LAYOUT.propTypes,
+  ...MISC.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"])
 };
 
 Heading.defaultProps = {
-  tag: "h1",
-  color: "heading.color",
-  fontFamily: "heading.fontFamily",
-  fontWeight: "heading.fontWeight",
-  lineHeight: "heading.lineHeight",
-  mt: "heading.m",
-  mb: "heading.m",
-  ml: "heading.m",
-  mr: "heading.m"
+  as: "h1"
 };
 
 export default Heading;

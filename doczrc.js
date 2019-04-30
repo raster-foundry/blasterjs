@@ -13,6 +13,8 @@ export default {
   menu: [
     "Home",
     "Getting Started",
+    "Style Props",
+    "Blaster Theme",
     "Primitives",
     "Typography",
     "Components",

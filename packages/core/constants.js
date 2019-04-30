@@ -1,8 +1,23 @@
 import * as ss from "styled-system";
 
+const textShadow = ss.style({
+  prop: "textShadow",
+  cssProperty: "textShadow"
+});
+
+const textOverflow = ss.style({
+  prop: "textOverflow",
+  cssProperty: "textOverflow"
+});
+
+const textDecoration = ss.style({
+  prop: "textDecoration",
+  cssProperty: "textDecoration"
+});
+
 export const composer = ss.compose;
 
-export const COMMON = composer(ss.color, ss.space);
+export const COMMON = composer(ss.color, ss.display, ss.space);
 
 export const BORDER = composer(ss.borders, ss.borderColor, ss.borderRadius);
 
@@ -16,6 +31,9 @@ export const BACKGROUND = composer(
 );
 
 export const TYPOGRAPHY = composer(
+  textDecoration,
+  textOverflow,
+  textShadow,
   ss.fontFamily,
   ss.fontSize,
   ss.fontStyle,
@@ -26,7 +44,6 @@ export const TYPOGRAPHY = composer(
 );
 
 export const LAYOUT = composer(
-  ss.display,
   ss.size,
   ss.width,
   ss.height,
