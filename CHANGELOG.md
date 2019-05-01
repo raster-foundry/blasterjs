@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Renamed `Header` to `Heading`
 - Updated Heading to utilize Styled Props
 - Moved Blaster component docs to Primitives menu
+- Updated A component to utilize Styled Props
 
 ### Added
 - new documentation for Blaster Theme and Styled Props

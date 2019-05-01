@@ -1,34 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { display, space, color, fontSize, themeGet } from "styled-system";
-import Text from "../text";
+import { themeGet } from "styled-system";
+import { COMMON, TYPOGRAPHY, MISC, LAYOUT } from "../../constants";
 
-const StyledA = styled(Text)`
-  text-decoration: none;
+const A = styled.a`
+  color: ${themeGet("colors.a.color")};
+  font-weight: ${themeGet("fontWeights.a.fontWeight")};
 
   &:hover {
-    text-decoration: underline;
     color: ${props => themeGet(`colors.${props.colorHover}`, props.colorHover)};
   }
+
+  ${themeGet("styles.a")};
+  ${COMMON}
+  ${LAYOUT}
+  ${MISC}
+  ${TYPOGRAPHY}
 `;
 
-const A = props => <StyledA {...props} />;
-
 A.propTypes = {
-  ...Text.propTypes,
+  ...COMMON.propTypes,
+  ...LAYOUT.propTypes,
+  ...MISC.propTypes,
+  ...TYPOGRAPHY.propTypes,
   href: PropTypes.string.isRequired,
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
   colorHover: PropTypes.string
-};
-
-A.defaultProps = {
-  tag: "a",
-  href: "#",
-  color: "a.color",
-  colorHover: "a.colorHover",
-  fontWeight: 600
 };
 
 export default A;

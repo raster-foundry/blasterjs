@@ -9,8 +9,14 @@ import A from './'
 
 # A
 
+## Import
+`import { A } from '@blasterjs/core'`
+
+The `<A>` component renders an `<a>` with basic styles by default.
+
 <Playground>
-  <A href="#" target="_blank">This is a link</A>
+  <A href="#" target="_blank" mr={3}>This is a link</A>
+  <A href="#">Another link</A>
 </Playground>
 
 ### PropTypes
@@ -18,9 +24,31 @@ Accepts standard html `<a>` attributes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/typography/text) |
-| href | bool | yes | `#` | |
-| active | bool | no | | *not implemented yet* |
-| disabled | bool | no | | *not implemented yet* |
-| color | string | no | `link` | |
-| colorHover | string | no | `linkHover` | *expand into a `colors` object with colors for all states?* |
+| href | bool | no |  |  |
+| colorHover | string | no | `color.linkHover` | |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  colors: {
+    color,
+    colorHover
+  }
+  fontWeights: {
+    fontWeight
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/heading)
+- [Learn more about themeing]()
