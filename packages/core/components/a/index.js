@@ -9,7 +9,8 @@ const A = styled.a`
   font-weight: ${themeGet("a.fontWeights.fontWeight")};
 
   &:hover {
-    color: ${props => themeGet(`colors.${props.colorHover}`, props.colorHover)};
+    color: ${props =>
+      themeGet(`colors.${props.colorHover}`, "a.colors.colorHover")};
   }
 
   ${themeGet("a.styles")};
