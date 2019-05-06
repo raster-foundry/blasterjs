@@ -1,40 +1,56 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { borderRadius, themeGet } from "styled-system";
-import Text from "../text";
+import { themeGet } from "styled-system";
+import {
+  COMMON,
+  TYPOGRAPHY,
+  MISC,
+  LAYOUT,
+  BORDER,
+  BACKGROUND,
+  POSITION
+} from "../../constants";
 
-const StyledBadge = styled(Text)`
+const Badge = styled.span`
+  padding-top: ${themeGet("badge.space.pTop")};
+  padding-bottom: ${themeGet("badge.space.pBottom")};
+  padding-left: ${themeGet("badge.space.pLeft")};
+  padding-right: ${themeGet("badge.space.pRight")};
+  border-radius: ${themeGet("badge.radii.borderRadius")};
+  line-height: ${themeGet("badge.lineHeights.lineHeight")};
+  background: ${themeGet("badge.colors.background")};
+  color: ${themeGet("badge.colors.color")};
+  font-size: ${themeGet("badge.fontSizes.fontSize")};
+  font-weight: ${themeGet("badge.fontWeights.fontWeight")};
   display: inline-flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  ${borderRadius}
-  ${themeGet("styles.badge")};
+
+  ${themeGet("badge.styles")};
+  ${COMMON}
+  ${BACKGROUND}
+  ${BORDER}
+  ${MISC}
+  ${LAYOUT}
+  ${POSITION}
+  ${TYPOGRAPHY}
 `;
 
-const Badge = props => {
-  return <StyledBadge {...props} />;
-};
-
 Badge.propTypes = {
-  ...Text.propTypes,
-  ...borderRadius.propTypes
+  ...COMMON.propsTypes,
+  ...BACKGROUND.propsTypes,
+  ...BORDER.propsTypes,
+  ...MISC.propsTypes,
+  ...LAYOUT.propsTypes,
+  ...POSITION.propsTypes,
+  ...TYPOGRAPHY.propsTypes
 };
 
 Badge.defaultProps = {
-  tag: "span",
-  pt: "badge.pTop",
-  pb: "badge.pBottom",
-  pl: "badge.pLeft",
-  pr: "badge.pRight",
-  borderRadius: "badge.borderRadius",
-  lineHeight: "badge.lineHeight",
-  bg: "badge.background",
-  color: "badge.color",
-  fontSize: "badge.fontSize",
-  fontWeight: "badge.fontWeight"
+  as: "span"
 };
 
 export default Badge;
