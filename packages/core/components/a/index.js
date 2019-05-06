@@ -5,14 +5,14 @@ import { themeGet } from "styled-system";
 import { COMMON, TYPOGRAPHY, MISC, LAYOUT } from "../../constants";
 
 const A = styled.a`
-  color: ${themeGet("colors.a.color")};
-  font-weight: ${themeGet("fontWeights.a.fontWeight")};
+  color: ${themeGet("a.colors.color")};
+  font-weight: ${themeGet("a.fontWeights.fontWeight")};
 
   &:hover {
     color: ${props => themeGet(`colors.${props.colorHover}`, props.colorHover)};
   }
 
-  ${themeGet("styles.a")};
+  ${themeGet("a.styles")};
   ${COMMON}
   ${LAYOUT}
   ${MISC}
