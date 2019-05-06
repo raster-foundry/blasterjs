@@ -5,7 +5,7 @@ route: /blaster-theme
 import * as baseTheme from '../packages/core/theme/base';
 
 export let fileMetaFilter = function (key, value) {
-    if(key === '__filemeta') {
+    if(key === '__filemeta' || key === 'icons' ) {
         return;
     }
     return value;
