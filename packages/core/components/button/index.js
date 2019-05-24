@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { darken, rgba, getLuminance, shade } from "polished";
 import styled, { css, keyframes } from "styled-components";
-import { borders, borderColor, borderRadius, themeGet } from "styled-system";
+import { themeGet } from "styled-system";
 import {
   COMMON,
   BACKGROUND,
