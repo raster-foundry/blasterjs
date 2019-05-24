@@ -1,11 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { darken, rgba } from "polished";
+import { darken, rgba, getLuminance, shade } from "polished";
 import styled, { css, keyframes } from "styled-components";
 import { borders, borderColor, borderRadius, themeGet } from "styled-system";
-import Text from "../text";
+import {
+  COMMON,
+  BACKGROUND,
+  BORDER,
+  TYPOGRAPHY,
+  MISC,
+  LAYOUT,
+  POSITION
+} from "../../constants";
 import Icon from "../icon";
-import { Appearance, Intent } from "../../index.common";
 
 const ButtonIcon = styled(Icon)`
   flex: none;
@@ -20,18 +27,6 @@ const ButtonChildren = styled.span`
       opacity: 0;
       pointer-events: none;
       user-select: none;
-    `};
-
-  ${props =>
-    !props.iconBefore &&
-    css`
-      margin-left: ${themeGet("space.1", "0.8rem")};
-    `};
-
-  ${props =>
-    !props.iconAfter &&
-    css`
-      margin-right: ${themeGet("space.1", "0.8rem")};
     `};
 `;
 
@@ -58,7 +53,7 @@ const ButtonLoading = styled.span`
   }
 `;
 
-const StyledButton = styled(Text)`
+const StyledButton = styled.button`
   position: relative;
   cursor: pointer;
   display: inline-flex;
@@ -66,66 +61,113 @@ const StyledButton = styled(Text)`
   justify-content: center;
   align-items: center;
   outline: 0;
-  line-height: 1.1;
   text-align: center;
-  text-decoration: none;
   user-select: none;
   will-change: box-shadow, background-color;
   transition: 0.1s ease-in-out, box-shadow, 0.1s ease-in-out background-color;
-  font-weight: 600;
-  min-height: 36px;
-  ${borders}
-  ${borderColor}
-  ${borderRadius}
-
+  text-decoration: ${props => (!props.textDecoration ? "none" : "")};
+  font-family: ${props =>
+    !props.fontFamily ? themeGet("button.base.fonts.font", "fonts.body") : ""};
+  
   ${props => buttonStates(props)}
+  ${props => buttonScaling(props)}
+
+  ${props =>
+    props.block &&
+    css`
+      display: block;
+      width: 100%;
+    `}
+
+  ${themeGet("button.styles")};
+  ${COMMON}
+  ${BACKGROUND}
+  ${BORDER}
+  ${TYPOGRAPHY}
+  ${MISC}
+  ${LAYOUT}
+  ${POSITION}
 `;
+
+function buttonScaling(props) {
+  return css`
+    padding-top: ${themeGet(
+      `button.scale.${props.scale}.space.pt`,
+      `button.base.space.pt`
+    )};
+    padding-bottom: ${themeGet(
+      `button.scale.${props.scale}.space.pb`,
+      `button.base.space.pb`
+    )};
+    padding-left: ${themeGet(
+      `button.scale.${props.scale}.space.pl`,
+      `button.base.space.pl`
+    )};
+    padding-right: ${themeGet(
+      `button.scale.${props.scale}.space.pr`,
+      `button.base.space.pr`
+    )};
+    border-radius: ${themeGet(
+      `button.scale.${props.scale}.radii.radius`,
+      `button.base.radii.radius`
+    )};
+    font-size: ${themeGet(
+      `button.scale.${props.scale}.fontSizes.fontSize`,
+      `button.base.fontSizes.fontSize`
+    )};
+    font-weight: ${themeGet(
+      `button.scale.${props.scale}.fontWeights.fontWeight`,
+      `button.base.fontWeights.fontWeight`
+    )};
+    line-height: ${themeGet(
+      `button.scale.${props.scale}.lineHeights.lineHeight`,
+      `button.base.lineHeights.lineHeight`
+    )};
+  `;
+}
 
 function buttonStates(props) {
   const { intent, appearance } = props;
 
-  let color;
-  switch (intent) {
-    case Intent.DANGER:
-      color = "danger";
-      break;
-    case Intent.WARNING:
-      color = "warning";
-      break;
-    case Intent.SUCCESS:
-      color = "success";
-      break;
-    case Intent.NONE:
-    default:
-      color = "primary";
-      break;
-  }
-
   let fg, bg, border, bgHover, fgDisabled, bgDisabled;
 
   switch (appearance) {
-    case Appearance.PROMINENT:
-      fg = themeGet("colors.white", "#000")(props);
-      bg = themeGet(`colors.${color}`)(props);
-      border = `none`;
-      bgHover = themeGet(`colors.${color}Shade`)(props);
+    case "prominent":
+      bg = themeGet(
+        `button.intents.colors.${props.intent}`,
+        `button.intents.colors.default`
+      )(props);
+      fg =
+        getLuminance(bg) >= "0.5"
+          ? themeGet(`button.base.colors.darkText`)(props)
+          : themeGet(`button.base.colors.lightText`)(props);
+      border = `1px solid ${bg}`;
+      bgHover = shade(0.1, bg);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = rgba(bg, 0.5);
       break;
-    case Appearance.MINIMAL:
-      fg = themeGet(`colors.${color}`)(props);
+    case "minimal":
+      fg = themeGet(
+        `button.intents.colors.${props.intent}`,
+        `button.intents.colors.default`
+      )(props);
       bg = "transparent";
-      border = "none";
-      bgHover = themeGet("colors.gray100", "#e0e5f5")(props);
+      border = "1px solid transparent";
+      bgHover = rgba("#fff", 0.1);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = "transparent";
       break;
-    case Appearance.DEFAULT:
+    case "default":
     default:
-      fg = themeGet(`colors.${color}`)(props);
-      bg = themeGet("colors.gray100", "#e0e5f5")(props);
-      border = `1px solid ${darken(0.03, bg)}`;
-      bgHover = darken(0.02, bg);
+      bg = themeGet(`button.base.colors.defaultBg`)(props);
+      fg = themeGet(
+        `button.intents.colors.${props.intent}`,
+        `button.intents.colors.default`
+      )(props);
+      border = `1px solid ${themeGet(`button.base.colors.defaultBorder`)(
+        props
+      )};`;
+      bgHover = themeGet(`button.base.hover.colors.defaultBg`)(props);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = rgba(bg, 0.5);
       break;
@@ -162,15 +204,9 @@ function buttonStates(props) {
       props.disabled &&
       css`
         cursor: not-allowed;
+        user-select: none;
         background-color: ${bgDisabled};
         color: ${fgDisabled};
-      `}
-
-    ${props =>
-      props.block &&
-      css`
-        display: block;
-        width: 100%;
       `}
   `;
 }
@@ -197,31 +233,27 @@ const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
 };
 
 Button.propTypes = {
-  ...Text.propTypes,
-  ...borders.propTypes,
-  ...borderColor.propTypes,
-  ...borderRadius.propTypes,
-  color: PropTypes.string,
-  intent: PropTypes.oneOf(Object.values(Intent)),
-  appearance: PropTypes.oneOf(Object.values(Appearance)),
+  ...COMMON.propTypes,
+  ...BACKGROUND.propTypes,
+  ...BORDER.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  ...MISC.propTypes,
+  ...LAYOUT.propTypes,
+  ...POSITION.propTypes,
+  appearance: PropTypes.oneOf(["default", "prominent", "minimal"]),
+  intent: PropTypes.string,
+  scale: PropTypes.string,
+  iconBefore: PropTypes.string,
+  iconAfter: PropTypes.string,
   block: PropTypes.bool,
   disabled: PropTypes.bool,
-  iconBefore: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  iconAfter: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  isLoading: PropTypes.bool,
-  isActive: PropTypes.bool
+  isLoading: PropTypes.bool
 };
 
 Button.defaultProps = {
-  tag: "button",
-  pt: "button.p",
-  pb: "button.p",
-  pl: "button.p",
-  pr: "button.p",
-  border: 0,
-  borderRadius: "button.borderRadius",
-  intent: Intent.NONE,
-  appearance: Appearance.DEFAULT,
+  as: "button",
+  intent: "default",
+  appearance: "default",
   block: false,
   disabled: false,
   iconBefore: undefined,

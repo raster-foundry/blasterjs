@@ -6,71 +6,41 @@ route: /components/button
 
 import { Playground, Props } from 'docz'
 import Button from './'
-import { Intent } from "../../common/intent";
-import { Appearance } from "../../common/appearance";
 
 # Button
 
-## Basic usage
+## Import
+`import { Button } from '@blasterjs/core'`
+
+## Basic Usage
+
+The `<Button>` component renders a `<button>` with basic styles by default.
+
 <Playground>
   <Button>Button</Button>
-</Playground>
-
-## Appearance
-<Playground>
-  <Button appearance={Appearance.MINIMAL}>Minimal Button</Button>
-  <Button appearance={Appearance.DEFAULT}>Default Button</Button>
-  <Button appearance={Appearance.PROMINENT}>Prominent Button</Button>
-</Playground>
-
-## Intent
-<Playground>
-  <Button intent={Intent.NONE} appearance={Appearance.MINIMAL}>None</Button>
-  <Button intent={Intent.SUCCESS} appearance={Appearance.MINIMAL}>Success</Button>
-  <Button intent={Intent.WARNING} appearance={Appearance.MINIMAL}>Warning</Button>
-  <Button intent={Intent.DANGER} appearance={Appearance.MINIMAL}>Danger</Button>
-  <br /><br />
-  <Button intent={Intent.NONE} appearance={Appearance.DEFAULT}>None</Button>
-  <Button intent={Intent.SUCCESS} appearance={Appearance.DEFAULT}>Success</Button>
-  <Button intent={Intent.WARNING} appearance={Appearance.DEFAULT}>Warning</Button>
-  <Button intent={Intent.DANGER} appearance={Appearance.DEFAULT}>Danger</Button>
-  <br /><br />
-  <Button intent={Intent.NONE} appearance={Appearance.PROMINENT}>None</Button>
-  <Button intent={Intent.SUCCESS} appearance={Appearance.PROMINENT}>Success</Button>
-  <Button intent={Intent.WARNING} appearance={Appearance.PROMINENT}>Warning</Button>
-  <Button intent={Intent.DANGER} appearance={Appearance.PROMINENT}>Danger</Button>
+  <Button appearance="minimal">Button</Button>
+  <Button appearance="prominent" intent="success">Button</Button>
 </Playground>
 
 ## Icons
 <Playground>
-  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.NONE}>Before</Button>
-  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.SUCCESS}>Before</Button>
-  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.WARNING}>Before</Button>
-  <Button iconBefore="edit" appearance={Appearance.MINIMAL} intent={Intent.DANGER}>Before</Button>
-  <br /><br />
-  <Button iconAfter="eye" intent={Intent.NONE}>After</Button>
-  <Button iconAfter="eye" intent={Intent.SUCCESS}>After</Button>
-  <Button iconAfter="eye" intent={Intent.WARNING}>After</Button>
-  <Button iconAfter="eye" intent={Intent.DANGER}>After</Button>
-  <br /><br />
-  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.NONE}>Both</Button>
-  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.SUCCESS}>Both</Button>
-  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.WARNING}>Both</Button>
-  <Button iconBefore="minus" iconAfter="plus" appearance={Appearance.PROMINENT} intent={Intent.DANGER}>Both</Button>
+  <Button iconAfter="eye" intent="default">After</Button>
+  <Button iconBefore="edit" appearance="minimal" intent="primary">Before</Button>
+  <Button iconBefore="minus" iconAfter="plus" appearance="prominent" intent="default">Both</Button>
 </Playground>
 
 ## Disabled
 <Playground>
-  <Button disabled appearance={Appearance.MINIMAL}>Minimal</Button>
-  <Button disabled appearance={Appearance.DEFAULT}>Default</Button>
-  <Button disabled appearance={Appearance.PROMINENT}>Prominent</Button>
+  <Button disabled appearance="minimal">Minimal</Button>
+  <Button disabled appearance="default">Default</Button>
+  <Button disabled appearance="prominent">Prominent</Button>
 </Playground>
 
 ## Loading
 <Playground>
-  <Button isLoading appearance={Appearance.MINIMAL}>Minimal</Button>
-  <Button isLoading appearance={Appearance.DEFAULT}>Default</Button>
-  <Button isLoading appearance={Appearance.PROMINENT}>Prominent</Button>
+  <Button isLoading appearance="minimal">Minimal</Button>
+  <Button isLoading appearance="default">Default</Button>
+  <Button isLoading appearance="prominent">Prominent</Button>
 </Playground>
 
 ## Block
@@ -79,14 +49,127 @@ import { Appearance } from "../../common/appearance";
 </Playground>
 
 ### PropTypes
-| Prop | Type | Required | Default | Description |
-|:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/typography/text) |
-| borderRadius | number or string | no | `base` | |
-| intent | enum | no | `NONE` | see [Intent](/common/intent) |
-| appearance | enum | no | `DEFAULT` | see [Appearance](/common/appearance) |
-| block | bool | no | | |
-| disabled | bool | no | | |
-| iconBefore | string | no | | |
-| iconAfter | string | no | | |
-| isLoading | bool | no | | |
+| Prop | Type | Required | Default | Description | Themeable |
+|:-----|:-----|:---------|:--------|:------------|:----------|
+| appearance | enum | no | `default` | `["default", "prominent", "minimal"]` |  |
+| intent | string | no | `default` | Theme provides styles for `["default", primary", "success", "warning", "danger"]` | yes |
+| scale | string | no | | Theme provides styles for `["small", "large"` | yes |
+| block | bool | no | `false` | Makes the button fill available space |
+| disabled | bool | no | `false` | Sets the `disabled` attribute on the Button |
+| isLoading | bool | no | `false` | Displays an animated loading icon in place of children |
+| iconBefore | bool | no | `false` | Displays an animated loading icon in place of children |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BACKGROUND` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `POSITION` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  base: {
+    colors: {
+      defaultBg,
+      defaultBorder,
+      darkText,
+      lightText
+    },
+    space: {
+      pt,
+      pb,
+      pl,
+      pr
+    },
+    radii: {
+      radius
+    },
+    fonts: {
+      font
+    },
+    fontSizes: {
+      fontSize
+    },
+    fontWeights: {
+      fontWeight
+    },
+    lineHeights: {
+      lineHeight
+    },
+    hover: {
+      colors: {
+        defaultBg,
+        defaultBorder,
+        darkText,
+        lightText
+      }
+    }
+  },
+  intents: {
+    colors: {
+      default,
+      secondary,
+      primary,
+      success,
+      warning,
+      danger,
+      $CUSTOM_KEY
+    }
+  },
+  scale: {
+    small: {
+      space: {
+        pt,
+        pb,
+        pl,
+        pr
+      },
+      radii: {
+        radius
+      },
+      fontSizes: {
+        fontSize
+      },
+      fontWeights: {
+        fontWeight
+      },
+      lineHeights: {
+        lineHeight
+      }
+    },
+    large: {
+      space: {
+        pt,
+        pb,
+        pl,
+        pr
+      },
+      radii: {
+        radius
+      },
+      fontSizes: {
+        fontSize
+      },
+      fontWeights: {
+        fontWeight
+      },
+      lineHeights: {
+        lineHeight
+      }
+    },
+    $CUSTOM_KEY: {
+      ...
+    }
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/heading)
+- [Learn more about themeing]()
