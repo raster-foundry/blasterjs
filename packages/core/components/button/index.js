@@ -153,7 +153,7 @@ function buttonStates(props) {
       )(props);
       bg = "transparent";
       border = "1px solid transparent";
-      bgHover = rgba("#fff", 0.1);
+      bgHover = themeGet(`colors.gray100`)(props);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = "transparent";
       break;
@@ -207,6 +207,13 @@ function buttonStates(props) {
         user-select: none;
         background-color: ${bgDisabled};
         color: ${fgDisabled};
+      `}
+      
+    ${props =>
+      props.disabled &&
+      props.appearance === "prominent" &&
+      css`
+        border-color: transparent;
       `}
   `;
 }
