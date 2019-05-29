@@ -1,6 +1,7 @@
 # Blaster
 
 [![Build Status](https://travis-ci.org/raster-foundry/blasterjs.svg?branch=master)](https://travis-ci.org/raster-foundry/blasterjs)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3a31aff2-cc32-426e-b59a-15a0cfd9105e/deploy-status)](https://app.netlify.com/sites/raster-foundry-blaster/deploys)
 
 ## Usage
 
