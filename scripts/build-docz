@@ -1,4 +1,4 @@
-lerna bootstrap && \
-mkdir -p ./.docz/public && \
-lerna bootstrap && \
+lerna bootstrap --hoist && \
+rm -rf ./.docz && \
+echo "Removed ./docz directory" && \
 docz build

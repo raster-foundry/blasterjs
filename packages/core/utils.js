@@ -21,7 +21,7 @@ export const buildTheme = (base, components) => {
     replaceThemeRefs(componentTheme, baseTheme);
     baseTheme[component] = componentTheme;
   }
-  console.log("Base theme after stuff", baseTheme);
+  console.log("Base theme after building", baseTheme);
   return baseTheme;
 };
 
