@@ -28,7 +28,7 @@ export const buildTheme = (base, components) => {
 const replaceThemeRefs = (o, theme) => {
   const keys = Object.keys(o);
   keys
-    .filter(k => k !== "styles")
+    .filter(k => k !== "styles" && k !== "__filemeta")
     .forEach(k => {
       if (theme[k]) {
         Object.keys(o[k]).forEach(ck => {
