@@ -21,17 +21,17 @@ export const colors = {
   offWhite: "#F4F5F7",
   black: "#000000",
 
-  green: "#91C66A",
-  greenTint: "#C4E8A9",
-  greenShade: "#5B833E",
+  green: "#51BF56",
+  greenTint: "#C7EAC9",
+  greenShade: "#2D7B31",
 
-  red: "#E0535F",
-  redTint: "#F8B2B8",
-  redShade: "#941D27",
+  red: "#D42C3A",
+  redTint: "#F2C0C4",
+  redShade: "#A9232E",
 
-  yellow: "#ECBC40",
-  yellowTint: "#FFE9AF",
-  yellowShade: "#C19523"
+  yellow: "#DCA209",
+  yellowTint: "#FCE8B6",
+  yellowShade: "#AB7E07"
 };
 
 {
@@ -110,8 +110,8 @@ export const space = [
 export const lineHeights = {
   inherit: "inherit",
   small: "1",
-  base: "1.5",
-  large: "1.8"
+  base: "1.3",
+  large: "1.6"
 };
 
 export const fontWeights = {};
