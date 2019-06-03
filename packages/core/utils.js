@@ -21,14 +21,14 @@ export const buildTheme = (base, components) => {
     replaceThemeRefs(componentTheme, baseTheme);
     baseTheme[component] = componentTheme;
   }
-  console.log("Base theme after stuff", baseTheme);
+  console.log("Base theme after building", baseTheme);
   return baseTheme;
 };
 
 const replaceThemeRefs = (o, theme) => {
   const keys = Object.keys(o);
   keys
-    .filter(k => k !== "styles")
+    .filter(k => k !== "styles" && k !== "__filemeta")
     .forEach(k => {
       if (theme[k]) {
         Object.keys(o[k]).forEach(ck => {

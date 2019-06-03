@@ -4,7 +4,7 @@ export default {
   title: "BlasterJS",
   ignore: ["./templates/index.mdx", "**/README.md"],
   repository: "https://github.com/raster-foundry/blasterjs",
-  propsParser: true,
+  propsParser: false,
   debug: false,
   description:
     "React Styled-components UI library designed and built by Azavea",
