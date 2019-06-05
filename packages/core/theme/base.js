@@ -31,7 +31,7 @@ export const colors = {
 
   yellow: "#DCA209",
   yellowTint: "#FCE8B6",
-  yellowShade: "#AB7E07"
+  yellowShade: "#886200"
 };
 
 {

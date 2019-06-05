@@ -15,6 +15,11 @@ const textDecoration = ss.style({
   cssProperty: "textDecoration"
 });
 
+const textTransform = ss.style({
+  prop: "textTransform",
+  cssProperty: "textTransform"
+});
+
 export const composer = ss.compose;
 
 export const COMMON = composer(ss.color, ss.display, ss.space);
@@ -34,6 +39,7 @@ export const TYPOGRAPHY = composer(
   textDecoration,
   textOverflow,
   textShadow,
+  textTransform,
   ss.fontFamily,
   ss.fontSize,
   ss.fontStyle,
