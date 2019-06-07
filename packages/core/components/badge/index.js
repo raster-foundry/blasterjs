@@ -1,6 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getContrast, tint, shade, mix } from "polished";
+import {
+  getContrast,
+  tint,
+  shade,
+  mix,
+  getLuminance,
+  setLightness,
+  parseToHsl,
+  darken
+} from "polished";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import {
@@ -84,14 +93,14 @@ function badgeScaling(props) {
 function badgeAppearance(props) {
   const { intent, appearance } = props;
 
-  let fg, bg, color;
+  let color, fg, bg, contrast, darkenBy;
+  color = themeGet(
+    `badge.intents.colors.${props.intent}`,
+    `badge.intents.colors.default`
+  )(props);
 
   switch (appearance) {
     case "prominent":
-      color = themeGet(
-        `badge.intents.colors.${props.intent}`,
-        `badge.intents.colors.default`
-      )(props);
       bg = color;
       fg =
         getContrast(color, "#fff") <= "4.5"
@@ -100,12 +109,11 @@ function badgeAppearance(props) {
       break;
     case "default":
     default:
-      color = themeGet(
-        `badge.intents.colors.${props.intent}`,
-        `badge.intents.colors.default`
-      )(props);
-      fg = shade(0.25, color);
       bg = tint(0.9, color);
+      contrast = getContrast(color, bg);
+      darkenBy = (4.6 - contrast) / (4.6 + contrast);
+      fg =
+        getContrast(color, bg) <= "4.5" ? mix(darkenBy, "#000", color) : color;
       break;
   }
 
