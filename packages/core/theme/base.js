@@ -21,7 +21,7 @@ export const colors = {
   offWhite: "#F4F5F7",
   black: "#000000",
 
-  green: "#51BF56",
+  green: "#28c662",
   greenTint: "#C7EAC9",
   greenShade: "#2D7B31",
 
