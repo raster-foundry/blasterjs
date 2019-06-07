@@ -6,9 +6,6 @@ route: /components/badge
 
 import { Playground, Props } from 'docz'
 import Badge from './'
-import Grouper from '../grouper'
-import Icon from '../icon'
-import { Shape } from "../../common/shape"
 
 # Badge
 
@@ -16,30 +13,141 @@ import { Shape } from "../../common/shape"
 `import { Badge } from '@blasterjs/core'`
 
 ## Basic usage
+The `<Badge>` component renders a `<span>` with basic styles by default. It's color can be changed with the `intent` prop.
 
 <Playground>
-    <Badge><Icon name="info"/>Hello</Badge>
-    <Badge>World</Badge>
+    <Badge>Badge</Badge>
+    <Badge intent="primary">Badge</Badge>
+    <Badge intent="secondary">Badge</Badge>
+    <Badge intent="warning">Badge</Badge>
+    <Badge intent="danger">Badge</Badge>
+    <Badge intent="success">Badge</Badge>
 </Playground>
 
-### Badge within a `<Grouper>`
+## Prominent badges
 
 <Playground>
-    <Grouper>
-        <Badge>Hello</Badge>
-        <Badge>World</Badge>
-    </Grouper>
-    <br />
-    <Grouper direction="vertical">
-        <Badge>Hello</Badge>
-        <Badge>World</Badge>
-    </Grouper>
+    <Badge intent="default" appearance="prominent">Badge</Badge>
+    <Badge intent="primary" appearance="prominent">Badge</Badge>
+    <Badge intent="secondary" appearance="prominent">Badge</Badge>
+    <Badge intent="warning" appearance="prominent">Badge</Badge>
+    <Badge intent="danger" appearance="prominent">Badge</Badge>
+    <Badge intent="success" appearance="prominent">Badge</Badge>
+</Playground>
+
+## Scaling badges
+
+<Playground>
+    <Badge scale="small">Badge</Badge>
+    <Badge scale="default">Badge</Badge>
+    <Badge scale="large">Badge</Badge>
 </Playground>
 
 ## PropTypes
 
-### Badge
-| Prop | Type | Required | Default | Description |
-|:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/typography/text) |
-| borderRadius | number or string | no | `small` | see [styled-system BORDERRADIUS](https://github.com/jxnblk/styled-system/blob/master/docs/api.md#borders) |
+### PropTypes
+| Prop | Type | Required | Default | Description | Themeable |
+|:-----|:-----|:---------|:--------|:------------|:----------|
+| appearance | enum | no | `default` | `["default", "prominent"]` |  |
+| intent | string | no | `default` | Theme provides styles for `["default", "secondary", primary", "success", "warning", "danger"]` | yes |
+| scale | string | no | | Theme provides styles for `["small", "large"]` | yes |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BACKGROUND` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `POSITION` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  base: {
+    colors: {
+      darkText,
+      lightText
+    },
+    space: {
+      pt,
+      pb,
+      pl,
+      pr
+    },
+    radii: {
+      radius
+    },
+    fonts: {
+      font
+    },
+    fontSizes: {
+      fontSize
+    },
+    fontWeights: {
+      fontWeight
+    },
+    lineHeights: {
+      lineHeight
+    }
+  },
+  intents: {
+    colors: {
+      default,
+      secondary,
+      primary,
+      success,
+      warning,
+      danger,
+      $CUSTOM_KEY
+    }
+  },
+  scale: {
+    small: {
+      space: {
+        pt,
+        pb,
+        pl,
+        pr
+      },
+      radii: {
+        radius
+      },
+      fontSizes: {
+        fontSize
+      },
+      fontWeights: {
+        fontWeight
+      },
+      lineHeights: {
+        lineHeight
+      }
+    },
+    large: {
+      space: {
+        pt,
+        pb,
+        pl,
+        pr
+      },
+      radii: {
+        radius
+      },
+      fontSizes: {
+        fontSize
+      },
+      fontWeights: {
+        fontWeight
+      },
+      lineHeights: {
+        lineHeight
+      }
+    },
+    $CUSTOM_KEY: {
+      ...
+    }
+  },
+  styles: css``
+}
+```

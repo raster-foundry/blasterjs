@@ -166,7 +166,7 @@ function buttonStates(props) {
       )(props);
       border = `1px solid ${themeGet(`button.base.colors.defaultBorder`)(
         props
-      )};`;
+      )}`;
       bgHover = themeGet(`button.base.hover.colors.defaultBg`)(props);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = rgba(bg, 0.5);

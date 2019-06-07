@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ### Changed
 - Major Button component overhaul
+- Major Badge component overhaul
 
 ## [0.0.20] - 2019-05-01
 ### Changed
