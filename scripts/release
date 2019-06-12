@@ -2,6 +2,8 @@
 
 git checkout master && \
 git pull --rebase origin master && \
+./scripts/clean && \
+npm ci && \
 ./scripts/build && \
 lerna version --force-publish && \
 lerna publish from-package

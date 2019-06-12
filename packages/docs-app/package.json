@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@blasterjs/core": "^1.0.0-alpha.0",
-    "polished": "^3.2.0"
+    "polished": "^3.4.0"
   },
   "publishConfig": {
     "access": "public"

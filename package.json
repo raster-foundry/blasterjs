@@ -35,8 +35,8 @@
     "camelcase": "^5.0.0",
     "chalk": "^2.4.1",
     "commander": "^2.17.0",
-    "docz": "latest",
-    "docz-theme-default": "latest",
+    "docz": "^1.2.0",
+    "docz-theme-default": "^1.2.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16.2": "^1.0.0",
     "fs-copy-file-sync": "^1.1.1",
@@ -74,7 +74,7 @@
     ]
   },
   "dependencies": {
-    "polished": "^3.2.0",
+    "polished": "^3.4.0",
     "prop-types": "^15.6.2",
     "styled-components": "^4.2.0",
     "styled-system": "^4.0.5"
