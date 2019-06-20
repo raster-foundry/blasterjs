@@ -4,11 +4,25 @@ import styled, { css } from "styled-components";
 import { borders, borderColor, borderRadius, themeGet } from "styled-system";
 import Text from "../text";
 import { Size } from "../../common/size";
+import {
+  COMMON,
+  BACKGROUND,
+  BORDER,
+  TYPOGRAPHY,
+  MISC,
+  LAYOUT,
+  POSITION
+} from "../../constants";
 
 const StyledTextInput = styled(Text)`
-  ${borders}
-  ${borderColor}
-  transition: .2s ease-in-out box-shadow;
+  width: 100%;
+  padding: ${themeGet("textInput.p")};
+  background: ${themeGet("textInput.bg")};
+  color: ${themeGet("textInput.color")};
+  border: 1px solid;
+  border-color: ${themeGet("textInput.borderColor")};
+  fontFamily: ${themeGet("textInput.fontFamily")};
+  transition: ${themeGet("textInput.transition", ".2s ease-in-out box-shadow")};
 
   ${props => {
     if (props.height) return;
@@ -50,7 +64,6 @@ const StyledTextInput = styled(Text)`
       border-radius: ${themeGet(`radii.${size}`)};
     `;
   }}
-  ${borderRadius}
 
   &:focus {
     border-color: ${themeGet("colors.primary")};
@@ -67,6 +80,15 @@ const StyledTextInput = styled(Text)`
   &:invalid {
     border-color: ${themeGet("colors.red")};
   }
+
+  ${themeGet("textInput.styles")};
+  ${COMMON}
+  ${BACKGROUND}
+  ${BORDER}
+  ${TYPOGRAPHY}
+  ${MISC}
+  ${LAYOUT}
+  ${POSITION}
 `;
 
 const TextInput = ({ invalid, type, ...props }) => {
@@ -80,23 +102,18 @@ const TextInput = ({ invalid, type, ...props }) => {
 };
 
 TextInput.propTypes = {
-  ...Text.propTypes,
-  ...borders.propTypes,
-  ...borderRadius.propTypes,
-  ...borderColor.propTypes,
+  ...COMMON.propTypes,
+  ...BACKGROUND.propTypes,
+  ...BORDER.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  ...MISC.propTypes,
+  ...LAYOUT.propTypes,
+  ...POSITION.propTypes,
   type: PropTypes.string,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
   invalid: PropTypes.bool,
   spellCheck: PropTypes.bool,
-  width: PropTypes.string,
-  height: PropTypes.string,
-  pt: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  pb: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  pl: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  pr: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  bg: PropTypes.string,
-  color: PropTypes.string,
   size: PropTypes.oneOf(Object.values(Size))
 };
 
@@ -107,17 +124,6 @@ TextInput.defaultProps = {
   disabled: false,
   invalid: false,
   spellCheck: false,
-  width: "100%",
-  pt: "textInput.p",
-  pb: "textInput.p",
-  pl: "textInput.p",
-  pr: "textInput.p",
-  bg: "textInput.bg",
-  borderRadius: undefined,
-  color: "textInput.color",
-  border: "1px solid",
-  borderColor: "textInput.borderColor",
-  fontFamily: "textInput.fontFamily",
   size: Size.MEDIUM
 };
 
