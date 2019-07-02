@@ -1,21 +1,16 @@
 # Blaster
 
-[![Build Status](https://travis-ci.org/raster-foundry/blasterjs.svg?branch=master)](https://travis-ci.org/raster-foundry/blasterjs)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3a31aff2-cc32-426e-b59a-15a0cfd9105e/deploy-status)](https://app.netlify.com/sites/raster-foundry-blaster/deploys)
+[![npm](https://img.shields.io/npm/v/@blasterjs/core.svg?label=@blasterjs/core)](https://www.npmjs.com/package/@blasterjs/core) [![Build Status](https://travis-ci.org/raster-foundry/blasterjs.svg?branch=master)](https://travis-ci.org/raster-foundry/blasterjs) [![Netlify Status](https://api.netlify.com/api/v1/badges/3a31aff2-cc32-426e-b59a-15a0cfd9105e/deploy-status)](https://app.netlify.com/sites/raster-foundry-blaster/deploys)
 
-## Usage
+:exclamation::exclamation: **Blaster is still under heavy development and isn't recommended for use in client projects just yet.** :exclamation::exclamation:
 
-Blaster is split into multiple packages, allowing you to pick and choose the components you need.
-
-[![npm](https://img.shields.io/npm/v/@blasterjs/core.svg?label=@blasterjs/core)](https://www.npmjs.com/package/@blasterjs/core) &ndash; Base components and styles. All other Blaster packages depend on this.
-
-[![npm](https://img.shields.io/npm/v/@blasterjs/chart.svg?label=@blasterjs/chart)](https://www.npmjs.com/package/@blasterjs/chart) &ndash; Experimental chart package.
-
-### Dependencies
+### Usage
 
 You will need to have installed `styled-components` as well as `styled-system` in the application you want to use Blaster in.
 
-`npm install --save styled-components styled-system`
+```
+npm install --save styled-components styled-system @blasterjs/core
+```
 
 ## Development
 
@@ -47,98 +42,6 @@ Regenerates all index files for each package as necessary.
 
 **`blaster update-icons`**
 Regenerates the index file icons.
-
-### Styled System
-
-Use [styled-system](https://jxnblk.com/styled-system/) in conjunction with
-[styled-components](https://www.styled-components.com/) for styling and theming.
-
-As a rule of thumb, include styled-system functions _first_ within styled-component
-template literals, unless you have reason not to. Eg, this order is preferred:
-
-```
-const StyledComponent = styled.div`
-  ${space}
-  ${color}
-  display: inline-block;
-  vertical-align: middle;
-`;
-```
-
-### Default Props
-
-As a rule of thumb, use `defaultProps` for setting default props, eg:
-
-```
-Component.defaultProps = {
-  width: "100%"
-};
-```
-
-However, there may be times when logic necessitates that a default be configured
-within a styled-component template literal instead, eg:
-
-```
-const StyledComponent = styled.div`
-  width: ${props => props.width || "100%"};
-`;
-```
-
-#### Per-component themeing
-
-Each component can have its own theme settings in
-`packages/{PACKAGE}/theme/components/{COMPONENT}`.
-
-These should be organized into
-the same theme objects as `theme/base.js`, eg `space`, `colors`, `radii`, etc,
-though the properties of those objects can be arbitrary names, to be referenced
-in `defaultProps`.
-
-Values can be keys from corresponding objects in `theme/base.js`, or any valid
-value expected by the corresponding prop.
-
-For example:
-
-```js
-// packages/core/theme/components/breadcrumbs/index.js
-
-export const theme = {
-  space: {
-    p: 1 // 1 is a valid key, since base.space is an array
-  },
-  colors: {
-    color: "gray300", // each value gets resolved into a base.colors value
-    colorHover: "#98346B", // or remains unchanged if the lookup fails
-    colorSeparator: "gray100",
-    colorHighlight: "gray900" // properties can be arbitrarily named
-  },
-  fontSizes: {
-    fontSize: 2
-  }
-};
-```
-
-The theme settings should then be referenced in the component's `defaultProps`
-by namespacing the property name with the component name. For example:
-
-```js
-// packages/core/components/breadcrumbs/index.js
-
-Breadcrumbs.defaultProps = {
-  path: [],
-  highlightCurrent: false,
-  pt: "breadcrumbs.p", // styled-system knows to look up `pt` in `theme.space`
-  pb: "breadcrumbs.p",
-  pl: "breadcrumbs.p",
-  pr: "breadcrumbs.p",
-  fontSize: "breadcrumbs.fontSize",
-  color: "breadcrumbs.color",
-  colorHover: "breadcrumbs.colorHover", // non-styled-system props must be
-  colorSeparator: "breadcrumbs.colorSeparator", // resolved via themeGet() in the
-  colorHighlight: "breadcrumbs.colorHighlight", // corresponding styled-component definition
-  separatorIcon: "caretRight"
-};
-```
 
 #### Styled System shortcuts in defaultProps
 
