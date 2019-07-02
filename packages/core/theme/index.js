@@ -5,6 +5,7 @@ import merge from "lodash.merge";
 
 export const getTheme = (userDefined = {}) => {
   const mergedBase = merge(base, buildTheme(base, userDefined));
+  console.log(1);
   const builtBase = buildTheme(mergedBase, components);
   return merge({ ...builtBase }, userDefined);
 };
