@@ -21,20 +21,23 @@ export const buildTheme = (base, components) => {
     replaceThemeRefs(componentTheme, baseTheme);
     baseTheme[component] = componentTheme;
   }
-  console.log("Base theme after building", baseTheme);
   return baseTheme;
 };
 
-const replaceThemeRefs = (o, theme) => {
+export const replaceThemeRefs = (o, theme) => {
   const keys = Object.keys(o);
   keys
     .filter(k => k !== "styles" && k !== "__filemeta")
+    // For every entry in this level of the theme
     .forEach(k => {
+      // check if there is a matching key in the base theme
       if (theme[k]) {
+        // if there is, for every key within that object, replace it with a match from the base theme if it exists there
         Object.keys(o[k]).forEach(ck => {
           o[k][ck] = theme[k][o[k][ck]] || o[k][ck];
         });
       } else {
+        // if there isn't, go to the next level down and run this same function
         replaceThemeRefs(o[k], theme);
       }
     });

@@ -12,13 +12,20 @@
     "start": "./scripts/start",
     "test": "jest --coverage --verbose --passWithNoTests",
     "version": "chan release --group-changes $(node -p -e \"require('./lerna.json').version\") && git add CHANGELOG.md && git commit -m \"Update: changelog\"",
-    "watch-build": "npm run build",
-    "watch": "npm-watch"
+    "watch:build": "npm-watch build"
   },
   "watch": {
-    "watch-build": {
-      "patterns": ["src"],
-      "ignore": "packages/testbed"
+    "build": {
+      "patterns": [
+        "packages"
+      ],
+      "ignore": [
+        "**/dist/*",
+        "node_modules",
+        "packages/testbed"
+      ],
+      "quiet": false,
+      "verbose": true
     }
   },
   "repository": {

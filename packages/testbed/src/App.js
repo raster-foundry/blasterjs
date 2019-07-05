@@ -5,10 +5,14 @@ import React, {Component} from 'react'
 import { Blaster, Button, Box } from "@blasterjs/core";
 
 const theme = {
+  colors: {
+    primary: "red"
+  },
   button: {
     intents: {
       colors: {
-        primary: "gray500"
+        primary: "green",
+        secondary: "primary"
       }
     }
   }
@@ -19,7 +23,7 @@ class App extends Component {
     return <div className="App">
       <Blaster theme={theme}>
         <Box>
-          <Button intent="primary">Testing</Button>
+          <Button intent="secondary">Testing</Button>
         </Box>
       </Blaster>
     </div>
