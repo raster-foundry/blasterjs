@@ -1,5 +1,5 @@
 #!/bin/bash
 
 ./scripts/build && \
-lerna bootstrap --hoist && \
+lerna bootstrap && \
 npm run docz
