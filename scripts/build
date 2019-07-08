@@ -1,5 +1,6 @@
 #!/bin/bash
 
 rm -rf ./.docz/ && \
-lerna exec --parallel -- babel . -d dist --ignore node_modules,dist --config-file=../../.babelrc.js && \
+lerna exec --parallel --ignore testbed -- babel . -d dist --ignore node_modules,dist --config-file=../../.babelrc.js && \
+lerna link --force-local &&\
 mkdir -p ./.docz/
