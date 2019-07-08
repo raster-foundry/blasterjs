@@ -2,7 +2,7 @@ export default {
   source: "./",
   port: "3030",
   title: "BlasterJS",
-  ignore: ["./templates/index.mdx", "**/README.md"],
+  ignore: ["./templates/index.mdx", "**/README.md", "**/_index.mdx"],
   repository: "https://github.com/raster-foundry/blasterjs",
   propsParser: false,
   debug: false,
