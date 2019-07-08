@@ -14,16 +14,22 @@ npm install --save styled-components styled-system @blasterjs/core
 
 ## Development
 
-### Getting Started
+### Starting the documentation
 
-1. Clone the project: `git clone git@github.com:raster-foundry/blasterjs.git`
 1. Change node versions: `nvm use` _recommend using nvm for switching node versions_
 1. Setup project: `npm install`
 1. Run `npm run start`
 
+### Starting the test-bed application
+
+1. Change node versions: `nvm use` _recommend using nvm for switching node versions_
+1. `lerna bootstrap`
+1. `npm run watch:build`
+1. In a separate terminal: `cd packages/testbed` then `npm run start`
+
 ### Using the CLI
 
-Blasterjs has a built-in CLI.
+Blaster has a built-in CLI.
 It's the preferred method of managing components and constants.
 In order to use the CLI, after cloning the repo, you will need to run `npm link`.
 
