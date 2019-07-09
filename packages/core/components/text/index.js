@@ -1,11 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import * as styledSystem from "styled-system";
 import { themeGet } from "styled-system";
-import Box from "../box";
+import { COMMON, LAYOUT, POSITION, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
 
-const Text = styled(Box)`
+const Text = styled.span`
   abbr& {
     border-bottom: 1px dotted;
     cursor: help;
@@ -36,33 +34,24 @@ const Text = styled(Box)`
     text-decoration: line-through;
   }
 
-  ${styledSystem.fontFamily}
-  ${styledSystem.fontSize}
-  ${styledSystem.fontWeight}
-  ${styledSystem.textAlign}
-  ${styledSystem.lineHeight}
-  ${styledSystem.letterSpacing}
-  ${styledSystem.color}
+  font-family: ${themeGet("text.fonts.fontFamily")};
+  font-size: ${themeGet("text.fontSizes.fontSize")};
+  line-height: ${themeGet("text.lineHeights.lineHeight")};
 
-  ${themeGet("styles.text")};
+  ${themeGet("text.styles")}
+  ${COMMON}
+  ${LAYOUT}
+  ${POSITION}
+  ${TYPOGRAPHY}
+  ${FLEX_ITEM}
 `;
 
 Text.propTypes = {
-  ...Box.propTypes,
-  ...styledSystem.fontFamily.propTypes,
-  ...styledSystem.fontSize.propTypes,
-  ...styledSystem.fontWeight.propTypes,
-  ...styledSystem.textAlign.propTypes,
-  ...styledSystem.lineHeight.propTypes,
-  ...styledSystem.letterSpacing.propTypes,
-  ...styledSystem.color.propTypes
-};
-
-Text.defaultProps = {
-  tag: "span",
-  fontFamily: "text.fontFamily",
-  fontSize: "text.fontSize",
-  lineHeight: "text.lineHeight",
+  ...COMMON.propTypes,
+  ...LAYOUT.propTypes,
+  ...POSITION.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  ...FLEX_ITEM.propTypes
 };
 
 export default Text;
