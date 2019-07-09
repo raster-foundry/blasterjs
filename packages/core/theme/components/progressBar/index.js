@@ -6,7 +6,7 @@ export const theme = {
     color: "primary"
   },
   radii: {
-    borderRadius: 999
+    borderRadius: "base"
   },
   heights: {
     height: "8px"
