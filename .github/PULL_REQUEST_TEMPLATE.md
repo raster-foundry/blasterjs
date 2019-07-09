@@ -6,6 +6,7 @@ Brief description of what this PR does.
 
 - [ ] Relevant documentation pages have been created or updated
 - [ ] Description of PR is in an appropriate section of the changelog and grouped with similar changes if possible
+- [ ] Relevant status has been updated on the status page
 
 ### Upgrade instructions
 
