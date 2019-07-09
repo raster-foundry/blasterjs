@@ -2,31 +2,41 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { themeGet } from "styled-system";
-import { COMMON, TYPOGRAPHY, MISC, LAYOUT } from "../../constants";
+import { COMMON, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
 
 const A = styled.a`
   color: ${themeGet("a.colors.color")};
   font-weight: ${themeGet("a.fontWeights.fontWeight")};
+
+  &:focus {
+    color: ${props =>
+      themeGet(`colors.${props.colorFocus}`, "a.colors.colorFocus")};
+  }
 
   &:hover {
     color: ${props =>
       themeGet(`colors.${props.colorHover}`, "a.colors.colorHover")};
   }
 
-  ${themeGet("a.styles")};
+  &:active {
+    color: ${props =>
+      themeGet(`colors.${props.colorActive}`, "a.colors.colorActive")};
+  }
+
+  ${themeGet("a.styles")}
   ${COMMON}
-  ${LAYOUT}
-  ${MISC}
   ${TYPOGRAPHY}
+  ${FLEX_ITEM}
 `;
 
 A.propTypes = {
   ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...MISC.propTypes,
   ...TYPOGRAPHY.propTypes,
+  ...FLEX_ITEM.propTypes,
   href: PropTypes.string.isRequired,
-  colorHover: PropTypes.string
+  colorFocus: PropTypes.string,
+  colorHover: PropTypes.string,
+  colorActive: PropTypes.string
 };
 
 export default A;
