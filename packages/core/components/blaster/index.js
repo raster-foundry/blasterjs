@@ -1,6 +1,5 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import merge from "lodash.merge";
 
 import { getTheme } from "../../theme";
 import GlobalStyle from "../globalStyle";
