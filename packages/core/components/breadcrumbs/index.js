@@ -1,50 +1,97 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { fontSize, themeGet } from "styled-system";
-import Text from "../text";
-import A from "../a";
+import { themeGet } from "styled-system";
 import Icon from "../icon";
+import { COMMON, LAYOUT, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
 
-const StyledBreadcrumbs = styled(Text)`
+const StyledBreadcrumbs = styled.div`
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   max-width: 100%;
   line-height: 1.5;
 
+  padding: ${themeGet('breadcrumbs.space.p')};
+  font-size: ${themeGet('breadcrumbs.fontSizes.fontSize')};
+
   > * + * {
-    margin-left: ${props => themeGet('space.1', '0.8rem')};
+    ${props => props.gutter
+      ? css`margin-left: ${themeGet(`space.${props.gutter}`, props.gutter)}`
+      : css`margin-left: ${themeGet('breadcrumbs.space.gutter')}`
+    };
   }
 
   ${props => props.highlightCurrent && css`
     > :last-child {
-      color: ${props => themeGet(`colors.${props.colorHighlight}`, props.colorHighlight)};
+      ${props => props.colorHighlight
+         ? css`color: ${themeGet(`colors.${props.colorHighlight}`, props.colorHighlight)}`
+         : css`color: ${themeGet('breadcrumbs.colors.colorHighlight')}`
+       };
     }
   `}
+
+  ${themeGet("breadcrumbs.styles")}
+  ${COMMON}
+  ${LAYOUT}
+  ${TYPOGRAPHY}
+  ${FLEX_ITEM}
 `;
 
-const BreadcrumbItem = styled(A)`
+const BreadcrumbItem = styled.a`
+  text-decoration: none;
+
+  ${props => props.color
+    ? css`color: ${themeGet(`colors.${props.color}`, props.color)}`
+    : css`color: ${themeGet('breadcrumbs.colors.color')}`
+  };
+
+  &:visited {
+    ${props => props.color
+      ? css`color: ${themeGet(`colors.${props.color}`, props.color)}`
+      : css`color: ${themeGet('breadcrumbs.colors.color')}`
+    };
+  }
+
+  &:focus {
+    ${props => props.colorFocus
+      ? css`color: ${themeGet(`colors.${props.colorFocus}`, props.colorFocus)}`
+      : css`color: ${themeGet('breadcrumbs.colors.colorFocus')}`
+    };
+  }
+
   &:hover {
-    color: ${props => themeGet(`colors.${props.colorHover}`, props.colorHover)};
+    ${props => props.colorHover
+      ? css`color: ${themeGet(`colors.${props.colorHover}`, props.colorHover)}`
+      : css`color: ${themeGet('breadcrumbs.colors.colorHover')}`
+    };
+  }
+
+  &:active {
+    ${props => props.colorActive
+      ? css`color: ${themeGet(`colors.${props.colorActive}`, props.colorActive)}`
+      : css`color: ${themeGet('breadcrumbs.colors.colorActive')}`
+    };
   }
 `;
 
 const Separator = styled.span`
-  color: ${props => themeGet(`colors.${props.colorSeparator}`, props.colorSeparator)};
+  ${props => props.colorSeparator
+    ? css`color: ${themeGet(`colors.${props.colorSeparator}`, props.colorSeparator)}`
+    : css`color: ${themeGet('breadcrumbs.colors.colorSeparator')}`
+  };
 `;
 
 const Breadcrumbs = ({
   path,
-  highlightCurrent,
   color,
+  colorFocus,
   colorHover,
+  colorActive,
   colorSeparator,
-  colorHighlight,
   separator,
   separatorIcon,
   children,
-  fontSize,
   ...props
 }) => {
 
@@ -55,21 +102,16 @@ const Breadcrumbs = ({
   );
 
   return (
-    <StyledBreadcrumbs
-      tag="div"
-      highlightCurrent={highlightCurrent}
-      colorHighlight={colorHighlight}
-      fontSize={fontSize}
-      {...props}
-    >
-      {path.map(({ name, url }, idx) => (
+    <StyledBreadcrumbs {...props}>
+      {path.map(({ name, url }, index) => (
         <Fragment key={url}>
-          {idx > 0 && sep}
+          {index > 0 && sep}
           <BreadcrumbItem
             href={url}
             color={color}
+            colorFocus={colorFocus}
             colorHover={colorHover}
-            fontSize={fontSize}
+            colorActive={colorActive}
           >
             {name}
           </BreadcrumbItem>
@@ -80,10 +122,15 @@ const Breadcrumbs = ({
 };
 
 Breadcrumbs.propTypes = {
-  ...Text.propTypes,
+  ...COMMON.propTypes,
+  ...LAYOUT.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  ...FLEX_ITEM.propTypes,
+  gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   highlightCurrent: PropTypes.bool,
-  color: PropTypes.string,
+  colorFocus: PropTypes.string,
   colorHover: PropTypes.string,
+  colorActive: PropTypes.string,
   colorSeparator: PropTypes.string,
   colorHighlight: PropTypes.string,
   separator: PropTypes.string,
@@ -99,15 +146,6 @@ Breadcrumbs.propTypes = {
 Breadcrumbs.defaultProps = {
   path: [],
   highlightCurrent: false,
-  pt: "breadcrumbs.p",
-  pb: "breadcrumbs.p",
-  pl: "breadcrumbs.p",
-  pr: "breadcrumbs.p",
-  fontSize: "breadcrumbs.fontSize",
-  color: "breadcrumbs.color",
-  colorHover: "breadcrumbs.colorHover",
-  colorSeparator: "breadcrumbs.colorSeparator",
-  colorHighlight: "breadcrumbs.colorHighlight",
   separatorIcon: "caretRight"
 };
 
