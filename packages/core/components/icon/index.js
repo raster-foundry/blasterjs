@@ -24,14 +24,14 @@ const StyledIcon = styled.svg`
   ${POSITION}
 `;
 
-const Icon = ({ path, ...p }) => {
+const Icon = ({ path, viewBox, ...p }) => {
   const themeContext = useContext(ThemeContext);
   const icon = themeContext.icons[p.name];
   return (
     <StyledIcon
       role="img"
       fill="currentColor"
-      viewBox={icon ? icon.viewBox : p.viewBox ? p.viewBox : "0 0 24 24"}
+      viewBox={icon ? icon.viewBox : viewBox ? viewBox : "0 0 24 24"}
       xmlns="http://www.w3.org/2000/svg"
       {...p}
     >
