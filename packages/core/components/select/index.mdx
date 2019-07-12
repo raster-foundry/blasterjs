@@ -10,13 +10,16 @@ import Select from './'
 # Select
 
 A native select element. `appearance` is set to `none` and a custom arrow icon is
-rendered.
+rendered. The `<select>` and icon are wrapped in a `<div>`.
 
 Can be controlled or uncontrolled. For controlled, you must supply the
 `value` and `onChange` props.
 
 For uncontrolled, you must omit the `value` prop. And optionally supply the
 `defaultValue` prop.
+
+## Import
+`import { Select } from '@blasterjs/core'`
 
 ## Basic usage
 
@@ -40,3 +43,62 @@ For uncontrolled, you must omit the `value` prop. And optionally supply the
         <option>February 2019</option>
     </Select>
 </Playground>
+
+
+## PropTypes
+
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| icon | string | no | `caretDown` | |
+| iconColor | string | no | `textBase` | ignored if `multiple` |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BACKGROUND` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `POSITION` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+  {
+  space: {
+    p:
+  },
+  colors: {
+    bg,
+    color,
+    borderColor,
+    borderColorFocus,
+    borderColorInvalid,
+    borderColorDisabled,
+    bgFocus,
+    bgInvalid,
+    bgDisabled,
+    shadowColorFocus,
+    iconColor
+  },
+  fonts: {
+    fontFamily
+  },
+  fontSizes: {
+    fontSize
+  },
+  borders: {
+    border
+  },
+  radii: {
+    borderRadius
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/select)
+- [Learn more about themeing](#)

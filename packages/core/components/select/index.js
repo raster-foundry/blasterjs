@@ -2,36 +2,91 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
-import Box from "../box";
-import TextInput from "../textInput";
 import Icon from "../icon";
+import {
+  COMMON,
+  BACKGROUND,
+  BORDER,
+  TYPOGRAPHY,
+  MISC,
+  LAYOUT,
+  POSITION,
+  FLEX_ITEM
+} from "../../constants";
 
-const StyledSelect = styled(Box)`
+const StyledSelect = styled.div`
   position: relative;
+  display: inline-block;
+  width: 100%;
+  min-height: 1.5em;
+  transition: .2s ease-in-out box-shadow;
+
+  background: ${themeGet("select.colors.bg")};
+  border: ${themeGet("select.borders.border")};
+  border-color: ${themeGet("select.colors.borderColor")};
+  border-radius: ${themeGet("select.radii.borderRadius")};
+  color: ${themeGet("select.colors.color")};
+  font-family: ${themeGet("select.fonts.fontFamily")};
+  font-size: ${themeGet("select.fontSizes.fontSize")};
+
+  &:focus-within {
+    border-color: ${themeGet("select.colors.borderColorFocus")};
+    background-color: ${themeGet("select.colors.bgFocus")};
+    outline: 0;
+    box-shadow: 0 0 0 3px ${themeGet("select.colors.shadowColorFocus")}4C;
+  }
+
+  ${props => props.disabled && css`
+    cursor: not-allowed;
+    border-color: ${themeGet("select.colors.borderColorDisabled")};
+    background-color: ${themeGet("select.colors.bgDisabled")};
+  `}
+
+  ${props => props.invalid && css`
+    border-color: ${themeGet("select.colors.borderColorInvalid")};
+    background-color: ${themeGet("select.colors.bgInvalid")};
+  `}
+
+  .menu-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    margin: 0 ${themeGet('space.1', '0.8rem')};
+    pointer-events: none;
+    vertical-align: middle;
+  }
+
+  ${themeGet("select.styles")};
+  ${COMMON}
+  ${BACKGROUND}
+  ${BORDER}
+  ${TYPOGRAPHY}
+  ${MISC}
+  ${LAYOUT}
+  ${POSITION}
+  ${FLEX_ITEM}
 `;
 
-const SelectSelect = styled(TextInput).attrs({
-  tag: 'select',
-  type: ''
-})`
+const SelectSelect = styled.select`
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   appearance: none;
-  flex: auto;
+
+  padding: ${themeGet("select.space.p")};
   padding-right: ${themeGet('space.6', '4.8rem')};
 
   option {
-    color: ${themeGet('colors.black', '#000')};
+    color: inherit;
   }
-`;
 
-const SelectIcon = styled(Icon)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  margin: 0 ${themeGet('space.1', '0.8rem')};
-  pointer-events: none;
-  vertical-align: middle;
+  ${COMMON}
 `;
 
 const Select = ({
@@ -45,59 +100,52 @@ const Select = ({
   px,
   py,
   pt,
+  pr,
   pb,
   pl,
-  pr,
-  bg,
-  borderRadius,
-  color,
-  border,
-  borderColor,
-  fontFamily,
   icon,
+  iconColor,
   children,
   ...props
 }) => {
   return (
-    <StyledSelect {...props}>
+    <StyledSelect disabled={disabled} invalid={invalid} {...props}>
       <SelectSelect
         multiple={multiple}
         required={required}
         disabled={disabled}
-        invalid={invalid}
+        aria-invalid={invalid}
         spellCheck={spellCheck}
         minHeight={multiple ? '5em' : undefined}
         p={p}
         px={px}
         py={py}
         pt={pt}
+        pr={pr}
         pb={pb}
         pl={pl}
-        pr={pr}
-        bg={bg}
-        borderRadius={borderRadius}
-        color={color}
-        border={border}
-        borderColor={borderColor}
-        fontFamily={fontFamily}
-        {...props}
       >
         {children}
       </SelectSelect>
-      {!multiple && <SelectIcon name={icon} color={color} />}
+      {!multiple && <Icon name={icon} color={iconColor} className="menu-icon" />}
     </StyledSelect>
   );
 };
 
 Select.propTypes = {
-  ...Box.propTypes,
-  ...TextInput.propTypes
+  ...COMMON.propTypes,
+  ...BACKGROUND.propTypes,
+  ...BORDER.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  ...MISC.propTypes,
+  ...LAYOUT.propTypes,
+  ...POSITION.propTypes,
+  ...FLEX_ITEM.propTypes,
+  icon: PropTypes.string,
+  iconColor: PropTypes.string
 };
 
 Select.defaultProps = {
-  display: "inline-block",
-  multiple: undefined,
-  width: "100%",
   icon: "caretDown"
 };
 
