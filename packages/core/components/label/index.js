@@ -1,31 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { themeGet } from "styled-system";
-import Text from "../text";
-import { Size } from "../../common/size";
+import { COMMON, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
 
-const Label = styled(Text)`
-  ${props => {
-    const size = {
-      [Size.TINY]: 1,
-      [Size.SMALL]: 1,
-      [Size.MEDIUM]: 2,
-      [Size.LARGE]: 3
-    }[props.size || Size.MEDIUM];
+const Label = styled.label`
+  font-size: ${themeGet('label.fontSizes.fontSize')};
 
-    return css`font-size: ${themeGet(`fontSizes.${size}`)}`;
-  }}
+  ${themeGet("label.styles")}
+  ${COMMON}
+  ${TYPOGRAPHY}
+  ${FLEX_ITEM}
 `;
 
 Label.propTypes = {
-  ...Text.propTypes,
-  size: PropTypes.oneOf(Object.values(Size))
-};
-
-Label.defaultProps = {
-  tag: "label",
-  size: Size.MEDIUM
+  ...COMMON.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  ...FLEX_ITEM.propTypes
 };
 
 export default Label;

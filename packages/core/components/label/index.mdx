@@ -6,9 +6,11 @@ route: /form/label
 
 import { Playground, Props } from 'docz'
 import Label from './'
-import { Size } from '../../common/size'
 
 # Label
+
+## Import
+`import { Label } from '@blasterjs/core'`
 
 ## Basic usage
 
@@ -20,27 +22,28 @@ import { Size } from '../../common/size'
 </Playground>
 
 
-## Sizes
-
-<Playground>
-    <Label size={Size.SMALL} display="block" mb={4}>
-        What is the airspeed velocity of an unladen swallow?
-        <input type="text" />
-    </Label>
-    <Label size={Size.MEDIUM} display="block" mb={4}>
-        What is the airspeed velocity of an unladen swallow?
-        <input type="text" />
-    </Label>
-    <Label size={Size.LARGE} display="block" mb={4}>
-        What is the airspeed velocity of an unladen swallow?
-        <input type="text" />
-    </Label>
-</Playground>
-
-
-### PropTypes
+## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/typography/text) |
-| size | enum | no | `Size.MEDIUM` | see [Size](/common/size) |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  fontSizes: {
+    fontSize
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/label)
+- [Learn more about themeing](#)
