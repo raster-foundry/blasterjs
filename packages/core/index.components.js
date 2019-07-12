@@ -28,6 +28,6 @@ export { default as Swatch } from "./components/swatch";
 export { default as Table } from "./components/table";
 export { default as Text } from "./components/text";
 export { default as TextInput } from "./components/textInput";
-export { default as Textarea } from "./components/textarea";
+export { default as TextArea } from "./components/textArea";
 export { default as ToggleField } from "./components/toggleField";
 export { default as Tooltip } from "./components/tooltip";

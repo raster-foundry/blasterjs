@@ -24,7 +24,7 @@ export { theme as select } from "./select";
 export { theme as swatch } from "./swatch";
 export { theme as table } from "./table";
 export { theme as text } from "./text";
-export { theme as textarea } from "./textarea";
+export { theme as textArea } from "./textArea";
 export { theme as textInput } from "./textInput";
 export { theme as toggleField } from "./toggleField";
 export { theme as tooltip } from "./tooltip";
