@@ -2,30 +2,56 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
-import Text from "../text";
 import Icon from "../icon";
-import { Size } from "../../common/size";
+import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
 
-const StyledCheckbox = styled(Text)`
+const StyledCheckbox = styled.span`
   position: relative;
   display: inline-block;
 
   &:focus-within {
     outline: 0;
-    box-shadow: 0 0 0 3px ${themeGet("colors.primary")}4C;
+    box-shadow: 0 0 0 3px ${themeGet("checkbox.colors.shadowColorFocus")}4C;
   }
 
-  ${props =>
-    props.disabled &&
-    css`
-      opacity: 0.5;
-      cursor: not-allowed;
-    `}
-`;
+  ${props => props.disabled && css`
+    opacity: 0.5;
+    cursor: not-allowed;
+  `}
 
-const StyledIcon = styled(Icon)`
-  display: none;
-  pointer-events: none;
+  .toggle {
+    display: none;
+    pointer-events: none;
+    vertical-align: initial;
+  }
+
+  .toggle--indeterminate {
+    ${props => props.indeterminateColor
+      ? css`color: ${themeGet("props.indeterminateColor", props.indeterminateColor)};`
+      : css`color: ${themeGet("checkbox.colors.indeterminateColor")};`
+    }
+  }
+
+  .toggle--checked {
+    ${props => props.checkedColor
+      ? css`color: ${themeGet("props.checkedColor", props.checkedColor)};`
+      : css`color: ${themeGet("checkbox.colors.checkedColor")};`
+    }
+  }
+
+  .toggle--unchecked {
+    ${props => props.uncheckedColor
+      ? css`color: ${themeGet("props.uncheckedColor", props.uncheckedColor)};`
+      : css`color: ${themeGet("checkbox.colors.uncheckedColor")};`
+    }
+  }
+
+  ${themeGet("checkbox.styles")}
+  ${COMMON}
+  ${FLEX_ITEM}
+  ${LAYOUT}
+  ${MISC}
+  ${POSITION}
 `;
 
 const Input = styled.input`
@@ -36,23 +62,20 @@ const Input = styled.input`
   left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   opacity: 0;
 
-  ${props =>
-    props.indeterminate &&
-    css`
-      &:checked ~ .toggle--indeterminate {
-        display: inline-block;
-      }
-    `}
+  ${props => props.indeterminate && css`
+    &:checked ~ .toggle--indeterminate {
+      display: inline-block;
+    }
+  `}
 
-  ${props =>
-    !props.indeterminate &&
-    css`
-      &:checked ~ .toggle--checked {
-        display: inline-block;
-      }
-    `}
+  ${props => !props.indeterminate && css`
+    &:checked ~ .toggle--checked {
+      display: inline-block;
+    }
+  `}
 
   &:not(:checked) ~ .toggle--unchecked {
     display: inline-block;
@@ -62,6 +85,7 @@ const Input = styled.input`
 const Checkbox = ({
   id,
   name,
+  size,
   value,
   onChange,
   disabled,
@@ -76,18 +100,15 @@ const Checkbox = ({
   checkedColor,
   uncheckedColor,
   indeterminateColor,
-  size: _size,
   ...props
 }) => {
-  const size = {
-    [Size.TINY]: "1.2rem",
-    [Size.SMALL]: "1.6rem",
-    [Size.MEDIUM]: "2.4rem",
-    [Size.LARGE]: "3.2rem"
-  }[_size || Size.MEDIUM];
-
   return (
-    <StyledCheckbox disabled={disabled} width={size} height={size} {...props}>
+    <StyledCheckbox
+      disabled={disabled}
+      width={size}
+      height={size}
+      {...props}
+    >
       <Input
         type="checkbox"
         id={id}
@@ -101,20 +122,20 @@ const Checkbox = ({
         required={required}
         aria-invalid={invalid}
       />
-      <StyledIcon
-        className="toggle--checked"
+      <Icon
+        className="toggle toggle--checked"
         name={checkedIcon}
         color={checkedColor}
         size={size}
       />
-      <StyledIcon
-        className="toggle--unchecked"
+      <Icon
+        className="toggle toggle--unchecked"
         name={uncheckedIcon}
         color={uncheckedColor}
         size={size}
       />
-      <StyledIcon
-        className="toggle--indeterminate"
+      <Icon
+        className="toggle toggle--indeterminate"
         name={indeterminateIcon}
         color={indeterminateColor}
         size={size}
@@ -124,7 +145,11 @@ const Checkbox = ({
 };
 
 Checkbox.propTypes = {
-  ...Text.propTypes,
+  ...COMMON.propTypes,
+  ...FLEX_ITEM.propTypes,
+  ...LAYOUT.propTypes,
+  ...MISC.propTypes,
+  ...POSITION.propTypes,
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
@@ -140,14 +165,13 @@ Checkbox.propTypes = {
   indeterminateIcon: PropTypes.string,
   checkedColor: PropTypes.string,
   uncheckedColor: PropTypes.string,
-  indeterminateColor: PropTypes.string,
-  size: PropTypes.oneOf(Object.values(Size))
+  indeterminateColor: PropTypes.string
 };
 
 Checkbox.defaultProps = {
-  tag: "div",
   id: undefined,
   name: undefined,
+  size: "2.4rem",
   value: undefined,
   onChange: () => {},
   disabled: false,
@@ -158,11 +182,7 @@ Checkbox.defaultProps = {
   invalid: false,
   checkedIcon: "checkboxChecked",
   uncheckedIcon: "checkboxUnchecked",
-  indeterminateIcon: "checkboxIndeterminate",
-  checkedColor: "checkbox.checkedColor",
-  uncheckedColor: "checkbox.uncheckedColor",
-  indeterminateColor: "checkbox.indeterminateColor",
-  size: Size.MEDIUM
+  indeterminateIcon: "checkboxIndeterminate"
 };
 
 export default Checkbox;
