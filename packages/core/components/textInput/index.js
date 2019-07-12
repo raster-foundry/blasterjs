@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { borders, borderColor, borderRadius, themeGet } from "styled-system";
-import Text from "../text";
-import { Size } from "../../common/size";
+import styled from "styled-components";
+import { themeGet } from "styled-system";
 import {
   COMMON,
   BACKGROUND,
@@ -11,74 +9,40 @@ import {
   TYPOGRAPHY,
   MISC,
   LAYOUT,
-  POSITION
+  POSITION,
+  FLEX_ITEM
 } from "../../constants";
 
-const StyledTextInput = styled(Text)`
+const StyledTextInput = styled.input`
   width: 100%;
-  padding: ${themeGet("textInput.p")};
-  background: ${themeGet("textInput.bg")};
-  color: ${themeGet("textInput.color")};
-  border: 1px solid;
-  border-color: ${themeGet("textInput.borderColor")};
-  fontFamily: ${themeGet("textInput.fontFamily")};
-  transition: ${themeGet("textInput.transition", ".2s ease-in-out box-shadow")};
+  transition: .2s ease-in-out box-shadow;
 
-  ${props => {
-    if (props.height) return;
-
-    const size = {
-      [Size.TINY]: 4,
-      [Size.SMALL]: 4,
-      [Size.MEDIUM]: 5,
-      [Size.LARGE]: 6
-    }[props.size || Size.MEDIUM];
-
-    return css`
-      height: ${themeGet(`space.${size}`)};
-    `;
-  }}
-
-  ${props => {
-    const size = {
-      [Size.TINY]: 1,
-      [Size.SMALL]: 1,
-      [Size.MEDIUM]: 2,
-      [Size.LARGE]: 3
-    }[props.size || Size.MEDIUM];
-
-    return css`
-      font-size: ${themeGet(`fontSizes.${size}`)};
-    `;
-  }}
-
-  ${props => {
-    const size = {
-      [Size.TINY]: "base",
-      [Size.SMALL]: "base",
-      [Size.MEDIUM]: "base",
-      [Size.LARGE]: "large"
-    }[props.size || Size.MEDIUM];
-
-    return css`
-      border-radius: ${themeGet(`radii.${size}`)};
-    `;
-  }}
+  padding: ${themeGet("textInput.space.p")};
+  background: ${themeGet("textInput.colors.bg")};
+  color: ${themeGet("textInput.color.color")};
+  border: ${themeGet("textInput.borders.border")};
+  border-color: ${themeGet("textInput.colors.borderColor")};
+  border-radius: ${themeGet("textInput.radii.borderRadius")};
+  font-family: ${themeGet("textInput.fonts.fontFamily")};
+  font-size: ${themeGet("textInput.fontSizes.fontSize")};
 
   &:focus {
-    border-color: ${themeGet("colors.primary")};
+    border-color: ${themeGet("textInput.colors.borderColorFocus")};
+    background-color: ${themeGet("textInput.colors.bgFocus")};
     outline: 0;
-    box-shadow: 0 0 0 3px ${themeGet("colors.primary")}4C;
+    box-shadow: 0 0 0 3px ${themeGet("textInput.colors.shadowColorFocus")}4C;
   }
 
   &[disabled] {
     cursor: not-allowed;
-    background-color: ${themeGet("colors.gray300")};
+    border-color: ${themeGet("textInput.colors.borderColorDisabled")};
+    background-color: ${themeGet("textInput.colors.bgDisabled")};
   }
 
   &[aria-invalid="true"],
   &:invalid {
-    border-color: ${themeGet("colors.red")};
+    border-color: ${themeGet("textInput.colors.borderColorInvalid")};
+    background-color: ${themeGet("textInput.colors.bgInvalid")};
   }
 
   ${themeGet("textInput.styles")};
@@ -89,15 +53,12 @@ const StyledTextInput = styled(Text)`
   ${MISC}
   ${LAYOUT}
   ${POSITION}
+  ${FLEX_ITEM}
 `;
 
-const TextInput = ({ invalid, type, ...props }) => {
+const TextInput = ({ invalid, ...props }) => {
   return (
-    <StyledTextInput
-      aria-invalid={invalid}
-      type={type || undefined}
-      {...props}
-    />
+    <StyledTextInput aria-invalid={invalid} {...props} />
   );
 };
 
@@ -109,22 +70,14 @@ TextInput.propTypes = {
   ...MISC.propTypes,
   ...LAYOUT.propTypes,
   ...POSITION.propTypes,
+  ...FLEX_ITEM.propTypes,
   type: PropTypes.string,
-  required: PropTypes.bool,
-  disabled: PropTypes.bool,
-  invalid: PropTypes.bool,
-  spellCheck: PropTypes.bool,
-  size: PropTypes.oneOf(Object.values(Size))
+  invalid: PropTypes.bool
 };
 
 TextInput.defaultProps = {
-  tag: "input",
   type: "text",
-  required: false,
-  disabled: false,
-  invalid: false,
-  spellCheck: false,
-  size: Size.MEDIUM
+  invalid: false
 };
 
 export default TextInput;
