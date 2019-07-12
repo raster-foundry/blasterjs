@@ -9,13 +9,68 @@ import Textarea from './'
 
 # Textarea
 
+## Import
+`import { Textarea } from '@blasterjs/core'`
+
+## Basic usage
+
 <Playground>
     <Textarea />
 </Playground>
 
 
-### PropTypes
+## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| TextInput props | | | | see [TextInput](/typography/textInput) |
+| invalid | bool | no | false |  |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BACKGROUND` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `POSITION` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  space: {
+    p
+  },
+  colors: {
+    bg,
+    color,
+    borderColor,
+    borderColorFocus,
+    borderColorInvalid,
+    shadowColorFocus,
+    bgDisabled
+  },
+  fonts: {
+    fontFamily
+  },
+  fontSizes: {
+    fontSize
+  },
+  lineHeights: {
+    lineHeight
+  },
+  borders: {
+    border
+  },
+  radii: {
+    borderRadius
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/textarea)
+- [Learn more about themeing](#)
