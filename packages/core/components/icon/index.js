@@ -24,19 +24,18 @@ const StyledIcon = styled.svg`
   ${POSITION}
 `;
 
-const Icon = ({ ...p }) => {
+const Icon = ({ path, ...p }) => {
   const themeContext = useContext(ThemeContext);
   const icon = themeContext.icons[p.name];
   return (
     <StyledIcon
-      aria-hidden={p.a11yHidden}
-      aria-label={p.a11yLabel}
+      role="img"
       fill="currentColor"
       viewBox={icon ? icon.viewBox : p.viewBox ? p.viewBox : "0 0 24 24"}
       xmlns="http://www.w3.org/2000/svg"
       {...p}
     >
-      <path d={icon ? icon.path : p.path ? p.path : ""} fill="currentColor" />
+      <path d={icon ? icon.path : path ? path : ""} fill="currentColor" />
     </StyledIcon>
   );
 };
@@ -48,16 +47,11 @@ Icon.propTypes = {
   ...MISC.propTypes,
   ...POSITION.propTypes,
   name: PropTypes.string,
-  path: PropTypes.string,
-  viewBox: PropTypes.string,
-  a11yHidden: PropTypes.bool,
-  a11yLabel: PropTypes.string
+  path: PropTypes.string
 };
 
 Icon.defaultProps = {
-  size: "1em",
-  a11yHidden: null,
-  a11yLabel: null
+  size: "1em"
 };
 
 export default Icon;

@@ -33,15 +33,13 @@ Alternatively, you can pass the `path` and `viewBox` props to render a custom ic
 </Playground>
 
 ### PropTypes
+Note that you can pass standard [svg attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg#Attributes) and [Aria attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg#Global_attributes)
 
 | Prop | Type | Required | Default | Description | Themeable |
 |:-----|:-----|:---------|:--------|:------------|:----------|
-| name | string | no | | Takes precedence over `path` and `viewbox` | yes via `icons` (note the pluralization) |
+| name | string | no | | Takes precedence over `path` and `viewbox` | yes, via `icons` (note the pluralization) |
 | path | string | no | | Sets the `d` value of the svg path | |
 | size | string | no | `1em` | Sets both `width` and `height` | |
-| viewBox | string | no | | | |
-| a11yHidden | bool | no | | | |
-| a11yLabel | string | no | | | |
 | `COMMON` | Style Prop |  |  | see [Style Props](/style-props) | |
 | `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) | |
 | `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) | |
