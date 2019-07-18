@@ -50,10 +50,30 @@ Note that you can pass standard [svg attributes](https://developer.mozilla.org/e
 
 ### Schema
 ```
-{
+icon: {
   styles: css`
     ...
   `
+}
+```
+
+### Overriding icons or adding new icons via the theme
+To add or update icons in the theme, utilize the `icons` object and not `icon`. `icon` without an `s` is meant for styling the `<Icon>` component while `icons` is meant for defining values used in the `name` prop of the `<Icon name="">`
+```
+icons: {
+  "specify the name of a new icon and provide appropriate key:values within the object"
+  newIconName: {
+    title
+    viewBox
+    path
+  },
+  
+  "or specify the name of a current icon name and override key:values as needed"
+  cloud: {
+    title
+    viewBox
+    path
+  }
 }
 ```
 
