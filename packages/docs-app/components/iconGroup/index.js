@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled, { withTheme } from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 import { Icon } from "@blasterjs/core";
 
 const Grid = styled.div`
@@ -39,7 +39,8 @@ const IconName = styled.input`
 `;
 
 const IconGroup = ({theme, ...props}) => {
-  const icons = Object.keys(theme.icons).map(k => (
+  const themeContext = useContext(ThemeContext);
+  const icons = Object.keys(themeContext.icons).map(k => (
     <GridItem key={k} onClick={e => e.currentTarget.getElementsByTagName('input')[0].select()}>
       <Icon name={k} size="4rem" />
       <IconName value={k} readOnly />
@@ -53,4 +54,4 @@ const IconGroup = ({theme, ...props}) => {
   );
 };
 
-export default withTheme(IconGroup);
+export default IconGroup;

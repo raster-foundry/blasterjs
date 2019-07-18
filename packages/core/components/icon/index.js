@@ -1,50 +1,57 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled, { withTheme } from "styled-components";
-import { size } from "styled-system";
-import Text from "../text";
+import styled, { ThemeContext } from "styled-components";
+import { themeGet } from "styled-system";
+import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
 
-/* helpful links
-  SVG optimization
-  - https://github.com/svg/svgo
-  SVG Transformation or inspection
-  - https://github.com/elrumordelaluz/svgson-next
-  - https://github.com/Angelmmiguel/svgi
-*/
-const StyledIcon = styled(Text)`
-  ${size}
+const StyledIcon = styled.svg`
   vertical-align: middle;
+  font-size: inherit;
+  line-height: inherit;
+
+  ${p =>
+    !p.size &&
+    css`
+      width: 1em;
+      height: 1em;
+    `}
+
+  ${themeGet("icon.styles")};
+  ${COMMON}
+  ${FLEX_ITEM}
+  ${LAYOUT}
+  ${MISC}
+  ${POSITION}
 `;
 
-const Icon = ({ children, ...props }) => {
-  const icon = props.theme.icons[props.name];
+const Icon = ({ path, viewBox, ...p }) => {
+  const themeContext = useContext(ThemeContext);
+  const icon = themeContext.icons[p.name];
   return (
     <StyledIcon
-      xmlns="http://www.w3.org/2000/svg"
+      role="img"
       fill="currentColor"
-      viewBox={icon ? icon.viewBox : "0 0 24 24"}
-      {...props}
+      viewBox={icon ? icon.viewBox : viewBox ? viewBox : "0 0 24 24"}
+      xmlns="http://www.w3.org/2000/svg"
+      {...p}
     >
-      <path d={icon ? icon.path : ""} fill="currentColor" />
+      <path d={icon ? icon.path : path ? path : ""} fill="currentColor" />
     </StyledIcon>
   );
 };
 
 Icon.propTypes = {
-  ...Text.propTypes,
-  ...size.propTypes,
-  name: PropTypes.string.isRequired
+  ...COMMON.propTypes,
+  ...FLEX_ITEM.propTypes,
+  ...LAYOUT.propTypes,
+  ...MISC.propTypes,
+  ...POSITION.propTypes,
+  name: PropTypes.string,
+  path: PropTypes.string
 };
 
 Icon.defaultProps = {
-  tag: "svg",
-  fontSize: "inherit",
-  lineHeight: "inherit",
-  size: "1em",
-  mt: "icon.mt",
-  mb: "icon.mb",
-  ml: "icon.mx",
-  mr: "icon.mx"
+  size: "1em"
 };
 
-export default withTheme(Icon);
+export default Icon;
