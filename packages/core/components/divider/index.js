@@ -2,53 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { themeGet } from "styled-system";
-import { Direction } from "../../common/direction";
-import Box from "../box";
+import { COMMON, LAYOUT, FLEX_ITEM } from "../../constants";
 
-const HDivider = styled(Box).attrs({
-  tag: "hr"
-})`
+const HDivider = styled.hr`
   border: 0;
 
-  background-color: ${props =>
-    props.color
-      ? themeGet(`colors.${props.color}`, props.color)
-      : themeGet("colors.divider.horizontal")};
+  background-color: ${themeGet("divider.colors.horizontal")};
+  width: ${themeGet("divider.widths.horizontal")};
+  height: ${themeGet("divider.heights.horizontal")};
 
-  width: ${props =>
-    props.width
-      ? themeGet(`widths.${props.color}`, props.width)
-      : themeGet("widths.divider.horizontal")};
+  ${themeGet("divider.styles.horizontal")};
 
-  height: ${props =>
-    props.height
-      ? themeGet(`heights.${props.color}`, props.height)
-      : themeGet("heights.divider.horizontal")};
-
-  ${themeGet("styles.divider.horizontal")};
+  ${COMMON}
+  ${LAYOUT}
+  ${FLEX_ITEM}
 `;
 
-const VDivider = styled(Box).attrs({
-  tag: "span"
-})`
+const VDivider = styled.span`
   display: inline-block;
   vertical-align: middle;
-  background-color: ${props =>
-    props.color
-      ? themeGet(`colors.${props.color}`, props.color)
-      : themeGet("colors.divider.vertical")};
-
-  width: ${props =>
-    props.width
-      ? themeGet(`widths.${props.color}`, props.width)
-      : themeGet("widths.divider.vertical")};
-
-  height: ${props =>
-    props.height
-      ? themeGet(`heights.${props.color}`, props.height)
-      : themeGet("heights.divider.vertical")};
-
-  ${themeGet("styles.divider.horizontal")};
 
   &:after {
     content: "\00a0";
@@ -56,27 +28,33 @@ const VDivider = styled(Box).attrs({
     pointer-events: none;
     user-select: none;
   }
+
+  background-color: ${themeGet("divider.colors.vertical")};
+  width: ${themeGet("divider.widths.vertical")};
+  height: ${themeGet("divider.heights.vertical")};
+
+  ${themeGet("divider.styles.vertical")};
+
+  ${COMMON}
+  ${LAYOUT}
+  ${FLEX_ITEM}
 `;
 
-const Divider = ({ children, ...props }) => {
-  return (
-    <>
-      {props.direction === Direction.HORIZONTAL && <HDivider {...props} />}
-      {props.direction === Direction.VERTICAL && <VDivider {...props} />}
-    </>
-  );
+const Divider = ({
+  children,
+  color,
+  bg, // ignored
+  ...props
+}) => {
+  const Component = props.vertical ? VDivider : HDivider;
+  return <Component bg={color} {...props} />;
 };
 
 Divider.propTypes = {
-  ...Box.propTypes,
-  direction: PropTypes.oneOf(Object.values(Direction)).isRequired,
-  color: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-};
-
-Divider.defaultProps = {
-  direction: "horizontal"
+  ...COMMON.propTypes,
+  ...LAYOUT.propTypes,
+  ...FLEX_ITEM.propTypes,
+  vertical: PropTypes.bool
 };
 
 export default Divider;

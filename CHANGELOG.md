@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Changed
+- Major Icon component overhaul
+- Updated Card to compositional theme system. Removed density prop.
+- Updated Text to compositional theme system.
+- Updated Heading to compositional theme system.
+- Updated A to compositional theme system. Added colorFocus and colorActive props.
+- Updated Divider to compositional theme system.
+- Updated Image to compositional theme system. Replaced shape prop with rounded and circle props.
+- Updated ProgressBar to compositional theme system.
+- Updated Swatch to compositional theme system. Replaced shape prop with rounded and circle props.
 
 ## [1.0.0-alpha.3] - 2019-07-02 [YANKED]
 
@@ -15,7 +25,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Major Button component overhaul
 - Major Badge component overhaul
-- Major Icon component overhaul
 
 ## [0.0.20] - 2019-05-01
 ### Changed
@@ -68,16 +77,3 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Fixed
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
-
-[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.3...HEAD
-[1.0.0-alpha.3]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.2...v1.0.0-alpha.3
-[1.0.0-alpha.2]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.1...v1.0.0-alpha.2
-[1.0.0-alpha.1]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.0...v1.0.0-alpha.1
-[1.0.0-alpha.0]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.20...v1.0.0-alpha.0
-[0.0.20]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.19...v0.0.20
-[0.0.19]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.18...v0.0.19
-[0.0.18]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.17...v0.0.18
-[0.0.17]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.16...v0.0.17
-[0.0.16]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.15...v0.0.16
-[0.0.15]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.14...v0.0.15
-[0.0.14]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.14-alpha.1...v0.0.14

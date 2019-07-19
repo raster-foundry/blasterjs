@@ -47,8 +47,7 @@ Use the `as` prop to change from the default `h1` element to `h2`, `h3`, `h4`, `
 | as | string | no | `h1` | `[h1, h2, h3, h4, h5, h6]` |
 | `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
 | `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
-| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
-| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
 
 
 ## Theming
@@ -57,13 +56,21 @@ Use the `as` prop to change from the default `h1` element to `h2`, `h3`, `h4`, `
 ```
 {
   space: {
-    m
+    mt
   },
   colors: {
     color
   },
   fonts: {
     fontFamily
+  },
+  fontSizes: {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
   },
   fontWeights: {
     fontWeight

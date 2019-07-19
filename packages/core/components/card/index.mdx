@@ -6,7 +6,6 @@ route: /components/card
 
 import { Playground, Props } from 'docz'
 import Card from './'
-import { Density } from "../../common/density";
 import { Heading, Text, Button } from "../../"
 
 # Card
@@ -16,32 +15,16 @@ import { Heading, Text, Button } from "../../"
 
 ## Basic Usage
 
-Composes a [`Box`](/typography/box) with preset styles.
-
 <Playground>
   <Card>
     Hello World
   </Card>
 </Playground>
 
-## Card density
-
-`Card` exposes the prop `density`, which applies a consistent padding.
-
-<Playground>
-  <Card density="comfortable">
-    Feels pretty comfortable in here
-  </Card>
-  <br />
-  <Card density="compact">
-    Feels a little compact in here
-  </Card>
-</Playground>
-
 ## Card with content
 
 <Playground>
-  <Card density="comfortable">
+  <Card>
     <Heading as="h4">Hello world</Heading>
     <Text as="p" mb="30px">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id magni repellendus illum quasi, officiis assumenda facere inventore accusamus maiores soluta, qui quibusdam et, dolorum tempora ab a unde porro eligendi!</Text>
     <Button appearance="prominent">Continue</Button>
@@ -53,8 +36,7 @@ Composes a [`Box`](/typography/box) with preset styles.
 
 <Playground>
   <Card
-    density="comfortable"
-    boxShadow="4"
+    boxShadow={4}
     bg="primaryTint"
     borderColor="primaryShade"
   >
@@ -72,13 +54,8 @@ Composes a [`Box`](/typography/box) with preset styles.
 ### PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/primitives/) |
-| density | enum | no |  | see [Density](/common/density) |
-| bg | string | no | `white` | |
-| border | string | no | `2px solid` | |
-| borderColor | string | no | `grayLight3` | |
-| borderRadius | string | no | `large` | |
-| boxShadow | number or string | no | `2` | |
+| `STYLED` | Style Prop |  |  | see [Style Props](/style-props) |
+
 
 ## Theming
 
@@ -86,10 +63,13 @@ Composes a [`Box`](/typography/box) with preset styles.
 ```
 {
   space: {
-    padding
+    pt,
+    pb,
+    pl,
+    pr
   },
   colors: {
-    background,
+    bg,
     borderColor
   },
   radii: {
