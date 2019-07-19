@@ -6,7 +6,6 @@ route: /components/divider
 
 import { Playground, Props } from 'docz'
 import Divider from './'
-import { Direction } from "../../common/direction";
 
 # Divider
 
@@ -15,7 +14,7 @@ import { Direction } from "../../common/direction";
 
 ## Basic Usage
 
-By default, the `Divider` component Composes [`Box`](/primitives/) with a default prop `tag=hr` which will render a horionzal rule.
+The `Divider` component renders an `hr` by default.
 
 <Playground>
   <Divider />
@@ -23,17 +22,13 @@ By default, the `Divider` component Composes [`Box`](/primitives/) with a defaul
 
 ## Vertical Divider
 
+Use the `vertical` prop to render a `span` as a vertical divider.
+
 <Playground>
   <span>Left text</span>
-  <Divider 
-    direction="vertical"
-    mx="10px"
-  />
+  <Divider vertical mx="10px" />
   <span>Middle text</span>
-  <Divider 
-    direction="vertical" 
-    mx="10px"
-  />
+  <Divider vertical mx="10px" />
   <span>Right text</span>
 </Playground>
 
@@ -41,10 +36,15 @@ By default, the `Divider` component Composes [`Box`](/primitives/) with a defaul
 
 <Playground>
   <Divider
-    color="primary"
+    color="secondary"
     width="80%"
     height="3px"
-    borderRadius="5px"
+  />
+  <Divider
+    vertical
+    height="60px"
+    width="12px"
+    color="red"
   />
 </Playground>
 
@@ -52,11 +52,11 @@ By default, the `Divider` component Composes [`Box`](/primitives/) with a defaul
 ## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/components/box) |
-| direction | enum | yes | `horizontal` | see [Direction](/common/direction) |
+| vertical | bool | no | `false` | |
 | color | string | no | | Theme color or valid css color value  |
-| width | string | no | | Theme width or valid css width value |
-| height | string | no | | Theme height or valid css height value |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
 
 ## Theming
 

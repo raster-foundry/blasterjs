@@ -3,7 +3,9 @@ import { css } from "styled-components";
 export const theme = {
   colors: {
     color: "link",
-    colorHover: "linkHover"
+    colorFocus: "link",
+    colorHover: "linkHover",
+    colorActive: "linkHover"
   },
   fontWeights: {
     fontWeight: "600"

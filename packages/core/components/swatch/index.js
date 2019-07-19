@@ -1,40 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { size } from "styled-system";
-import Badge from "../badge";
-import { Shape } from "../../common/shape";
+import styled, { css } from "styled-components";
+import { themeGet } from "styled-system";
 import { extractComponentFromChildren } from "../../utils";
+import { COMMON, BORDER, LAYOUT, FLEX_ITEM } from "../../constants";
 
-const StyledSwatch = styled(Badge)`
-  ${size}
+const StyledSwatch = styled.span`
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  ${props => {
+    if (props.circle) {
+      return css`
+        border-radius: 50%;
+      `;
+    }
+
+    if (props.rounded) {
+      return css`
+        border-radius: ${themeGet("swatch.radii.rounded")};
+      `;
+    }
+  }}
+
+  width: ${themeGet("swatch.widths.width")};
+  height: ${themeGet("swatch.heights.height")};
+  padding: ${themeGet("swatch.space.p")};
+
+  ${themeGet("swatch.styles")}
+  ${COMMON}
+  ${BORDER}
+  ${LAYOUT}
+  ${FLEX_ITEM}
 `;
 
-const getBorderRadius = (borderRadius, shape) => {
-  if (borderRadius) {
-    return borderRadius;
-  }
-
-  switch (shape) {
-    case Shape.CIRCLE:
-      return 999;
-    case Shape.SQUARE:
-      return 0;
-    case Shape.ROUNDED:
-    default:
-      return "small";
-  }
-};
-
-const Swatch = ({borderRadius, shape, color, children: _children, ...props}) => {
-  const radius = getBorderRadius(borderRadius, shape);
+const Swatch = ({ color, children: _children, ...props }) => {
   const [children, tooltip] = extractComponentFromChildren(_children, 'Tooltip');
 
   return (
     <StyledSwatch
       {...props}
       bg={color}
-      borderRadius={radius}
     >
       {tooltip}
     </StyledSwatch>
@@ -42,23 +49,13 @@ const Swatch = ({borderRadius, shape, color, children: _children, ...props}) => 
 };
 
 Swatch.propTypes = {
-  ...Badge.propTypes,
-  ...size.propTypes,
-  color: PropTypes.string.isRequired,
-  shape: PropTypes.oneOf(Object.values(Shape))
-};
-
-Swatch.defaultProps = {
-  ...Badge.defaultProps,
-  ...size.defaultProps,
-  shape: Shape.ROUNDED,
-  borderRadius: undefined,
-  pt: "swatch.p",
-  pb: "swatch.p",
-  pl: "swatch.p",
-  pr: "swatch.p",
-  width: "1em",
-  height: "1em"
+  ...COMMON.propTypes,
+  ...BORDER.propTypes,
+  ...LAYOUT.propTypes,
+  ...FLEX_ITEM.propTypes,
+  circle: PropTypes.bool,
+  rounded: PropTypes.bool,
+  color: PropTypes.string.isRequired
 };
 
 export default Swatch;

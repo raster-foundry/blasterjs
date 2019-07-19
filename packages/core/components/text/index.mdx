@@ -14,38 +14,40 @@ import Text from './'
 
 ## Basic Usage
 
-Composes [`Box`](/primitives/) and exposes text based prop functionality: `color`, `fontFamily`, `fontSize`, `fontWeight`, `textAlign`, `lineHeight`, `letterSpacing`.
+Exposes text based props: `color`, `fontFamily`, `fontSize`, `fontWeight`,
+`fontStyle`, `textAlign`, `lineHeight`, `letterSpacing`, `textDecoration`,
+`textOverflow`, `textShadow`, `textTransform`.
 
 The `<Text>` component renders a `<span>` with basic styles by default.
 
 <Playground>
   <Text>Hello world</Text>
   <br />
-  <Text tag="p">This is a paragraph</Text>
+  <Text as="p">This is a paragraph</Text>
 </Playground>
 
 ## Semantic text tag elements
 
 <Playground>
-  <Text tag="strong">Strong</Text>
+  <Text as="strong">Strong</Text>
   <br />
-  <Text tag="b">Bold</Text>
+  <Text as="b">Bold</Text>
   <br />
-  <Text tag="i">Italic</Text>
+  <Text as="i">Italic</Text>
   <br />
-  <Text tag="u">Underline</Text>
+  <Text as="u">Underline</Text>
   <br />
-  <Text tag="abbr">I18N</Text>
+  <Text as="abbr">I18N</Text>
   <br />
-  <Text tag="del">Deleted</Text>
+  <Text as="del">Deleted</Text>
   <br />
-  <Text tag="em">Emphasis</Text>
+  <Text as="em">Emphasis</Text>
   <br />
-  <Text tag="s">Strikethrough</Text>
+  <Text as="s">Strikethrough</Text>
   <br />
-  <Text tag="code">Code</Text>
+  <Text as="code">Code</Text>
   <br />
-  <Text tag="pre">Pre</Text>
+  <Text as="pre">Pre</Text>
 </Playground>
 
 ## Prop styling
@@ -55,21 +57,16 @@ The `<Text>` component renders a `<span>` with basic styles by default.
   <br />
   <Text color="primary">Primary color</Text>
   <br />
-  <Text textAlign="center" fontSize="12px" tag="p">Small and centered</Text>
+  <Text textAlign="center" fontSize="12px" as="p">Small and centered</Text>
 </Playground>
 
 ## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/primitives/) |
-| ${fontFamily} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${fontSize} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${fontWeight} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${textAlign} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${lineHeight} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${letterSpacing} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${color} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
 
 
 ## Theming
@@ -82,6 +79,9 @@ The `<Text>` component renders a `<span>` with basic styles by default.
   },
   fontSizes: {
     fontSize
+  },
+  lineHeights: {
+    lineHeight
   },
   styles: css`
     ...

@@ -5,7 +5,6 @@ route: /components/progressBar
 ---
 
 import { Playground, Props } from 'docz';
-import { ThemeProvider } from "styled-components";
 import ProgressBar from "./";
 import { Callout } from '../../index.components'
 
@@ -26,14 +25,13 @@ Displays a fractional amount of progress towards some end.
 Use the `striped` and `animated` prop to change the default appearance and show motion.
 
 <Playground>
-  <ProgressBar 
-    value={25} 
-    max={100} 
-    striped 
-    animated 
+  <ProgressBar
+    value={25}
+    max={100}
+    striped
+    animated
   />
 </Playground>
-
 
 <Callout icon="info">
     Animated has no visual effect unless striped is present
@@ -42,10 +40,10 @@ Use the `striped` and `animated` prop to change the default appearance and show 
 ## Styling
 
 <Playground>
-  <ProgressBar 
-    value={25} 
-    max={100} 
-    striped 
+  <ProgressBar
+    value={25}
+    max={100}
+    striped
     animated
     color="greenShade"
     bg="greenTint"
@@ -56,16 +54,16 @@ Use the `striped` and `animated` prop to change the default appearance and show 
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/components/box) |
 | value | number | no | `0` | current progress value |
-| max | number | no | `1` | max progress value |
+| max | number | no | `0` | max progress value |
 | color | string | no | `primary`  | fill color |
-| bg | string | no | `grayLightest` | track color |
-| borderRadius | string or number | no | `999` | |
-| width | string | no | `100%` | |
-| height | string | no | `0.8rem` | |
+| bg | string | no | `gray200` | track color |
 | striped | boolean | no | false | |
-| animated | boolean | no | false | animates the striped variant |
+| animated | boolean | no | false | animates when striped |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
 
 ## Theming
 

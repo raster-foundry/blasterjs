@@ -25,11 +25,12 @@ Accepts standard html `<a>` attributes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
 | href | bool | no |  |  |
+| colorFocus | string | no | `color.link` | |
 | colorHover | string | no | `color.linkHover` | |
+| colorActive | string | no | `color.linkHover` | |
 | `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
 | `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
-| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
-| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
 
 
 ## Theming
@@ -39,7 +40,9 @@ Accepts standard html `<a>` attributes
 {
   colors: {
     color,
-    colorHover
+    colorFocus,
+    colorHover,
+    colorActive
   }
   fontWeights: {
     fontWeight

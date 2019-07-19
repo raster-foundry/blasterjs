@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { darken } from "polished";
 import styled, { css, keyframes } from "styled-components";
-import { color, borderRadius, themeGet } from "styled-system";
-import Box from "../box";
+import { themeGet } from "styled-system";
+import { COMMON, BORDER, LAYOUT, FLEX_ITEM } from "../../constants";
 
 const animateProgress = keyframes`
   to {
@@ -11,13 +11,10 @@ const animateProgress = keyframes`
   }
 `;
 
-const ProgressBar = styled(Box)`
-  ${color}
-  ${borderRadius}
+const ProgressBar = styled.div`
   position: relative;
+  width: 100%;
   overflow: hidden;
-
-  ${themeGet("styles.progressBar.backBar")};
 
   &::after {
     content: " ";
@@ -36,19 +33,21 @@ const ProgressBar = styled(Box)`
       `}
 
     ${props => {
-      const valColor = themeGet(`colors.${props.color}`, props.color)(props);
+      const valColor = props.color
+        ? themeGet(`colors.${props.color}`, props.color)(props)
+        : themeGet("progressBar.colors.color")(props);
 
       return css`
         background: ${props =>
           !props.striped
             ? valColor
-            : `linear-gradient( 45deg, 
-                  ${valColor} 25%, 
-                  ${darken(0.05, valColor)} 25%, 
-                  ${darken(0.05, valColor)} 50%, 
-                  ${valColor} 50%, 
-                  ${valColor} 75%, 
-                  ${darken(0.05, valColor)} 75%, 
+            : `linear-gradient( 45deg,
+                  ${valColor} 25%,
+                  ${darken(0.05, valColor)} 25%,
+                  ${darken(0.05, valColor)} 50%,
+                  ${valColor} 50%,
+                  ${valColor} 75%,
+                  ${darken(0.05, valColor)} 75%,
                   ${darken(0.05, valColor)} 100%)
               `};
         background-size: 30px 30px;
@@ -56,26 +55,33 @@ const ProgressBar = styled(Box)`
       `;
     }}
 
-    ${themeGet("styles.progressBar.topBar")};
+    ${themeGet("progressBar.styles.topBar")};
   }
+
+  height: ${themeGet("progressBar.heights.height")};
+  border-radius: ${themeGet("progressBar.radii.borderRadius")};
+  background-color: ${themeGet("progressBar.colors.bg")};
+  color: ${themeGet("progressBar.colors.color")};
+
+  ${themeGet("progressBar.styles.backBar")};
+  ${COMMON}
+  ${BORDER}
+  ${LAYOUT}
+  ${FLEX_ITEM}
 `;
 
 ProgressBar.propTypes = {
-  ...Box.propTypes,
-  ...color.propTypes,
-  ...borderRadius.propTypes,
+  ...COMMON.propTypes,
+  ...BORDER.propTypes,
+  ...LAYOUT.propTypes,
+  ...FLEX_ITEM.propTypes,
   striped: PropTypes.bool,
   animated: PropTypes.bool
 };
 
 ProgressBar.defaultProps = {
-  width: "100%",
-  height: "progressBar.height",
   value: 0,
-  max: 0,
-  borderRadius: "progressBar.borderRadius",
-  bg: "progressBar.bg",
-  color: "progressBar.color"
+  max: 0
 };
 
 export default ProgressBar;

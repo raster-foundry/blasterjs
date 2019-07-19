@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Major Button component overhaul
 - Major Badge component overhaul
 - Major Icon component overhaul
+- Updated Card to compositional theme system. Removed density prop.
+- Updated Text to compositional theme system.
+- Updated Heading to compositional theme system.
+- Updated A to compositional theme system. Added colorFocus and colorActive props.
+- Updated Divider to compositional theme system.
+- Updated Image to compositional theme system. Replaced shape prop with rounded and circle props.
+- Updated ProgressBar to compositional theme system.
+- Updated Swatch to compositional theme system. Replaced shape prop with rounded and circle props.
 
 ## [0.0.20] - 2019-05-01
 ### Changed
@@ -61,7 +69,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
 
-[Unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.20...HEAD
+[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.20...HEAD
 [0.0.20]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.19...v0.0.20
 [0.0.19]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.18...v0.0.19
 [0.0.18]: https://github.com/:raster-foundry/blasterjs/compare/v0.0.17...v0.0.18

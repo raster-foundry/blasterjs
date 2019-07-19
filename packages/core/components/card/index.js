@@ -1,49 +1,26 @@
 import React from "react";
-import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import { color, borders, boxShadow, themeGet } from "styled-system";
-import { Density } from "../../common/density";
-import Box from "../box";
+import styled from "styled-components";
+import { themeGet } from "styled-system";
+import { STYLED } from "../../constants";
 
-const Card = styled(Box)`
-  ${color}
-  ${borders}
-  ${boxShadow}
+const Card = styled.div`
   position: relative;
+  padding-top: ${themeGet("card.space.pt")};
+  padding-right: ${themeGet("card.space.pr")};
+  padding-left: ${themeGet("card.space.pl")};
+  padding-bottom: ${themeGet("card.space.pb")};
+  background-color: ${themeGet("card.colors.bg")};
+  border: ${themeGet("card.borders.border")};
+  border-color: ${themeGet("card.colors.borderColor")};
+  border-radius: ${themeGet("card.radii.borderRadius")};
+  box-shadow: ${themeGet("card.shadows.boxShadow")};
 
-  ${props =>
-    props.density === Density.COMFORTABLE &&
-    css`
-      padding: ${props => themeGet("space.3", "2.4rem")};
-    `};
-
-  ${props =>
-    props.density === Density.COMPACT &&
-    css`
-      padding: ${props => themeGet("space.1", "0.8rem")};
-    `};
-  
-    ${themeGet("styles.card")}
+  ${themeGet("card.styles")}
+  ${STYLED}
 `;
 
 Card.propTypes = {
-  ...Box.propTypes,
-  ...color.propTypes,
-  ...borders.propTypes,
-  ...boxShadow.propTypes,
-  density: PropTypes.oneOf(Object.values(Density))
-};
-
-Card.defaultProps = {
-  pt: "card.pTop",
-  pb: "card.pBottom",
-  pl: "card.pLeft",
-  pr: "card.pRight",
-  bg: "card.background",
-  border: "card.border",
-  borderColor: "card.borderColor",
-  borderRadius: "card.borderRadius",
-  boxShadow: "card.boxShadow"
+  ...STYLED.propTypes
 };
 
 export default Card;
