@@ -4,7 +4,13 @@ import styled from "styled-components";
 import { themeGet } from "styled-system";
 import Image from "../image";
 import { extractComponentFromChildren } from "../../utils";
-import { COMMON, LAYOUT, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
+import {
+  COMMON,
+  LAYOUT,
+  TYPOGRAPHY,
+  FLEX_ITEM,
+  POSITION
+} from "../../constants";
 
 const StyledBrand = styled.a`
   display: inline-block;
@@ -34,6 +40,7 @@ const StyledBrand = styled.a`
   ${themeGet("brand.styles")}
   ${COMMON}
   ${LAYOUT}
+  ${POSITION}
   ${TYPOGRAPHY}
   ${FLEX_ITEM}
 `;
@@ -47,15 +54,18 @@ const Brand = ({
   children: _children,
   ...props
 }) => {
-
-  const [children, tooltip] = extractComponentFromChildren(_children, "Tooltip");
+  const [children, tooltip] = extractComponentFromChildren(
+    _children,
+    "Tooltip"
+  );
 
   return (
     <StyledBrand href={href} width={width} height={height} {...props}>
-      {imagesrc
-        ? <Image src={imagesrc} alt={title} width={width} height={height} />
-        : title
-      }
+      {imagesrc ? (
+        <Image src={imagesrc} alt={title} width={width} height={height} />
+      ) : (
+        title
+      )}
       {tooltip}
     </StyledBrand>
   );
@@ -65,6 +75,7 @@ Brand.propTypes = {
   ...COMMON.propTypes,
   ...LAYOUT.propTypes,
   ...TYPOGRAPHY.propTypes,
+  ...POSITION.propTypes,
   ...FLEX_ITEM.propTypes,
   imagesrc: PropTypes.string,
   href: PropTypes.string.isRequired,

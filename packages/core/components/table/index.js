@@ -5,6 +5,7 @@ import { borders, themeGet } from "styled-system";
 import { rgba } from "polished";
 import { COMMON, BORDER, LAYOUT, TYPOGRAPHY } from "../../constants";
 
+// prettier-ignore
 const Table = styled.table`
   th {
     font-weight: bold;

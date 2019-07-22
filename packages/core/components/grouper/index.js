@@ -10,11 +10,12 @@ const OuterGrouper = styled.div`
   ${LAYOUT}
 `;
 
+// prettier-ignore
 const InnerGrouper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  flex-direction: ${props => props.vertical ? "column" : "row"};
-  align-items: ${props => props.stretch ? "stretch" : "center"};
+  flex-direction: ${props => (props.vertical ? "column" : "row")};
+  align-items: ${props => (props.stretch ? "stretch" : "initial")};
   width: 100%;
   height: 100%;
 
@@ -37,7 +38,7 @@ const InnerGrouper = styled.div`
   }
 `;
 
-const Grouper = ({vertical, stretch, gutter, children, ...props}) => {
+const Grouper = ({ vertical, stretch, gutter, children, ...props }) => {
   return (
     <OuterGrouper {...props}>
       <InnerGrouper vertical={vertical} stretch={stretch} gutter={gutter}>
