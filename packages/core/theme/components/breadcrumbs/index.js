@@ -1,14 +1,20 @@
+import { css } from "styled-components";
+
 export const theme = {
   space: {
-    p: 1
+    p: 1,
+    gutter: 1
   },
   colors: {
-    color: "gray500",
+    color: "gray600",
+    colorFocus: "secondary",
     colorHover: "primary",
-    colorSeparator: "gray200",
-    colorHighlight: "gray800"
+    colorActive: "secondary",
+    colorSeparator: "gray300",
+    colorHighlight: "gray900"
   },
   fontSizes: {
     fontSize: 2
-  }
+  },
+  styles: css``
 };

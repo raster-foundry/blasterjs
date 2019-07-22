@@ -1,5 +1,8 @@
+import { css } from "styled-components";
+
 export const theme = {
-  radii: {
-    borderRadius: "base"
-  }
+  space: {
+    gutter: 1
+  },
+  styles: css``
 };

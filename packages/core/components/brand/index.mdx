@@ -9,6 +9,9 @@ import Brand from './'
 
 # Brand
 
+## Import
+`import { Brand } from '@blasterjs/core'`
+
 ### Brand title
 <Playground>
   <Brand
@@ -32,12 +35,47 @@ import Brand from './'
   />
 </Playground>
 
-### PropTypes
+## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| A props | | | | see [A](/components/a) |
 | href |  string | yes | | |
 | title |  string | yes | | |
 | imagesrc |  string | no | | |
-| color |  string | no | `textBase` | |
-| width |  string | no | | applies to image only |
+| color |  string | no | `link` | |
+| colorFocus |  string | no | | |
+| colorHover |  string | no | | |
+| colorActive |  string | no | | |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `POSITION` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+
+## Theming
+
+### Schema
+```
+{
+  colors: {
+    color,
+    colorFocus,
+    colorHover,
+    colorActive
+  },
+  fonts: {
+    font
+  },
+  fontSizes: {
+    fontSize
+  },
+  fontWeights: {
+    fontWeight
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/brand)
+- [Learn more about themeing](#)
