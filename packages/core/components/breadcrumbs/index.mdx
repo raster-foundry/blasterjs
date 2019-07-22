@@ -13,6 +13,13 @@ Displays a clickable path through the app hierarchy to the current screen.
 
 Future versions should integrate with React Router.
 
+
+## Import
+`import { Breadcrumbs } from '@blasterjs/core'`
+
+
+## Basic usage
+
 <Playground>
   <Breadcrumbs
     highlightCurrent
@@ -33,15 +40,52 @@ Future versions should integrate with React Router.
 </Playground>
 
 
+## PropTypes
+
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/typography/text) |
 | path | array | yes | | `{name, url}` objects representing path nodes |
-| fontSize | string or number | no | `2` | |
+| gutter | string or number | no | `space.1` | space between breadcrumb items |
 | highlightCurrent | bool | no | `false` | highlight last node in path |
-| color | string | no | `gray3` | |
+| color | string | no | `gray600` | |
+| colorFocus | string | no | `secondary` | |
 | colorHover | string | no | `primary` | |
-| colorSeparator | string | no | `grayLight1` | |
-| colorHighlight | string | no | `grayDark1` | |
+| colorActive | string | no | `secondary` | |
+| colorSeparator | string | no | `gray300` | |
+| colorHighlight | string | no | `gray900` | |
 | separatorIcon | string | no | `caretRight` | name of known `Icon` |
 | separator | string | no | | overrides `separatorIcon` |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  space: {
+    p,
+    gutter
+  },
+  colors: {
+    color,
+    colorFocus,
+    colorHover,
+    colorActive,
+    colorSeparator,
+    colorHighlight
+  },
+  fontSizes: {
+    fontSize
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/breadcrumbs)
+- [Learn more about themeing](#)

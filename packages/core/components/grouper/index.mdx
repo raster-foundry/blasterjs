@@ -7,25 +7,20 @@ route: /components/grouper
 import { Playground, Props } from 'docz'
 import Grouper from './'
 import Button from '../button'
-import { Direction } from "../../common/direction";
-import { Density } from "../../common/density";
-
+import Badge from '../badge'
 
 # Grouper
 
-## Horizontal (default)
+Renders a horizontal or vertical group of items.
 
-`COMPACT` density (default) forces intermediate `borderRadius` to `0`,
-while `COMFORTABLE` density does not.
+
+## Import
+`import { Grouper } from '@blasterjs/core'`
+
+## Basic usage
 
 <Playground>
-  <Grouper mb={4}>
-    <Button>Hello</Button>
-    <Button>Crazy</Button>
-    <Button>World</Button>
-  </Grouper>
-
-  <Grouper density={Density.COMFORTABLE}>
+  <Grouper>
     <Button>Hello</Button>
     <Button>Crazy</Button>
     <Button>World</Button>
@@ -36,13 +31,7 @@ while `COMFORTABLE` density does not.
 ## Vertical
 
 <Playground>
-  <Grouper direction={Direction.VERTICAL} mb={6}>
-    <Button>Hello</Button>
-    <Button>Crazy</Button>
-    <Button>World</Button>
-  </Grouper>
-
-  <Grouper direction={Direction.VERTICAL} density={Density.COMFORTABLE}>
+  <Grouper vertical>
     <Button>Hello</Button>
     <Button>Crazy</Button>
     <Button>World</Button>
@@ -53,13 +42,45 @@ while `COMFORTABLE` density does not.
 ## Gutter
 
 <Playground>
-  <Grouper gutter={2} mb={8}>
+  <Grouper gutter={6} mb={8}>
     <Button>Hello</Button>
     <Button>Crazy</Button>
     <Button>World</Button>
   </Grouper>
 
-  <Grouper gutter={3} direction={Direction.VERTICAL} density={Density.COMFORTABLE}>
+  <Grouper gutter={3} vertical>
+    <Badge>Hello</Badge>
+    <Badge>Crazy</Badge>
+    <Badge>World</Badge>
+  </Grouper>
+</Playground>
+
+
+## Wrap
+
+<Playground>
+  <Grouper>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
     <Button>Hello</Button>
     <Button>Crazy</Button>
     <Button>World</Button>
@@ -67,24 +88,10 @@ while `COMFORTABLE` density does not.
 </Playground>
 
 
-## Radius override
-
-`borderRadius` prop affects outer corners of first & last children only.
-Ignored if `COMFORTABLE`.
+## Align
 
 <Playground>
-  <Grouper borderRadius="large">
-    <Button>Hello</Button>
-    <Button>Crazy</Button>
-    <Button>World</Button>
-  </Grouper>
-</Playground>
-
-
-## Form
-
-<Playground>
-  <Grouper gutter={0} borderRadius="large">
+  <Grouper gutter={0} align="stretch">
     <input type="text" />
     <Button>Go</Button>
   </Grouper>
@@ -92,12 +99,30 @@ Ignored if `COMFORTABLE`.
 
 
 
-### PropTypes
+## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
 | Box props | | | | see [Box](/components/box) |
-| flexDirection | string | no | `row` | |
-| direction | enum | no | | overrides `flexDirection`. see [Direction](/common/direction) |
-| density | enum | no | `Density.COMPACT` | if COMPACT, interior borderRadii forced to 0. see [Density](/common/density) |
-| gutter | string or number | no | `2px` if `COMPACT`. `space.1` if `COMFORTABLE` | gap between children |
-| borderRadius | string | no | `base` | outer corners of first & last children. ignored if `COMPACT`. |
+| vertical | bool | no | false | |
+| align | string | no | "center" | passed to `align-items` CSS property |
+| gutter | string or number | no | `space.2` | gap between children |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  space: {
+    gutter
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/grouper)
+- [Learn more about themeing](#)

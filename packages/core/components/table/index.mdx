@@ -6,7 +6,6 @@ route: /components/table
 
 import { Playground, Props } from 'docz'
 import Table from './'
-import { Density } from '../../common/density'
 
 # Table
 
@@ -52,7 +51,7 @@ styling (beyond setting `<th>` to bold).
 ## Various props
 
 <Playground>
-    <Table density={Density.COMPACT} striped hoverable borderInside>
+    <Table compact striped hoverable borderInside>
         <thead>
             <tr>
                 <th>City</th>
@@ -84,23 +83,52 @@ styling (beyond setting `<th>` to bold).
     </Table>
 </Playground>
 
-### PropTypes
+## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/components/box) |
-| ${borders} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| compact | bool | no | false | uses less padding |
 | borderHeader | bool | no | `true` | render a border beneath the table header |
 | bordered | bool | no | `false` | equivalent to `borderOutside && borderInside`|
 | borderInside | bool | no | `false` | equivalent to `borderRows && borderColumns` |
 | borderRows | bool | no | `false` | render a border between each row |
 | borderColumns | bool | no | `false` | render a border between each column |
 | borderOutside | bool | no | `false` | render a border around the table |
-| borderColor | string | no | `grayLight1` | theme color or valid css color value  |
+| borderColor | string | no | `gray200` | theme color or valid css color value  |
 | borderWidth | number | no | `1` | border width in px |
 | striped | bool | no | `false` | zebra stripes |
-| stripeColor | string | no | `grayLight1` | zebra stripe bg color. theme color or valid css color value |
+| stripeColor | string | no | `gray200` | zebra stripe bg color. theme color or valid css color value |
 | hoverable | bool | no | `false` | highlight a row when hovered |
 | hoverColor | string | no | `primary` | hovered row bg color. theme color or valid css color value |
 | hoverCursor | string | no | `default` | css `cursor` value for hovered row |
-| density | enum | no | `COMFORTABLE` | see [Density](/common/density) |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  space: {
+    comfortable,
+    compact
+  },
+  colors: {
+    borderColor,
+    stripeColor,
+    hoverColor
+  },
+  borderWidths: {
+    borderWidth
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/table)
+- [Learn more about themeing](#)
