@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { borders, themeGet } from "styled-system";
+import { themeGet } from "styled-system";
 import { rgba } from "polished";
 import { COMMON, BORDER, LAYOUT, TYPOGRAPHY } from "../../constants";
 
