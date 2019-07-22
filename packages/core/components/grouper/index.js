@@ -15,7 +15,7 @@ const InnerGrouper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: ${props => (props.vertical ? "column" : "row")};
-  align-items: ${props => (props.stretch ? "stretch" : "initial")};
+  align-items: ${props => props.align};
   width: 100%;
   height: 100%;
 
@@ -38,10 +38,10 @@ const InnerGrouper = styled.div`
   }
 `;
 
-const Grouper = ({ vertical, stretch, gutter, children, ...props }) => {
+const Grouper = ({ vertical, align, gutter, children, ...props }) => {
   return (
     <OuterGrouper {...props}>
-      <InnerGrouper vertical={vertical} stretch={stretch} gutter={gutter}>
+      <InnerGrouper vertical={vertical} align={align} gutter={gutter}>
         {children}
       </InnerGrouper>
     </OuterGrouper>
@@ -52,8 +52,12 @@ Grouper.propTypes = {
   ...COMMON.propTypes,
   ...LAYOUT.propTypes,
   vertical: PropTypes.bool,
-  stretch: PropTypes.bool,
+  align: PropTypes.string,
   gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
+
+Grouper.defaultProps = {
+  align: "center"
+}
 
 export default Grouper;

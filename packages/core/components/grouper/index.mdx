@@ -88,10 +88,10 @@ Renders a horizontal or vertical group of items.
 </Playground>
 
 
-## Stretch
+## Align
 
 <Playground>
-  <Grouper gutter={0} stretch>
+  <Grouper gutter={0} align="stretch">
     <input type="text" />
     <Button>Go</Button>
   </Grouper>
@@ -104,7 +104,7 @@ Renders a horizontal or vertical group of items.
 |:-----|:-----|:---------|:--------|:------------|
 | Box props | | | | see [Box](/components/box) |
 | vertical | bool | no | false | |
-| stretch | bool | no | false | stretch children across minor axis |
+| align | string | no | "center" | passed to `align-items` CSS property |
 | gutter | string or number | no | `space.2` | gap between children |
 | `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
 | `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
