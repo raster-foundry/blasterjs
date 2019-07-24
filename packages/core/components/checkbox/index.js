@@ -127,18 +127,21 @@ const Checkbox = ({
         name={checkedIcon}
         color={checkedColor}
         size={size}
+        aria-hidden="true"
       />
       <Icon
         className="toggle toggle--unchecked"
         name={uncheckedIcon}
         color={uncheckedColor}
         size={size}
+        aria-hidden="true"
       />
       <Icon
         className="toggle toggle--indeterminate"
         name={indeterminateIcon}
         color={indeterminateColor}
         size={size}
+        aria-hidden="true"
       />
     </StyledCheckbox>
   );

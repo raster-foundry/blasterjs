@@ -127,7 +127,9 @@ const Select = ({
       >
         {children}
       </SelectSelect>
-      {!multiple && <Icon name={icon} color={iconColor} className="menu-icon" />}
+      {!multiple &&
+        <Icon name={icon} color={iconColor} className="menu-icon" aria-hidden="true" />
+      }
     </StyledSelect>
   );
 };

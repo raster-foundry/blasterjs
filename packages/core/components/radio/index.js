@@ -108,12 +108,14 @@ const Radio = ({
         name={checkedIcon}
         color={checkedColor}
         size={size}
+        aria-hidden="true"
       />
       <Icon
         className="toggle toggle--unchecked"
         name={uncheckedIcon}
         color={uncheckedColor}
         size={size}
+        aria-hidden="true"
       />
     </StyledRadio>
   );
