@@ -1,15 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  getContrast,
-  tint,
-  shade,
-  mix,
-  getLuminance,
-  setLightness,
-  parseToHsl,
-  darken
-} from "polished";
+import { getContrast, tint, mix, darken } from "polished";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import {
@@ -19,7 +10,8 @@ import {
   LAYOUT,
   BORDER,
   BACKGROUND,
-  POSITION
+  POSITION,
+  FLEX_ITEM
 } from "../../constants";
 
 const Badge = styled.span`
@@ -39,6 +31,7 @@ const Badge = styled.span`
   ${COMMON}
   ${BACKGROUND}
   ${BORDER}
+  ${FLEX_ITEM}
   ${MISC}
   ${LAYOUT}
   ${POSITION}
@@ -127,6 +120,7 @@ Badge.propTypes = {
   ...COMMON.propsTypes,
   ...BACKGROUND.propsTypes,
   ...BORDER.propsTypes,
+  ...FLEX_ITEM.propsTypes,
   ...MISC.propsTypes,
   ...LAYOUT.propsTypes,
   ...POSITION.propsTypes,
