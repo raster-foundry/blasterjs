@@ -9,7 +9,7 @@ const ColorInput = styled.input`
 
   padding: ${themeGet("colorInput.space.p")};
   border: ${themeGet("colorInput.borders.border")};
-  borderRadius: ${themeGet("colorInput.radii.borderRadius")};
+  border-radius: ${themeGet("colorInput.radii.borderRadius")};
 
   ${themeGet("colorInput.styles")}
   ${COMMON}

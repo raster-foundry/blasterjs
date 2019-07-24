@@ -27,21 +27,21 @@ const StyledCheckbox = styled.span`
 
   .toggle--indeterminate {
     ${props => props.indeterminateColor
-      ? css`color: ${themeGet("props.indeterminateColor", props.indeterminateColor)};`
+      ? css`color: ${themeGet(`colors.${props.indeterminateColor}`, props.indeterminateColor)};`
       : css`color: ${themeGet("checkbox.colors.indeterminateColor")};`
     }
   }
 
   .toggle--checked {
     ${props => props.checkedColor
-      ? css`color: ${themeGet("props.checkedColor", props.checkedColor)};`
+      ? css`color: ${themeGet(`colors.${props.checkedColor}`, props.checkedColor)};`
       : css`color: ${themeGet("checkbox.colors.checkedColor")};`
     }
   }
 
   .toggle--unchecked {
     ${props => props.uncheckedColor
-      ? css`color: ${themeGet("props.uncheckedColor", props.uncheckedColor)};`
+      ? css`color: ${themeGet(`colors.${props.uncheckedColor}`, props.uncheckedColor)};`
       : css`color: ${themeGet("checkbox.colors.uncheckedColor")};`
     }
   }
@@ -97,9 +97,6 @@ const Checkbox = ({
   checkedIcon,
   uncheckedIcon,
   indeterminateIcon,
-  checkedColor,
-  uncheckedColor,
-  indeterminateColor,
   ...props
 }) => {
   return (
@@ -125,21 +122,18 @@ const Checkbox = ({
       <Icon
         className="toggle toggle--checked"
         name={checkedIcon}
-        color={checkedColor}
         size={size}
         aria-hidden="true"
       />
       <Icon
         className="toggle toggle--unchecked"
         name={uncheckedIcon}
-        color={uncheckedColor}
         size={size}
         aria-hidden="true"
       />
       <Icon
         className="toggle toggle--indeterminate"
         name={indeterminateIcon}
-        color={indeterminateColor}
         size={size}
         aria-hidden="true"
       />

@@ -8,7 +8,8 @@ const FileInput = styled.input`
 
   padding: ${themeGet("fileInput.space.p")};
   border: ${themeGet("fileInput.borders.border")};
-  borderRadius: ${themeGet("fileInput.radii.borderRadius")};
+  border-radius: ${themeGet("fileInput.radii.borderRadius")};
+  background-color: ${themeGet("fileInput.colors.bg")};
 
   ${themeGet("fileInput.styles")}
   ${COMMON}

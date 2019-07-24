@@ -20,6 +20,9 @@ const StyledRadio = styled.span`
   `}
 
   .toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     pointer-events: none;
     vertical-align: initial;
@@ -27,14 +30,14 @@ const StyledRadio = styled.span`
 
   .toggle--checked {
     ${props => props.checkedColor
-      ? css`color: ${themeGet("props.checkedColor", props.checkedColor)};`
+      ? css`color: ${themeGet(`colors.${props.checkedColor}`, props.checkedColor)};`
       : css`color: ${themeGet("radio.colors.checkedColor")};`
     }
   }
 
   .toggle--unchecked {
     ${props => props.uncheckedColor
-      ? css`color: ${themeGet("props.uncheckedColor", props.uncheckedColor)};`
+      ? css`color: ${themeGet(`colors.${props.uncheckedColor}`, props.uncheckedColor)};`
       : css`color: ${themeGet("radio.colors.uncheckedColor")};`
     }
   }
@@ -80,8 +83,6 @@ const Radio = ({
   invalid,
   checkedIcon,
   uncheckedIcon,
-  checkedColor,
-  uncheckedColor,
   ...props
 }) => {
   return (
@@ -106,14 +107,12 @@ const Radio = ({
       <Icon
         className="toggle toggle--checked"
         name={checkedIcon}
-        color={checkedColor}
         size={size}
         aria-hidden="true"
       />
       <Icon
         className="toggle toggle--unchecked"
         name={uncheckedIcon}
-        color={uncheckedColor}
         size={size}
         aria-hidden="true"
       />
