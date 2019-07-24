@@ -10,7 +10,8 @@ import {
   TYPOGRAPHY,
   MISC,
   LAYOUT,
-  POSITION
+  POSITION,
+  FLEX_ITEM
 } from "../../constants";
 import Icon from "../icon";
 
@@ -87,6 +88,7 @@ const StyledButton = styled.button`
   ${MISC}
   ${LAYOUT}
   ${POSITION}
+  ${FLEX_ITEM}
 `;
 
 function buttonScaling(props) {
@@ -247,6 +249,7 @@ Button.propTypes = {
   ...MISC.propTypes,
   ...LAYOUT.propTypes,
   ...POSITION.propTypes,
+  ...FLEX_ITEM.propTypes,
   appearance: PropTypes.oneOf(["default", "prominent", "minimal"]),
   intent: PropTypes.string,
   scale: PropTypes.string,
