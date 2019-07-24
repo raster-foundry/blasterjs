@@ -20,6 +20,9 @@ const StyledCheckbox = styled.span`
   `}
 
   .toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     pointer-events: none;
     vertical-align: initial;
