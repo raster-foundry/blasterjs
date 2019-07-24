@@ -1,23 +1,34 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
-import TextInput from "../textInput";
+import { themeGet } from "styled-system";
+import { COMMON, BORDER, LAYOUT, FLEX_ITEM } from "../../constants";
 
-const FileInput = styled(TextInput)``;
+const FileInput = styled.input`
+  height: auto;
+
+  padding: ${themeGet("fileInput.space.p")};
+  border: ${themeGet("fileInput.borders.border")};
+  border-radius: ${themeGet("fileInput.radii.borderRadius")};
+  background-color: ${themeGet("fileInput.colors.bg")};
+  color: ${themeGet("fileInput.colors.color")};
+
+  ${themeGet("fileInput.styles")}
+  ${COMMON}
+  ${BORDER}
+  ${LAYOUT}
+  ${FLEX_ITEM}
+`;
 
 FileInput.propTypes = {
-  ...TextInput.propTypes
+  ...COMMON.propTypes,
+  ...BORDER.propTypes,
+  ...LAYOUT.propTypes,
+  ...FLEX_ITEM.propTypes
 };
 
 FileInput.defaultProps = {
   type: "file",
-  height: "auto",
-  border: 0,
-  borderRadius: "fileInput.borderRadius",
-  pt: "fileInput.p",
-  pb: "fileInput.p",
-  pl: "fileInput.p",
-  pr: "fileInput.p"
+  onChange: () => {}
 };
 
 export default FileInput;

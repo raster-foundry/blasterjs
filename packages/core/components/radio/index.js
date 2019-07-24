@@ -2,28 +2,52 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
-import Text from "../text";
 import Icon from "../icon";
-import { Size } from "../../common/size";
+import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
 
-const StyledRadio = styled(Text)`
+const StyledRadio = styled.span`
   position: relative;
   display: inline-block;
 
   &:focus-within {
     outline: 0;
-    box-shadow: 0 0 0 3px ${themeGet('colors.primary')}4C;
+    box-shadow: 0 0 0 3px ${themeGet('radio.colors.shadowColorFocus')}4C;
   }
 
   ${props => props.disabled && css`
-    opacity: .5;
+    opacity: 0.5;
     cursor: not-allowed;
   `}
-`;
 
-const StyledIcon = styled(Icon)`
-  display: none;
-  pointer-events: none;
+  .toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    pointer-events: none;
+    vertical-align: initial;
+  }
+
+  .toggle--checked {
+    ${props => props.checkedColor
+      ? css`color: ${themeGet(`colors.${props.checkedColor}`, props.checkedColor)};`
+      : css`color: ${themeGet("radio.colors.checkedColor")};`
+    }
+  }
+
+  .toggle--unchecked {
+    ${props => props.uncheckedColor
+      ? css`color: ${themeGet(`colors.${props.uncheckedColor}`, props.uncheckedColor)};`
+      : css`color: ${themeGet("radio.colors.uncheckedColor")};`
+    }
+  }
+
+  ${themeGet("radio.styles")}
+  ${COMMON}
+  ${FLEX_ITEM}
+  ${LAYOUT}
+  ${MISC}
+  ${POSITION}
 `;
 
 const Input = styled.input`
@@ -34,6 +58,7 @@ const Input = styled.input`
   left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   opacity: 0;
 
   &:checked ~ .toggle--checked {
@@ -48,6 +73,7 @@ const Input = styled.input`
 const Radio = ({
   id,
   name,
+  size,
   value,
   onChange,
   disabled,
@@ -57,19 +83,8 @@ const Radio = ({
   invalid,
   checkedIcon,
   uncheckedIcon,
-  checkedColor,
-  uncheckedColor,
-  size: _size,
   ...props
 }) => {
-
-  const size = {
-    [Size.TINY]: '1.2rem',
-    [Size.SMALL]: '1.6rem',
-    [Size.MEDIUM]: '2.4rem',
-    [Size.LARGE]: '3.2rem'
-  }[_size || Size.MEDIUM];
-
   return (
     <StyledRadio
       disabled={disabled}
@@ -82,31 +97,35 @@ const Radio = ({
         id={id}
         name={name}
         value={value}
-        onChange={(e) => onChange(e, e.target.value)}
+        onChange={e => onChange(e, e.target.value)}
         disabled={disabled}
         defaultChecked={defaultChecked}
         checked={checked}
         required={required}
         aria-invalid={invalid}
       />
-      <StyledIcon
-        className="toggle--checked"
+      <Icon
+        className="toggle toggle--checked"
         name={checkedIcon}
-        color={checkedColor}
         size={size}
+        aria-hidden="true"
       />
-      <StyledIcon
-        className="toggle--unchecked"
+      <Icon
+        className="toggle toggle--unchecked"
         name={uncheckedIcon}
-        color={uncheckedColor}
         size={size}
+        aria-hidden="true"
       />
     </StyledRadio>
   );
 };
 
 Radio.propTypes = {
-  ...Text.propTypes,
+  ...COMMON.propTypes,
+  ...FLEX_ITEM.propTypes,
+  ...LAYOUT.propTypes,
+  ...MISC.propTypes,
+  ...POSITION.propTypes,
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
@@ -119,14 +138,13 @@ Radio.propTypes = {
   checkedIcon: PropTypes.string,
   uncheckedIcon: PropTypes.string,
   checkedColor: PropTypes.string,
-  uncheckedColor: PropTypes.string,
-  size: PropTypes.oneOf(Object.values(Size))
+  uncheckedColor: PropTypes.string
 };
 
 Radio.defaultProps = {
-  tag: 'div',
   id: undefined,
   name: undefined,
+  size: "2.4rem",
   value: undefined,
   onChange: () => {},
   disabled: false,
@@ -135,10 +153,7 @@ Radio.defaultProps = {
   required: false,
   invalid: false,
   checkedIcon: 'radioChecked',
-  uncheckedIcon: 'radioUnchecked',
-  checkedColor: 'radio.checkedColor',
-  uncheckedColor: 'radio.uncheckedColor',
-  size: Size.MEDIUM
+  uncheckedIcon: 'radioUnchecked'
 };
 
 export default Radio;

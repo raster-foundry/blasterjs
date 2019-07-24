@@ -1,6 +1,10 @@
+import { css } from "styled-components";
+
 export const theme = {
   colors: {
     checkedColor: "primary",
-    uncheckedColor: "gray300"
-  }
+    uncheckedColor: "gray100",
+    shadowColorFocus: "primary"
+  },
+  styles: css``
 };

@@ -6,7 +6,6 @@ route: /form/textInput
 
 import { Playground, Props } from 'docz'
 import TextInput from './'
-import { Size } from '../../common/size'
 
 # TextInput
 
@@ -19,17 +18,19 @@ Can be controlled or uncontrolled. For controlled, you must supply the
 For uncontrolled, you must omit the `value` prop. And optionally supply the
 `defaultValue` prop.
 
+## Import
+`import { TextInput } from '@blasterjs/core'`
 
 ## Basic usage
 
 <Playground>
     <TextInput
-        placeholder="Your favorite movie"
+        placeholder="Favorite movie"
         defaultValue="One Flew Over the Cuckoo's Nest"
         mb={4}
     />
-    <TextInput placeholder="Your favorite dinner" disabled width="45%" mr={8} />
-    <TextInput placeholder="Your favorite beverage" required width="45%" />
+    <TextInput placeholder="Disabled" disabled width="45%" mr={8} />
+    <TextInput placeholder="Invalid" required width="45%" />
 </Playground>
 
 ## Alternate types
@@ -43,25 +44,57 @@ For uncontrolled, you must omit the `value` prop. And optionally supply the
     <TextInput type="tel" placeholder="Telephone" mb={4} />
 </Playground>
 
-## Sizes
 
-<Playground>
-    <TextInput placeholder="Your favorite book" size={Size.SMALL} display="block" mb={4} />
-    <TextInput placeholder="Your favorite book" size={Size.MEDIUM} display="block" mb={4} />
-    <TextInput placeholder="Your favorite book" size={Size.LARGE} display="block" mb={4} />
-</Playground>
-
-
-### PropTypes
+## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Text props | | | | see [Text](/typography/text) |
-| `<input>` attributes | | no | | `type, placeholder, disabled, required, spellCheck, …` |
-| defaultValue | string | no | | initial value when uncontrolled |
-| value | string | no | | value when controlled |
-| ${borders} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${borderColor} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${borderRadius} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
+| type | string | no | "text" |  |
 | invalid | bool | no | false |  |
-| size | enum | no | `Size.MEDIUM` | see [Size](/common/size) |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BACKGROUND` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `POSITION` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  space: {
+    p
+  },
+  colors: {
+    bg,
+    color,
+    borderColor,
+    borderColorFocus,
+    borderColorInvalid,
+    shadowColorFocus,
+    bgDisabled
+  },
+  fonts: {
+    fontFamily
+  },
+  fontSizes: {
+    fontSize
+  },
+  borders: {
+    border
+  },
+  radii: {
+    borderRadius
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/textInput)
+- [Learn more about themeing](#)

@@ -22,6 +22,9 @@ export const theme = {
   fontSizes: {
     fontSize: 2
   },
+  lineHeights: {
+    lineHeight: "base"
+  },
   borders: {
     border: "1px solid"
   },
