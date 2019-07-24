@@ -1,36 +1,70 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {
+  getContrast,
+  tint,
+  mix,
+  darken
+} from "polished";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import Box from "../box";
-import Card from "../card";
 import Icon from "../icon";
 import Heading from "../heading";
-import { Intent } from "../../common/intent";
+import { STYLED } from "../../constants";
 
-const StyledCallout = styled(Card)`
+const INTENTS = {
+  SUCCESS: "success",
+  WARNING: "warning",
+  DANGER: "danger",
+  DEFAULT: "default"
+};
+
+const StyledCallout = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: ${props => themeGet(`colors.${props.bg}`)};
+  position: relative;
 
-  ${props =>
-    props.icon &&
-    css`
+  padding-top: ${themeGet("callout.space.pt")};
+  padding-right: ${themeGet("callout.space.pr")};
+  padding-left: ${themeGet("callout.space.pl")};
+  padding-bottom: ${themeGet("callout.space.pb")};
+  border: ${themeGet("callout.borders.border")};
+  border-color: ${themeGet("callout.colors.borderColor")};
+  border-radius: ${themeGet("callout.radii.borderRadius")};
+  box-shadow: ${themeGet("callout.shadows.boxShadow")};
+
+  ${props => calloutAppearance(props)}
+
+  ${props => props.icon && css`
       padding-left: 0;
-    `};
+  `};
+
+  ${themeGet("callout.styles")}
+  ${STYLED}
 `;
 
-const CalloutIcon = styled(Icon)`
-  flex: none;
-  margin: 0 ${themeGet("space.2", "1.6rem")};
-`;
+function calloutAppearance(props) {
+  const { intent } = props;
 
-const CalloutTitle = styled(Heading).attrs({ as: "h4" })`
-  margin-bottom: ${themeGet("space.1", "0.8rem")};
-  line-height: 1;
-`;
+  let color, fg, bg, contrast, darkenBy;
+  color = themeGet(
+    `callout.intents.colors.${intent}`,
+    `callout.intents.colors.default`
+  )(props);
+
+  bg = tint(0.9, color);
+  contrast = getContrast(color, bg);
+  darkenBy = (4.6 - contrast) / (4.6 + contrast);
+  fg = getContrast(color, bg) <= "4.5" ? mix(darkenBy, "#000", color) : color;
+
+  return css`
+    background-color: ${bg};
+    color: ${fg};
+  `;
+}
 
 const getIconName = (icon, intent) => {
   if (icon === null || icon === false || icon === "") {
@@ -42,54 +76,29 @@ const getIconName = (icon, intent) => {
   }
 
   switch (intent) {
-    case Intent.SUCCESS:
+    case INTENTS.SUCCESS:
       return "check";
-    case Intent.WARNING:
-    case Intent.DANGER:
+    case INTENTS.WARNING:
+    case INTENTS.DANGER:
       return "warning";
-    case Intent.NONE:
+    case INTENTS.DEFAULT:
     default:
       return undefined;
   }
 };
 
-const getIntentColors = intent => {
-  let colors = {};
-
-  switch (intent) {
-    case Intent.SUCCESS:
-      colors.color = "green";
-      colors.bg = "greenTint";
-      break;
-    case Intent.WARNING:
-      colors.color = "yellow";
-      colors.bg = "yellowTint";
-      break;
-    case Intent.DANGER:
-      colors.color = "red";
-      colors.bg = "redTint";
-      break;
-    case Intent.NONE:
-    default:
-      colors.color = "textBase";
-      colors.bg = "gray100";
-      break;
-  }
-
-  return colors;
-};
-
 const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
   const iconName = getIconName(icon, intent);
-  const { color, bg } = getIntentColors(intent);
 
   return (
-    <StyledCallout {...props} bg={bg} icon={!!iconName}>
-      {iconName && (
-        <CalloutIcon name={iconName} color={color} size={iconSize} />
-      )}
+    <StyledCallout {...props} intent={intent} icon={!!iconName}>
+      {iconName &&
+        <Icon name={iconName} size={iconSize} flex="none" my={0} mx={2} />
+      }
       <Box flex="auto">
-        {title && <CalloutTitle color={color}>{title}</CalloutTitle>}
+        {title &&
+          <Heading as="h4" color="inherit" mb={1} lineHeight="small">{title}</Heading>
+        }
         {children}
       </Box>
     </StyledCallout>
@@ -97,22 +106,16 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 };
 
 Callout.propTypes = {
-  ...Card.PropTypes,
-  intent: PropTypes.oneOf(Object.values(Intent)),
+  ...STYLED.propTypes,
+  intent: PropTypes.string,
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   iconSize: PropTypes.string,
   title: PropTypes.string
 };
 
 Callout.defaultProps = {
-  intent: Intent.NONE,
-  icon: null,
-  iconSize: "2.2rem",
-  title: null,
-  pt: "callout.p",
-  pb: "callout.p",
-  pl: "callout.p",
-  pr: "callout.p"
+  intent: INTENTS.DEFAULT,
+  iconSize: "2.4rem"
 };
 
 export default Callout;

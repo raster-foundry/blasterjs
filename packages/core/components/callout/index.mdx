@@ -6,8 +6,7 @@ route: /components/callout
 
 import { Playground, Props } from 'docz'
 import Callout from './'
-import { Intent } from '../../common/intent'
-
+import Text from '../text/'
 
 # Callout
 
@@ -15,42 +14,48 @@ import { Intent } from '../../common/intent'
 
 <Playground>
     <Callout>
-        This is a basic callout. No title, icon, or other props.
+        <Text as="p">Basic callout. No title, icon, or other props.</Text>
     </Callout>
     <br />
     <Callout title="With title">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        <Text as="p">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
     </Callout>
     <br />
     <Callout icon="calendar">
-        With icon!
+        <Text as="p">With icon!</Text>
     </Callout>
     <br />
     <Callout icon="calendar" title="With icon and title">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        <Text as="p">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
     </Callout>
 </Playground>
 
 ## Intent
 
 <Playground>
-    <Callout intent={Intent.SUCCESS}>
-        With intent. Note default icon for this intent (SUCCESS).
+    <Callout intent="success">
+        <Text as="p">With intent. Note default icon for this intent.</Text>
     </Callout>
     <br />
-    <Callout title="With intent and title" intent={Intent.WARNING}>
-        Note default icon for this intent (WARNING).
+    <Callout title="With intent and title" intent="warning">
+        <Text as="p">Note default icon for this intent.</Text>
     </Callout>
     <br />
-    <Callout icon={false} intent={Intent.WARNING}>
-        With intent but icon=false. Lorem ipsum dolor sit amet, consectetur adipisicing
-        tempor incididunt ut labore et dolore magna aliqua.
+    <Callout icon={false} intent="warning">
+        <Text as="p">
+            With intent but icon=false. Lorem ipsum dolor sit amet, consectetur
+            adipisicing tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
     </Callout>
     <br />
-    <Callout icon="code" intent={Intent.DANGER}>
-        With intent (DANGER) and custom icon, overriding intent's default icon.
+    <Callout icon="code" intent="danger">
+        <Text as="p">With intent and custom icon, overriding intent's default icon.</Text>
     </Callout>
 </Playground>
 
@@ -60,21 +65,64 @@ import { Intent } from '../../common/intent'
 <Playground>
     <Callout
         title="I am a banana"
-        intent={Intent.DANGER}
+        intent="danger"
         icon="crosshair"
         iconSize="8rem"
     >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        <Text as="p">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </Text>
     </Callout>
 </Playground>
 
-## PropTypes
 
+## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| Box props | | | | see [Box](/components/box) |
-| intent | enum | no | `NONE` | see [Intent](/common/intent) |
+| intent | string | no | "default" | `["default", "success", "warning", "danger"]` or custom defined in theme |
 | icon | string or bool | no | | name of icon. overrides intent's default icon. |
-| iconSize | string | no | | |
+| iconSize | string | no | `2.4rem` | |
 | title | string | no | | |
+| `STYLED` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  space: {
+    pt,
+    pb,
+    pl,
+    pr
+  },
+  colors: {
+    borderColor
+  },
+  radii: {
+    borderRadius
+  },
+  shadows: {
+    boxShadow
+  },
+  borders: {
+    border
+  },
+  intents: {
+    colors: {
+      default
+      success
+      warning
+      danger
+    }
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/callout)
+- [Learn more about themeing](#)
