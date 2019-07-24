@@ -5,6 +5,7 @@ export const theme = {
     p: 0
   },
   colors: {
+    color: "inherit",
     bg: "transparent"
   },
   borders: {

@@ -10,6 +10,7 @@ const FileInput = styled.input`
   border: ${themeGet("fileInput.borders.border")};
   border-radius: ${themeGet("fileInput.radii.borderRadius")};
   background-color: ${themeGet("fileInput.colors.bg")};
+  color: ${themeGet("fileInput.colors.color")};
 
   ${themeGet("fileInput.styles")}
   ${COMMON}
