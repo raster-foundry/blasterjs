@@ -1,9 +1,12 @@
 #!/bin/bash
 
-git checkout master && \
+git checkout origin master && \
 git pull --rebase origin master && \
 ./scripts/clean && \
 npm ci && \
 ./scripts/build && \
 lerna version --force-publish && \
-lerna publish from-package
+lerna publish from-package && \
+git checkout origin develop && \
+git merge master && \
+git push origin develop
