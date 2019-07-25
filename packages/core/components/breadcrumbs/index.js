@@ -138,7 +138,7 @@ const Breadcrumbs = ({
 }) => {
   const sep = (
     <Separator color={colorSeparator}>
-      {separator || <Icon name={separatorIcon} color={colorSeparator} />}
+      {separator || <Icon name={separatorIcon} color={colorSeparator} aria-hidden="true" />}
     </Separator>
   );
 
