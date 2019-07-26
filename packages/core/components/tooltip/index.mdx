@@ -13,8 +13,8 @@ import Swatch from '../swatch/'
 
 # Tooltip
 
-Renders a tooltip near an element in response to hover, click, focus, or programmatic
-control.
+Renders a tooltip near an element in response to hover, click, focus, or
+programmatic control.
 
 To use, (1) nest the Tooltip component inside the component that should trigger it,
 and (2) add `data-tooltip` to the trigger component. See examples below.
@@ -25,7 +25,7 @@ Components that represent singleton elements (eg, `<img>`, `<input>`) cannot use
 
 Future work: Consider alternative backing libraries (currently Tooltip.js, from Popper.js).
 
-### Component authoring
+## Component authoring
 
 When *authoring* a component that does not render `props.children` and that might
 be used with a Tooltip, you must do something like the following. See
@@ -50,16 +50,14 @@ const Foo = ({children, ...props}) => {
 <Playground>
     <Text my={8} py={1} bg="grayLight3" textAlign="center" data-tooltip>
         Hover here
-        <Tooltip>Ahoy there!</Tooltip>
+        <Tooltip placement="right">Ahoy there!</Tooltip>
     </Text>
 
     <Box my={8}>
         <Button data-tooltip>
             Click me
-            <Tooltip trigger="click" hasArrow placement="right" bg="secondary">
-                <Box p={2}>
-                    <Button bg="white" color="black">But don't click me</Button>
-                </Box>
+            <Tooltip trigger="click" hasArrow bg="secondary" closeOnClickOutside>
+                <Box p={2} bg="transparent" color="white">But don't click me</Box>
             </Tooltip>
         </Button>
     </Box>
@@ -73,18 +71,10 @@ const Foo = ({children, ...props}) => {
 </Playground>
 
 
-### PropTypes
+## PropTypes
 
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
-| ${space} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${color} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${borderRadius} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${boxShadow} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${fontFamily} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${fontSize} | number or string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${fontWeight} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
-| ${textAlign} | string | no | | see [styled-system](https://jxnblk.com/styled-system/) |
 | show | bool | no | `undefined` | For programmatic control |
 | trigger | string | no | `hover focus` | Space-separated list of events that trigger tooltip. Can be 'hover', 'click', 'focus', 'manual'. 'manual' cannot be combined with others. |
 | hasArrow | bool | no | `false` | Render arrow |
@@ -95,3 +85,39 @@ const Foo = ({children, ...props}) => {
 | xOffset | number or string | no | `0` | |
 | yOffset | number or string | no | `0` | |
 | options | object | no | | Gets passed to underlying [Tooltip.js library](https://github.com/FezVrasta/popper.js/blob/master/docs/_includes/tooltip-documentation.md) |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BORDER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `MISC` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  space: {
+    py,
+    px
+  },
+  colors: {
+    color,
+    bg
+  },
+  radii: {
+    borderRadius
+  },
+  shadows: {
+    boxShadow
+  },
+  fontSizes: {
+    fontSize
+  },
+  styles: css`
+    ...
+  `
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/tooltip)
+- [Learn more about themeing](#)
