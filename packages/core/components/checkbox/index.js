@@ -8,6 +8,7 @@ import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
 const StyledCheckbox = styled.span`
   position: relative;
   display: inline-block;
+  vertical-align: middle;
 
   &:focus-within {
     outline: 0;
