@@ -1,24 +1,32 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from 'styled-components'
-import {color, opacity, boxShadow, borders, borderColor, borderRadius, themeGet} from 'styled-system';
+import { themeGet } from 'styled-system';
+import { COMMON, BORDER, MISC } from "../../constants";
 import ReactModal from 'react-modal';
-import Box from '../box';
 
 let isAppElementSet = false;
 
-const StyledDialog = styled(Box)`
-  ${color}
-  ${boxShadow}
-  ${borders}
-  ${borderColor}
-  ${borderRadius}
+const StyledDialog = styled.div`
   flex: auto;
   width: 100%;
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   outline: none;
+
+  min-width: ${themeGet("dialog.minWidths.minWidth")};
+  max-width: ${themeGet("dialog.maxWidths.maxWidth")};
+  min-height: ${themeGet("dialog.minHeights.minHeight")};
+  max-height: ${themeGet("dialog.maxHeights.maxHeight")};
+  padding: ${themeGet("dialog.space.p")};
+  background-color: ${themeGet("dialog.colors.bg")};
+  box-shadow: ${themeGet("dialog.shadows.boxShadow")};
+
+  ${themeGet("dialog.styles")}
+  ${COMMON}
+  ${BORDER}
+  ${MISC}
 `;
 
 const Dialog = ({
@@ -70,7 +78,7 @@ const Dialog = ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: `rgba(0, 0, 0, ${themeGet(`opacity.${opacity}`, opacity)(props)})`,
+    backgroundColor: `rgba(0, 0, 0, ${opacity})`,
     zIndex: 1000000
   };
 
@@ -168,13 +176,9 @@ Dialog.setAppElement = element => ReactModal.setAppElement(element);
 
 Dialog.propTypes = {
   ...ReactModal.propTypes,
-  ...Box.propTypes,
-  ...color.propTypes,
-  ...opacity.propTypes,
-  ...boxShadow.propTypes,
-  ...borders.propTypes,
-  ...borderColor.propTypes,
-  ...borderRadius.propTypes,
+  ...COMMON.propTypes,
+  ...BORDER.propTypes,
+  ...MISC.propTypes,
   appElementId: PropTypes.string
 };
 
@@ -192,17 +196,7 @@ Dialog.defaultProps = {
     beforeClose: 'modal-dialog__content--before-close'
   },
   bodyOpenClassName: 'body--modal-dialog-open',
-  opacity: 0.6,
-  boxShadow: 'dialog.boxShadow',
-  minWidth: '24rem',
-  maxWidth: '80%',
-  minHeight: '16rem',
-  maxHeight: '90%',
-  pt: 'dialog.p',
-  pb: 'dialog.p',
-  pl: 'dialog.p',
-  pr: 'dialog.p',
-  bg: 'dialog.bg'
+  opacity: 0.5
 };
 
 export default Dialog;

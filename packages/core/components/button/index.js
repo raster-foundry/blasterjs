@@ -15,10 +15,6 @@ import {
 } from "../../constants";
 import Icon from "../icon";
 
-const ButtonIcon = styled(Icon)`
-  flex: none;
-`;
-
 const ButtonChildren = styled.span`
   display: inline-flex;
   align-items: center;
@@ -49,7 +45,7 @@ const ButtonLoading = styled.span`
   align-items: center;
   justify-content: center;
 
-  > ${ButtonIcon} {
+  > .icon {
     animation: 2s ${animateLoading} linear infinite;
   }
 `;
@@ -69,7 +65,7 @@ const StyledButton = styled.button`
   text-decoration: ${props => (!props.textDecoration ? "none" : "")};
   font-family: ${props =>
     !props.fontFamily ? themeGet("button.base.fonts.font", "fonts.body") : ""};
-  
+
   ${props => buttonStates(props)}
   ${props => buttonScaling(props)}
 
@@ -210,7 +206,7 @@ function buttonStates(props) {
         background-color: ${bgDisabled};
         color: ${fgDisabled};
       `}
-      
+
     ${props =>
       props.disabled &&
       props.appearance === "prominent" &&
@@ -228,13 +224,13 @@ const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
         iconAfter={iconAfter}
         isLoading={isLoading}
       >
-        {iconBefore && <ButtonIcon name={iconBefore} mr={1} />}
+        {iconBefore && <Icon name={iconBefore} flex="none" mr={1} aria-hidden="true" />}
         {children}
-        {iconAfter && <ButtonIcon name={iconAfter} ml={1} />}
+        {iconAfter && <Icon name={iconAfter} flex="none" ml={1} aria-hidden="true" />}
       </ButtonChildren>
       {isLoading && (
         <ButtonLoading>
-          <ButtonIcon name="load" />
+          <Icon name="load" flex="none" className="icon" aria-label="Loading" />
         </ButtonLoading>
       )}
     </StyledButton>

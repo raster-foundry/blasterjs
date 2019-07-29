@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 export const theme = {
   space: {
     py: "0.4rem",
@@ -15,5 +17,6 @@ export const theme = {
   },
   fontSizes: {
     fontSize: 1
-  }
+  },
+  styles: css``
 };

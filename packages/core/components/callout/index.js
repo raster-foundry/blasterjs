@@ -93,7 +93,7 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
   return (
     <StyledCallout {...props} intent={intent} icon={!!iconName}>
       {iconName &&
-        <Icon name={iconName} size={iconSize} flex="none" my={0} mx={2} />
+        <Icon name={iconName} size={iconSize} flex="none" my={0} mx={2} aria-hidden="true" />
       }
       <Box flex="auto">
         {title &&

@@ -1,30 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled, { css } from "styled-components";
-import {
-  space,
-  color,
-  borderRadius,
-  boxShadow,
-  fontFamily,
-  fontSize,
-  fontWeight,
-  textAlign,
-  themeGet
-} from "styled-system";
+import styled from "styled-components";
+import { themeGet } from "styled-system";
+import { COMMON, BORDER, TYPOGRAPHY, MISC } from "../../constants";
+
 import TooltipJS from "tooltip.js";
 
 const TooltipContent = styled.span`
-  ${space}
-  ${color}
-  ${borderRadius}
-  ${boxShadow}
-  ${fontFamily}
-  ${fontSize}
-  ${fontWeight}
-  ${textAlign}
   position: relative;
   display: inline-block;
+  font-family: inherit;
+  font-weight: normal;
+  text-align: center;
+
+  padding-top: ${themeGet("tooltip.space.py")};
+  padding-right: ${themeGet("tooltip.space.px")};
+  padding-bottom: ${themeGet("tooltip.space.py")};
+  padding-left: ${themeGet("tooltip.space.px")};
+  border-radius: ${themeGet("tooltip.radii.borderRadius")};
+  background-color: ${themeGet("tooltip.colors.bg")};
+  color: ${themeGet("tooltip.colors.color")};
+  font-size: ${themeGet("tooltip.fontSizes.fontSize")};
+  box-shadow: ${themeGet("tooltip.shadows.boxShadow")};
+
+  ${themeGet("tooltip.styles")}
+  ${COMMON}
+  ${BORDER}
+  ${TYPOGRAPHY}
+  ${MISC}
 
   .tooltip-arrow {
     width: 0;
@@ -32,7 +35,9 @@ const TooltipContent = styled.span`
     border-style: solid;
     position: absolute;
     margin: 5px;
-    border-color: ${props => themeGet(`colors.${props.bg}`, props.bg)};
+    border-color: ${props => props.bg
+      ? themeGet(`colors.${props.bg}`, props.bg)
+      : themeGet('tooltip.colors.bg')};
   }
 
   .tooltip[x-placement^="top"] & {
@@ -174,14 +179,10 @@ class Tooltip extends React.Component {
 }
 
 Tooltip.propTypes = {
-  ...space.propTypes,
-  ...color.propTypes,
-  ...borderRadius.propTypes,
-  ...boxShadow.propTypes,
-  ...fontFamily.propTypes,
-  ...fontSize.propTypes,
-  ...fontWeight.propTypes,
-  ...textAlign.propTypes,
+  ...COMMON.propTypes,
+  ...BORDER.propTypes,
+  ...TYPOGRAPHY.propTypes,
+  ...MISC.propTypes,
   show: PropTypes.bool,
   hasArrow: PropTypes.bool,
   placement: PropTypes.oneOf([
@@ -217,18 +218,6 @@ Tooltip.propTypes = {
 };
 
 Tooltip.defaultProps = {
-  pt: "tooltip.py",
-  pb: "tooltip.py",
-  pl: "tooltip.px",
-  pr: "tooltip.px",
-  color: "tooltip.color",
-  bg: "tooltip.bg",
-  borderRadius: "tooltip.borderRadius",
-  boxShadow: "tooltip.boxShadow",
-  fontFamily: "inherit",
-  fontSize: "tooltip.fontSize",
-  fontWeight: "normal",
-  textAlign: "center",
   show: undefined,
   hasArrow: false,
   placement: "top",
