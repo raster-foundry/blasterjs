@@ -88,7 +88,7 @@ Renders a horizontal or vertical group of items.
 </Playground>
 
 
-## Align
+## Align and Justify
 
 <Playground>
   <Grouper gutter={0} align="stretch">
@@ -97,12 +97,20 @@ Renders a horizontal or vertical group of items.
   </Grouper>
 </Playground>
 
+<Playground>
+  <Grouper justify="flex-end">
+    <Button>Hello</Button>
+    <Button>Crazy</Button>
+    <Button>World</Button>
+  </Grouper>
+</Playground>
 
 
 ## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
 | vertical | bool | no | false | |
+| justify | string | no | "flex-start" | passed to `justify-content` CSS property |
 | align | string | no | "center" | passed to `align-items` CSS property |
 | gutter | string or number | no | `space.2` | gap between children |
 | `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
