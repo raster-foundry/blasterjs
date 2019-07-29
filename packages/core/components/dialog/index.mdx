@@ -6,8 +6,8 @@ route: /overlays/dialog
 
 import { Playground, Props } from 'docz'
 import Dialog from './'
-import Button from '../../../core/components/button'
-import Heading from '../../../core/components/heading'
+import Button from '../button'
+import Heading from '../heading'
 
 # Dialog
 
@@ -26,7 +26,7 @@ The only required prop is `isOpen`, which is a toggle for displaying the dialog.
 See [react-modal](http://reactcommunity.org/react-modal/) for details and general usage.
 
 Once the dialog is open, you must set `isOpen` to `false` to close it. It is
-recommended you do this in the `onRequestClose` handler, which by default will be 
+recommended you do this in the `onRequestClose` handler, which by default will be
 called when the user presses the ESC key or clicks the overlay.
 
 ### Styling

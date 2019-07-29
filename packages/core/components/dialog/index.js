@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { transparentize } from "polished";
 import styled from 'styled-components'
 import { themeGet } from 'styled-system';
 import { COMMON, BORDER, MISC } from "../../constants";
@@ -16,10 +15,10 @@ const StyledDialog = styled.div`
   -webkit-overflow-scrolling: touch;
   outline: none;
 
-  minWidth: ${themeGet("dialog.minWidths.minWidth")};
-  maxWidth: ${themeGet("dialog.maxWidths.maxWidth")};
-  minHeight: ${themeGet("dialog.minHeights.minHeight")};
-  maxHeight: ${themeGet("dialog.maxHeights.maxHeight")};
+  min-width: ${themeGet("dialog.minWidths.minWidth")};
+  max-width: ${themeGet("dialog.maxWidths.maxWidth")};
+  min-height: ${themeGet("dialog.minHeights.minHeight")};
+  max-height: ${themeGet("dialog.maxHeights.maxHeight")};
   padding: ${themeGet("dialog.space.p")};
   background-color: ${themeGet("dialog.colors.bg")};
   box-shadow: ${themeGet("dialog.shadows.boxShadow")};
