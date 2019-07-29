@@ -1,11 +1,11 @@
 {
   "name": "@blasterjs/docs-app",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.5",
   "description": "Components to be used within the documentation app",
   "main": "dist/index.js",
   "module": "src/index.js",
   "dependencies": {
-    "@blasterjs/core": "^1.0.0-alpha.4"
+    "@blasterjs/core": "^1.0.0-alpha.5"
   },
   "publishConfig": {
     "access": "public"
