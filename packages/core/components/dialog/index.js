@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled, { ThemeContext } from 'styled-components'
 import { themeGet } from 'styled-system';
+import { rgba } from "polished";
 import { COMMON, BORDER, MISC } from "../../constants";
 import ReactModal from 'react-modal';
 
@@ -38,11 +39,12 @@ const Dialog = ({
   height,
   minHeight,
   maxHeight,
-  opacity,
+  overlayColor: _overlayColor,
+  overlayOpacity: _overlayOpacity,
   isOpen,
   onAfterOpen,
   onRequestClose,
-  closeTimeoutMS,
+  closeTimeoutMS: _closeTimeoutMS,
   style: ignoredStyle,
   contentLabel,
   portalClassName,
@@ -70,6 +72,10 @@ const Dialog = ({
     isAppElementSet = true;
   }
 
+  const closeTimeoutMS = _closeTimeoutMS || theme.dialog.durations.closeTimeout || 150;
+  const overlayColor = _overlayColor || theme.dialog.colors.overlay || "#000";
+  const overlayOpacity = _overlayOpacity || theme.dialog.opacities.overlay || 0.5;
+
   const overlayStyle = {
     position: 'fixed',
     top: 0,
@@ -79,7 +85,7 @@ const Dialog = ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: `rgba(0, 0, 0, ${opacity})`,
+    backgroundColor: rgba(overlayColor, overlayOpacity),
     zIndex: 1000000
   };
 
@@ -184,11 +190,13 @@ Dialog.propTypes = {
   ...COMMON.propTypes,
   ...BORDER.propTypes,
   ...MISC.propTypes,
-  appElementId: PropTypes.string
+  appElementId: PropTypes.string,
+  closeTimeoutMS: PropTypes.number,
+  overlayColor: PropTypes.string,
+  overlayOpacity: PropTypes.number
 };
 
 Dialog.defaultProps = {
-  closeTimeoutMS: 150,
   portalClassName: 'modal-dialog',
   overlayClassName: {
     base: 'modal-dialog__overlay',
@@ -200,8 +208,7 @@ Dialog.defaultProps = {
     afterOpen: 'modal-dialog__content--after-open',
     beforeClose: 'modal-dialog__content--before-close'
   },
-  bodyOpenClassName: 'body--modal-dialog-open',
-  opacity: 0.5
+  bodyOpenClassName: 'body--modal-dialog-open'
 };
 
 export default Dialog;

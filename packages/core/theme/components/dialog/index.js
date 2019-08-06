@@ -18,10 +18,17 @@ export const theme = {
   },
   colors: {
     bg: "white",
+    overlay: "#000",
     focus: "#bbb"
   },
   shadows: {
     boxShadow: 5
+  },
+  durations: {
+    closeTimeout: 150
+  },
+  opacities: {
+    overlay: 0.5
   },
   styles: css``
 };

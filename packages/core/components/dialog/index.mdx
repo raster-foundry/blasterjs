@@ -36,11 +36,12 @@ certain styles can be configured via the theme properties (see below), or their
 corresponding styled-system props, and the rest are hard-coded opinions within
 the `Dialog` component.
 
-Overlay opacity can be adjusted via the `opacity` prop.
+Overlay color and opacity can be set via the `overlayColor` and `overlayOpacity`
+props or via the theme.
 
 ### Transitions
 Transitions are hard-coded for now, although transition timing is adjustable
-via the `closeTimeoutMS` prop.
+via the `closeTimeoutMS` prop or via the theme.
 
 ## Basic usage
 
@@ -86,7 +87,8 @@ via the `closeTimeoutMS` prop.
 |:-----|:-----|:---------|:--------|:------------|
 | appElementId | string | no | | id of app root element |
 | isOpen | bool | yes | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
-| opacity | number | no | `0.5` | overlay opacity |
+| overlayColor | string | no | `#000` | overlay color |
+| overlayOpacity | number | no | `0.5` | overlay opacity |
 | closeTimeoutMS | number | no | `150` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | onRequestClose | func | no | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | onAfterOpen | func | no | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
@@ -134,10 +136,17 @@ via the `closeTimeoutMS` prop.
   },
   colors: {
     bg,
+    overlay,
     focus
   },
   shadows: {
     boxShadow
+  },
+  durations: {
+    closeTimeout
+  },
+  opacities: {
+    overlay
   },
   styles: css`
     ...
