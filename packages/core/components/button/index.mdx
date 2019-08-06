@@ -18,15 +18,15 @@ The `<Button>` component renders a `<button>` with basic styles by default.
 
 <Playground>
   <Button>Button</Button>
-  <Button appearance="minimal">Button</Button>
-  <Button appearance="prominent" intent="success">Button</Button>
+  <Button appearance="minimal">Minimal</Button>
+  <Button appearance="prominent" intent="success">Prominent</Button>
 </Playground>
 
 ## Icons
 <Playground>
-  <Button iconAfter="eye" intent="default">After</Button>
-  <Button iconBefore="edit" appearance="minimal" intent="primary">Before</Button>
-  <Button iconBefore="minus" iconAfter="plus" appearance="prominent" intent="default">Both</Button>
+  <Button iconBefore="edit" appearance="minimal">Before</Button>
+  <Button iconAfter="eye" intent="primary">After</Button>
+  <Button iconBefore="minus" iconAfter="plus" appearance="prominent" intent="secondary">Both</Button>
 </Playground>
 
 ## Disabled
@@ -52,8 +52,8 @@ The `<Button>` component renders a `<button>` with basic styles by default.
 | Prop | Type | Required | Default | Description | Themeable |
 |:-----|:-----|:---------|:--------|:------------|:----------|
 | appearance | enum | no | `default` | `["default", "prominent", "minimal"]` |  |
-| intent | string | no | `default` | Theme provides styles for `["default", primary", "secondary", "success", "warning", "danger"]` | yes |
-| scale | string | no | | Theme provides styles for `["small", "large"` | yes |
+| intent | string | no | | Theme provides styles for `["primary", "secondary", "success", "warning", "danger"]` | yes |
+| scale | string | no | | Theme provides styles for `["small", "large"]` | yes |
 | block | bool | no | `false` | Makes the button fill available space |
 | disabled | bool | no | `false` | Sets the `disabled` attribute on the Button |
 | isLoading | bool | no | `false` | Displays an animated loading icon in place of children |
@@ -75,10 +75,12 @@ The `<Button>` component renders a `<button>` with basic styles by default.
 {
   base: {
     colors: {
-      defaultBg,
-      defaultBorder,
-      darkText,
-      lightText
+      color,
+      colorDark,
+      colorLight,
+      bg,
+      bgHover,
+      border
     },
     space: {
       pt,
@@ -100,21 +102,12 @@ The `<Button>` component renders a `<button>` with basic styles by default.
     },
     lineHeights: {
       lineHeight
-    },
-    hover: {
-      colors: {
-        defaultBg,
-        defaultBorder,
-        darkText,
-        lightText
-      }
     }
   },
   intents: {
     colors: {
-      default,
-      secondary,
       primary,
+      secondary,
       success,
       warning,
       danger,
