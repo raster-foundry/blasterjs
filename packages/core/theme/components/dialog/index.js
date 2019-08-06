@@ -17,7 +17,8 @@ export const theme = {
     maxHeight: "90%"
   },
   colors: {
-    bg: "white"
+    bg: "white",
+    focus: "#bbb"
   },
   shadows: {
     boxShadow: 5

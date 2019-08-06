@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { themeGet } from 'styled-system';
 import { COMMON, BORDER, MISC } from "../../constants";
 import ReactModal from 'react-modal';
@@ -63,6 +63,7 @@ const Dialog = ({
   contentRef,
   ...props
 }) => {
+  const theme = useContext(ThemeContext);
 
   if (!isAppElementSet && appElementId) {
     ReactModal.setAppElement(`#${appElementId}`);
@@ -125,6 +126,10 @@ const Dialog = ({
     .${className.base} {
       transform: translateY(200px);
       transition: transform ${closeTimeoutMS}ms ease-in-out;
+    }
+
+    .${className.base}:focus {
+      outline-color: ${theme.dialog.colors.focus || "#bbb"};
     }
 
     .${className.afterOpen} {
