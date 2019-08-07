@@ -40,8 +40,8 @@ Overlay color and opacity can be set via the `overlayColor` and `overlayOpacity`
 props or via the theme.
 
 ### Transitions
-Transitions are hard-coded for now, although transition timing is adjustable
-via the `closeTimeoutMS` prop or via the theme.
+Transitions can be customized in the theme. Duration defaults to `closeTimeoutMS`
+and function defaults to `ease-in-out`.
 
 ## Basic usage
 
@@ -89,15 +89,11 @@ via the `closeTimeoutMS` prop or via the theme.
 | isOpen | bool | yes | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | overlayColor | string | no | `#000` | overlay color |
 | overlayOpacity | number | no | `0.5` | overlay opacity |
+| zIndex | number | no | `1000000` | overlay z-index |
 | closeTimeoutMS | number | no | `150` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | onRequestClose | func | no | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | onAfterOpen | func | no | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | contentLabel | string | no | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
-| portalClassName | string | no | `modal-dialog` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
-| overlayClassName | object | no | `{ base: 'modal-dialog__overlay', afterOpen: 'modal-dialog__overlay--after-open', beforeClose: 'modal-dialog__overlay--before-close'}`  | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
-| className | object | no | `{base: 'modal-dialog__content', afterOpen: 'modal-dialog__content--after-open', beforeClose: 'modal-dialog__content--before-close'}` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
-| bodyOpenClassName | string | no | `body--modal-dialog-open` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
-| htmlOpenClassName | string | no | | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | ariaHideApp | bool | no | `true` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | shouldFocusAfterRender | bool | no | `true` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
 | shouldCloseOnOverlayClick | bool | no | `true` | via [react-modal](http://reactcommunity.org/react-modal/#usage) |
@@ -142,11 +138,26 @@ via the `closeTimeoutMS` prop or via the theme.
   shadows: {
     boxShadow
   },
+  zIndices: {
+    zIndex
+  },
   durations: {
-    closeTimeout
+    closeTimeoutMS
   },
   opacities: {
     overlay
+  },
+  transitions: {
+    overlay: {
+      base: css``,
+      afterOpen: css``,
+      beforeClose: css``
+    },
+    dialog: {
+      base: css``,
+      afterOpen: css``,
+      beforeClose: css``
+    },
   },
   styles: css`
     ...
