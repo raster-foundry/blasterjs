@@ -20,6 +20,7 @@ export { theme as label } from "./label";
 export { theme as navBar } from "./navBar";
 export { theme as progressBar } from "./progressBar";
 export { theme as radio } from "./radio";
+export { theme as rangeInput } from "./rangeInput";
 export { theme as select } from "./select";
 export { theme as swatch } from "./swatch";
 export { theme as table } from "./table";
