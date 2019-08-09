@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Button theme structure changed
 - Dialog custom transitions, overlay color, opacity. Props and theme structure changed.
 
+### Added
+- RangeInput component
+
 ## [1.0.0-alpha.5] - 2019-07-29 [YANKED]
 
 ## [1.0.0-alpha.4] - 2019-07-25
