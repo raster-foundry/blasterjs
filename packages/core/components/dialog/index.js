@@ -32,10 +32,6 @@ const StyledDialog = styled.div`
   -webkit-overflow-scrolling: touch;
   outline: none;
 
-  min-width: ${themeGet("dialog.minWidths.minWidth")};
-  max-width: ${themeGet("dialog.maxWidths.maxWidth")};
-  min-height: ${themeGet("dialog.minHeights.minHeight")};
-  max-height: ${themeGet("dialog.maxHeights.maxHeight")};
   padding: ${themeGet("dialog.space.p")};
   background-color: ${themeGet("dialog.colors.bg")};
   box-shadow: ${themeGet("dialog.shadows.boxShadow")};
@@ -50,11 +46,11 @@ const Dialog = ({
   appElementId,
   children,
   width,
-  minWidth,
-  maxWidth,
+  minWidth: _minWidth,
+  maxWidth: _maxWidth,
   height,
-  minHeight,
-  maxHeight,
+  minHeight: _minHeight,
+  maxHeight: _maxHeight,
   overlayColor: _overlayColor,
   overlayOpacity: _overlayOpacity,
   isOpen,
@@ -88,6 +84,10 @@ const Dialog = ({
   const overlayColor = _overlayColor || theme.dialog.colors.overlay || "#000";
   const overlayOpacity = _overlayOpacity || theme.dialog.opacities.overlay || 0.5;
   const zIndex = _zIndex || theme.dialog.zIndices.zIndex || 1000000;
+  const minWidth = _minWidth || theme.dialog.minWidths.minWidth || "24rem";
+  const maxWidth = _maxWidth || theme.dialog.maxWidths.maxWidth || "80%";
+  const minHeight = _minHeight || theme.dialog.minHeights.minHeight || "16rem";
+  const maxHeight = _maxHeight || theme.dialog.maxHeights.maxHeight || "90%";
 
   const overlayStyle = {
     position: 'fixed',
@@ -106,7 +106,7 @@ const Dialog = ({
     display: 'flex',
     flexFlow: 'column nowrap',
     justifyContent: 'center',
-    alignItems: 'stretch',
+    alignItems: 'center',
     width,
     minWidth,
     maxWidth,
@@ -128,7 +128,7 @@ const Dialog = ({
      */
     .${CLASSES.OVERLAY.base} {
       transition-duration: ${closeTimeoutMS}ms;
-      transition-function: ease-in-out;
+      transition-timing-function: ease-in-out;
       ${theme.dialog.transitions.overlay.base}
     }
 
@@ -145,7 +145,7 @@ const Dialog = ({
      */
     .${CLASSES.DIALOG.base} {
       transition-duration: ${closeTimeoutMS}ms;
-      transition-function: ease-in-out;
+      transition-timing-function: ease-in-out;
       ${theme.dialog.transitions.dialog.base}
     }
 
