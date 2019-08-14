@@ -73,7 +73,17 @@ const BreadcrumbItem = styled.a`
           `};
   }
 
-  &:focus {
+  &:focus-visible {
+    ${props =>
+      props.colorFocus
+        ? css`
+            color: ${themeGet(`colors.${props.colorFocus}`, props.colorFocus)};
+          `
+        : css`
+            color: ${themeGet("breadcrumbs.colors.colorFocus")};
+          `};
+  }
+  .js-focus-visible &.focus-visible {
     ${props =>
       props.colorFocus
         ? css`

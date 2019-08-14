@@ -90,6 +90,9 @@ const SelectSelect = styled.select`
 `;
 
 const Select = ({
+  value,
+  defaultValue,
+  onChange,
   multiple,
   required,
   disabled,
@@ -111,6 +114,9 @@ const Select = ({
   return (
     <StyledSelect disabled={disabled} invalid={invalid} {...props}>
       <SelectSelect
+        value={value}
+        defaultValue={defaultValue}
+        onChange={e => onChange(e, e.target.value)}
         multiple={multiple}
         required={required}
         disabled={disabled}
@@ -143,12 +149,18 @@ Select.propTypes = {
   ...LAYOUT.propTypes,
   ...POSITION.propTypes,
   ...FLEX_ITEM.propTypes,
+  value: PropTypes.string,
+  defaultValue: PropTypes.string,
+  onChange: PropTypes.func,
   icon: PropTypes.string,
   iconColor: PropTypes.string
 };
 
 Select.defaultProps = {
-  icon: "caretDown"
+  icon: "caretDown",
+  value: undefined,
+  defaultValue: undefined,
+  onChange: () => {},
 };
 
 export default Select;

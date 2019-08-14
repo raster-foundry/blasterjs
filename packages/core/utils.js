@@ -42,3 +42,9 @@ export const replaceThemeRefs = (o, theme) => {
       }
     });
 };
+
+export const blurUnlessFocusVisible = el => {
+  if (Element.prototype.matches && !el.matches('.focus-visible')) {
+    el.blur()
+  }
+};

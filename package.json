@@ -91,5 +91,8 @@
   },
   "bin": {
     "blaster": "./bin/cli.js"
+  },
+  "dependencies": {
+    "focus-visible": "^5.0.2"
   }
 }

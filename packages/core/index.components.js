@@ -13,6 +13,7 @@ export { default as Dialog } from "./components/dialog";
 export { default as Divider } from "./components/divider";
 export { default as Field } from "./components/field";
 export { default as FileInput } from "./components/fileInput";
+export { default as FocusVisible } from "./components/focusVisible";
 export { default as GlobalStyle } from "./components/globalStyle";
 export { default as Grouper } from "./components/grouper";
 export { default as Heading } from "./components/heading";
