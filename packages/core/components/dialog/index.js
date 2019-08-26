@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { themeGet } from 'styled-system';
+import { rgba } from "polished";
 import { COMMON, BORDER, MISC } from "../../constants";
 import ReactModal from 'react-modal';
+
+const CLASSES = {
+  PORTAL: 'modal-dialog',
+  OVERLAY: {
+    base: 'modal-dialog__overlay',
+    afterOpen: 'modal-dialog__overlay--after-open',
+    beforeClose: 'modal-dialog__overlay--before-close'
+  },
+  DIALOG: {
+    base: 'modal-dialog__content',
+    afterOpen: 'modal-dialog__content--after-open',
+    beforeClose: 'modal-dialog__content--before-close'
+  },
+  BODY: 'body--modal-dialog-open',
+  HTML: 'html--modal-dialog-open'
+};
 
 let isAppElementSet = false;
 
@@ -15,10 +32,6 @@ const StyledDialog = styled.div`
   -webkit-overflow-scrolling: touch;
   outline: none;
 
-  min-width: ${themeGet("dialog.minWidths.minWidth")};
-  max-width: ${themeGet("dialog.maxWidths.maxWidth")};
-  min-height: ${themeGet("dialog.minHeights.minHeight")};
-  max-height: ${themeGet("dialog.maxHeights.maxHeight")};
   padding: ${themeGet("dialog.space.p")};
   background-color: ${themeGet("dialog.colors.bg")};
   box-shadow: ${themeGet("dialog.shadows.boxShadow")};
@@ -33,23 +46,20 @@ const Dialog = ({
   appElementId,
   children,
   width,
-  minWidth,
-  maxWidth,
+  minWidth: _minWidth,
+  maxWidth: _maxWidth,
   height,
-  minHeight,
-  maxHeight,
-  opacity,
+  minHeight: _minHeight,
+  maxHeight: _maxHeight,
+  overlayColor: _overlayColor,
+  overlayOpacity: _overlayOpacity,
   isOpen,
   onAfterOpen,
   onRequestClose,
-  closeTimeoutMS,
+  closeTimeoutMS: _closeTimeoutMS,
   style: ignoredStyle,
+  zIndex: _zIndex,
   contentLabel,
-  portalClassName,
-  overlayClassName,
-  className,
-  bodyOpenClassName,
-  htmlOpenClassName,
   ariaHideApp,
   shouldFocusAfterRender,
   shouldCloseOnOverlayClick,
@@ -63,11 +73,21 @@ const Dialog = ({
   contentRef,
   ...props
 }) => {
+  const theme = useContext(ThemeContext);
 
   if (!isAppElementSet && appElementId) {
     ReactModal.setAppElement(`#${appElementId}`);
     isAppElementSet = true;
   }
+
+  const closeTimeoutMS = _closeTimeoutMS || theme.dialog.durations.closeTimeoutMS || 150;
+  const overlayColor = _overlayColor || theme.dialog.colors.overlay || "#000";
+  const overlayOpacity = _overlayOpacity || theme.dialog.opacities.overlay || 0.5;
+  const zIndex = _zIndex || theme.dialog.zIndices.zIndex || 1000000;
+  const minWidth = _minWidth || theme.dialog.minWidths.minWidth || "24rem";
+  const maxWidth = _maxWidth || theme.dialog.maxWidths.maxWidth || "80%";
+  const minHeight = _minHeight || theme.dialog.minHeights.minHeight || "16rem";
+  const maxHeight = _maxHeight || theme.dialog.maxHeights.maxHeight || "90%";
 
   const overlayStyle = {
     position: 'fixed',
@@ -78,15 +98,15 @@ const Dialog = ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: `rgba(0, 0, 0, ${opacity})`,
-    zIndex: 1000000
+    backgroundColor: rgba(overlayColor, overlayOpacity),
+    zIndex: zIndex
   };
 
   const contentStyle = {
     display: 'flex',
     flexFlow: 'column nowrap',
     justifyContent: 'center',
-    alignItems: 'stretch',
+    alignItems: 'center',
     width,
     minWidth,
     maxWidth,
@@ -99,40 +119,49 @@ const Dialog = ({
     /******************
      * Body
      */
-    .${bodyOpenClassName} {
+    .${CLASSES.BODY} {
       overflow: hidden;
     }
 
     /******************
      * Overlay
      */
-    .${overlayClassName.base} {
-      opacity: 0;
-      transition: opacity ${closeTimeoutMS}ms ease-in-out;
+    .${CLASSES.OVERLAY.base} {
+      transition-duration: ${closeTimeoutMS}ms;
+      transition-timing-function: ease-in-out;
+      ${theme.dialog.transitions.overlay.base}
     }
 
-    .${overlayClassName.afterOpen} {
-      opacity: 1;
+    .${CLASSES.OVERLAY.afterOpen} {
+      ${theme.dialog.transitions.overlay.afterOpen}
     }
 
-    .${overlayClassName.beforeClose} {
-      opacity: 0;
+    .${CLASSES.OVERLAY.beforeClose} {
+      ${theme.dialog.transitions.overlay.beforeClose}
     }
 
     /******************
      * Dialog
      */
-    .${className.base} {
-      transform: translateY(200px);
-      transition: transform ${closeTimeoutMS}ms ease-in-out;
+    .${CLASSES.DIALOG.base} {
+      transition-duration: ${closeTimeoutMS}ms;
+      transition-timing-function: ease-in-out;
+      ${theme.dialog.transitions.dialog.base}
     }
 
-    .${className.afterOpen} {
-      transform: translateY(0);
+    .${CLASSES.DIALOG.afterOpen} {
+      ${theme.dialog.transitions.dialog.afterOpen}
     }
 
-    .${className.beforeClose} {
-      transform: translateY(200px);
+    .${CLASSES.DIALOG.beforeClose} {
+      ${theme.dialog.transitions.dialog.beforeClose}
+    }
+
+    /******************
+     * Focus Ring
+     */
+    .${CLASSES.DIALOG.base}:focus {
+      outline-color: ${theme.dialog.colors.focus || "#bbb"};
     }
   `;
 
@@ -149,11 +178,11 @@ const Dialog = ({
         onRequestClose={onRequestClose}
         closeTimeoutMS={closeTimeoutMS}
         contentLabel={contentLabel}
-        portalClassName={portalClassName}
-        overlayClassName={overlayClassName}
-        className={className}
-        bodyOpenClassName={bodyOpenClassName}
-        htmlOpenClassName={htmlOpenClassName}
+        portalClassName={CLASSES.PORTAL}
+        overlayClassName={CLASSES.OVERLAY}
+        className={CLASSES.DIALOG}
+        bodyOpenClassName={CLASSES.BODY}
+        htmlOpenClassName={CLASSES.HTML}
         ariaHideApp={ariaHideApp}
         shouldFocusAfterRender={shouldFocusAfterRender}
         shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
@@ -179,24 +208,11 @@ Dialog.propTypes = {
   ...COMMON.propTypes,
   ...BORDER.propTypes,
   ...MISC.propTypes,
-  appElementId: PropTypes.string
-};
-
-Dialog.defaultProps = {
-  closeTimeoutMS: 150,
-  portalClassName: 'modal-dialog',
-  overlayClassName: {
-    base: 'modal-dialog__overlay',
-    afterOpen: 'modal-dialog__overlay--after-open',
-    beforeClose: 'modal-dialog__overlay--before-close'
-  },
-  className: {
-    base: 'modal-dialog__content',
-    afterOpen: 'modal-dialog__content--after-open',
-    beforeClose: 'modal-dialog__content--before-close'
-  },
-  bodyOpenClassName: 'body--modal-dialog-open',
-  opacity: 0.5
+  appElementId: PropTypes.string,
+  closeTimeoutMS: PropTypes.number,
+  overlayColor: PropTypes.string,
+  overlayOpacity: PropTypes.number,
+  zIndex: PropTypes.number
 };
 
 export default Dialog;

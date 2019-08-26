@@ -27,7 +27,7 @@ export const buildTheme = (base, components) => {
 export const replaceThemeRefs = (o, theme) => {
   const keys = Object.keys(o);
   keys
-    .filter(k => k !== "styles" && k !== "__filemeta")
+    .filter(k => k !== "styles" && k !== "__filemeta" && !Array.isArray(o[k]))
     // For every entry in this level of the theme
     .forEach(k => {
       // check if there is a matching key in the base theme

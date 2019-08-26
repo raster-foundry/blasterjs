@@ -3,10 +3,12 @@ import { css } from "styled-components";
 export const theme = {
   base: {
     colors: {
-      defaultBg: "white",
-      defaultBorder: "gray300",
-      darkText: "gray800",
-      lightText: "white"
+      color: "gray700",
+      colorDark: "gray800",
+      colorLight: "white",
+      bg: "white",
+      bgHover: "gray100",
+      border: "gray300"
     },
     space: {
       pt: 1,
@@ -27,22 +29,13 @@ export const theme = {
       fontWeight: 600
     },
     lineHeights: {
-      lineHeight: "base"
-    },
-    hover: {
-      colors: {
-        defaultBg: "gray100",
-        defaultBorder: "gray300",
-        darkText: "gray800",
-        lightText: "white"
-      }
+      lineHeight: 1
     }
   },
   intents: {
     colors: {
-      default: "gray700",
-      secondary: "secondary",
       primary: "primary",
+      secondary: "secondary",
       success: "success",
       warning: "warning",
       danger: "danger"
@@ -66,7 +59,7 @@ export const theme = {
         fontWeight: 600
       },
       lineHeights: {
-        lineHeight: "base"
+        lineHeight: 1
       }
     },
     large: {
@@ -86,7 +79,7 @@ export const theme = {
         fontWeight: 600
       },
       lineHeights: {
-        lineHeight: "base"
+        lineHeight: 1
       }
     }
   },

@@ -16,8 +16,6 @@ import {
 import Icon from "../icon";
 
 const ButtonChildren = styled.span`
-  display: inline-flex;
-  align-items: center;
   ${props =>
     props.isLoading &&
     css`
@@ -133,12 +131,12 @@ function buttonStates(props) {
     case "prominent":
       bg = themeGet(
         `button.intents.colors.${props.intent}`,
-        `button.intents.colors.default`
+        `button.base.colors.color`
       )(props);
       fg =
         getLuminance(bg) >= "0.5"
-          ? themeGet(`button.base.colors.darkText`)(props)
-          : themeGet(`button.base.colors.lightText`)(props);
+          ? themeGet(`button.base.colors.colorDark`)(props)
+          : themeGet(`button.base.colors.colorLight`)(props);
       border = `1px solid ${bg}`;
       bgHover = shade(0.1, bg);
       fgDisabled = rgba(fg, 0.6);
@@ -147,25 +145,23 @@ function buttonStates(props) {
     case "minimal":
       fg = themeGet(
         `button.intents.colors.${props.intent}`,
-        `button.intents.colors.default`
+        `button.base.colors.color`
       )(props);
       bg = "transparent";
       border = "1px solid transparent";
-      bgHover = themeGet(`colors.gray100`)(props);
+      bgHover = themeGet(`button.base.colors.bgHover`)(props);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = "transparent";
       break;
     case "default":
     default:
-      bg = themeGet(`button.base.colors.defaultBg`)(props);
+      bg = themeGet(`button.base.colors.bg`)(props);
       fg = themeGet(
         `button.intents.colors.${props.intent}`,
-        `button.intents.colors.default`
+        `button.base.colors.color`
       )(props);
-      border = `1px solid ${themeGet(`button.base.colors.defaultBorder`)(
-        props
-      )}`;
-      bgHover = themeGet(`button.base.hover.colors.defaultBg`)(props);
+      border = `1px solid ${themeGet(`button.base.colors.border`)(props)}`;
+      bgHover = themeGet(`button.base.colors.bgHover`)(props);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = rgba(bg, 0.5);
       break;
@@ -219,14 +215,10 @@ function buttonStates(props) {
 const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
   return (
     <StyledButton {...props}>
-      <ButtonChildren
-        iconBefore={iconBefore}
-        iconAfter={iconAfter}
-        isLoading={isLoading}
-      >
-        {iconBefore && <Icon name={iconBefore} flex="none" mr={1} aria-hidden="true" />}
+      <ButtonChildren isLoading={isLoading}>
+        {iconBefore && <Icon name={iconBefore} mr={1} aria-hidden="true" />}
         {children}
-        {iconAfter && <Icon name={iconAfter} flex="none" ml={1} aria-hidden="true" />}
+        {iconAfter && <Icon name={iconAfter} ml={1} aria-hidden="true" />}
       </ButtonChildren>
       {isLoading && (
         <ButtonLoading>
@@ -257,8 +249,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  as: "button",
-  intent: "default",
+  intent: undefined,
   appearance: "default",
   block: false,
   disabled: false,
