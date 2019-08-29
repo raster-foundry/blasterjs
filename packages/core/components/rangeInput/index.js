@@ -13,7 +13,7 @@ const StyledRangeInput = styled.input`
   -webkit-appearance: none;
   width: ${props => props.width
     ? themeGet(`widths.${props.width}`, props.width)
-    : themeGet('rangeInput.widths.width')};
+    : themeGet('rangeInput.widths.track')};
   background: transparent;
 
   &:focus {
@@ -23,6 +23,7 @@ const StyledRangeInput = styled.input`
   /* Webkit */
 
   &::-webkit-slider-runnable-track {
+    box-sizing: border-box;
     ${props => trackStyleBase(props)}
     ${props => trackStyleVisual(props)}
   }
@@ -60,8 +61,13 @@ const StyledRangeInput = styled.input`
   /* Mozilla */
 
   &::-moz-range-track {
+    box-sizing: border-box;
     ${props => trackStyleBase(props)}
     ${props => trackStyleVisual(props)}
+  }
+
+  &:focus::-moz-range-track {
+    ${props => trackStyleFocus(props)}
   }
 
   &::-moz-range-thumb {
@@ -112,15 +118,26 @@ const StyledRangeInput = styled.input`
     }};
   }
 
-  &:disabled {
-    &::-webkit-slider-thumb,
-    &::-moz-range-thumb,
-    &::-ms-thumb,
-    &::-webkit-slider-runnable-track,
-    &::-ms-fill-lower,
-    &::-ms-fill-upper {
-      cursor: not-allowed;
-    }
+  &:disabled::-webkit-slider-thumb {
+    cursor: not-allowed;
+  }
+  &:disabled::-moz-range-thumb {
+    cursor: not-allowed;
+  }
+  &:disabled::-ms-thumb {
+    cursor: not-allowed;
+  }
+  &:disabled::-webkit-slider-runnable-track {
+    cursor: not-allowed;
+  }
+  &:disabled::-moz-range-track {
+    cursor: not-allowed;
+  }
+  &:disabled::-ms-fill-lower {
+    cursor: not-allowed;
+  }
+  &:disabled::-ms-fill-upper {
+    cursor: not-allowed;
   }
 
   ${themeGet("rangeInput.styles")};
@@ -133,7 +150,7 @@ function trackStyleBase(props) {
   return css`
     width: ${props => props.width
       ? themeGet(`widths.${props.width}`, props.width)
-      : themeGet('rangeInput.widths.width')};
+      : themeGet('rangeInput.widths.track')};
     height: ${props => props.trackHeight
       ? themeGet(`heights.${props.trackHeight}`, props.trackHeight)
       : themeGet('rangeInput.heights.track')};
@@ -173,6 +190,7 @@ function trackStyleFocus(props) {
 
 function thumbStyle(props) {
   return css`
+    box-sizing: border-box;
     border-style: solid;
     cursor: pointer;
     width: ${props => props.thumbWidth
@@ -201,7 +219,7 @@ function thumbStyle(props) {
 
 const RangeInput = props => {
   return (
-    <StyledRangeInput {...props} />
+    <StyledRangeInput {...props} type="range" />
   );
 };
 
@@ -229,10 +247,6 @@ RangeInput.propTypes = {
   trackBorderWidth: PropTypes.string,
   trackShadow: PropTypes.string,
   trackFocusColor: PropTypes.string
-};
-
-RangeInput.defaultProps = {
-  type: "range"
 };
 
 export default RangeInput;

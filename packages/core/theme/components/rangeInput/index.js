@@ -9,11 +9,11 @@ export const theme = {
     trackFocus: "gray300"
   },
   widths: {
-    width: "100%",
-    thumb: "1.4rem"
+    track: "100%",
+    thumb: "14px"
   },
   heights: {
-    thumb: "1.4rem",
+    thumb: "14px",
     track: "5px"
   },
   borderWidths: {
