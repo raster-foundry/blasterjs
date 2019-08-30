@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { getContrast, tint, mix, darken } from "polished";
+import { getContrast, tint, mix } from "polished";
 import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import {
@@ -23,7 +23,7 @@ const Badge = styled.span`
   text-transform: ${props => (!props.textTransform ? "uppercase" : "")};
   font-family: ${props =>
     !props.fontFamily ? themeGet("badge.base.fonts.font", "fonts.body") : ""};
-  
+
   ${props => badgeAppearance(props)}
   ${props => badgeScaling(props)}
 
