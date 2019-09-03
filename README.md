@@ -2,8 +2,6 @@
 
 [![npm](https://img.shields.io/npm/v/@blasterjs/core.svg?label=@blasterjs/core)](https://www.npmjs.com/package/@blasterjs/core) [![Build Status](https://travis-ci.org/raster-foundry/blasterjs.svg?branch=master)](https://travis-ci.org/raster-foundry/blasterjs) [![Netlify Status](https://api.netlify.com/api/v1/badges/3a31aff2-cc32-426e-b59a-15a0cfd9105e/deploy-status)](https://app.netlify.com/sites/raster-foundry-blaster/deploys)
 
-:exclamation::exclamation: **Blaster is still under heavy development and isn't recommended for use in client projects just yet.** :exclamation::exclamation:
-
 ### Usage
 
 You will need to have installed `styled-components` as well as `styled-system` in the application you want to use Blaster in.
@@ -12,7 +10,7 @@ You will need to have installed `styled-components` as well as `styled-system` i
 npm install --save styled-components styled-system @blasterjs/core
 ```
 
-## Development
+## Core Component Development
 
 ### Starting the documentation
 
@@ -27,7 +25,7 @@ npm install --save styled-components styled-system @blasterjs/core
 1. `npm run watch:build`
 1. In a separate terminal: `cd packages/testbed` then `npm run start`
 
-### Using the CLI
+### Using the Blaster CLI
 
 Blaster has a built-in CLI.
 It's the preferred method of managing components and constants.
