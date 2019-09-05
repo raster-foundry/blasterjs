@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { themeGet } from "styled-system";
 import Icon from "../icon";
 import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
+import { blurUnlessFocusVisible } from "../../utils";
 
 const StyledRadio = styled.span`
   position: relative;
@@ -99,6 +100,7 @@ const Radio = ({
         name={name}
         value={value}
         onChange={e => onChange(e, e.target.value)}
+        onFocus={e => blurUnlessFocusVisible(e.target)}
         disabled={disabled}
         defaultChecked={defaultChecked}
         checked={checked}

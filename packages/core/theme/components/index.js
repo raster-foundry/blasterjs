@@ -12,6 +12,7 @@ export { theme as dialog } from "./dialog";
 export { theme as divider } from "./divider";
 export { theme as field } from "./field";
 export { theme as fileInput } from "./fileInput";
+export { theme as focusVisible } from "./focusVisible";
 export { theme as grouper } from "./grouper";
 export { theme as heading } from "./heading";
 export { theme as icon } from "./icon";

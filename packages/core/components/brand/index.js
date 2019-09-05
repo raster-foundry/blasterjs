@@ -22,7 +22,11 @@ const StyledBrand = styled.a`
   font-size: ${themeGet("brand.fontSizes.fontSize")};
   font-weight: ${themeGet("brand.fontWeights.fontWeight")};
 
-  &:focus {
+  &:focus-visible {
+    color: ${props =>
+      themeGet(`colors.${props.colorFocus}`, "brand.colors.colorFocus")};
+  }
+  .js-focus-visible &.focus-visible {
     color: ${props =>
       themeGet(`colors.${props.colorFocus}`, "brand.colors.colorFocus")};
   }

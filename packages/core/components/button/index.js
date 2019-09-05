@@ -184,7 +184,11 @@ function buttonStates(props) {
           background-color: ${darken(0.02, bgHover)};
         }
 
-        &:focus {
+        &:focus-visible {
+          outline: none;
+          box-shadow: 0 0 0 4px ${rgba(themeGet("colors.primary")(props), 0.3)};
+        }
+        .js-focus-visible &.focus-visible {
           outline: none;
           box-shadow: 0 0 0 4px ${rgba(themeGet("colors.primary")(props), 0.3)};
         }

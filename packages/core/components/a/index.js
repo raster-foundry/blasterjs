@@ -8,7 +8,11 @@ const A = styled.a`
   color: ${themeGet("a.colors.color")};
   font-weight: ${themeGet("a.fontWeights.fontWeight")};
 
-  &:focus {
+  &:focus-visible {
+    color: ${props =>
+      themeGet(`colors.${props.colorFocus}`, "a.colors.colorFocus")};
+  }
+  .js-focus-visible &.focus-visible {
     color: ${props =>
       themeGet(`colors.${props.colorFocus}`, "a.colors.colorFocus")};
   }
