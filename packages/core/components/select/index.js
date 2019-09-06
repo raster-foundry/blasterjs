@@ -90,6 +90,7 @@ const SelectSelect = styled.select`
 `;
 
 const Select = ({
+  id,
   value,
   defaultValue,
   onChange,
@@ -114,6 +115,7 @@ const Select = ({
   return (
     <StyledSelect disabled={disabled} invalid={invalid} {...props}>
       <SelectSelect
+        id={id}
         value={value}
         defaultValue={defaultValue}
         onChange={e => onChange(e, e.target.value)}
@@ -149,6 +151,7 @@ Select.propTypes = {
   ...LAYOUT.propTypes,
   ...POSITION.propTypes,
   ...FLEX_ITEM.propTypes,
+  id: PropTypes.string,
   value: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,

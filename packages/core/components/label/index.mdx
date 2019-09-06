@@ -6,6 +6,7 @@ route: /form/label
 
 import { Playground, Props } from 'docz'
 import Label from './'
+import Select from '../select/'
 
 # Label
 
@@ -21,6 +22,14 @@ import Label from './'
     </Label>
 </Playground>
 
+<Playground>
+    <Label htmlFor="swallow">What do you mean?</Label>
+    <Select id="swallow">
+        <option>African</option>
+        <option>European</option>
+    </Select>
+</Playground>
+
 
 ## PropTypes
 
@@ -29,6 +38,7 @@ import Label from './'
 | `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
 | `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
 | `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+| htmlFor | string | no | | passed down to nested `label` element |
 
 
 ## Theming
