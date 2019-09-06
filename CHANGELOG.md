@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.0.0-alpha.7] - 2019-09-06 [YANKED]
+
 ## [1.0.0-alpha.6] - 2019-09-06
 ### Changed
 - Button theme structure changed
@@ -91,6 +93,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
 
-[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.6...HEAD
+[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.7...HEAD
+[1.0.0-alpha.7]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.6...v1.0.0-alpha.7
 [1.0.0-alpha.6]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.5...v1.0.0-alpha.6
 [1.0.0-alpha.5]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.4...v1.0.0-alpha.5
