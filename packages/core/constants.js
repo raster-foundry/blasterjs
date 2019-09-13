@@ -20,6 +20,11 @@ const textTransform = ss.style({
   cssProperty: "textTransform"
 });
 
+const whiteSpace = ss.style({
+  prop: "whiteSpace",
+  cssProperty: "whiteSpace"
+});
+
 export const composer = ss.compose;
 
 export const COMMON = composer(ss.color, ss.display, ss.space);
@@ -40,6 +45,7 @@ export const TYPOGRAPHY = composer(
   textOverflow,
   textShadow,
   textTransform,
+  whiteSpace,
   ss.fontFamily,
   ss.fontSize,
   ss.fontStyle,
