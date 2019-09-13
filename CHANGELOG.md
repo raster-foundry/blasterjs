@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
-## Added
+### Added
 - Added custom styled-system `whiteSpace` prop to the TYPOGRAPHY prop group
 
 ## [1.0.0-alpha.7] - 2019-09-06 [YANKED]
