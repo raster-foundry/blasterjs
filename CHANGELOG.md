@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+
+## [1.0.0-alpha.8] - 2019-09-13
 ### Added
 - Added custom styled-system `whiteSpace` prop to the TYPOGRAPHY prop group
 
@@ -95,7 +97,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
 
-[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.7...HEAD
+[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.8...HEAD
+[1.0.0-alpha.8]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.7...v1.0.0-alpha.8
 [1.0.0-alpha.7]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.6...v1.0.0-alpha.7
 [1.0.0-alpha.6]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.5...v1.0.0-alpha.6
 [1.0.0-alpha.5]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.4...v1.0.0-alpha.5
