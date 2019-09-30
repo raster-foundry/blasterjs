@@ -39,13 +39,16 @@ const Pagination = ({
   onPageChange,
   label,
   firstAndLast,
+  buttonAppearance,
+  buttonIntent,
   ...props
 }) => {
   return (
     <StyledPagination {...props}>
       {firstAndLast && <Button
         onClick={() => onPageChange(1)}
-        appearance="minimal"
+        appearance={buttonAppearance}
+        intent={buttonIntent}
         fontSize="inherit"
         aria-label="First page"
         disabled={currentPage === 1}
@@ -56,7 +59,8 @@ const Pagination = ({
       </Button>}
       <Button
         onClick={() => onPageChange(currentPage - 1)}
-        appearance="minimal"
+        appearance={buttonAppearance}
+        intent={buttonIntent}
         fontSize="inherit"
         aria-label="Back one page"
         disabled={currentPage === 1}
@@ -70,7 +74,8 @@ const Pagination = ({
       </Text>
       <Button
         onClick={() => onPageChange(currentPage + 1)}
-        appearance="minimal"
+        appearance={buttonAppearance}
+        intent={buttonIntent}
         fontSize="inherit"
         aria-label="Forward one page"
         disabled={currentPage === pageCount}
@@ -81,7 +86,8 @@ const Pagination = ({
       </Button>
       {firstAndLast && <Button
         onClick={() => onPageChange(pageCount)}
-        appearance="minimal"
+        appearance={buttonAppearance}
+        intent={buttonIntent}
         fontSize="inherit"
         aria-label="Last page"
         disabled={currentPage === pageCount}
@@ -106,12 +112,15 @@ Pagination.propTypes = {
   pageCount: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  firstAndLast: PropTypes.bool
+  firstAndLast: PropTypes.bool,
+  buttonAppearance: PropTypes.oneOf(["default", "prominent", "minimal"]),
+  buttonIntent: PropTypes.string
 };
 
 Pagination.defaultProps = {
   label: "Page",
-  firstAndLast: true
+  firstAndLast: true,
+  buttonAppearance: "minimal"
 };
 
 export default Pagination;

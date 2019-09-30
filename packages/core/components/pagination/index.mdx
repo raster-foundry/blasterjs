@@ -38,6 +38,35 @@ import Pagination from './'
     }}
 </Playground>
 
+## Appearance and Intent
+
+<Playground>
+    {class Example extends React.Component {
+      constructor(props) {
+        super(props)
+        this.pageCount = 12
+        this.state = { currentPage: 4 }
+      }
+
+      handlePageChange(toPage) {
+        this.setState({ currentPage: toPage })
+      }
+
+      render() {
+        return (
+          <Pagination
+            currentPage={this.state.currentPage}
+            pageCount={this.pageCount}
+            onPageChange={(toPage) => this.handlePageChange(toPage)}
+            buttonAppearance="prominent"
+            buttonIntent="secondary"
+          />
+        )
+      }
+    }}
+</Playground>
+
+
 ## PropTypes
 | Prop | Type | Required | Default | Description |
 |:-----|:-----|:---------|:--------|:------------|
@@ -46,6 +75,8 @@ import Pagination from './'
 | onPageChange | func | yes | | Called on each button click, with new page number as sole argument. |
 | label | string | no | "Page" | Prepended to "1 of 8". Set to `false` or "" to hide. |
 | firstAndLast | bool | no | `true` | Show first and last buttons |
+| buttonAppearance | enum | no | `minimal` | Passed to child `Button`s |
+| buttonIntent | string | no | | Passed to child `Button`s |
 | `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
 | `BACKGROUND` | Style Prop |  |  | see [Style Props](/style-props) |
 | `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
