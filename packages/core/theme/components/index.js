@@ -19,6 +19,7 @@ export { theme as icon } from "./icon";
 export { theme as image } from "./image";
 export { theme as label } from "./label";
 export { theme as navBar } from "./navBar";
+export { theme as pagination } from "./pagination";
 export { theme as progressBar } from "./progressBar";
 export { theme as radio } from "./radio";
 export { theme as rangeInput } from "./rangeInput";

@@ -117,14 +117,14 @@ function badgeAppearance(props) {
 }
 
 Badge.propTypes = {
-  ...COMMON.propsTypes,
-  ...BACKGROUND.propsTypes,
-  ...BORDER.propsTypes,
-  ...FLEX_ITEM.propsTypes,
-  ...MISC.propsTypes,
-  ...LAYOUT.propsTypes,
-  ...POSITION.propsTypes,
-  ...TYPOGRAPHY.propsTypes,
+  ...COMMON.propTypes,
+  ...BACKGROUND.propTypes,
+  ...BORDER.propTypes,
+  ...FLEX_ITEM.propTypes,
+  ...MISC.propTypes,
+  ...LAYOUT.propTypes,
+  ...POSITION.propTypes,
+  ...TYPOGRAPHY.propTypes,
   appearance: PropTypes.oneOf(["default", "prominent"]),
   intent: PropTypes.string,
   scale: PropTypes.string

@@ -1,0 +1,102 @@
+---
+name: Pagination
+menu: Navigation
+route: /navigation/pagination
+---
+
+import { Playground } from 'docz'
+import Pagination from './'
+
+# Pagination
+
+## Import
+`import { Pagination } from '@blasterjs/core'`
+
+## Basic Usage
+
+<Playground>
+    {class Example extends React.Component {
+      constructor(props) {
+        super(props)
+        this.pageCount = 8
+        this.state = { currentPage: 1 }
+      }
+
+      handlePageChange(toPage) {
+        this.setState({ currentPage: toPage })
+      }
+
+      render() {
+        return (
+          <Pagination
+            currentPage={this.state.currentPage}
+            pageCount={this.pageCount}
+            onPageChange={(toPage) => this.handlePageChange(toPage)}
+          />
+        )
+      }
+    }}
+</Playground>
+
+## Appearance and Intent
+
+<Playground>
+    {class Example extends React.Component {
+      constructor(props) {
+        super(props)
+        this.pageCount = 12
+        this.state = { currentPage: 4 }
+      }
+
+      handlePageChange(toPage) {
+        this.setState({ currentPage: toPage })
+      }
+
+      render() {
+        return (
+          <Pagination
+            currentPage={this.state.currentPage}
+            pageCount={this.pageCount}
+            onPageChange={(toPage) => this.handlePageChange(toPage)}
+            buttonAppearance="prominent"
+            buttonIntent="secondary"
+          />
+        )
+      }
+    }}
+</Playground>
+
+
+## PropTypes
+| Prop | Type | Required | Default | Description |
+|:-----|:-----|:---------|:--------|:------------|
+| currentPage | number | yes | | |
+| pageCount | number | yes | | Total number of pages |
+| onPageChange | func | yes | | Called on each button click, with new page number as sole argument. |
+| label | string | no | "Page" | Prepended to "1 of 8". Set to `false` or "" to hide. |
+| firstAndLast | bool | no | `true` | Show first and last buttons |
+| buttonAppearance | enum | no | `minimal` | Passed to child `Button`s |
+| buttonIntent | string | no | | Passed to child `Button`s |
+| `COMMON` | Style Prop |  |  | see [Style Props](/style-props) |
+| `BACKGROUND` | Style Prop |  |  | see [Style Props](/style-props) |
+| `TYPOGRAPHY` | Style Prop |  |  | see [Style Props](/style-props) |
+| `LAYOUT` | Style Prop |  |  | see [Style Props](/style-props) |
+| `POSITION` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_CONTAINER` | Style Prop |  |  | see [Style Props](/style-props) |
+| `FLEX_ITEM` | Style Prop |  |  | see [Style Props](/style-props) |
+
+
+## Theming
+
+### Schema
+```
+{
+  fontSizes: {
+    fontSize
+  },
+  styles: css``
+}
+```
+
+- [Default theme](https://github.com/raster-foundry/blasterjs/tree/master/packages/core/theme/components/Pagination)
+- [Learn more about themeing](#)

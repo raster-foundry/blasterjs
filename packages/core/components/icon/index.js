@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled, { ThemeContext } from "styled-components";
+import styled, { css, ThemeContext } from "styled-components";
 import { themeGet } from "styled-system";
 import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
 
