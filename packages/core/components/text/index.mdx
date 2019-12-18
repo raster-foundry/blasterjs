@@ -58,6 +58,8 @@ The `<Text>` component renders a `<span>` with basic styles by default.
   <Text color="primary">Primary color</Text>
   <br />
   <Text textAlign="center" fontSize="12px" as="p">Small and centered</Text>
+  <br />
+  <Text fontSize={4}>Large and in <Text fontWeight="bold">another Text element</Text></Text>
 </Playground>
 
 ## PropTypes
@@ -76,9 +78,6 @@ The `<Text>` component renders a `<span>` with basic styles by default.
 {
   fonts: {
     fontFamily
-  },
-  fontSizes: {
-    fontSize
   },
   lineHeights: {
     lineHeight
