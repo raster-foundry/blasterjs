@@ -35,7 +35,7 @@ const Text = styled.span`
   }
 
   font-family: ${themeGet("text.fonts.fontFamily")};
-  font-size: ${themeGet("text.fontSizes.fontSize")};
+  font-size: inherit;
   line-height: ${themeGet("text.lineHeights.lineHeight")};
 
   ${themeGet("text.styles")}
