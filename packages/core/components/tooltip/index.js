@@ -35,9 +35,10 @@ const TooltipContent = styled.span`
     border-style: solid;
     position: absolute;
     margin: 5px;
-    border-color: ${props => props.bg
-      ? themeGet(`colors.${props.bg}`, props.bg)
-      : themeGet('tooltip.colors.bg')};
+    border-color: ${props =>
+      props.bg
+        ? themeGet(`colors.${props.bg}`, props.bg)
+        : themeGet("tooltip.colors.bg")};
   }
 
   .tooltip[x-placement^="top"] & {
@@ -125,7 +126,7 @@ class Tooltip extends React.Component {
       offset: `${this.props.xOffset}, ${this.props.yOffset}`,
       html: true,
       template:
-        '<span class="tooltip" role="tooltip"><span class="tooltip-inner"></span></span>',
+        '<span class="tooltip" role="tooltip" style="z-index:9999"><span class="tooltip-inner"></span></span>',
       popperOptions: {
         ...this.props.popperOptions,
         onCreate: () => {
@@ -208,10 +209,7 @@ Tooltip.propTypes = {
     })
   ]),
   closeOnClickOutside: PropTypes.bool,
-  boundariesElement: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.instanceOf(Element)
-  ]),
+  boundariesElement: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   xOffset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   yOffset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   options: PropTypes.object

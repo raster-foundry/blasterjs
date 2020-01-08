@@ -4,8 +4,6 @@
  * TODO:
  * - [x] add code to generate component index.js file
  * - [x] add commands to handle only regenerating index files
- * - [] add handling of constant types
- * - [x] add generation of constant index.js file
  * - [x] look at DRYing things out
  * - [] pull and rebase on master
  * - [] test fresh install for other devs
@@ -33,77 +31,110 @@ const copyFileSync = require("fs-copy-file-sync");
 const replaceInFile = require("replace-in-file");
 const upperfirst = require("lodash.upperfirst");
 const camelCase = require("camelcase");
-const svgson = require('svgson-next')
+const svgson = require("svgson-next");
 const svgo = new (require("svgo"))({
   plugins: [
     {
-      cleanupAttrs: true,
-    }, {
-      removeDoctype: true,
-    },{
-      removeXMLProcInst: true,
-    },{
-      removeComments: true,
-    },{
-      removeMetadata: true,
-    },{
-      removeTitle: true,
-    },{
-      removeDesc: true,
-    },{
-      removeUselessDefs: true,
-    },{
-      removeEditorsNSData: true,
-    },{
-      removeEmptyAttrs: true,
-    },{
-      removeHiddenElems: true,
-    },{
-      removeEmptyText: true,
-    },{
-      removeEmptyContainers: true,
-    },{
-      removeViewBox: false,
-    },{
-      cleanupEnableBackground: true,
-    },{
-      convertStyleToAttrs: true,
-    },{
-      convertColors: true,
-    },{
-      convertPathData: true,
-    },{
-      convertTransform: true,
-    },{
-      removeUnknownsAndDefaults: true,
-    },{
-      removeNonInheritableGroupAttrs: true,
-    },{
-      removeUselessStrokeAndFill: true,
-    },{
-      removeUnusedNS: true,
-    },{
-      cleanupIDs: true,
-    },{
-      cleanupNumericValues: true,
-    },{
-      moveElemsAttrsToGroup: true,
-    },{
-      moveGroupAttrsToElems: true,
-    },{
-      collapseGroups: true,
-    },{
-      removeRasterImages: false,
-    },{
-      mergePaths: true,
-    },{
-      convertShapeToPath: true,
-    },{
-      sortAttrs: true,
-    },{
-      removeDimensions: true,
-    },{
-      removeAttrs: {attrs: '(stroke|fill)'},
+      cleanupAttrs: true
+    },
+    {
+      removeDoctype: true
+    },
+    {
+      removeXMLProcInst: true
+    },
+    {
+      removeComments: true
+    },
+    {
+      removeMetadata: true
+    },
+    {
+      removeTitle: true
+    },
+    {
+      removeDesc: true
+    },
+    {
+      removeUselessDefs: true
+    },
+    {
+      removeEditorsNSData: true
+    },
+    {
+      removeEmptyAttrs: true
+    },
+    {
+      removeHiddenElems: true
+    },
+    {
+      removeEmptyText: true
+    },
+    {
+      removeEmptyContainers: true
+    },
+    {
+      removeViewBox: false
+    },
+    {
+      cleanupEnableBackground: true
+    },
+    {
+      convertStyleToAttrs: true
+    },
+    {
+      convertColors: true
+    },
+    {
+      convertPathData: true
+    },
+    {
+      convertTransform: true
+    },
+    {
+      removeUnknownsAndDefaults: true
+    },
+    {
+      removeNonInheritableGroupAttrs: true
+    },
+    {
+      removeUselessStrokeAndFill: true
+    },
+    {
+      removeUnusedNS: true
+    },
+    {
+      cleanupIDs: true
+    },
+    {
+      cleanupNumericValues: true
+    },
+    {
+      moveElemsAttrsToGroup: true
+    },
+    {
+      moveGroupAttrsToElems: true
+    },
+    {
+      collapseGroups: true
+    },
+    {
+      removeRasterImages: false
+    },
+    {
+      mergePaths: true
+    },
+    {
+      convertShapeToPath: true
+    },
+    {
+      sortAttrs: true
+    },
+    {
+      removeDimensions: true
+    },
+    {
+      removeAttrs: { attrs: "(stroke|fill)" }
     }
   ]
 });
@@ -113,7 +144,10 @@ const templatesPath = "./templates";
 const dirs = p =>
   readdirSync(p).filter(f => statSync(join(p, f)).isDirectory());
 
-const files = (p, ext="") => readdirSync(p).filter(f => statSync(join(p, f)).isFile() && (ext ? f.endsWith(`.${ext}`) : true));
+const files = (p, ext = "") =>
+  readdirSync(p).filter(
+    f => statSync(join(p, f)).isFile() && (ext ? f.endsWith(`.${ext}`) : true)
+  );
 
 const packagePath = package => `./packages/${package}`;
 
@@ -123,9 +157,6 @@ const componentPath = (package, name) =>
 const componentThemePath = (package, name) =>
   `${packagePath(package)}/theme/components/${name}`;
 
-const constantPath = (package, name) =>
-  `${packagePath(package)}/common/${name}`;
-
 const listPackages = () => dirs("packages");
 
 const listComponentsInPackage = package =>
@@ -134,16 +165,10 @@ const listComponentsInPackage = package =>
 const listThemedComponentsInPackage = package =>
   dirs(`${packagePath(package)}/theme/components`);
 
-const listConstantsInPackage = package =>
-  files(`${packagePath(package)}/common`, "js").map(f => f.replace(/\.[^/.]+$/, ""));
-
 const packageExists = package => listPackages().includes(package);
 
 const componentExists = (package, component) =>
   listComponentsInPackage(package).includes(component);
-
-const constantExists = (package, constant) =>
-  listConstantsInPackage(package).includes(constant);
 
 const hydrateTemplatedFile = (filePath, name) => {
   replaceInFile.sync({
@@ -187,29 +212,7 @@ const generateComponentThemeIndex = package => {
   );
 };
 
-const generateConstantIndex = package => {
-  const indexFile = `${packagePath(package)}/index.common.js`;
-  if (existsSync(indexFile)) {
-    unlinkSync(indexFile);
-  }
-  const fd = openSync(indexFile, "a");
-  if (existsSync(`${packagePath(package)}/common`)) {
-    listConstantsInPackage(package).forEach(constant => {
-      const exportString = `export { ${upperfirst(
-        constant
-      )} } from "./common/${constant}";\n`;
-      appendFileSync(fd, exportString);
-    });
-    logSuccess(
-      `Generated constant index for package ${highlightSuccess(package)}`
-    );
-  } else {
-    logInfo(`No constants found for package ${highlightInfo(package)}`);
-  }
-  closeSync(fd);
-};
-
-const optimizeSvgFile = async (svgPath) => {
+const optimizeSvgFile = async svgPath => {
   try {
     const svgData = await util.promisify(readFile)(svgPath);
     const optimizedObject = await svgo.optimize(svgData);
@@ -231,37 +234,38 @@ const generateIconIndex = async () => {
         const viewBox = svgJson.attributes.viewBox;
         const path = svgJson.children.find(c => c.name === "path").attributes.d;
         const title = f.replace(/\.[^/.]+$/, "");
-        return [
-          camelCase(title),
-          title,
-          viewBox,
-          path
-        ];
+        return [camelCase(title), title, viewBox, path];
       })
     );
 
-    const svgConfig = await svgArrays.reduce((acc, arrs) => ({
-      ...acc,
-      [arrs[0]]: {
-        title: arrs[1],
-        viewBox: arrs[2],
-        path: arrs[3]
-      }
-    }), {});
+    const svgConfig = await svgArrays.reduce(
+      (acc, arrs) => ({
+        ...acc,
+        [arrs[0]]: {
+          title: arrs[1],
+          viewBox: arrs[2],
+          path: arrs[3]
+        }
+      }),
+      {}
+    );
 
     if (existsSync(indexFile)) {
       unlinkSync(indexFile);
     }
     const fd = openSync(indexFile, "a");
-    appendFileSync(fd, `
+    appendFileSync(
+      fd,
+      `
       export default ${JSON.stringify(svgConfig)};
-    `);
+    `
+    );
     closeSync(fd);
     logSuccess("Icon index file generated");
-  } catch(e) {
+  } catch (e) {
     throw e;
   }
-}
+};
 
 const generateComponentFiles = (package, name) => {
   mkdirSync(componentPath(package, name));
@@ -288,13 +292,6 @@ const generateComponentFiles = (package, name) => {
   hydrateTemplatedFile(`${componentPath(package, name)}/index.mdx`, name);
   generateComponentIndex(package);
   generateComponentThemeIndex("core");
-};
-
-const generateConstantFiles = (package, name) => {
-  const targetPath = `${constantPath(package, name)}.js`;
-  copyFileSync(`${templatesPath}/index.constant.js`, targetPath);
-  hydrateTemplatedFile(targetPath, name);
-  generateConstantIndex(package);
 };
 
 const logInfo = message => console.log(`${chalk.bold.blue("i")} ${message}`);
@@ -329,28 +326,6 @@ const createComponent = (package, name) => {
     } else {
       logError(
         `The component ${highlightError(`${package}/${name}`)} already exists.`
-      );
-    }
-  } else {
-    logError(`The package ${highlightError(package)} does not exist.`);
-    logError("Create the package first or choose an existing package.");
-  }
-  logExit();
-  return;
-};
-
-const createConstant = (package, name) => {
-  logInfo(`Creating constant ${highlightInfo(`${package}/${name}`)}`);
-  if (packageExists(package)) {
-    if (!constantExists(package, name)) {
-      generateConstantFiles(package, name);
-      logSuccess(
-        `Constant ${highlightSuccess(`${package}/${name}`)} was created.`
-      );
-      return;
-    } else {
-      logError(
-        `The constant ${highlightError(`${package}/${name}`)} already exists.`
       );
     }
   } else {
@@ -400,41 +375,6 @@ const destroyComponent = (package, name) => {
   return;
 };
 
-const destroyConstant = (package, name) => {
-  if (packageExists(package)) {
-    if (constantExists(package, name)) {
-      var prompt = inquirer.createPromptModule();
-      prompt({
-        name: "confirmed",
-        message: `Are you sure you would like to delete the ${highlightWarning(
-          `${package}/${name}`
-        )} constant?`,
-        type: "confirm"
-      }).then(({ confirmed }) => {
-        if (confirmed) {
-          rimraf.sync(`${constantPath(package, name)}.js`);
-          logSuccess(
-            `Constant ${highlightSuccess(`${package}/${name}`)} was deleted.`
-          );
-          generateConstantIndex(package);
-          return;
-        } else {
-          logExit();
-        }
-      });
-      return;
-    } else {
-      logWarning(
-        `The constant ${highlightWarning(`${package}/${name}`)} does not exist`
-      );
-    }
-  } else {
-    logWarning(`The package ${highlightWarning(package)} does not exist`);
-  }
-  logExit();
-  return;
-};
-
 program.version("0.1.0");
 
 program
@@ -444,9 +384,6 @@ program
     switch (objectType) {
       case "component":
         createComponent(targetPackage, objectName);
-        return;
-      case "constant":
-        createConstant(targetPackage, objectName);
         return;
       default:
         logError(
@@ -464,9 +401,6 @@ program
       case "component":
         destroyComponent(targetPackage, objectName);
         return;
-      case "constant":
-        destroyConstant(targetPackage, objectName);
-        return;
       default:
         logError(
           `${highlightError(objectType)} is not a supported object type`
@@ -482,7 +416,6 @@ program
     logInfo("Generating index files for all packages...");
     listPackages().forEach(p => {
       generateComponentIndex(p);
-      generateConstantIndex(p);
     });
     generateComponentThemeIndex("core");
   });
