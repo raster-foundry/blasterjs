@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [1.0.0] - 2020-01-08
 ### Changed
 - Global style now supports body font color
-- Box component no longer supports use of prop
+- Box component no longer supports use of `tag` prop
 
 ### Fixed
 - Tooltip z-index now always 9999
