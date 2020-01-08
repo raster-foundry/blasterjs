@@ -62,6 +62,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${themeGet("fonts.body")};
         font-size: ${themeGet("fontSizes.body")};
         line-height: ${themeGet("lineHeights.base")};
+        color: ${themeGet("colors.textBase")};
     }
 `;
 

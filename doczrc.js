@@ -15,12 +15,7 @@ export default {
     "Getting Started",
     "Style Props",
     "Blaster Theme",
-    "Primitives",
-    "Typography",
-    "Components",
-    "Form",
-    "Navigation",
-    "Overlays"
+    "Components"
   ],
   codeSandbox: false,
   themeConfig: {
