@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
+### Changed
+- GlobalStyle component now uses normalize() from polished
 
 ## [1.0.0] - 2020-01-08
 ### Changed
@@ -115,7 +117,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
 
-[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-beta.0...v1.0.0
 [1.0.0-beta.0]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.8...v1.0.0-beta.0
 [1.0.0-alpha.8]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.7...v1.0.0-alpha.8
