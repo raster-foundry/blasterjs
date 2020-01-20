@@ -68,7 +68,7 @@ asymmetric or symmetric shortcuts.
 | `npm run release`   | Create a new release interactively with Lerna                                                                                             |
 | `npm run clean`     | Remove all existing `node_modules` directories                                                                                            |
 
-All Lerna [Lerna commands](https://lernajs.io/) are also available.
+All [Lerna commands](https://lerna.js.org/#commands) are also available.
 
 ### Package Structure
 
