@@ -62,7 +62,7 @@ export default buildTheme(components, {
   zIndices: {
     // Base z-index overrides
   },
-  styles: {
+  overrides: {
     // Base style overrides
   }
 });

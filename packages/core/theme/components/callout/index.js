@@ -27,5 +27,5 @@ export const theme = {
       danger: "danger"
     }
   },
-  styles: css``
+  overrides: css``
 };

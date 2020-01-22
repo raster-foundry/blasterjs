@@ -38,7 +38,7 @@ const Text = styled.span`
   font-size: inherit;
   line-height: ${themeGet("text.lineHeights.lineHeight")};
 
-  ${themeGet("text.styles")}
+  ${themeGet("text.overrides")}
   ${COMMON}
   ${LAYOUT}
   ${POSITION}

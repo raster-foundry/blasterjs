@@ -36,7 +36,7 @@ const StyledDialog = styled.div`
   background-color: ${themeGet("dialog.colors.bg")};
   box-shadow: ${themeGet("dialog.shadows.boxShadow")};
 
-  ${themeGet("dialog.styles")}
+  ${themeGet("dialog.overrides")}
   ${COMMON}
   ${BORDER}
   ${MISC}

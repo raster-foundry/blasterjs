@@ -28,7 +28,7 @@ const StyledSwatch = styled.span`
   height: ${themeGet("swatch.heights.height")};
   padding: ${themeGet("swatch.space.p")};
 
-  ${themeGet("swatch.styles")}
+  ${themeGet("swatch.overrides")}
   ${COMMON}
   ${BORDER}
   ${LAYOUT}

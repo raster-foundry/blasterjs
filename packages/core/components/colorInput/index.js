@@ -11,7 +11,7 @@ const ColorInput = styled.input`
   border: ${themeGet("colorInput.borders.border")};
   border-radius: ${themeGet("colorInput.radii.borderRadius")};
 
-  ${themeGet("colorInput.styles")}
+  ${themeGet("colorInput.overrides")}
   ${COMMON}
   ${BORDER}
   ${LAYOUT}

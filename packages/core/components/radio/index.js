@@ -44,7 +44,7 @@ const StyledRadio = styled.span`
     }
   }
 
-  ${themeGet("radio.styles")}
+  ${themeGet("radio.overrides")}
   ${COMMON}
   ${FLEX_ITEM}
   ${LAYOUT}

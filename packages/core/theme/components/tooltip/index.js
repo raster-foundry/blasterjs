@@ -18,5 +18,5 @@ export const theme = {
   fontSizes: {
     fontSize: 1
   },
-  styles: css``
+  overrides: css``
 };

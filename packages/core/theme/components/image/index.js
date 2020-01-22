@@ -4,5 +4,5 @@ export const theme = {
     radii: {
         rounded: "base"
     },
-    styles: css``
+    overrides: css``
 };

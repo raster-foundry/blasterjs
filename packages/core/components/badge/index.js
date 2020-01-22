@@ -27,7 +27,7 @@ const Badge = styled.span`
   ${props => badgeAppearance(props)}
   ${props => badgeScaling(props)}
 
-  ${themeGet("badge.styles")};
+  ${themeGet("badge.overrides")};
   ${COMMON}
   ${BACKGROUND}
   ${BORDER}

@@ -140,7 +140,7 @@ const StyledRangeInput = styled.input`
     cursor: not-allowed;
   }
 
-  ${themeGet("rangeInput.styles")};
+  ${themeGet("rangeInput.overrides")};
   ${COMMON}
   ${POSITION}
   ${FLEX_ITEM}

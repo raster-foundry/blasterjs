@@ -25,7 +25,7 @@ const Image = styled.img`
     }
   }}
 
-  ${themeGet("image.styles")}
+  ${themeGet("image.overrides")}
   ${COMMON}
   ${BORDER}
   ${LAYOUT}

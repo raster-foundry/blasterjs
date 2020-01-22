@@ -27,7 +27,7 @@ const A = styled.a`
       themeGet(`colors.${props.colorActive}`, "a.colors.colorActive")};
   }
 
-  ${themeGet("a.styles")}
+  ${themeGet("a.overrides")}
   ${COMMON}
   ${TYPOGRAPHY}
   ${FLEX_ITEM}

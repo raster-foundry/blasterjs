@@ -6,7 +6,7 @@ import { COMMON, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
 const Label = styled.label`
   font-size: ${themeGet('label.fontSizes.fontSize')};
 
-  ${themeGet("label.styles")}
+  ${themeGet("label.overrides")}
   ${COMMON}
   ${TYPOGRAPHY}
   ${FLEX_ITEM}

@@ -74,7 +74,7 @@ const StyledButton = styled.button`
       width: 100%;
     `}
 
-  ${themeGet("button.styles")};
+  ${themeGet("button.overrides")};
   ${COMMON}
   ${BACKGROUND}
   ${BORDER}

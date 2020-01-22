@@ -16,7 +16,7 @@ const StyledIcon = styled.svg`
       height: 1em;
     `}
 
-  ${themeGet("icon.styles")};
+  ${themeGet("icon.overrides")};
   ${COMMON}
   ${FLEX_ITEM}
   ${LAYOUT}

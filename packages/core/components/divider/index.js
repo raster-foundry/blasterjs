@@ -11,7 +11,7 @@ const HDivider = styled.hr`
   width: ${themeGet("divider.widths.horizontal")};
   height: ${themeGet("divider.heights.horizontal")};
 
-  ${themeGet("divider.styles.horizontal")};
+  ${themeGet("divider.overrides.horizontal")};
 
   ${COMMON}
   ${LAYOUT}
@@ -33,7 +33,7 @@ const VDivider = styled.span`
   width: ${themeGet("divider.widths.vertical")};
   height: ${themeGet("divider.heights.vertical")};
 
-  ${themeGet("divider.styles.vertical")};
+  ${themeGet("divider.overrides.vertical")};
 
   ${COMMON}
   ${LAYOUT}

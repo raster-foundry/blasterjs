@@ -45,7 +45,7 @@ const StyledTextInput = styled.input`
     background-color: ${themeGet("textInput.colors.bgInvalid")};
   }
 
-  ${themeGet("textInput.styles")};
+  ${themeGet("textInput.overrides")};
   ${COMMON}
   ${BACKGROUND}
   ${BORDER}

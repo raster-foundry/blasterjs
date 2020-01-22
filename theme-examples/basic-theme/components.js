@@ -5,8 +5,8 @@ export default {
     {
       colors: {
         color: "red"
-      }
-      styles: css`
+      },
+      overrides: css`
         text-transform: uppercase;
       `
     }

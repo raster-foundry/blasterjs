@@ -83,5 +83,5 @@ export const theme = {
       }
     }
   },
-  styles: css``
+  overrides: css``
 };

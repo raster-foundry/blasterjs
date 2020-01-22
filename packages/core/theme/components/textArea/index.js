@@ -31,5 +31,5 @@ export const theme = {
   radii: {
     borderRadius: 0
   },
-  styles: css``
+  overrides: css``
 };

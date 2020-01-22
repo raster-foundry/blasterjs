@@ -42,7 +42,7 @@ const StyledCallout = styled.div`
       padding-left: 0;
   `};
 
-  ${themeGet("callout.styles")}
+  ${themeGet("callout.overrides")}
   ${STYLED}
 `;
 

@@ -94,7 +94,7 @@ const Table = styled.table`
     `
   }}
 
-  ${themeGet("table.styles")}
+  ${themeGet("table.overrides")}
   ${COMMON}
   ${BORDER}
   ${LAYOUT}

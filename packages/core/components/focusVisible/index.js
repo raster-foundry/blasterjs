@@ -14,10 +14,10 @@ const FocusVisible = createGlobalStyle`
 
     /* Custom keyboard focus style */
     *:focus-visible {
-        ${themeGet("focusVisible.styles")}
+        ${themeGet("focusVisible.overrides")}
     }
     .js-focus-visible .focus-visible {
-        ${themeGet("focusVisible.styles")}
+        ${themeGet("focusVisible.overrides")}
     }
 `;
 

@@ -7,5 +7,5 @@ export const theme = {
     indeterminateColor: "primary",
     shadowColorFocus: "primary"
   },
-  styles: css``
+  overrides: css``
 };

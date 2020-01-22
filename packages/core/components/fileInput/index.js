@@ -12,7 +12,7 @@ const FileInput = styled.input`
   background-color: ${themeGet("fileInput.colors.bg")};
   color: ${themeGet("fileInput.colors.color")};
 
-  ${themeGet("fileInput.styles")}
+  ${themeGet("fileInput.overrides")}
   ${COMMON}
   ${BORDER}
   ${LAYOUT}
