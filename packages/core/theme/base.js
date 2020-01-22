@@ -126,5 +126,5 @@ export const borders = {};
 export const borderWidths = {};
 export const borderStyles = {};
 export const zIndices = {};
-export const styles = {};
+export const overrides = {};
 export { default as icons } from "./icons";
