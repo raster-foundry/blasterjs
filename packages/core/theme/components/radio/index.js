@@ -6,5 +6,5 @@ export const theme = {
     uncheckedColor: "gray100",
     shadowColorFocus: "primary"
   },
-  styles: css``
+  overrides: css``
 };

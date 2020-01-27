@@ -58,7 +58,7 @@ const StyledSelect = styled.div`
     vertical-align: middle;
   }
 
-  ${themeGet("select.styles")};
+  ${themeGet("select.overrides")};
   ${COMMON}
   ${BACKGROUND}
   ${BORDER}

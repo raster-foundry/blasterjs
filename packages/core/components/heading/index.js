@@ -12,7 +12,7 @@ const Heading = styled.h1`
   margin-top: ${themeGet("heading.space.mt")};
   font-size: ${props => themeGet(`heading.fontSizes.${props.as}`)};
 
-  ${themeGet("heading.styles")}
+  ${themeGet("heading.overrides")}
   ${COMMON}
   ${LAYOUT}
   ${POSITION}

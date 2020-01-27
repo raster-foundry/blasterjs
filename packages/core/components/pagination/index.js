@@ -22,7 +22,7 @@ const StyledPagination = styled.nav`
 
   font-size: ${themeGet('pagination.fontSizes.fontSize')};
 
-  ${themeGet("pagination.styles")};
+  ${themeGet("pagination.overrides")};
   ${COMMON}
   ${BACKGROUND}
   ${TYPOGRAPHY}

@@ -51,7 +51,7 @@ const StyledCheckbox = styled.span`
     }
   }
 
-  ${themeGet("checkbox.styles")}
+  ${themeGet("checkbox.overrides")}
   ${COMMON}
   ${FLEX_ITEM}
   ${LAYOUT}

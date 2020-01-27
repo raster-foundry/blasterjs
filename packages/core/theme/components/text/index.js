@@ -10,5 +10,5 @@ export const theme = {
   lineHeights: {
     lineHeight: "base"
   },
-  styles: css``
+  overrides: css``
 };

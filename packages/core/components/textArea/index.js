@@ -47,7 +47,7 @@ const StyledTextArea = styled.textarea`
     background-color: ${themeGet("textArea.colors.bgInvalid")};
   }
 
-  ${themeGet("textArea.styles")};
+  ${themeGet("textArea.overrides")};
   ${COMMON}
   ${BACKGROUND}
   ${BORDER}

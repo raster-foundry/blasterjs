@@ -4,5 +4,5 @@ export const theme = {
   space: {
     gutter: 1
   },
-  styles: css``
+  overrides: css``
 };

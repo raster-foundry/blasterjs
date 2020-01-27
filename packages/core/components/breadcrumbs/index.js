@@ -43,7 +43,7 @@ const StyledBreadcrumbs = styled.div`
       }
     `}
 
-  ${themeGet("breadcrumbs.styles")}
+  ${themeGet("breadcrumbs.overrides")}
   ${COMMON}
   ${LAYOUT}
   ${TYPOGRAPHY}

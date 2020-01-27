@@ -41,7 +41,7 @@ const StyledBrand = styled.a`
       themeGet(`colors.${props.colorActive}`, "brand.colors.colorActive")};
   }
 
-  ${themeGet("brand.styles")}
+  ${themeGet("brand.overrides")}
   ${COMMON}
   ${LAYOUT}
   ${POSITION}

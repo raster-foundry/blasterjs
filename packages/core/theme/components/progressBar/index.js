@@ -11,7 +11,7 @@ export const theme = {
   heights: {
     height: "8px"
   },
-  styles: {
+  overrides: {
     backBar: css``,
     topBar: css``
   }

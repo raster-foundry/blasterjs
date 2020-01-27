@@ -28,5 +28,5 @@ export const theme = {
     thumb: "none",
     track: "none"
   },
-  styles: css``
+  overrides: css``
 };

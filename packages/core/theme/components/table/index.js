@@ -13,5 +13,5 @@ export const theme = {
   borderWidths: {
     borderWidth: 1
   },
-  styles: css``
+  overrides: css``
 };

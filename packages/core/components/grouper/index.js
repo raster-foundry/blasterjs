@@ -5,7 +5,7 @@ import { themeGet } from "styled-system";
 import { COMMON, LAYOUT } from "../../constants";
 
 const OuterGrouper = styled.div`
-  ${themeGet("grouper.styles")}
+  ${themeGet("grouper.overrides")}
   ${COMMON}
   ${LAYOUT}
 `;

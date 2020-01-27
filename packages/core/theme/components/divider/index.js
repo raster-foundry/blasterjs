@@ -13,7 +13,7 @@ export const theme = {
     horizontal: "1px",
     vertical: "100%"
   },
-  styles: {
+  overrides: {
     horizontal: css``,
     vertical: css``
   }

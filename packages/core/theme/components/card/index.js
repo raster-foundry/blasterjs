@@ -20,5 +20,5 @@ export const theme = {
   borders: {
     border: "1px solid"
   },
-  styles: css``
+  overrides: css``
 };

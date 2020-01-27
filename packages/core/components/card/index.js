@@ -15,7 +15,7 @@ const Card = styled.div`
   border-radius: ${themeGet("card.radii.borderRadius")};
   box-shadow: ${themeGet("card.shadows.boxShadow")};
 
-  ${themeGet("card.styles")}
+  ${themeGet("card.overrides")}
   ${STYLED}
 `;
 

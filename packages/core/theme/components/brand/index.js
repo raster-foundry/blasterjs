@@ -16,5 +16,5 @@ export const theme = {
   fontWeights: {
     fontWeight: 600
   },
-  styles: css``
+  overrides: css``
 };

@@ -55,7 +55,7 @@ const ProgressBar = styled.div`
       `;
     }}
 
-    ${themeGet("progressBar.styles.topBar")};
+    ${themeGet("progressBar.overrides.topBar")};
   }
 
   height: ${themeGet("progressBar.heights.height")};
@@ -63,7 +63,7 @@ const ProgressBar = styled.div`
   background-color: ${themeGet("progressBar.colors.bg")};
   color: ${themeGet("progressBar.colors.color")};
 
-  ${themeGet("progressBar.styles.backBar")};
+  ${themeGet("progressBar.overrides.backBar")};
   ${COMMON}
   ${BORDER}
   ${LAYOUT}

@@ -23,7 +23,7 @@ const TooltipContent = styled.span`
   font-size: ${themeGet("tooltip.fontSizes.fontSize")};
   box-shadow: ${themeGet("tooltip.shadows.boxShadow")};
 
-  ${themeGet("tooltip.styles")}
+  ${themeGet("tooltip.overrides")}
   ${COMMON}
   ${BORDER}
   ${TYPOGRAPHY}
