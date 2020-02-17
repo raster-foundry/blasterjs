@@ -7,7 +7,7 @@ export const theme = {
   colors: {
     bg: "white",
     color: "textBase",
-    borderColor: "textBase",
+    borderColor: "gray400",
     borderColorFocus: "primary",
     borderColorInvalid: "red",
     borderColorDisabled: "gray400",

@@ -1,21 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { COMMON, LAYOUT, FLEX_ITEM } from "../../constants";
 
 const HDivider = styled.hr`
   border: 0;
 
-  background-color: ${themeGet("divider.colors.horizontal")};
-  width: ${themeGet("divider.widths.horizontal")};
-  height: ${themeGet("divider.heights.horizontal")};
+  background-color: ${tg("divider.colors.horizontal")};
+  width: ${tg("divider.sizes.horizontal.width")};
+  height: ${tg("divider.sizes.horizontal.height")};
 
-  ${themeGet("divider.overrides.horizontal")};
-
-  ${COMMON}
-  ${LAYOUT}
-  ${FLEX_ITEM}
+  ${tg("divider.overrides.horizontal")};
+  ${compose(
+    COMMON,
+    LAYOUT,
+    FLEX_ITEM
+  )}
 `;
 
 const VDivider = styled.span`
@@ -29,15 +31,16 @@ const VDivider = styled.span`
     user-select: none;
   }
 
-  background-color: ${themeGet("divider.colors.vertical")};
-  width: ${themeGet("divider.widths.vertical")};
-  height: ${themeGet("divider.heights.vertical")};
+  background-color: ${tg("divider.colors.vertical")};
+  width: ${tg("divider.sizes.vertical.width")};
+  height: ${tg("divider.sizes.vertical.height")};
 
-  ${themeGet("divider.overrides.vertical")};
-
-  ${COMMON}
-  ${LAYOUT}
-  ${FLEX_ITEM}
+  ${tg("divider.overrides.vertical")};
+  ${compose(
+    COMMON,
+    LAYOUT,
+    FLEX_ITEM
+  )}
 `;
 
 const Divider = ({

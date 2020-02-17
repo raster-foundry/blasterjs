@@ -1,8 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
-import { COMMON, BORDER, LAYOUT, POSITION, FLEX_ITEM, MISC } from "../../constants";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
+import {
+  COMMON,
+  BORDER,
+  LAYOUT,
+  POSITION,
+  FLEX_ITEM,
+  MISC
+} from "../../constants";
 
 const Image = styled.img`
   display: inline-block;
@@ -20,20 +28,21 @@ const Image = styled.img`
 
     if (props.rounded) {
       return css`
-        border-radius: ${themeGet("image.radii.rounded")};
+        border-radius: ${tg("image.radii.rounded")};
       `;
     }
   }}
 
-  ${themeGet("image.overrides")}
-  ${COMMON}
-  ${BORDER}
-  ${LAYOUT}
-  ${POSITION}
-  ${FLEX_ITEM}
-  ${MISC}
+  ${tg("image.overrides")}
+  ${compose(
+    COMMON,
+    BORDER,
+    LAYOUT,
+    POSITION,
+    FLEX_ITEM,
+    MISC
+  )}
 `;
-
 
 Image.propTypes = {
   ...COMMON.propTypes,

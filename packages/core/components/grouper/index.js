@@ -1,13 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { COMMON, LAYOUT } from "../../constants";
 
 const OuterGrouper = styled.div`
-  ${themeGet("grouper.overrides")}
-  ${COMMON}
-  ${LAYOUT}
+  ${tg("grouper.overrides")}
+  ${compose(
+    COMMON,
+    LAYOUT
+  )}
 `;
 
 // prettier-ignore
@@ -22,15 +25,15 @@ const InnerGrouper = styled.div`
 
   ${props => {
     return props.gutter !== undefined
-      ? css`margin: calc(-0.5 * ${themeGet(`space.${props.gutter}`, props.gutter)});`
-      : css`margin: calc(-0.5 * ${themeGet("grouper.space.gutter")});`
+      ? css`margin: calc(-0.5 * ${tg(`space.${props.gutter}`, props.gutter)});`
+      : css`margin: calc(-0.5 * ${tg("grouper.space.gutter")});`
   }}
 
   > * {
     ${props => {
       return props.gutter !== undefined
-        ? css`margin: calc(0.5 * ${themeGet(`space.${props.gutter}`, props.gutter)});`
-        : css`margin: calc(0.5 * ${themeGet("grouper.space.gutter")});`
+        ? css`margin: calc(0.5 * ${tg(`space.${props.gutter}`, props.gutter)});`
+        : css`margin: calc(0.5 * ${tg("grouper.space.gutter")});`
     }}
   }
 
@@ -42,7 +45,12 @@ const InnerGrouper = styled.div`
 const Grouper = ({ vertical, justify, align, gutter, children, ...props }) => {
   return (
     <OuterGrouper {...props}>
-      <InnerGrouper vertical={vertical} justify={justify} align={align} gutter={gutter}>
+      <InnerGrouper
+        vertical={vertical}
+        justify={justify}
+        align={align}
+        gutter={gutter}
+      >
         {children}
       </InnerGrouper>
     </OuterGrouper>
@@ -61,6 +69,6 @@ Grouper.propTypes = {
 Grouper.defaultProps = {
   justify: "flex-start",
   align: "center"
-}
+};
 
 export default Grouper;

@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import {
   COMMON,
   BACKGROUND,
@@ -19,17 +20,18 @@ const StyledPagination = styled.nav`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  font-size: ${tg("pagination.fontSizes.fontSize")};
 
-  font-size: ${themeGet('pagination.fontSizes.fontSize')};
-
-  ${themeGet("pagination.overrides")};
-  ${COMMON}
-  ${BACKGROUND}
-  ${TYPOGRAPHY}
-  ${LAYOUT}
-  ${POSITION}
-  ${FLEX_CONTAINER}
-  ${FLEX_ITEM}
+  ${tg("pagination.overrides")};
+  ${compose(
+    COMMON,
+    BACKGROUND,
+    TYPOGRAPHY,
+    LAYOUT,
+    POSITION,
+    FLEX_CONTAINER,
+    FLEX_ITEM
+  )}
 `;
 
 const Pagination = ({
@@ -45,18 +47,20 @@ const Pagination = ({
 }) => {
   return (
     <StyledPagination {...props}>
-      {firstAndLast && <Button
-        onClick={() => onPageChange(1)}
-        appearance={buttonAppearance}
-        intent={buttonIntent}
-        fontSize="inherit"
-        aria-label="First page"
-        disabled={currentPage === 1}
-        mr={1}
-        px={1}
-      >
-        <Icon name="arrowToLeft" aria-hidden="true" />
-      </Button>}
+      {firstAndLast && (
+        <Button
+          onClick={() => onPageChange(1)}
+          appearance={buttonAppearance}
+          intent={buttonIntent}
+          fontSize="inherit"
+          aria-label="First page"
+          disabled={currentPage === 1}
+          mr={1}
+          px={1}
+        >
+          <Icon name="arrowToLeft" aria-hidden="true" />
+        </Button>
+      )}
       <Button
         onClick={() => onPageChange(currentPage - 1)}
         appearance={buttonAppearance}
@@ -84,18 +88,20 @@ const Pagination = ({
       >
         <Icon name="arrowRight" aria-hidden="true" />
       </Button>
-      {firstAndLast && <Button
-        onClick={() => onPageChange(pageCount)}
-        appearance={buttonAppearance}
-        intent={buttonIntent}
-        fontSize="inherit"
-        aria-label="Last page"
-        disabled={currentPage === pageCount}
-        ml={1}
-        px={1}
-      >
-        <Icon name="arrowToRight" aria-hidden="true" />
-      </Button>}
+      {firstAndLast && (
+        <Button
+          onClick={() => onPageChange(pageCount)}
+          appearance={buttonAppearance}
+          intent={buttonIntent}
+          fontSize="inherit"
+          aria-label="Last page"
+          disabled={currentPage === pageCount}
+          ml={1}
+          px={1}
+        >
+          <Icon name="arrowToRight" aria-hidden="true" />
+        </Button>
+      )}
     </StyledPagination>
   );
 };

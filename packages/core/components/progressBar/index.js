@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { darken } from "polished";
 import styled, { css, keyframes } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { COMMON, BORDER, LAYOUT, FLEX_ITEM } from "../../constants";
 
 const animateProgress = keyframes`
@@ -34,8 +35,8 @@ const ProgressBar = styled.div`
 
     ${props => {
       const valColor = props.color
-        ? themeGet(`colors.${props.color}`, props.color)(props)
-        : themeGet("progressBar.colors.color")(props);
+        ? tg(`colors.${props.color}`, props.color)(props)
+        : tg("progressBar.colors.color")(props);
 
       return css`
         background: ${props =>
@@ -55,19 +56,21 @@ const ProgressBar = styled.div`
       `;
     }}
 
-    ${themeGet("progressBar.overrides.topBar")};
+    ${tg("progressBar.overrides.topBar")};
   }
 
-  height: ${themeGet("progressBar.heights.height")};
-  border-radius: ${themeGet("progressBar.radii.borderRadius")};
-  background-color: ${themeGet("progressBar.colors.bg")};
-  color: ${themeGet("progressBar.colors.color")};
+  height: ${tg("progressBar.sizes.height")};
+  border-radius: ${tg("progressBar.radii.borderRadius")};
+  background-color: ${tg("progressBar.colors.bg")};
+  color: ${tg("progressBar.colors.color")};
 
-  ${themeGet("progressBar.overrides.backBar")};
-  ${COMMON}
-  ${BORDER}
-  ${LAYOUT}
-  ${FLEX_ITEM}
+  ${tg("progressBar.overrides.backBar")};
+  ${compose(
+    COMMON,
+    BORDER,
+    LAYOUT,
+    FLEX_ITEM
+  )}
 `;
 
 ProgressBar.propTypes = {

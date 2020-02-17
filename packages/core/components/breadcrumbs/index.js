@@ -1,9 +1,52 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { system, compose } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
 import Icon from "../icon";
 import { COMMON, LAYOUT, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
+
+const colorHighlight = system({
+  colorHighlight: {
+    property: "color",
+    scale: "colors"
+  }
+});
+
+const gutter = system({
+  gutter: {
+    property: "margin-left",
+    scale: "space"
+  }
+});
+
+const colorFocus = system({
+  colorFocus: {
+    property: "color",
+    scale: "colors"
+  }
+});
+
+const colorHover = system({
+  colorHover: {
+    property: "color",
+    scale: "colors"
+  }
+});
+
+const colorActive = system({
+  colorActive: {
+    property: "color",
+    scale: "colors"
+  }
+});
+
+const colorSeparator = system({
+  colorSeparator: {
+    property: "color",
+    scale: "colors"
+  }
+});
 
 const StyledBreadcrumbs = styled.div`
   display: flex;
@@ -11,127 +54,72 @@ const StyledBreadcrumbs = styled.div`
   align-items: center;
   max-width: 100%;
   line-height: 1.5;
-  padding: ${themeGet("breadcrumbs.space.p")};
-  font-size: ${themeGet("breadcrumbs.fontSizes.fontSize")};
+  padding: ${tg("breadcrumbs.space.p")};
+  font-size: ${tg("breadcrumbs.fontSizes.fontSize")};
 
   > * + * {
-    ${props =>
-      props.gutter
-        ? css`
-            margin-left: ${themeGet(`space.${props.gutter}`, props.gutter)};
-          `
-        : css`
-            margin-left: ${themeGet("breadcrumbs.space.gutter")};
-          `};
+    margin-left: ${props =>
+      !props.gutter ? tg("breadcrumbs.space.gutter") : ""};
+    ${gutter}
   }
 
   ${props =>
     props.highlightCurrent &&
     css`
       > :last-child {
-        ${props =>
-          props.colorHighlight
-            ? css`
-                color: ${themeGet(
-                  `colors.${props.colorHighlight}`,
-                  props.colorHighlight
-                )};
-              `
-            : css`
-                color: ${themeGet("breadcrumbs.colors.colorHighlight")};
-              `};
+        color: ${props =>
+          !props.colorHighlight ? tg("breadcrumbs.colors.colorHighlight") : ""};
+        ${colorHighlight}
       }
     `}
 
-  ${themeGet("breadcrumbs.overrides")}
-  ${COMMON}
-  ${LAYOUT}
-  ${TYPOGRAPHY}
-  ${FLEX_ITEM}
+  ${tg("breadcrumbs.overrides")}
+  ${compose(
+    COMMON,
+    LAYOUT,
+    TYPOGRAPHY,
+    FLEX_ITEM
+  )}
 `;
 
 const BreadcrumbItem = styled.a`
   text-decoration: none;
-
-  ${props =>
-    props.color
-      ? css`
-          color: ${themeGet(`colors.${props.color}`, props.color)};
-        `
-      : css`
-          color: ${themeGet("breadcrumbs.colors.color")};
-        `};
+  color: ${props => (!props.color ? tg("breadcrumbs.colors.color") : "")};
+  ${COMMON.color}
 
   &:visited {
-    ${props =>
-      props.color
-        ? css`
-            color: ${themeGet(`colors.${props.color}`, props.color)};
-          `
-        : css`
-            color: ${themeGet("breadcrumbs.colors.color")};
-          `};
+    color: ${props => (!props.color ? tg("breadcrumbs.colors.color") : "")};
+    ${COMMON.color}
   }
 
   &:focus-visible {
-    ${props =>
-      props.colorFocus
-        ? css`
-            color: ${themeGet(`colors.${props.colorFocus}`, props.colorFocus)};
-          `
-        : css`
-            color: ${themeGet("breadcrumbs.colors.colorFocus")};
-          `};
+    color: ${props =>
+      !props.colorFocus ? tg("breadcrumbs.colors.colorFocus") : ""};
+    ${colorFocus}
   }
   .js-focus-visible &.focus-visible {
-    ${props =>
-      props.colorFocus
-        ? css`
-            color: ${themeGet(`colors.${props.colorFocus}`, props.colorFocus)};
-          `
-        : css`
-            color: ${themeGet("breadcrumbs.colors.colorFocus")};
-          `};
+    color: ${props =>
+      !props.colorFocus ? tg("breadcrumbs.colors.colorFocus") : ""};
+    ${colorFocus}
   }
 
   &:hover {
-    ${props =>
-      props.colorHover
-        ? css`
-            color: ${themeGet(`colors.${props.colorHover}`, props.colorHover)};
-          `
-        : css`
-            color: ${themeGet("breadcrumbs.colors.colorHover")};
-          `};
+    color: ${props =>
+      !props.colorHover ? tg("breadcrumbs.colors.colorHover") : ""};
+    ${colorHover}
   }
 
   &:active {
-    ${props =>
-      props.colorActive
-        ? css`
-            color: ${themeGet(
-              `colors.${props.colorActive}`,
-              props.colorActive
-            )};
-          `
-        : css`
-            color: ${themeGet("breadcrumbs.colors.colorActive")};
-          `};
+    color: ${props =>
+      !props.colorActive ? tg("breadcrumbs.colors.colorActive") : ""};
+    ${colorActive}
   }
 `;
 
 const Separator = styled.span`
-  ${props =>
-    props.colorSeparator
-      ? css`
-          color: ${themeGet(
-            `colors.${props.colorSeparator}`,
-            props.colorSeparator
-          )};
-        `
-      : css`
-          color: ${themeGet("breadcrumbs.colors.colorSeparator")};
-        `};
+  color: ${props =>
+    !props.colorSeparator ? tg("breadcrumbs.colors.colorSeparator") : ""};
+  ${colorSeparator}
 `;
 
 const Breadcrumbs = ({
@@ -148,7 +136,9 @@ const Breadcrumbs = ({
 }) => {
   const sep = (
     <Separator color={colorSeparator}>
-      {separator || <Icon name={separatorIcon} color={colorSeparator} aria-hidden="true" />}
+      {separator || (
+        <Icon name={separatorIcon} color={colorSeparator} aria-hidden="true" />
+      )}
     </Separator>
   );
 

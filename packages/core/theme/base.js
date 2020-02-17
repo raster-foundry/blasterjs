@@ -116,15 +116,10 @@ export const lineHeights = {
 
 export const fontWeights = {};
 export const letterSpacings = {};
-export const maxWidths = {};
-export const minWidths = {};
-export const widths = {};
-export const maxHeights = {};
-export const minHeights = {};
-export const heights = {};
 export const borders = {};
 export const borderWidths = {};
 export const borderStyles = {};
-export const zIndices = {};
+export const sizes = {};
 export const overrides = {};
+export const zIndices = {};
 export { default as icons } from "./icons";

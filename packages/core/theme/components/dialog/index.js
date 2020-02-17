@@ -4,16 +4,10 @@ export const theme = {
   space: {
     p: 3
   },
-  minWidths: {
-    minWidth: "24rem"
-  },
-  maxWidths: {
-    maxWidth: "80%"
-  },
-  minHeights: {
-    minHeight: "16rem"
-  },
-  maxHeights: {
+  sizes: {
+    minWidth: "24rem",
+    maxWidth: "80%",
+    minHeight: "16rem",
     maxHeight: "90%"
   },
   colors: {

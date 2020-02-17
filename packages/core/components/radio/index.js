@@ -1,10 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { system, compose } from "styled-system";
 import Icon from "../icon";
 import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
 import { blurUnlessFocusVisible } from "../../utils";
+
+const checkedColor = system({
+  checkedColor: {
+    property: "color",
+    scale: "colors"
+  }
+});
+
+const uncheckedColor = system({
+  uncheckedColor: {
+    property: "color",
+    scale: "colors"
+  }
+});
 
 const StyledRadio = styled.span`
   position: relative;
@@ -13,13 +28,15 @@ const StyledRadio = styled.span`
 
   &:focus-within {
     outline: 0;
-    box-shadow: 0 0 0 3px ${themeGet('radio.colors.shadowColorFocus')}4C;
+    box-shadow: 0 0 0 3px ${tg("radio.colors.shadowColorFocus")}4C;
   }
 
-  ${props => props.disabled && css`
-    opacity: 0.5;
-    cursor: not-allowed;
-  `}
+  ${props =>
+    props.disabled &&
+    css`
+      opacity: 0.5;
+      cursor: not-allowed;
+    `}
 
   .toggle {
     position: absolute;
@@ -31,25 +48,25 @@ const StyledRadio = styled.span`
   }
 
   .toggle--checked {
-    ${props => props.checkedColor
-      ? css`color: ${themeGet(`colors.${props.checkedColor}`, props.checkedColor)};`
-      : css`color: ${themeGet("radio.colors.checkedColor")};`
-    }
+    color: ${props =>
+      !props.checkedColor ? tg("radio.colors.checkedColor") : ""};
+    ${checkedColor}
   }
 
   .toggle--unchecked {
-    ${props => props.uncheckedColor
-      ? css`color: ${themeGet(`colors.${props.uncheckedColor}`, props.uncheckedColor)};`
-      : css`color: ${themeGet("radio.colors.uncheckedColor")};`
-    }
+    color: ${props =>
+      !props.uncheckedColor ? tg("radio.colors.uncheckedColor") : ""};
+    ${uncheckedColor}
   }
 
-  ${themeGet("radio.overrides")}
-  ${COMMON}
-  ${FLEX_ITEM}
-  ${LAYOUT}
-  ${MISC}
-  ${POSITION}
+  ${tg("radio.overrides")}
+  ${compose(
+    COMMON,
+    FLEX_ITEM,
+    LAYOUT,
+    MISC,
+    POSITION
+  )}
 `;
 
 const Input = styled.input`
@@ -88,12 +105,7 @@ const Radio = ({
   ...props
 }) => {
   return (
-    <StyledRadio
-      disabled={disabled}
-      width={size}
-      height={size}
-      {...props}
-    >
+    <StyledRadio disabled={disabled} width={size} height={size} {...props}>
       <Input
         type="radio"
         id={id}
@@ -155,8 +167,8 @@ Radio.defaultProps = {
   checked: undefined,
   required: false,
   invalid: false,
-  checkedIcon: 'radioChecked',
-  uncheckedIcon: 'radioUnchecked'
+  checkedIcon: "radioChecked",
+  uncheckedIcon: "radioUnchecked"
 };
 
 export default Radio;

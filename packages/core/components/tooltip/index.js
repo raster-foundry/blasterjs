@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { COMMON, BORDER, TYPOGRAPHY, MISC } from "../../constants";
 
 import TooltipJS from "tooltip.js";
@@ -13,21 +14,23 @@ const TooltipContent = styled.span`
   font-weight: normal;
   text-align: center;
 
-  padding-top: ${themeGet("tooltip.space.py")};
-  padding-right: ${themeGet("tooltip.space.px")};
-  padding-bottom: ${themeGet("tooltip.space.py")};
-  padding-left: ${themeGet("tooltip.space.px")};
-  border-radius: ${themeGet("tooltip.radii.borderRadius")};
-  background-color: ${themeGet("tooltip.colors.bg")};
-  color: ${themeGet("tooltip.colors.color")};
-  font-size: ${themeGet("tooltip.fontSizes.fontSize")};
-  box-shadow: ${themeGet("tooltip.shadows.boxShadow")};
+  padding-top: ${tg("tooltip.space.py")};
+  padding-right: ${tg("tooltip.space.px")};
+  padding-bottom: ${tg("tooltip.space.py")};
+  padding-left: ${tg("tooltip.space.px")};
+  border-radius: ${tg("tooltip.radii.borderRadius")};
+  background-color: ${tg("tooltip.colors.bg")};
+  color: ${tg("tooltip.colors.color")};
+  font-size: ${tg("tooltip.fontSizes.fontSize")};
+  box-shadow: ${tg("tooltip.shadows.boxShadow")};
 
-  ${themeGet("tooltip.overrides")}
-  ${COMMON}
-  ${BORDER}
-  ${TYPOGRAPHY}
-  ${MISC}
+  ${tg("tooltip.overrides")}
+  ${compose(
+    COMMON,
+    BORDER,
+    TYPOGRAPHY,
+    MISC
+  )}
 
   .tooltip-arrow {
     width: 0;
@@ -36,9 +39,7 @@ const TooltipContent = styled.span`
     position: absolute;
     margin: 5px;
     border-color: ${props =>
-      props.bg
-        ? themeGet(`colors.${props.bg}`, props.bg)
-        : themeGet("tooltip.colors.bg")};
+      props.bg ? tg(`colors.${props.bg}`, props.bg) : tg("tooltip.colors.bg")};
   }
 
   .tooltip[x-placement^="top"] & {

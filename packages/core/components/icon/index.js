@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import styled, { css, ThemeContext } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
 
 const StyledIcon = styled.svg`
@@ -16,12 +17,14 @@ const StyledIcon = styled.svg`
       height: 1em;
     `}
 
-  ${themeGet("icon.overrides")};
-  ${COMMON}
-  ${FLEX_ITEM}
-  ${LAYOUT}
-  ${MISC}
-  ${POSITION}
+  ${tg("icon.overrides")};
+  ${compose(
+    COMMON,
+    FLEX_ITEM,
+    LAYOUT,
+    MISC,
+    POSITION
+  )}
 `;
 
 const Icon = ({ path, viewBox, ...p }) => {

@@ -1,25 +1,26 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import styled, { ThemeContext } from 'styled-components'
-import { themeGet } from 'styled-system';
+import styled, { ThemeContext } from "styled-components";
+import { themeGet } from "@styled-system/theme-get";
 import { rgba } from "polished";
+import { compose } from "styled-system";
 import { COMMON, BORDER, MISC } from "../../constants";
-import ReactModal from 'react-modal';
+import ReactModal from "react-modal";
 
 const CLASSES = {
-  PORTAL: 'modal-dialog',
+  PORTAL: "modal-dialog",
   OVERLAY: {
-    base: 'modal-dialog__overlay',
-    afterOpen: 'modal-dialog__overlay--after-open',
-    beforeClose: 'modal-dialog__overlay--before-close'
+    base: "modal-dialog__overlay",
+    afterOpen: "modal-dialog__overlay--after-open",
+    beforeClose: "modal-dialog__overlay--before-close"
   },
   DIALOG: {
-    base: 'modal-dialog__content',
-    afterOpen: 'modal-dialog__content--after-open',
-    beforeClose: 'modal-dialog__content--before-close'
+    base: "modal-dialog__content",
+    afterOpen: "modal-dialog__content--after-open",
+    beforeClose: "modal-dialog__content--before-close"
   },
-  BODY: 'body--modal-dialog-open',
-  HTML: 'html--modal-dialog-open'
+  BODY: "body--modal-dialog-open",
+  HTML: "html--modal-dialog-open"
 };
 
 let isAppElementSet = false;
@@ -37,9 +38,11 @@ const StyledDialog = styled.div`
   box-shadow: ${themeGet("dialog.shadows.boxShadow")};
 
   ${themeGet("dialog.overrides")}
-  ${COMMON}
-  ${BORDER}
-  ${MISC}
+  ${compose(
+    COMMON,
+    BORDER,
+    MISC
+  )}
 `;
 
 const Dialog = ({
@@ -80,33 +83,35 @@ const Dialog = ({
     isAppElementSet = true;
   }
 
-  const closeTimeoutMS = _closeTimeoutMS || theme.dialog.durations.closeTimeoutMS || 150;
+  const closeTimeoutMS =
+    _closeTimeoutMS || theme.dialog.durations.closeTimeoutMS || 150;
   const overlayColor = _overlayColor || theme.dialog.colors.overlay || "#000";
-  const overlayOpacity = _overlayOpacity || theme.dialog.opacities.overlay || 0.5;
+  const overlayOpacity =
+    _overlayOpacity || theme.dialog.opacities.overlay || 0.5;
   const zIndex = _zIndex || theme.dialog.zIndices.zIndex || 1000000;
-  const minWidth = _minWidth || theme.dialog.minWidths.minWidth || "24rem";
-  const maxWidth = _maxWidth || theme.dialog.maxWidths.maxWidth || "80%";
-  const minHeight = _minHeight || theme.dialog.minHeights.minHeight || "16rem";
-  const maxHeight = _maxHeight || theme.dialog.maxHeights.maxHeight || "90%";
+  const minWidth = _minWidth || theme.dialog.sizes.minWidth || "24rem";
+  const maxWidth = _maxWidth || theme.dialog.sizes.maxWidth || "80%";
+  const minHeight = _minHeight || theme.dialog.sizes.minHeight || "16rem";
+  const maxHeight = _maxHeight || theme.dialog.sizes.maxHeight || "90%";
 
   const overlayStyle = {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: rgba(overlayColor, overlayOpacity),
     zIndex: zIndex
   };
 
   const contentStyle = {
-    display: 'flex',
-    flexFlow: 'column nowrap',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    flexFlow: "column nowrap",
+    justifyContent: "center",
+    alignItems: "center",
     width,
     minWidth,
     maxWidth,
@@ -169,10 +174,10 @@ const Dialog = ({
     <>
       <style
         type="text/css"
-        dangerouslySetInnerHTML={{__html: transitionCSS}}
+        dangerouslySetInnerHTML={{ __html: transitionCSS }}
       />
       <ReactModal
-        style={{overlay: overlayStyle, content: contentStyle}}
+        style={{ overlay: overlayStyle, content: contentStyle }}
         isOpen={isOpen}
         onAfterOpen={onAfterOpen}
         onRequestClose={onRequestClose}

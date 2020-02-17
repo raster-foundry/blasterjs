@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { extractComponentFromChildren } from "../../utils";
 import { COMMON, BORDER, LAYOUT, FLEX_ITEM } from "../../constants";
 
 const StyledSwatch = styled.span`
   display: inline-block;
-  width: 1em;
-  height: 1em;
 
   ${props => {
     if (props.circle) {
@@ -19,30 +18,32 @@ const StyledSwatch = styled.span`
 
     if (props.rounded) {
       return css`
-        border-radius: ${themeGet("swatch.radii.rounded")};
+        border-radius: ${tg("swatch.radii.rounded")};
       `;
     }
   }}
 
-  width: ${themeGet("swatch.widths.width")};
-  height: ${themeGet("swatch.heights.height")};
-  padding: ${themeGet("swatch.space.p")};
+  width: ${tg("swatch.sizes.width")};
+  height: ${tg("swatch.sizes.height")};
+  padding: ${tg("swatch.space.p")};
 
-  ${themeGet("swatch.overrides")}
-  ${COMMON}
-  ${BORDER}
-  ${LAYOUT}
-  ${FLEX_ITEM}
+  ${tg("swatch.overrides")}
+  ${compose(
+    COMMON,
+    BORDER,
+    LAYOUT,
+    FLEX_ITEM
+  )}
 `;
 
 const Swatch = ({ color, children: _children, ...props }) => {
-  const [children, tooltip] = extractComponentFromChildren(_children, 'Tooltip');
+  const [children, tooltip] = extractComponentFromChildren(
+    _children,
+    "Tooltip"
+  );
 
   return (
-    <StyledSwatch
-      {...props}
-      bg={color}
-    >
+    <StyledSwatch {...props} bg={color}>
       {tooltip}
     </StyledSwatch>
   );

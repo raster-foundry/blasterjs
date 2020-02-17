@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { rgba } from "polished";
 import { COMMON, BORDER, LAYOUT, TYPOGRAPHY } from "../../constants";
 
@@ -16,8 +17,8 @@ const Table = styled.table`
   td {
     border-style: solid;
     ${props => props.borderColor
-      ? css`border-color: ${themeGet(`colors.${props.borderColor}`, props.borderColor)};`
-      : css`border-color: ${themeGet('table.colors.borderColor')};`
+      ? css`border-color: ${tg(`colors.${props.borderColor}`, props.borderColor)};`
+      : css`border-color: ${tg('table.colors.borderColor')};`
     }
   }
 
@@ -25,12 +26,12 @@ const Table = styled.table`
     th {
       border-bottom-style: solid;
       ${props => props.borderColor
-        ? css`border-color: ${themeGet(`colors.${props.borderColor}`, props.borderColor)};`
-        : css`border-color: ${themeGet('table.colors.borderColor')};`
+        ? css`border-color: ${tg(`colors.${props.borderColor}`, props.borderColor)};`
+        : css`border-color: ${tg('table.colors.borderColor')};`
       }
       ${props => props.borderWidth
         ? css`border-bottom-width: ${props.borderWidth}px};`
-        : css`border-bottom-width: ${themeGet('table.borderWidths.borderWidth')}px;`
+        : css`border-bottom-width: ${tg('table.borderWidths.borderWidth')}px;`
       }
     }
   `}
@@ -39,7 +40,7 @@ const Table = styled.table`
     & {
       ${props => props.borderWidth
         ? css`border-width: ${props.borderWidth}px};`
-        : css`border-width: ${themeGet('table.borderWidths.borderWidth')}px;`
+        : css`border-width: ${tg('table.borderWidths.borderWidth')}px;`
       }
     }
   `}
@@ -48,7 +49,7 @@ const Table = styled.table`
     tr:not(:last-child) td {
       ${props => props.borderWidth
         ? css`border-bottom-width: ${props.borderWidth}px};`
-        : css`border-bottom-width: ${themeGet('table.borderWidths.borderWidth')}px;`
+        : css`border-bottom-width: ${tg('table.borderWidths.borderWidth')}px;`
       }
 
     }
@@ -59,7 +60,7 @@ const Table = styled.table`
     td:not(:first-child) {
       ${props => props.borderWidth
         ? css`border-left-width: ${props.borderWidth}px};`
-        : css`border-left-width: ${themeGet('table.borderWidths.borderWidth')}px;`
+        : css`border-left-width: ${tg('table.borderWidths.borderWidth')}px;`
       }
     }
   `}
@@ -67,8 +68,8 @@ const Table = styled.table`
   ${props => props.striped && css`
     tr:nth-child(odd) td {
       ${props => props.stripeColor
-        ? css`background-color: ${rgba(themeGet(`colors.${props.stripeColor}`, props.stripeColor)(props), 0.15)};`
-        : css`background-color: ${rgba(themeGet('table.colors.stripeColor')(props), 0.15)};`
+        ? css`background-color: ${rgba(tg(`colors.${props.stripeColor}`, props.stripeColor)(props), 0.15)};`
+        : css`background-color: ${rgba(tg('table.colors.stripeColor')(props), 0.15)};`
       }
     }
   `}
@@ -77,8 +78,8 @@ const Table = styled.table`
     tr:hover td,
     tr:active td {
       ${props => props.hoverColor
-        ? css`background-color: ${rgba(themeGet(`colors.${props.hoverColor}`, props.hoverColor)(props), 0.15)};`
-        : css`background-color: ${rgba(themeGet('table.colors.hoverColor')(props), 0.15)};`
+        ? css`background-color: ${rgba(tg(`colors.${props.hoverColor}`, props.hoverColor)(props), 0.15)};`
+        : css`background-color: ${rgba(tg('table.colors.hoverColor')(props), 0.15)};`
       }
       cursor: ${props => props.hoverCursor};
     }
@@ -89,16 +90,18 @@ const Table = styled.table`
     return css`
       th,
       td {
-        padding: ${themeGet(`table.space.${density}`)};
+        padding: ${tg(`table.space.${density}`)};
       }
     `
   }}
 
-  ${themeGet("table.overrides")}
-  ${COMMON}
-  ${BORDER}
-  ${LAYOUT}
-  ${TYPOGRAPHY}
+  ${tg("table.overrides")}
+  ${compose(
+    COMMON,
+    BORDER,
+    LAYOUT,
+    TYPOGRAPHY
+  )}
 `;
 
 Table.propTypes = {

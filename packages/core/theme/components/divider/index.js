@@ -5,13 +5,15 @@ export const theme = {
     horizontal: "gray300",
     vertical: "gray300"
   },
-  widths: {
-    horizontal: "100%",
-    vertical: "1px"
-  },
-  heights: {
-    horizontal: "1px",
-    vertical: "100%"
+  sizes: {
+    horizontal: {
+      width: "100%",
+      height: "1px"
+    },
+    vertical: {
+      width: "1px",
+      height: "100%"
+    }
   },
   overrides: {
     horizontal: css``,

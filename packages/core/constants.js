@@ -25,37 +25,28 @@ const whiteSpace = ss.style({
   cssProperty: "whiteSpace"
 });
 
-export const composer = ss.compose;
+export const compose = ss.compose;
 
-export const COMMON = composer(ss.color, ss.display, ss.space);
-
-export const BORDER = composer(ss.borders, ss.borderColor, ss.borderRadius);
-
-export const BACKGROUND = composer(
-  ss.background,
-  ss.backgroundColor,
-  ss.backgroundImage,
-  ss.backgroundSize,
-  ss.backgroundPosition,
-  ss.backgroundRepeat
+export const COMMON = compose(
+  ss.color,
+  ss.display,
+  ss.space
 );
 
-export const TYPOGRAPHY = composer(
+export const BORDER = compose(ss.border);
+
+export const BACKGROUND = compose(ss.background);
+
+export const TYPOGRAPHY = compose(
   textDecoration,
   textOverflow,
   textShadow,
   textTransform,
   whiteSpace,
-  ss.fontFamily,
-  ss.fontSize,
-  ss.fontStyle,
-  ss.fontWeight,
-  ss.lineHeight,
-  ss.textAlign,
-  ss.letterSpacing
+  ss.typography
 );
 
-export const LAYOUT = composer(
+export const LAYOUT = compose(
   ss.size,
   ss.width,
   ss.height,
@@ -67,16 +58,9 @@ export const LAYOUT = composer(
   ss.verticalAlign
 );
 
-export const POSITION = composer(
-  ss.position,
-  ss.zIndex,
-  ss.top,
-  ss.right,
-  ss.bottom,
-  ss.left
-);
+export const POSITION = compose(ss.position);
 
-export const FLEX_CONTAINER = composer(
+export const FLEX_CONTAINER = compose(
   // flex container props (display: flex)
   ss.flexBasis,
   ss.flexDirection,
@@ -87,7 +71,7 @@ export const FLEX_CONTAINER = composer(
   ss.justifyItems
 );
 
-export const FLEX_ITEM = composer(
+export const FLEX_ITEM = compose(
   // flex container child props
   ss.flex,
   ss.justifySelf,
@@ -95,9 +79,15 @@ export const FLEX_ITEM = composer(
   ss.order
 );
 
-export const MISC = composer(ss.opacity, ss.boxShadow);
+export const FLEXBOX = ss.flexbox;
+export const GRID = ss.grid;
 
-export const STYLED = composer(
+export const MISC = compose(
+  ss.opacity,
+  ss.boxShadow
+);
+
+export const STYLED = compose(
   COMMON,
   BORDER,
   BACKGROUND,

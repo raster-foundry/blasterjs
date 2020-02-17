@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import { COMMON, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
 
 const Label = styled.label`
-  font-size: ${themeGet('label.fontSizes.fontSize')};
+  font-size: ${tg("label.fontSizes.fontSize")};
 
-  ${themeGet("label.overrides")}
-  ${COMMON}
-  ${TYPOGRAPHY}
-  ${FLEX_ITEM}
+  ${tg("label.overrides")}
+  ${compose(
+    COMMON,
+    TYPOGRAPHY,
+    FLEX_ITEM
+  )}
 `;
 
 Label.propTypes = {

@@ -8,7 +8,7 @@ export const theme = {
   radii: {
     borderRadius: "base"
   },
-  heights: {
+  sizes: {
     height: "8px"
   },
   overrides: {

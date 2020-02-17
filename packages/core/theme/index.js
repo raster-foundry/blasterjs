@@ -3,19 +3,21 @@ import * as components from "./components";
 import { buildTheme } from "../utils";
 import merge from "lodash.merge";
 
-const filterObjectByKeys = (o, allowed) => Object.keys(o, allowed)
-.filter(key => allowed.includes(key))
-.reduce((obj, key) => {
-  obj[key] = o[key];
-  return obj;
-}, {});
+const filterObjectByKeys = (o, allowed) =>
+  Object.keys(o, allowed)
+    .filter(key => allowed.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = o[key];
+      return obj;
+    }, {});
 
-const unFilterObjectByKeys = (o, allowed) => Object.keys(o, allowed)
-.filter(key => !allowed.includes(key))
-.reduce((obj, key) => {
-  obj[key] = o[key];
-  return obj;
-}, {});
+const unFilterObjectByKeys = (o, allowed) =>
+  Object.keys(o, allowed)
+    .filter(key => !allowed.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = o[key];
+      return obj;
+    }, {});
 
 export const getTheme = (userDefined = {}) => {
   const userBase = filterObjectByKeys(userDefined, Object.keys(base));
