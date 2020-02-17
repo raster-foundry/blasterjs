@@ -1,4 +1,5 @@
 import React from "react";
+import propTypes from "@styled-system/prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { STYLED } from "../../constants";
@@ -20,7 +21,7 @@ const Card = styled.div`
 `;
 
 Card.propTypes = {
-  ...STYLED.propTypes
+  ...propTypes.STYLED
 };
 
 export default Card;

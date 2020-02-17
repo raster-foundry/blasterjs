@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import propTypes from "@styled-system/prop-types";
 import { darken, rgba, getLuminance, shade } from "polished";
 import styled, { css, keyframes } from "styled-components";
 import { compose } from "styled-system";
@@ -233,14 +234,14 @@ const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
 };
 
 Button.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...BORDER.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...MISC.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
+  ...propTypes.COMMON,
+  ...propTypes.BACKGROUND,
+  ...propTypes.BORDER,
+  ...propTypes.TYPOGRAPHY,
+  ...propTypes.MISC,
+  ...propTypes.LAYOUT,
+  ...propTypes.POSITION,
+  ...propTypes.FLEX_ITEM,
   appearance: PropTypes.oneOf(["default", "prominent", "minimal"]),
   intent: PropTypes.string,
   scale: PropTypes.string,

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import propTypes from "@styled-system/prop-types";
 import { getContrast, tint, mix, darken } from "polished";
 import styled, { css } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
@@ -112,7 +113,7 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 };
 
 Callout.propTypes = {
-  ...STYLED.propTypes,
+  ...propTypes.STYLED,
   intent: PropTypes.string,
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   iconSize: PropTypes.string,

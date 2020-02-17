@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
+import propTypes, { propType } from "@styled-system/prop-types";
 import styled, { css } from "styled-components";
 import { system, compose } from "styled-system";
 import { themeGet as tg } from "@styled-system/theme-get";
@@ -163,17 +164,17 @@ const Breadcrumbs = ({
 };
 
 Breadcrumbs.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...FLEX_ITEM.propTypes,
-  gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ...propTypes.COMMON,
+  ...propTypes.LAYOUT,
+  ...propTypes.TYPOGRAPHY,
+  ...propTypes.FLEX_ITEM,
+  gutter: propType,
+  colorActive: propType,
+  colorFocus: propType,
+  colorHighlight: propType,
+  colorHover: propType,
+  colorSeparator: propType,
   highlightCurrent: PropTypes.bool,
-  colorFocus: PropTypes.string,
-  colorHover: PropTypes.string,
-  colorActive: PropTypes.string,
-  colorSeparator: PropTypes.string,
-  colorHighlight: PropTypes.string,
   separator: PropTypes.string,
   separatorIcon: PropTypes.string,
   path: PropTypes.arrayOf(

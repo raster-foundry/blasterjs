@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import propTypes, { propType } from "@styled-system/prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { system, compose } from "styled-system";
@@ -101,17 +102,17 @@ const Brand = ({
 };
 
 Brand.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
+  ...propTypes.COMMON,
+  ...propTypes.LAYOUT,
+  ...propTypes.TYPOGRAPHY,
+  ...propTypes.POSITION,
+  ...propTypes.FLEX_ITEM,
+  colorFocus: propType,
+  colorHover: propType,
+  colorActive: propType,
   imagesrc: PropTypes.string,
   href: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  colorFocus: PropTypes.string,
-  colorHover: PropTypes.string,
-  colorActive: PropTypes.string
+  title: PropTypes.string.isRequired
 };
 
 export default Brand;

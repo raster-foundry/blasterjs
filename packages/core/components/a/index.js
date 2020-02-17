@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import propTypes, { propType } from "@styled-system/prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { system, compose } from "styled-system";
@@ -58,13 +59,13 @@ const A = styled.a`
 `;
 
 A.propTypes = {
-  ...COMMON.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...FLEX_ITEM.propTypes,
-  href: PropTypes.string.isRequired,
-  colorFocus: PropTypes.string,
-  colorHover: PropTypes.string,
-  colorActive: PropTypes.string
+  ...propTypes.COMMON,
+  ...propTypes.TYPOGRAPHY,
+  ...propTypes.FLEX_ITEM,
+  colorFocus: propType,
+  colorHover: propType,
+  colorActive: propType,
+  href: PropTypes.string.isRequired
 };
 
 export default A;

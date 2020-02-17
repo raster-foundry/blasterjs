@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import propTypes, { propType } from "@styled-system/prop-types";
 import { getContrast, tint, mix } from "polished";
 import styled, { css } from "styled-components";
 import { compose } from "styled-system";
@@ -120,14 +121,14 @@ function badgeAppearance(props) {
 }
 
 Badge.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...BORDER.propTypes,
-  ...FLEX_ITEM.propTypes,
-  ...MISC.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...TYPOGRAPHY.propTypes,
+  ...propTypes.COMMON,
+  ...propTypes.BACKGROUND,
+  ...propTypes.BORDER,
+  ...propTypes.FLEX_ITEM,
+  ...propTypes.MISC,
+  ...propTypes.LAYOUT,
+  ...propTypes.POSITION,
+  ...propTypes.TYPOGRAPHY,
   appearance: PropTypes.oneOf(["default", "prominent"]),
   intent: PropTypes.string,
   scale: PropTypes.string
