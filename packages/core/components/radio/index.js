@@ -1,10 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { propType } from "@styled-system/prop-types";
 import styled, { css } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { system, compose } from "styled-system";
 import Icon from "../icon";
-import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
+import {
+  COMMON,
+  FLEX_ITEM,
+  LAYOUT,
+  MISC,
+  POSITION,
+  PROPTYPES
+} from "../../constants";
 import { blurUnlessFocusVisible } from "../../utils";
 
 const checkedColor = system({
@@ -136,11 +144,8 @@ const Radio = ({
 };
 
 Radio.propTypes = {
-  ...COMMON.propTypes,
-  ...FLEX_ITEM.propTypes,
-  ...LAYOUT.propTypes,
-  ...MISC.propTypes,
-  ...POSITION.propTypes,
+  checkedColor: propType,
+  uncheckedColor: propType,
   id: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
@@ -152,8 +157,10 @@ Radio.propTypes = {
   invalid: PropTypes.bool,
   checkedIcon: PropTypes.string,
   uncheckedIcon: PropTypes.string,
-  checkedColor: PropTypes.string,
-  uncheckedColor: PropTypes.string
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.FLEX_ITEM,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION
 };
 
 Radio.defaultProps = {

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import propTypes, { propType } from "@styled-system/prop-types";
+import { propType } from "@styled-system/prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { system, compose } from "styled-system";
@@ -11,7 +11,8 @@ import {
   LAYOUT,
   TYPOGRAPHY,
   FLEX_ITEM,
-  POSITION
+  POSITION,
+  PROPTYPES
 } from "../../constants";
 
 const colorHover = system({
@@ -102,17 +103,17 @@ const Brand = ({
 };
 
 Brand.propTypes = {
-  ...propTypes.COMMON,
-  ...propTypes.LAYOUT,
-  ...propTypes.TYPOGRAPHY,
-  ...propTypes.POSITION,
-  ...propTypes.FLEX_ITEM,
   colorFocus: propType,
   colorHover: propType,
   colorActive: propType,
   imagesrc: PropTypes.string,
   href: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default Brand;

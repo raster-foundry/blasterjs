@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { compose } from "styled-system";
 import { extractComponentFromChildren } from "../../utils";
-import { COMMON, BORDER, LAYOUT, FLEX_ITEM } from "../../constants";
+import { COMMON, BORDER, LAYOUT, FLEX_ITEM, PROPTYPES } from "../../constants";
 
 const StyledSwatch = styled.span`
   display: inline-block;
@@ -50,13 +50,13 @@ const Swatch = ({ color, children: _children, ...props }) => {
 };
 
 Swatch.propTypes = {
-  ...COMMON.propTypes,
-  ...BORDER.propTypes,
-  ...LAYOUT.propTypes,
-  ...FLEX_ITEM.propTypes,
   circle: PropTypes.bool,
   rounded: PropTypes.bool,
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default Swatch;

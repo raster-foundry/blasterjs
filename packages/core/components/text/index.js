@@ -7,7 +7,8 @@ import {
   LAYOUT,
   POSITION,
   TYPOGRAPHY,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 
 const Text = styled.span`
@@ -56,11 +57,11 @@ const Text = styled.span`
 `;
 
 Text.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...FLEX_ITEM.propTypes
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default Text;

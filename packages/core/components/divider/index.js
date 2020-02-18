@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { compose } from "styled-system";
-import { COMMON, LAYOUT, FLEX_ITEM } from "../../constants";
+import { COMMON, LAYOUT, FLEX_ITEM, PROPTYPES } from "../../constants";
 
 const HDivider = styled.hr`
   border: 0;
@@ -54,10 +54,10 @@ const Divider = ({
 };
 
 Divider.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...FLEX_ITEM.propTypes,
-  vertical: PropTypes.bool
+  vertical: PropTypes.bool,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default Divider;

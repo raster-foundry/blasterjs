@@ -1,11 +1,17 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import propTypes, { propType } from "@styled-system/prop-types";
+import { propType } from "@styled-system/prop-types";
 import styled, { css } from "styled-components";
 import { system, compose } from "styled-system";
 import { themeGet as tg } from "@styled-system/theme-get";
 import Icon from "../icon";
-import { COMMON, LAYOUT, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
+import {
+  COMMON,
+  LAYOUT,
+  TYPOGRAPHY,
+  FLEX_ITEM,
+  PROPTYPES
+} from "../../constants";
 
 const colorHighlight = system({
   colorHighlight: {
@@ -164,10 +170,6 @@ const Breadcrumbs = ({
 };
 
 Breadcrumbs.propTypes = {
-  ...propTypes.COMMON,
-  ...propTypes.LAYOUT,
-  ...propTypes.TYPOGRAPHY,
-  ...propTypes.FLEX_ITEM,
   gutter: propType,
   colorActive: propType,
   colorFocus: propType,
@@ -182,7 +184,11 @@ Breadcrumbs.propTypes = {
       name: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 Breadcrumbs.defaultProps = {

@@ -9,7 +9,8 @@ import {
   LAYOUT,
   POSITION,
   FLEX_ITEM,
-  MISC
+  MISC,
+  PROPTYPES
 } from "../../constants";
 
 const Image = styled.img`
@@ -45,16 +46,16 @@ const Image = styled.img`
 `;
 
 Image.propTypes = {
-  ...COMMON.propTypes,
-  ...BORDER.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
-  ...MISC.propTypes,
   circle: PropTypes.bool,
   rounded: PropTypes.bool,
   src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired
+  alt: PropTypes.string.isRequired,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM,
+  ...PROPTYPES.MISC
 };
 
 export default Image;

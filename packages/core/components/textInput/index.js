@@ -11,7 +11,8 @@ import {
   MISC,
   LAYOUT,
   POSITION,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 
 const StyledTextInput = styled.input`
@@ -64,16 +65,16 @@ const TextInput = ({ invalid, ...props }) => {
 };
 
 TextInput.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...BORDER.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...MISC.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
   type: PropTypes.string,
-  invalid: PropTypes.bool
+  invalid: PropTypes.bool,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BACKGROUND,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.MISC,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 TextInput.defaultProps = {

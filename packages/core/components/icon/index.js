@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import styled, { css, ThemeContext } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { compose } from "styled-system";
-import { COMMON, FLEX_ITEM, LAYOUT, MISC, POSITION } from "../../constants";
+import {
+  COMMON,
+  FLEX_ITEM,
+  LAYOUT,
+  MISC,
+  POSITION,
+  PROPTYPES
+} from "../../constants";
 
 const StyledIcon = styled.svg`
   vertical-align: middle;
@@ -44,13 +51,13 @@ const Icon = ({ path, viewBox, ...p }) => {
 };
 
 Icon.propTypes = {
-  ...COMMON.propTypes,
-  ...FLEX_ITEM.propTypes,
-  ...LAYOUT.propTypes,
-  ...MISC.propTypes,
-  ...POSITION.propTypes,
   name: PropTypes.string,
-  path: PropTypes.string
+  path: PropTypes.string,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.FLEX_ITEM,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.MISC,
+  ...PROPTYPES.POSITION
 };
 
 Icon.defaultProps = {

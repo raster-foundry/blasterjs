@@ -10,7 +10,8 @@ import {
   LAYOUT,
   POSITION,
   FLEX_CONTAINER,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 import Button from "../button";
 import Icon from "../icon";
@@ -107,20 +108,20 @@ const Pagination = ({
 };
 
 Pagination.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_CONTAINER.propTypes,
-  ...FLEX_ITEM.propTypes,
   currentPage: PropTypes.number.isRequired,
   pageCount: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   firstAndLast: PropTypes.bool,
   buttonAppearance: PropTypes.oneOf(["default", "prominent", "minimal"]),
-  buttonIntent: PropTypes.string
+  buttonIntent: PropTypes.string,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BACKGROUND,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_CONTAINER,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 Pagination.defaultProps = {

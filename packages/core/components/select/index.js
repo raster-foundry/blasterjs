@@ -12,7 +12,8 @@ import {
   MISC,
   LAYOUT,
   POSITION,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 
 const StyledSelect = styled.div`
@@ -155,20 +156,20 @@ const Select = ({
 };
 
 Select.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...BORDER.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...MISC.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
   id: PropTypes.string,
   value: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
   icon: PropTypes.string,
-  iconColor: PropTypes.string
+  iconColor: PropTypes.string,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BACKGROUND,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.MISC,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 Select.defaultProps = {

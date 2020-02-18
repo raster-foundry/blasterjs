@@ -1,8 +1,7 @@
 import React from "react";
-import propTypes from "@styled-system/prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
-import { STYLED } from "../../constants";
+import { STYLED, PROPTYPES } from "../../constants";
 
 const Card = styled.div`
   position: relative;
@@ -21,7 +20,7 @@ const Card = styled.div`
 `;
 
 Card.propTypes = {
-  ...propTypes.STYLED
+  ...PROPTYPES.STYLED
 };
 
 export default Card;

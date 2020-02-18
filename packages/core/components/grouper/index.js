@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { compose } from "styled-system";
-import { COMMON, LAYOUT } from "../../constants";
+import { COMMON, LAYOUT, PROPTYPES } from "../../constants";
 
 const OuterGrouper = styled.div`
   ${tg("grouper.overrides")}
@@ -58,12 +58,12 @@ const Grouper = ({ vertical, justify, align, gutter, children, ...props }) => {
 };
 
 Grouper.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
   vertical: PropTypes.bool,
   justify: PropTypes.string,
   align: PropTypes.string,
-  gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT
 };
 
 Grouper.defaultProps = {

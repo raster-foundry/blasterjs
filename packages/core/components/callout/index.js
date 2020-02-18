@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import propTypes from "@styled-system/prop-types";
 import { getContrast, tint, mix, darken } from "polished";
 import styled, { css } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import Box from "../box";
 import Icon from "../icon";
 import Heading from "../heading";
-import { STYLED } from "../../constants";
+import { STYLED, PROPTYPES } from "../../constants";
 
 const INTENTS = {
   SUCCESS: "success",
@@ -113,11 +112,11 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 };
 
 Callout.propTypes = {
-  ...propTypes.STYLED,
   intent: PropTypes.string,
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   iconSize: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  ...PROPTYPES.STYLED
 };
 
 Callout.defaultProps = {

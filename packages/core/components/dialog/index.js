@@ -4,7 +4,7 @@ import styled, { ThemeContext } from "styled-components";
 import { themeGet } from "@styled-system/theme-get";
 import { rgba } from "polished";
 import { compose } from "styled-system";
-import { COMMON, BORDER, MISC } from "../../constants";
+import { COMMON, BORDER, MISC, PROPTYPES } from "../../constants";
 import ReactModal from "react-modal";
 
 const CLASSES = {
@@ -209,15 +209,15 @@ const Dialog = ({
 Dialog.setAppElement = element => ReactModal.setAppElement(element);
 
 Dialog.propTypes = {
-  ...ReactModal.propTypes,
-  ...COMMON.propTypes,
-  ...BORDER.propTypes,
-  ...MISC.propTypes,
   appElementId: PropTypes.string,
   closeTimeoutMS: PropTypes.number,
   overlayColor: PropTypes.string,
   overlayOpacity: PropTypes.number,
-  zIndex: PropTypes.number
+  zIndex: PropTypes.number,
+  ...ReactModal.propTypes,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.MISC
 };
 
 export default Dialog;

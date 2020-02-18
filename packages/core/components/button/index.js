@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import propTypes from "@styled-system/prop-types";
 import { darken, rgba, getLuminance, shade } from "polished";
 import styled, { css, keyframes } from "styled-components";
 import { compose } from "styled-system";
@@ -13,7 +12,8 @@ import {
   MISC,
   LAYOUT,
   POSITION,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 import Icon from "../icon";
 
@@ -234,14 +234,6 @@ const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
 };
 
 Button.propTypes = {
-  ...propTypes.COMMON,
-  ...propTypes.BACKGROUND,
-  ...propTypes.BORDER,
-  ...propTypes.TYPOGRAPHY,
-  ...propTypes.MISC,
-  ...propTypes.LAYOUT,
-  ...propTypes.POSITION,
-  ...propTypes.FLEX_ITEM,
   appearance: PropTypes.oneOf(["default", "prominent", "minimal"]),
   intent: PropTypes.string,
   scale: PropTypes.string,
@@ -249,7 +241,15 @@ Button.propTypes = {
   iconAfter: PropTypes.string,
   block: PropTypes.bool,
   disabled: PropTypes.bool,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BACKGROUND,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.MISC,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 Button.defaultProps = {

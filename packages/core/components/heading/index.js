@@ -8,7 +8,8 @@ import {
   LAYOUT,
   POSITION,
   TYPOGRAPHY,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 
 const Heading = styled.h1`
@@ -30,12 +31,12 @@ const Heading = styled.h1`
 `;
 
 Heading.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...FLEX_ITEM.propTypes,
-  as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"])
+  as: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5", "h6"]),
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 Heading.defaultProps = {

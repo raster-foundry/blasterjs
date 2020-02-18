@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import propTypes, { propType } from "@styled-system/prop-types";
+import { propType } from "@styled-system/prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { system, compose } from "styled-system";
-import { COMMON, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
+import { COMMON, TYPOGRAPHY, FLEX_ITEM, PROPTYPES } from "../../constants";
 
 const colorHover = system({
   colorHover: {
@@ -59,13 +59,13 @@ const A = styled.a`
 `;
 
 A.propTypes = {
-  ...propTypes.COMMON,
-  ...propTypes.TYPOGRAPHY,
-  ...propTypes.FLEX_ITEM,
   colorFocus: propType,
   colorHover: propType,
   colorActive: propType,
-  href: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default A;

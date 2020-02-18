@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { compose } from "styled-system";
 import { rgba } from "polished";
-import { COMMON, BORDER, LAYOUT, TYPOGRAPHY } from "../../constants";
+import { COMMON, BORDER, LAYOUT, TYPOGRAPHY, PROPTYPES } from "../../constants";
 
 // prettier-ignore
 const Table = styled.table`
@@ -105,10 +105,6 @@ const Table = styled.table`
 `;
 
 Table.propTypes = {
-  ...COMMON.propTypes,
-  ...BORDER.propTypes,
-  ...LAYOUT.propTypes,
-  ...TYPOGRAPHY.propTypes,
   borderHeader: PropTypes.bool,
   bordered: PropTypes.bool,
   borderInside: PropTypes.bool,
@@ -122,7 +118,11 @@ Table.propTypes = {
   hoverable: PropTypes.bool,
   hoverColor: PropTypes.string,
   hoverCursor: PropTypes.string,
-  compact: PropTypes.bool
+  compact: PropTypes.bool,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.TYPOGRAPHY
 };
 
 Table.defaultProps = {

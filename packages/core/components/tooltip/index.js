@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { compose } from "styled-system";
-import { COMMON, BORDER, TYPOGRAPHY, MISC } from "../../constants";
+import { COMMON, BORDER, TYPOGRAPHY, MISC, PROPTYPES } from "../../constants";
 
 import TooltipJS from "tooltip.js";
 
@@ -181,10 +181,6 @@ class Tooltip extends React.Component {
 }
 
 Tooltip.propTypes = {
-  ...COMMON.propTypes,
-  ...BORDER.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...MISC.propTypes,
   show: PropTypes.bool,
   hasArrow: PropTypes.bool,
   placement: PropTypes.oneOf([
@@ -213,7 +209,11 @@ Tooltip.propTypes = {
   boundariesElement: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   xOffset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   yOffset: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  options: PropTypes.object
+  options: PropTypes.object,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.MISC
 };
 
 Tooltip.defaultProps = {

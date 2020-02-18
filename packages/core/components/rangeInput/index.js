@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
 import { themeGet as tg } from "@styled-system/theme-get";
 import { system, compose } from "styled-system";
-import { COMMON, POSITION, FLEX_ITEM } from "../../constants";
+import { COMMON, POSITION, FLEX_ITEM, PROPTYPES } from "../../constants";
 
 const StyledRangeInput = styled.input`
   -webkit-appearance: none;
@@ -235,9 +235,6 @@ const RangeInput = props => {
 };
 
 RangeInput.propTypes = {
-  ...COMMON.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
   max: PropTypes.number,
   min: PropTypes.number,
   step: PropTypes.number,
@@ -257,7 +254,10 @@ RangeInput.propTypes = {
   trackBorderColor: PropTypes.string,
   trackBorderWidth: PropTypes.string,
   trackShadow: PropTypes.string,
-  trackFocusColor: PropTypes.string
+  trackFocusColor: PropTypes.string,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default RangeInput;

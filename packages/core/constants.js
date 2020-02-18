@@ -1,4 +1,5 @@
 import * as ss from "styled-system";
+import { createPropTypes } from "@styled-system/prop-types";
 
 const textShadow = ss.style({
   prop: "textShadow",
@@ -98,3 +99,18 @@ export const STYLED = compose(
   FLEX_ITEM,
   MISC
 );
+
+export const PROPTYPES = {
+  COMMON: createPropTypes(COMMON.propNames),
+  BORDER: createPropTypes(BORDER.propNames),
+  BACKGROUND: createPropTypes(BACKGROUND.propNames),
+  TYPOGRAPHY: createPropTypes(TYPOGRAPHY.propNames),
+  LAYOUT: createPropTypes(LAYOUT.propNames),
+  POSITION: createPropTypes(POSITION.propNames),
+  FLEX_CONTAINER: createPropTypes(FLEX_CONTAINER.propNames),
+  FLEX_ITEM: createPropTypes(FLEX_ITEM.propNames),
+  MISC: createPropTypes(MISC.propNames),
+  FLEXBOX: createPropTypes(FLEXBOX.propNames),
+  GRID: createPropTypes(GRID.propNames),
+  STYLED: createPropTypes(STYLED.propNames)
+};
