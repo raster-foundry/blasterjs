@@ -1,7 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { themeGet } from "styled-system";
-import { COMMON, LAYOUT, POSITION, TYPOGRAPHY, FLEX_ITEM } from "../../constants";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
+import {
+  COMMON,
+  LAYOUT,
+  POSITION,
+  TYPOGRAPHY,
+  FLEX_ITEM,
+  PROPTYPES
+} from "../../constants";
 
 const Text = styled.span`
   abbr& {
@@ -26,7 +34,7 @@ const Text = styled.span`
 
   code&,
   pre& {
-    font-family: ${themeGet("fonts.code")};
+    font-family: ${tg("fonts.code")};
   }
 
   s&,
@@ -34,24 +42,26 @@ const Text = styled.span`
     text-decoration: line-through;
   }
 
-  font-family: ${themeGet("text.fonts.fontFamily")};
+  font-family: ${tg("text.fonts.fontFamily")};
   font-size: inherit;
-  line-height: ${themeGet("text.lineHeights.lineHeight")};
+  line-height: ${tg("text.lineHeights.lineHeight")};
 
-  ${themeGet("text.overrides")}
-  ${COMMON}
-  ${LAYOUT}
-  ${POSITION}
-  ${TYPOGRAPHY}
-  ${FLEX_ITEM}
+  ${tg("text.overrides")}
+  ${compose(
+    COMMON,
+    LAYOUT,
+    POSITION,
+    TYPOGRAPHY,
+    FLEX_ITEM
+  )}
 `;
 
 Text.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...FLEX_ITEM.propTypes
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default Text;

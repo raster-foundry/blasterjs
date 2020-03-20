@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { compose } from "styled-system";
 import Icon from "../icon";
 import {
   COMMON,
@@ -11,7 +12,8 @@ import {
   MISC,
   LAYOUT,
   POSITION,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 
 const StyledSelect = styled.div`
@@ -19,33 +21,37 @@ const StyledSelect = styled.div`
   display: inline-block;
   width: 100%;
   min-height: 1.5em;
-  transition: .2s ease-in-out box-shadow;
+  transition: 0.2s ease-in-out box-shadow;
 
-  background: ${themeGet("select.colors.bg")};
-  border: ${themeGet("select.borders.border")};
-  border-color: ${themeGet("select.colors.borderColor")};
-  border-radius: ${themeGet("select.radii.borderRadius")};
-  color: ${themeGet("select.colors.color")};
-  font-family: ${themeGet("select.fonts.fontFamily")};
-  font-size: ${themeGet("select.fontSizes.fontSize")};
+  background: ${tg("select.colors.bg")};
+  border: ${tg("select.borders.border")};
+  border-color: ${tg("select.colors.borderColor")};
+  border-radius: ${tg("select.radii.borderRadius")};
+  color: ${tg("select.colors.color")};
+  font-family: ${tg("select.fonts.fontFamily")};
+  font-size: ${tg("select.fontSizes.fontSize")};
 
   &:focus-within {
-    border-color: ${themeGet("select.colors.borderColorFocus")};
-    background-color: ${themeGet("select.colors.bgFocus")};
+    border-color: ${tg("select.colors.borderColorFocus")};
+    background-color: ${tg("select.colors.bgFocus")};
     outline: 0;
-    box-shadow: 0 0 0 3px ${themeGet("select.colors.shadowColorFocus")}4C;
+    box-shadow: 0 0 0 3px ${tg("select.colors.shadowColorFocus")}4C;
   }
 
-  ${props => props.disabled && css`
-    cursor: not-allowed;
-    border-color: ${themeGet("select.colors.borderColorDisabled")};
-    background-color: ${themeGet("select.colors.bgDisabled")};
-  `}
+  ${props =>
+    props.disabled &&
+    css`
+      cursor: not-allowed;
+      border-color: ${tg("select.colors.borderColorDisabled")};
+      background-color: ${tg("select.colors.bgDisabled")};
+    `}
 
-  ${props => props.invalid && css`
-    border-color: ${themeGet("select.colors.borderColorInvalid")};
-    background-color: ${themeGet("select.colors.bgInvalid")};
-  `}
+  ${props =>
+    props.invalid &&
+    css`
+      border-color: ${tg("select.colors.borderColorInvalid")};
+      background-color: ${tg("select.colors.bgInvalid")};
+    `}
 
   .menu-icon {
     position: absolute;
@@ -53,20 +59,22 @@ const StyledSelect = styled.div`
     right: 0;
     bottom: 0;
     height: 100%;
-    margin: 0 ${themeGet('space.1', '0.8rem')};
+    margin: 0 ${tg("space.1", "0.8rem")};
     pointer-events: none;
     vertical-align: middle;
   }
 
-  ${themeGet("select.overrides")};
-  ${COMMON}
-  ${BACKGROUND}
-  ${BORDER}
-  ${TYPOGRAPHY}
-  ${MISC}
-  ${LAYOUT}
-  ${POSITION}
-  ${FLEX_ITEM}
+  ${tg("select.overrides")};
+  ${compose(
+    COMMON,
+    BACKGROUND,
+    BORDER,
+    TYPOGRAPHY,
+    MISC,
+    LAYOUT,
+    POSITION,
+    FLEX_ITEM
+  )}
 `;
 
 const SelectSelect = styled.select`
@@ -79,8 +87,8 @@ const SelectSelect = styled.select`
   font: inherit;
   appearance: none;
 
-  padding: ${themeGet("select.space.p")};
-  padding-right: ${themeGet('space.6', '4.8rem')};
+  padding: ${tg("select.space.p")};
+  padding-right: ${tg("space.6", "4.8rem")};
 
   option {
     color: inherit;
@@ -124,7 +132,7 @@ const Select = ({
         disabled={disabled}
         aria-invalid={invalid}
         spellCheck={spellCheck}
-        minHeight={multiple ? '5em' : undefined}
+        minHeight={multiple ? "5em" : undefined}
         p={p}
         px={px}
         py={py}
@@ -135,35 +143,40 @@ const Select = ({
       >
         {children}
       </SelectSelect>
-      {!multiple &&
-        <Icon name={icon} color={iconColor} className="menu-icon" aria-hidden="true" />
-      }
+      {!multiple && (
+        <Icon
+          name={icon}
+          color={iconColor}
+          className="menu-icon"
+          aria-hidden="true"
+        />
+      )}
     </StyledSelect>
   );
 };
 
 Select.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...BORDER.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...MISC.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
   id: PropTypes.string,
   value: PropTypes.string,
   defaultValue: PropTypes.string,
   onChange: PropTypes.func,
   icon: PropTypes.string,
-  iconColor: PropTypes.string
+  iconColor: PropTypes.string,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BACKGROUND,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.MISC,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 Select.defaultProps = {
   icon: "caretDown",
   value: undefined,
   defaultValue: undefined,
-  onChange: () => {},
+  onChange: () => {}
 };
 
 export default Select;

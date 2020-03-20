@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { themeGet } from "styled-system";
-import { COMMON, BORDER, LAYOUT, FLEX_ITEM } from "../../constants";
+import { themeGet } from "@styled-system/theme-get";
+import { compose } from "styled-system";
+import { COMMON, BORDER, LAYOUT, FLEX_ITEM, PROPTYPES } from "../../constants";
 
 const ColorInput = styled.input`
   width: 4rem;
@@ -12,17 +13,19 @@ const ColorInput = styled.input`
   border-radius: ${themeGet("colorInput.radii.borderRadius")};
 
   ${themeGet("colorInput.overrides")}
-  ${COMMON}
-  ${BORDER}
-  ${LAYOUT}
-  ${FLEX_ITEM}
+  ${compose(
+    COMMON,
+    BORDER,
+    LAYOUT,
+    FLEX_ITEM
+  )}
 `;
 
 ColorInput.propTypes = {
-  ...COMMON.propTypes,
-  ...BORDER.propTypes,
-  ...LAYOUT.propTypes,
-  ...FLEX_ITEM.propTypes
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 ColorInput.defaultProps = {

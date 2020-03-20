@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { propType } from "@styled-system/prop-types";
 import { getContrast, tint, mix } from "polished";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { compose } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
 import {
   COMMON,
   TYPOGRAPHY,
@@ -11,7 +13,8 @@ import {
   BORDER,
   BACKGROUND,
   POSITION,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 
 const Badge = styled.span`
@@ -22,63 +25,65 @@ const Badge = styled.span`
   vertical-align: middle;
   text-transform: ${props => (!props.textTransform ? "uppercase" : "")};
   font-family: ${props =>
-    !props.fontFamily ? themeGet("badge.base.fonts.font", "fonts.body") : ""};
+    !props.fontFamily ? tg("badge.base.fonts.font", "fonts.body") : ""};
 
   ${props => badgeAppearance(props)}
   ${props => badgeScaling(props)}
 
-  ${themeGet("badge.overrides")};
-  ${COMMON}
-  ${BACKGROUND}
-  ${BORDER}
-  ${FLEX_ITEM}
-  ${MISC}
-  ${LAYOUT}
-  ${POSITION}
-  ${TYPOGRAPHY}
+  ${tg("badge.overrides")};
+  ${compose(
+    COMMON,
+    BACKGROUND,
+    BORDER,
+    FLEX_ITEM,
+    MISC,
+    LAYOUT,
+    POSITION,
+    TYPOGRAPHY
+  )}
 `;
 
 function badgeScaling(props) {
   return css`
-    padding-top: ${themeGet(
+    padding-top: ${tg(
       `badge.scale.${props.scale}.space.pt`,
-      `badge.base.space.pt`
+      tg(`badge.base.space.pt`)
     )};
-    padding-bottom: ${themeGet(
+    padding-bottom: ${tg(
       `badge.scale.${props.scale}.space.pb`,
-      `badge.base.space.pb`
+      tg(`badge.base.space.pb`)
     )};
-    padding-left: ${themeGet(
+    padding-left: ${tg(
       `badge.scale.${props.scale}.space.pl`,
-      `badge.base.space.pl`
+      tg(`badge.base.space.pl`)
     )};
-    padding-right: ${themeGet(
+    padding-right: ${tg(
       `badge.scale.${props.scale}.space.pr`,
-      `badge.base.space.pr`
+      tg(`badge.base.space.pr`)
     )};
-    border-radius: ${themeGet(
+    border-radius: ${tg(
       `badge.scale.${props.scale}.radii.radius`,
-      `badge.base.radii.radius`
+      tg(`badge.base.radii.radius`)
     )};
-    font-size: ${themeGet(
+    font-size: ${tg(
       `badge.scale.${props.scale}.fontSizes.fontSize`,
-      `badge.base.fontSizes.fontSize`
+      tg(`badge.base.fontSizes.fontSize`)
     )};
-    font-weight: ${themeGet(
+    font-weight: ${tg(
       `badge.scale.${props.scale}.fontWeights.fontWeight`,
-      `badge.base.fontWeights.fontWeight`
+      tg(`badge.base.fontWeights.fontWeight`)
     )};
-    line-height: ${themeGet(
+    line-height: ${tg(
       `badge.scale.${props.scale}.lineHeights.lineHeight`,
-      `badge.base.lineHeights.lineHeight`
+      tg(`badge.base.lineHeights.lineHeight`)
     )};
-    min-height: ${themeGet(
+    min-height: ${tg(
       `badge.scale.${props.scale}.fontSizes.fontSize`,
-      `badge.base.fontSizes.fontSize`
+      tg(`badge.base.fontSizes.fontSize`)
     )};
-    min-width: ${themeGet(
+    min-width: ${tg(
       `badge.scale.${props.scale}.fontSizes.fontSize`,
-      `badge.base.fontSizes.fontSize`
+      tg(`badge.base.fontSizes.fontSize`)
     )};
   `;
 }
@@ -87,7 +92,7 @@ function badgeAppearance(props) {
   const { intent, appearance } = props;
 
   let color, fg, bg, contrast, darkenBy;
-  color = themeGet(
+  color = tg(
     `badge.intents.colors.${props.intent}`,
     `badge.intents.colors.default`
   )(props);
@@ -98,7 +103,7 @@ function badgeAppearance(props) {
       fg =
         getContrast(color, "#fff") <= "4.5"
           ? mix(0.7, "#000", color)
-          : themeGet(`badge.base.colors.lightText`)(props);
+          : tg(`badge.base.colors.lightText`)(props);
       break;
     case "default":
     default:
@@ -117,17 +122,17 @@ function badgeAppearance(props) {
 }
 
 Badge.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...BORDER.propTypes,
-  ...FLEX_ITEM.propTypes,
-  ...MISC.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...TYPOGRAPHY.propTypes,
   appearance: PropTypes.oneOf(["default", "prominent"]),
   intent: PropTypes.string,
-  scale: PropTypes.string
+  scale: PropTypes.string,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BACKGROUND,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.FLEX_ITEM,
+  ...PROPTYPES.MISC,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.TYPOGRAPHY
 };
 
 Badge.defaultProps = {

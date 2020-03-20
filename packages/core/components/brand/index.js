@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { propType } from "@styled-system/prop-types";
 import styled from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
+import { system, compose } from "styled-system";
 import Image from "../image";
 import { extractComponentFromChildren } from "../../utils";
 import {
@@ -9,44 +11,69 @@ import {
   LAYOUT,
   TYPOGRAPHY,
   FLEX_ITEM,
-  POSITION
+  POSITION,
+  PROPTYPES
 } from "../../constants";
+
+const colorHover = system({
+  colorHover: {
+    property: "color",
+    scale: "colors"
+  }
+});
+
+const colorFocus = system({
+  colorFocus: {
+    property: "color",
+    scale: "colors"
+  }
+});
+
+const colorActive = system({
+  colorActive: {
+    property: "color",
+    scale: "colors"
+  }
+});
 
 const StyledBrand = styled.a`
   display: inline-block;
   text-decoration: none;
   vertical-align: middle;
 
-  color: ${themeGet("brand.colors.color")};
-  font-family: ${themeGet("brand.fonts.font")};
-  font-size: ${themeGet("brand.fontSizes.fontSize")};
-  font-weight: ${themeGet("brand.fontWeights.fontWeight")};
+  color: ${tg("brand.colors.color")};
+  font-family: ${tg("brand.fonts.font")};
+  font-size: ${tg("brand.fontSizes.fontSize")};
+  font-weight: ${tg("brand.fontWeights.fontWeight")};
 
   &:focus-visible {
-    color: ${props =>
-      themeGet(`colors.${props.colorFocus}`, "brand.colors.colorFocus")};
+    ${colorFocus}
+    color: ${props => (!props.colorFocus ? tg("brand.colors.colorFocus") : "")};
   }
   .js-focus-visible &.focus-visible {
-    color: ${props =>
-      themeGet(`colors.${props.colorFocus}`, "brand.colors.colorFocus")};
+    ${colorFocus}
+    color: ${props => (!props.colorFocus ? tg("brand.colors.colorFocus") : "")};
   }
 
   &:hover {
-    color: ${props =>
-      themeGet(`colors.${props.colorHover}`, "brand.colors.colorHover")};
+    ${colorHover}
+    color: ${props => (!props.colorHover ? tg("brand.colors.colorHover") : "")};
   }
 
   &:active {
+    ${colorActive}
     color: ${props =>
-      themeGet(`colors.${props.colorActive}`, "brand.colors.colorActive")};
+      !props.colorActive ? tg("brand.colors.colorActive") : ""};
   }
 
-  ${themeGet("brand.overrides")}
-  ${COMMON}
-  ${LAYOUT}
-  ${POSITION}
-  ${TYPOGRAPHY}
-  ${FLEX_ITEM}
+  ${tg("brand.overrides")}
+  ${compose(
+    COMMON,
+    LAYOUT,
+    POSITION,
+    TYPOGRAPHY,
+    FLEX_ITEM
+  )}
 `;
 
 const Brand = ({
@@ -76,17 +103,17 @@ const Brand = ({
 };
 
 Brand.propTypes = {
-  ...COMMON.propTypes,
-  ...LAYOUT.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
+  colorFocus: propType,
+  colorHover: propType,
+  colorActive: propType,
   imagesrc: PropTypes.string,
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  colorFocus: PropTypes.string,
-  colorHover: PropTypes.string,
-  colorActive: PropTypes.string
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default Brand;

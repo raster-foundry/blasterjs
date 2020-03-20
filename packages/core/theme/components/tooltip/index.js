@@ -6,14 +6,14 @@ export const theme = {
     px: 1
   },
   colors: {
-    color: "black",
-    bg: "gray200"
+    color: "white",
+    bg: "gray800"
   },
   radii: {
     borderRadius: "small"
   },
   shadows: {
-    boxShadow: 1
+    boxShadow: 0
   },
   fontSizes: {
     fontSize: 1

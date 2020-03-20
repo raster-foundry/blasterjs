@@ -1,7 +1,7 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-import { themeGet } from "styled-system";
-import 'focus-visible';
+import { themeGet as tg } from "@styled-system/theme-get";
+import "focus-visible";
 
 const FocusVisible = createGlobalStyle`
     /*
@@ -14,10 +14,10 @@ const FocusVisible = createGlobalStyle`
 
     /* Custom keyboard focus style */
     *:focus-visible {
-        ${themeGet("focusVisible.overrides")}
+        ${tg("focusVisible.overrides")}
     }
     .js-focus-visible .focus-visible {
-        ${themeGet("focusVisible.overrides")}
+        ${tg("focusVisible.overrides")}
     }
 `;
 

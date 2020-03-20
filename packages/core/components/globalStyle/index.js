@@ -1,6 +1,6 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
 
 const GlobalStyle = createGlobalStyle`
     div, span, applet, object, iframe,
@@ -59,10 +59,10 @@ const GlobalStyle = createGlobalStyle`
         font-size: 62.5%;
     }
     body {
-        font-family: ${themeGet("fonts.body")};
-        font-size: ${themeGet("fontSizes.body")};
-        line-height: ${themeGet("lineHeights.base")};
-        color: ${themeGet("colors.textBase")};
+        font-family: ${tg("fonts.body")};
+        font-size: ${tg("fontSizes.body")};
+        line-height: ${tg("lineHeights.base")};
+        color: ${tg("colors.textBase")};
     }
 `;
 

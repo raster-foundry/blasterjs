@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { darken, rgba, getLuminance, shade } from "polished";
 import styled, { css, keyframes } from "styled-components";
-import { themeGet } from "styled-system";
+import { compose } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
 import {
   COMMON,
   BACKGROUND,
@@ -11,7 +12,8 @@ import {
   MISC,
   LAYOUT,
   POSITION,
-  FLEX_ITEM
+  FLEX_ITEM,
+  PROPTYPES
 } from "../../constants";
 import Icon from "../icon";
 
@@ -62,7 +64,7 @@ const StyledButton = styled.button`
   transition: 0.1s ease-in-out, box-shadow, 0.1s ease-in-out background-color;
   text-decoration: ${props => (!props.textDecoration ? "none" : "")};
   font-family: ${props =>
-    !props.fontFamily ? themeGet("button.base.fonts.font", "fonts.body") : ""};
+    !props.fontFamily ? tg(`button.base.fonts.font`, tg(`fonts.body`)) : ""};
 
   ${props => buttonStates(props)}
   ${props => buttonScaling(props)}
@@ -74,50 +76,52 @@ const StyledButton = styled.button`
       width: 100%;
     `}
 
-  ${themeGet("button.overrides")};
-  ${COMMON}
-  ${BACKGROUND}
-  ${BORDER}
-  ${TYPOGRAPHY}
-  ${MISC}
-  ${LAYOUT}
-  ${POSITION}
-  ${FLEX_ITEM}
+  ${tg("button.overrides")};
+  ${compose(
+    COMMON,
+    BACKGROUND,
+    BORDER,
+    TYPOGRAPHY,
+    MISC,
+    LAYOUT,
+    POSITION,
+    FLEX_ITEM
+  )}
 `;
 
 function buttonScaling(props) {
   return css`
-    padding-top: ${themeGet(
+    padding-top: ${tg(
       `button.scale.${props.scale}.space.pt`,
-      `button.base.space.pt`
+      tg(`button.base.space.pt`)
     )};
-    padding-bottom: ${themeGet(
+    padding-bottom: ${tg(
       `button.scale.${props.scale}.space.pb`,
-      `button.base.space.pb`
+      tg(`button.base.space.pb`)
     )};
-    padding-left: ${themeGet(
+    padding-left: ${tg(
       `button.scale.${props.scale}.space.pl`,
-      `button.base.space.pl`
+      tg(`button.base.space.pl`)
     )};
-    padding-right: ${themeGet(
+    padding-right: ${tg(
       `button.scale.${props.scale}.space.pr`,
-      `button.base.space.pr`
+      tg(`button.base.space.pr`)
     )};
-    border-radius: ${themeGet(
+    border-radius: ${tg(
       `button.scale.${props.scale}.radii.radius`,
-      `button.base.radii.radius`
+      tg(`button.base.radii.radius`)
     )};
-    font-size: ${themeGet(
+    font-size: ${tg(
       `button.scale.${props.scale}.fontSizes.fontSize`,
-      `button.base.fontSizes.fontSize`
+      tg(`button.base.fontSizes.fontSize`)
     )};
-    font-weight: ${themeGet(
+    font-weight: ${tg(
       `button.scale.${props.scale}.fontWeights.fontWeight`,
-      `button.base.fontWeights.fontWeight`
+      tg(`button.base.fontWeights.fontWeight`)
     )};
-    line-height: ${themeGet(
+    line-height: ${tg(
       `button.scale.${props.scale}.lineHeights.lineHeight`,
-      `button.base.lineHeights.lineHeight`
+      tg(`button.base.lineHeights.lineHeight`)
     )};
   `;
 }
@@ -125,43 +129,39 @@ function buttonScaling(props) {
 function buttonStates(props) {
   const { intent, appearance } = props;
 
+  let INTENT_COLOR = tg(
+    `button.intents.colors.${props.intent}`,
+    tg(`button.base.colors.color`)(props)
+  )(props);
+
   let fg, bg, border, bgHover, fgDisabled, bgDisabled;
 
   switch (appearance) {
     case "prominent":
-      bg = themeGet(
-        `button.intents.colors.${props.intent}`,
-        `button.base.colors.color`
-      )(props);
+      bg = INTENT_COLOR;
       fg =
         getLuminance(bg) >= "0.5"
-          ? themeGet(`button.base.colors.colorDark`)(props)
-          : themeGet(`button.base.colors.colorLight`)(props);
+          ? tg(`button.base.colors.colorDark`)(props)
+          : tg(`button.base.colors.colorLight`)(props);
       border = `1px solid ${bg}`;
       bgHover = shade(0.1, bg);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = rgba(bg, 0.5);
       break;
     case "minimal":
-      fg = themeGet(
-        `button.intents.colors.${props.intent}`,
-        `button.base.colors.color`
-      )(props);
+      fg = INTENT_COLOR;
       bg = "transparent";
       border = "1px solid transparent";
-      bgHover = themeGet(`button.base.colors.bgHover`)(props);
+      bgHover = tg(`button.base.colors.bgHover`)(props);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = "transparent";
       break;
     case "default":
     default:
-      bg = themeGet(`button.base.colors.bg`)(props);
-      fg = themeGet(
-        `button.intents.colors.${props.intent}`,
-        `button.base.colors.color`
-      )(props);
-      border = `1px solid ${themeGet(`button.base.colors.border`)(props)}`;
-      bgHover = themeGet(`button.base.colors.bgHover`)(props);
+      bg = tg(`button.base.colors.bg`)(props);
+      fg = INTENT_COLOR;
+      border = `1px solid ${tg(`button.base.colors.border`)(props)}`;
+      bgHover = tg(`button.base.colors.bgHover`)(props);
       fgDisabled = rgba(fg, 0.6);
       bgDisabled = rgba(bg, 0.5);
       break;
@@ -186,11 +186,11 @@ function buttonStates(props) {
 
         &:focus-visible {
           outline: none;
-          box-shadow: 0 0 0 4px ${rgba(themeGet("colors.primary")(props), 0.3)};
+          box-shadow: 0 0 0 4px ${rgba(tg("colors.primary")(props), 0.3)};
         }
         .js-focus-visible &.focus-visible {
           outline: none;
-          box-shadow: 0 0 0 4px ${rgba(themeGet("colors.primary")(props), 0.3)};
+          box-shadow: 0 0 0 4px ${rgba(tg("colors.primary")(props), 0.3)};
         }
 
         &:focus:active {
@@ -234,14 +234,6 @@ const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
 };
 
 Button.propTypes = {
-  ...COMMON.propTypes,
-  ...BACKGROUND.propTypes,
-  ...BORDER.propTypes,
-  ...TYPOGRAPHY.propTypes,
-  ...MISC.propTypes,
-  ...LAYOUT.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
   appearance: PropTypes.oneOf(["default", "prominent", "minimal"]),
   intent: PropTypes.string,
   scale: PropTypes.string,
@@ -249,11 +241,19 @@ Button.propTypes = {
   iconAfter: PropTypes.string,
   block: PropTypes.bool,
   disabled: PropTypes.bool,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.BACKGROUND,
+  ...PROPTYPES.BORDER,
+  ...PROPTYPES.TYPOGRAPHY,
+  ...PROPTYPES.MISC,
+  ...PROPTYPES.LAYOUT,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 Button.defaultProps = {
-  intent: undefined,
+  intent: null,
   appearance: "default",
   block: false,
   disabled: false,

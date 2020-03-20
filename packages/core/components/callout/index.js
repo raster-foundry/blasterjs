@@ -1,17 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  getContrast,
-  tint,
-  mix,
-  darken
-} from "polished";
+import { getContrast, tint, mix, darken } from "polished";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
+import { themeGet as tg } from "@styled-system/theme-get";
 import Box from "../box";
 import Icon from "../icon";
 import Heading from "../heading";
-import { STYLED } from "../../constants";
+import { STYLED, PROPTYPES } from "../../constants";
 
 const INTENTS = {
   SUCCESS: "success",
@@ -27,22 +22,24 @@ const StyledCallout = styled.div`
   justify-content: flex-start;
   position: relative;
 
-  padding-top: ${themeGet("callout.space.pt")};
-  padding-right: ${themeGet("callout.space.pr")};
-  padding-left: ${themeGet("callout.space.pl")};
-  padding-bottom: ${themeGet("callout.space.pb")};
-  border: ${themeGet("callout.borders.border")};
-  border-color: ${themeGet("callout.colors.borderColor")};
-  border-radius: ${themeGet("callout.radii.borderRadius")};
-  box-shadow: ${themeGet("callout.shadows.boxShadow")};
+  padding-top: ${tg("callout.space.pt")};
+  padding-right: ${tg("callout.space.pr")};
+  padding-left: ${tg("callout.space.pl")};
+  padding-bottom: ${tg("callout.space.pb")};
+  border: ${tg("callout.borders.border")};
+  border-color: ${tg("callout.colors.borderColor")};
+  border-radius: ${tg("callout.radii.borderRadius")};
+  box-shadow: ${tg("callout.shadows.boxShadow")};
 
   ${props => calloutAppearance(props)}
 
-  ${props => props.icon && css`
+  ${props =>
+    props.icon &&
+    css`
       padding-left: 0;
-  `};
+    `};
 
-  ${themeGet("callout.overrides")}
+  ${tg("callout.overrides")}
   ${STYLED}
 `;
 
@@ -50,7 +47,7 @@ function calloutAppearance(props) {
   const { intent } = props;
 
   let color, fg, bg, contrast, darkenBy;
-  color = themeGet(
+  color = tg(
     `callout.intents.colors.${intent}`,
     `callout.intents.colors.default`
   )(props);
@@ -92,13 +89,22 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 
   return (
     <StyledCallout {...props} intent={intent} icon={!!iconName}>
-      {iconName &&
-        <Icon name={iconName} size={iconSize} flex="none" my={0} mx={2} aria-hidden="true" />
-      }
+      {iconName && (
+        <Icon
+          name={iconName}
+          size={iconSize}
+          flex="none"
+          my={0}
+          mx={2}
+          aria-hidden="true"
+        />
+      )}
       <Box flex="auto">
-        {title &&
-          <Heading as="h4" color="inherit" mb={1} lineHeight="small">{title}</Heading>
-        }
+        {title && (
+          <Heading as="h4" color="inherit" mb={1} lineHeight="small">
+            {title}
+          </Heading>
+        )}
         {children}
       </Box>
     </StyledCallout>
@@ -106,11 +112,11 @@ const Callout = ({ icon, iconSize, intent, title, children, ...props }) => {
 };
 
 Callout.propTypes = {
-  ...STYLED.propTypes,
   intent: PropTypes.string,
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   iconSize: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  ...PROPTYPES.STYLED
 };
 
 Callout.defaultProps = {

@@ -8,13 +8,15 @@ export const theme = {
     trackBorder: "gray200",
     trackFocus: "gray300"
   },
-  widths: {
-    track: "100%",
-    thumb: "14px"
-  },
-  heights: {
-    thumb: "14px",
-    track: "5px"
+  sizes: {
+    track: {
+      width: "100%",
+      height: "5px"
+    },
+    thumb: {
+      width: "14px",
+      height: "14px"
+    }
   },
   borderWidths: {
     thumb: "0",

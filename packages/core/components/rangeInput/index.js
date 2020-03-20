@@ -1,19 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
-import { themeGet } from "styled-system";
-import { COMMON, POSITION, FLEX_ITEM } from "../../constants";
-
-// Styling logic from
-//   https://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html
-//   https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
-//   https://github.com/darlanrod/input-range-scss/blob/master/_inputrange.scss
+import { themeGet as tg } from "@styled-system/theme-get";
+import { system, compose } from "styled-system";
+import { COMMON, POSITION, FLEX_ITEM, PROPTYPES } from "../../constants";
 
 const StyledRangeInput = styled.input`
   -webkit-appearance: none;
-  width: ${props => props.width
-    ? themeGet(`widths.${props.width}`, props.width)
-    : themeGet('rangeInput.widths.track')};
+  width: ${props =>
+    props.width
+      ? tg(`sizes.${props.width}`, props.width)
+      : tg("rangeInput.sizes.track.width")};
   background: transparent;
 
   &:focus {
@@ -37,20 +34,20 @@ const StyledRangeInput = styled.input`
 
     margin-top: ${props => {
       let trackBorderWidth = props.trackBorderWidth
-        ? themeGet(`borderWidths.${props.trackBorderWidth}`, props.trackBorderWidth)
-        : themeGet('rangeInput.borderWidths.track');
+        ? tg(`borderWidths.${props.trackBorderWidth}`, props.trackBorderWidth)
+        : tg("rangeInput.borderWidths.track");
 
-      if (trackBorderWidth(props) === 0 || trackBorderWidth(props) === '0') {
-        trackBorderWidth = '0px'; // hack to make css calc() work with 0 border-width
+      if (trackBorderWidth(props) === 0 || trackBorderWidth(props) === "0") {
+        trackBorderWidth = "0px";
       }
 
       const trackHeight = props.trackHeight
-        ? themeGet(`heights.${props.trackHeight}`, props.trackHeight)
-        : themeGet('rangeInput.heights.track');
+        ? tg(`sizes.${props.trackHeight}`, props.trackHeight)
+        : tg("rangeInput.sizes.track.height");
 
       const thumbHeight = props.thumbHeight
-        ? themeGet(`heights.${props.thumbHeight}`, props.thumbHeight)
-        : themeGet('rangeInput.heights.thumb');
+        ? tg(`sizes.${props.thumbHeight}`, props.thumbHeight)
+        : tg("rangeInput.sizes.thumb.height");
 
       return css`calc(((-2 * ${trackBorderWidth} + ${trackHeight}) / 2) - (${thumbHeight} / 2))`;
     }};
@@ -83,8 +80,8 @@ const StyledRangeInput = styled.input`
 
     border-width: ${props => {
       const thumbHeight = props.thumbHeight
-        ? themeGet(`heights.${props.thumbHeight}`, props.thumbHeight)
-        : themeGet('rangeInput.heights.thumb');
+        ? tg(`sizes.${props.thumbHeight}`, props.thumbHeight)
+        : tg("rangeInput.sizes.thumb.height");
       return css`calc(${thumbHeight} / 2) 0`;
     }};
 
@@ -112,8 +109,8 @@ const StyledRangeInput = styled.input`
 
     margin-top: ${props => {
       const trackHeight = props.trackHeight
-        ? themeGet(`heights.${props.trackHeight}`, props.trackHeight)
-        : themeGet('rangeInput.heights.track');
+        ? tg(`sizes.${props.trackHeight}`, props.trackHeight)
+        : tg("rangeInput.sizes.track.height");
       return css`calc(${trackHeight} / 4)`;
     }};
   }
@@ -140,51 +137,60 @@ const StyledRangeInput = styled.input`
     cursor: not-allowed;
   }
 
-  ${themeGet("rangeInput.overrides")};
-  ${COMMON}
-  ${POSITION}
-  ${FLEX_ITEM}
+  ${tg("rangeInput.overrides")};
+  ${compose(
+    COMMON,
+    POSITION,
+    FLEX_ITEM
+  )}
 `;
 
 function trackStyleBase(props) {
   return css`
-    width: ${props => props.width
-      ? themeGet(`widths.${props.width}`, props.width)
-      : themeGet('rangeInput.widths.track')};
-    height: ${props => props.trackHeight
-      ? themeGet(`heights.${props.trackHeight}`, props.trackHeight)
-      : themeGet('rangeInput.heights.track')};
+    width: ${props =>
+      props.width
+        ? tg(`sizes.${props.width}`, props.width)
+        : tg("rangeInput.sizes.track.width")};
+    height: ${props =>
+      props.trackHeight
+        ? tg(`sizes.${props.trackHeight}`, props.trackHeight)
+        : tg("rangeInput.sizes.track.height")};
     cursor: pointer;
-    animate: 0.2s;
   `;
 }
 
 function trackStyleVisual(props) {
   return css`
     border-style: solid;
-    background: ${props => props.trackColor
-      ? themeGet(`colors.${props.trackColor}`, props.trackColor)
-      : themeGet('rangeInput.colors.track')};
-    border-radius: ${props => props.trackBorderRadius
-      ? themeGet(`radii.${props.trackBorderRadius}`, props.trackBorderRadius)
-      : themeGet('rangeInput.radii.track')};
-    border-width: ${props => props.trackBorderWidth
-      ? themeGet(`borderWidths.${props.trackBorderWidth}`, props.trackBorderWidth)
-      : themeGet('rangeInput.borderWidths.track')};
-    border-color: ${props => props.trackBorderColor
-      ? themeGet(`colors.${props.trackBorderColor}`, props.trackBorderColor)
-      : themeGet('rangeInput.colors.trackBorder')};
-    box-shadow: ${props => props.trackShadow
-      ? themeGet(`shadows.${props.trackShadow}`, props.trackShadow)
-      : themeGet('rangeInput.shadows.track')};
+    background: ${props =>
+      props.trackColor
+        ? tg(`colors.${props.trackColor}`, props.trackColor)
+        : tg("rangeInput.colors.track")};
+    border-radius: ${props =>
+      props.trackBorderRadius
+        ? tg(`radii.${props.trackBorderRadius}`, props.trackBorderRadius)
+        : tg("rangeInput.radii.track")};
+    border-width: ${props =>
+      props.trackBorderWidth
+        ? tg(`borderWidths.${props.trackBorderWidth}`, props.trackBorderWidth)
+        : tg("rangeInput.borderWidths.track")};
+    border-color: ${props =>
+      props.trackBorderColor
+        ? tg(`colors.${props.trackBorderColor}`, props.trackBorderColor)
+        : tg("rangeInput.colors.trackBorder")};
+    box-shadow: ${props =>
+      props.trackShadow
+        ? tg(`shadows.${props.trackShadow}`, props.trackShadow)
+        : tg("rangeInput.shadows.track")};
   `;
 }
 
 function trackStyleFocus(props) {
   return css`
-    background: ${props => props.trackFocusColor
-      ? themeGet(`colors.${props.trackFocusColor}`, props.trackFocusColor)
-      : themeGet('rangeInput.colors.trackFocus')};
+    background: ${props =>
+      props.trackFocusColor
+        ? tg(`colors.${props.trackFocusColor}`, props.trackFocusColor)
+        : tg("rangeInput.colors.trackFocus")};
   `;
 }
 
@@ -193,40 +199,42 @@ function thumbStyle(props) {
     box-sizing: border-box;
     border-style: solid;
     cursor: pointer;
-    width: ${props => props.thumbWidth
-      ? themeGet(`widths.${props.thumbWidth}`, props.thumbWidth)
-      : themeGet('rangeInput.widths.thumb')};
-    height: ${props => props.thumbHeight
-      ? themeGet(`heights.${props.thumbHeight}`, props.thumbHeight)
-      : themeGet('rangeInput.heights.thumb')};
-    background: ${props => props.thumbColor
-      ? themeGet(`colors.${props.thumbColor}`, props.thumbColor)
-      : themeGet('rangeInput.colors.thumb')};
-    border-radius: ${props => props.thumbBorderRadius
-      ? themeGet(`radii.${props.thumbBorderRadius}`, props.thumbBorderRadius)
-      : themeGet('rangeInput.radii.thumb')};
-    border-width: ${props => props.thumbBorderWidth
-      ? themeGet(`borderWidths.${props.thumbBorderWidth}`, props.thumbBorderWidth)
-      : themeGet('rangeInput.borderWidths.thumb')};
-    border-color: ${props => props.thumbBorderColor
-      ? themeGet(`colors.${props.thumbBorderColor}`, props.thumbBorderColor)
-      : themeGet('rangeInput.colors.thumbBorder')};
-    box-shadow: ${props => props.thumbShadow
-      ? themeGet(`shadows.${props.thumbShadow}`, props.thumbShadow)
-      : themeGet('rangeInput.shadows.thumb')};
+    width: ${props =>
+      props.thumbWidth
+        ? tg(`sizes.${props.thumbWidth}`, props.thumbWidth)
+        : tg("rangeInput.sizes.thumb.width")};
+    height: ${props =>
+      props.thumbHeight
+        ? tg(`sizes.${props.thumbHeight}`, props.thumbHeight)
+        : tg("rangeInput.sizes.thumb.height")};
+    background: ${props =>
+      props.thumbColor
+        ? tg(`colors.${props.thumbColor}`, props.thumbColor)
+        : tg("rangeInput.colors.thumb")};
+    border-radius: ${props =>
+      props.thumbBorderRadius
+        ? tg(`radii.${props.thumbBorderRadius}`, props.thumbBorderRadius)
+        : tg("rangeInput.radii.thumb")};
+    border-width: ${props =>
+      props.thumbBorderWidth
+        ? tg(`borderWidths.${props.thumbBorderWidth}`, props.thumbBorderWidth)
+        : tg("rangeInput.borderWidths.thumb")};
+    border-color: ${props =>
+      props.thumbBorderColor
+        ? tg(`colors.${props.thumbBorderColor}`, props.thumbBorderColor)
+        : tg("rangeInput.colors.thumbBorder")};
+    box-shadow: ${props =>
+      props.thumbShadow
+        ? tg(`shadows.${props.thumbShadow}`, props.thumbShadow)
+        : tg("rangeInput.shadows.thumb")};
   `;
 }
 
 const RangeInput = props => {
-  return (
-    <StyledRangeInput {...props} type="range" />
-  );
+  return <StyledRangeInput {...props} type="range" />;
 };
 
 RangeInput.propTypes = {
-  ...COMMON.propTypes,
-  ...POSITION.propTypes,
-  ...FLEX_ITEM.propTypes,
   max: PropTypes.number,
   min: PropTypes.number,
   step: PropTypes.number,
@@ -246,7 +254,10 @@ RangeInput.propTypes = {
   trackBorderColor: PropTypes.string,
   trackBorderWidth: PropTypes.string,
   trackShadow: PropTypes.string,
-  trackFocusColor: PropTypes.string
+  trackFocusColor: PropTypes.string,
+  ...PROPTYPES.COMMON,
+  ...PROPTYPES.POSITION,
+  ...PROPTYPES.FLEX_ITEM
 };
 
 export default RangeInput;
