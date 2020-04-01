@@ -152,17 +152,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Build script for docz documentation site and it now properly copies the reset.css file into the dist folder [#100](https://github.com/raster-foundry/blasterjs/pull/111)
 - CLI method `files` now properly filters by provided extension and now only `.js` files are used to generate the `index.common.js` file for each package [#120](https://github.com/raster-foundry/blasterjs/pull/120)
 
-<<<<<<< HEAD
 [unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v2.0.0-alpha.0...HEAD
 [2.0.0-alpha.0]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0...v2.0.0-alpha.0
-=======
-[unreleased]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.1...HEAD
 [1.0.1]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0...v1.0.1
-
-> > > > > > > Update: changelog
-> > > > > > > [1.0.0]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-beta.0...v1.0.0
-> > > > > > > [1.0.0-beta.0]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.8...v1.0.0-beta.0
-> > > > > > > [1.0.0-alpha.8]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.7...v1.0.0-alpha.8
-> > > > > > > [1.0.0-alpha.7]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.6...v1.0.0-alpha.7
-> > > > > > > [1.0.0-alpha.6]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.5...v1.0.0-alpha.6
-> > > > > > > [1.0.0-alpha.5]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.4...v1.0.0-alpha.5
+[1.0.0]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-beta.0...v1.0.0
+[1.0.0-beta.0]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.8...v1.0.0-beta.0
+[1.0.0-alpha.8]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.7...v1.0.0-alpha.8
+[1.0.0-alpha.7]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.6...v1.0.0-alpha.7
+[1.0.0-alpha.6]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.5...v1.0.0-alpha.6
+[1.0.0-alpha.5]: https://github.com/:raster-foundry/blasterjs/compare/v1.0.0-alpha.4...v1.0.0-alpha.5
