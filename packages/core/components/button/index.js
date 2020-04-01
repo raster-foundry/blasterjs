@@ -18,6 +18,9 @@ import {
 import Icon from "../icon";
 
 const ButtonChildren = styled.span`
+  display: flex;
+  align-items: center;
+
   ${props =>
     props.isLoading &&
     css`
@@ -220,13 +223,33 @@ const Button = ({ iconBefore, iconAfter, isLoading, children, ...props }) => {
   return (
     <StyledButton {...props}>
       <ButtonChildren isLoading={isLoading}>
-        {iconBefore && <Icon name={iconBefore} mr={1} aria-hidden="true" />}
+        {iconBefore && (
+          <Icon
+            className="button--icon-before"
+            name={iconBefore}
+            mr={1}
+            aria-hidden="true"
+          />
+        )}
         {children}
-        {iconAfter && <Icon name={iconAfter} ml={1} aria-hidden="true" />}
+        {iconAfter && (
+          <Icon
+            className="button--icon-after"
+            name={iconAfter}
+            ml={1}
+            aria-hidden="true"
+          />
+        )}
       </ButtonChildren>
       {isLoading && (
         <ButtonLoading>
-          <Icon name="load" flex="none" className="icon" aria-label="Loading" />
+          <Icon
+            className="button--icon-loading"
+            name="load"
+            flex="none"
+            className="icon"
+            aria-label="Loading"
+          />
         </ButtonLoading>
       )}
     </StyledButton>

@@ -1,12 +1,12 @@
-import './App.css'
+import "./App.css";
 
-import React, {Component} from 'react'
-
-import { Blaster, Button, Box } from "@blasterjs/core";
+import React, { Component } from "react";
+import { css } from "styled-components";
+import { Blaster, Button, Box, Icon } from "@blasterjs/core";
 
 const theme = {
   colors: {
-    primary: "red"
+    //primary: "red"
   },
   button: {
     intents: {
@@ -14,20 +14,36 @@ const theme = {
         primary: "green",
         secondary: "primary"
       }
-    }
+    },
+    overrides: css`
+      vertical-align: middle;
+    `
   }
 };
 
 class App extends Component {
   render() {
-    return <div className="App">
-      <Blaster theme={theme}>
-        <Box>
-          <Button intent="secondary">Testing</Button>
-        </Box>
-      </Blaster>
-    </div>
+    return (
+      <div className="App">
+        <Blaster theme={theme}>
+          <Box p="4">
+            <Button intent="secondary">
+              <Icon name="cloud" />
+            </Button>
+            <Button intent="secondary" iconBefore="cloud">
+              Testing
+            </Button>
+            <Button intent="secondary" iconAfter="cloud">
+              Testing
+            </Button>
+            <Button intent="secondary" iconBefore="cloud" iconAfter="cloud">
+              Testing
+            </Button>
+          </Box>
+        </Blaster>
+      </div>
+    );
   }
 }
 
-export default App
+export default App;
