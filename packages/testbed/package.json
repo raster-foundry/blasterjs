@@ -1,6 +1,6 @@
 {
   "name": "testbed",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "Describe testbed here",
   "private": true,
   "scripts": {
@@ -12,7 +12,7 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "@blasterjs/core": "^2.0.0-alpha.0",
+    "@blasterjs/core": "^2.0.0-alpha.1",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
